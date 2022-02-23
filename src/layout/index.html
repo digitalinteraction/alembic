@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <title>Alembic | Layout</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="./layout.css" />
+    <link rel="stylesheet" href="../docs/docs.css" />
+    <script type="module" src="../docs/docs.js"></script>
+    <script type="module" src="./layout.js"></script>
+  </head>
+  <body class="docsPage">
+    <header class="docsPage-header">
+      <h1 class="docsPage-title">Alembic Layout</h1>
+    </header>
+    <main class="docsPage-components">
+      <!--
+        STACK
+       -->
+      <doc-section label="Stack">
+        <component-def label="Stack / Gapless">
+          <stack-layout space="none">
+            <doc-box blockSize="50px"></doc-box>
+            <doc-box blockSize="50px" accent="coral"></doc-box>
+            <doc-box blockSize="50px" accent="royalblue"></doc-box>
+          </stack-layout>
+        </component-def>
+        <component-def label="Stack / Tiny">
+          <stack-layout space="tiny">
+            <doc-box blockSize="50px"></doc-box>
+            <doc-box blockSize="50px"></doc-box>
+            <doc-box blockSize="50px"></doc-box>
+          </stack-layout>
+        </component-def>
+        <component-def label="Stack / Small">
+          <stack-layout space="small">
+            <doc-box blockSize="50px"></doc-box>
+            <doc-box blockSize="50px"></doc-box>
+            <doc-box blockSize="50px"></doc-box>
+          </stack-layout>
+        </component-def>
+        <component-def label="Stack / Regular">
+          <stack-layout space="regular">
+            <doc-box blockSize="50px"></doc-box>
+            <doc-box blockSize="50px"></doc-box>
+            <doc-box blockSize="50px"></doc-box>
+          </stack-layout>
+        </component-def>
+        <component-def label="Stack / Medium">
+          <stack-layout space="medium">
+            <doc-box blockSize="50px"></doc-box>
+            <doc-box blockSize="50px"></doc-box>
+            <doc-box blockSize="50px"></doc-box>
+          </stack-layout>
+        </component-def>
+        <component-def label="Stack / Large">
+          <stack-layout space="large">
+            <doc-box blockSize="50px"></doc-box>
+            <doc-box blockSize="50px"></doc-box>
+            <doc-box blockSize="50px"></doc-box>
+          </stack-layout>
+        </component-def>
+        <component-def label="Stack / Nested">
+          <stack-layout space="regular">
+            <stack-layout space="tiny">
+              <doc-box blockSize="30px"></doc-box>
+              <doc-box blockSize="30px"></doc-box>
+              <doc-box blockSize="30px"></doc-box>
+            </stack-layout>
+            <stack-layout space="tiny">
+              <doc-box blockSize="30px"></doc-box>
+              <doc-box blockSize="30px"></doc-box>
+              <doc-box blockSize="30px"></doc-box>
+            </stack-layout>
+            <stack-layout space="tiny">
+              <doc-box blockSize="30px"></doc-box>
+              <doc-box blockSize="30px"></doc-box>
+              <doc-box blockSize="30px"></doc-box>
+            </stack-layout>
+          </stack-layout>
+        </component-def>
+      </doc-section>
+      <!--
+        ???
+       -->
+    </main>
+  </body>
+</html>

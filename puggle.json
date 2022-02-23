@@ -1,0 +1,10 @@
+{
+  "version": "0.6.1",
+  "projectName": "alembic",
+  "preset": {
+    "name": "robb-j:blank",
+    "version": "0.1.0"
+  },
+  "plugins": {},
+  "params": {}
+}
