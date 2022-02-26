@@ -1,0 +1,8 @@
+sidebar-layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+sidebar-layout > * {
+  flex-grow: 1;
+}

@@ -37,7 +37,7 @@ export class DocBox extends HTMLElement {
     const displayRule =
       this.display === 'block'
         ? ` display: block;
-            height: ${this.size};
+            min-height: ${this.size};
           `
         : ` display: inline-block;
             height: 50px;
