@@ -1,8 +1,6 @@
-# Alembic
-
 A Design System for Open Lab research projects
 
-## Contents
+**Contents**
 
 - [Layouts](src/layout)
 
