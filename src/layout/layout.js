@@ -1,5 +1,7 @@
 import { StackLayout } from './stack/stack.js'
+import { BoxLayout } from './box/box.js'
 
 if ('customElements' in window) {
-  customElements.define('stack-layout', StackLayout)
+  StackLayout.register()
+  BoxLayout.register()
 }

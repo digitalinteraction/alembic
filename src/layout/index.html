@@ -17,71 +17,105 @@
         STACK
        -->
       <doc-section label="Stack">
-        <component-def label="Stack / Gapless">
-          <stack-layout space="none">
-            <doc-box blockSize="50px"></doc-box>
-            <doc-box blockSize="50px" accent="coral"></doc-box>
-            <doc-box blockSize="50px" accent="royalblue"></doc-box>
+        <component-def label="Stack / Vanilla">
+          <stack-layout>
+            <doc-box size="50px"></doc-box>
+            <doc-box size="50px"></doc-box>
+            <doc-box size="50px"></doc-box>
           </stack-layout>
         </component-def>
-        <component-def label="Stack / Tiny">
-          <stack-layout space="tiny">
-            <doc-box blockSize="50px"></doc-box>
-            <doc-box blockSize="50px"></doc-box>
-            <doc-box blockSize="50px"></doc-box>
-          </stack-layout>
-        </component-def>
+
         <component-def label="Stack / Small">
-          <stack-layout space="small">
-            <doc-box blockSize="50px"></doc-box>
-            <doc-box blockSize="50px"></doc-box>
-            <doc-box blockSize="50px"></doc-box>
+          <stack-layout space="var(--s-1)">
+            <doc-box size="50px"></doc-box>
+            <doc-box size="50px"></doc-box>
+            <doc-box size="50px"></doc-box>
           </stack-layout>
         </component-def>
-        <component-def label="Stack / Regular">
-          <stack-layout space="regular">
-            <doc-box blockSize="50px"></doc-box>
-            <doc-box blockSize="50px"></doc-box>
-            <doc-box blockSize="50px"></doc-box>
+
+        <component-def label="Stack / Gapless">
+          <stack-layout space="0">
+            <doc-box size="50px"></doc-box>
+            <doc-box size="50px" accent="coral"></doc-box>
+            <doc-box size="50px" accent="royalblue"></doc-box>
           </stack-layout>
         </component-def>
-        <component-def label="Stack / Medium">
-          <stack-layout space="medium">
-            <doc-box blockSize="50px"></doc-box>
-            <doc-box blockSize="50px"></doc-box>
-            <doc-box blockSize="50px"></doc-box>
-          </stack-layout>
-        </component-def>
-        <component-def label="Stack / Large">
-          <stack-layout space="large">
-            <doc-box blockSize="50px"></doc-box>
-            <doc-box blockSize="50px"></doc-box>
-            <doc-box blockSize="50px"></doc-box>
-          </stack-layout>
-        </component-def>
+
         <component-def label="Stack / Nested">
-          <stack-layout space="regular">
-            <stack-layout space="tiny">
-              <doc-box blockSize="30px"></doc-box>
-              <doc-box blockSize="30px"></doc-box>
-              <doc-box blockSize="30px"></doc-box>
+          <stack-layout>
+            <stack-layout space="var(--s-1)">
+              <doc-box size="50px"></doc-box>
+              <doc-box size="50px"></doc-box>
+              <doc-box size="50px"></doc-box>
             </stack-layout>
-            <stack-layout space="tiny">
-              <doc-box blockSize="30px"></doc-box>
-              <doc-box blockSize="30px"></doc-box>
-              <doc-box blockSize="30px"></doc-box>
+            <stack-layout space="var(--s-1)">
+              <doc-box size="50px" accent="royalblue"></doc-box>
+              <doc-box size="50px" accent="royalblue"></doc-box>
+              <doc-box size="50px" accent="royalblue"></doc-box>
             </stack-layout>
-            <stack-layout space="tiny">
-              <doc-box blockSize="30px"></doc-box>
-              <doc-box blockSize="30px"></doc-box>
-              <doc-box blockSize="30px"></doc-box>
+            <stack-layout space="var(--s-1)">
+              <doc-box size="50px"></doc-box>
+              <doc-box size="50px"></doc-box>
+              <doc-box size="50px"></doc-box>
             </stack-layout>
           </stack-layout>
         </component-def>
       </doc-section>
       <!--
-        ???
+        Box
        -->
+      <doc-section label="Box">
+        <component-def label="Box / Vanilla">
+          <box-layout>
+            <p>
+              Tellus mi egestas fermentum etiam vulputate ultrices turpis risus
+              commodo neque amet platea porta. Mauris integer porttitor
+              hendrerit aliqua scelerisque augue nulla consectetur tortor labore
+              feugiat nam viverra. Tortor duis nam duis nunc vel pulvinar
+              adipiscing rhoncus diam lobortis iaculis eiusmod ipsum.
+            </p>
+          </box-layout>
+        </component-def>
+        <component-def label="Box / Invert">
+          <box-layout invert>
+            <p>
+              Tellus mi egestas fermentum etiam vulputate ultrices turpis risus
+              commodo neque amet platea porta. Mauris integer porttitor
+              hendrerit aliqua scelerisque augue nulla consectetur tortor labore
+              feugiat nam viverra. Tortor duis nam duis nunc vel pulvinar
+              adipiscing rhoncus diam lobortis iaculis eiusmod ipsum.
+            </p>
+          </box-layout>
+        </component-def>
+        <component-def label="Box / No padding">
+          <box-layout padding="0">
+            <p>
+              Tellus mi egestas fermentum etiam vulputate ultrices turpis risus
+              commodo neque amet platea porta. Mauris integer porttitor
+              hendrerit aliqua scelerisque augue nulla consectetur tortor labore
+              feugiat nam viverra. Tortor duis nam duis nunc vel pulvinar
+              adipiscing rhoncus diam lobortis iaculis eiusmod ipsum.
+            </p>
+          </box-layout>
+        </component-def>
+        <component-def label="Box / Composed">
+          <box-layout
+            padding="0"
+            style="border-radius: 0.5rem; overflow: hidden"
+          >
+            <box-layout borderWidth="0" padding="var(--s0)" invert
+              >Header</box-layout
+            >
+            <box-layout borderWidth="0" padding="var(--s0)">
+              Tellus mi egestas fermentum etiam vulputate ultrices turpis risus
+              commodo neque amet platea porta. Mauris integer porttitor
+              hendrerit aliqua scelerisque augue nulla consectetur tortor labore
+              feugiat nam viverra. Tortor duis nam duis nunc vel pulvinar
+              adipiscing rhoncus diam lobortis iaculis eiusmod ipsum.
+            </box-layout>
+          </box-layout>
+        </component-def>
+      </doc-section>
     </main>
   </body>
 </html>

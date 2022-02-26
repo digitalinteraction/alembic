@@ -11,6 +11,9 @@ const style = `
   cursor: pointer;
   font-weight: bold;
 }
+::slotted(*:not(:first-child)) {
+  margin-block-start: 50px;
+}
 `
 
 const template = document.createElement('template')

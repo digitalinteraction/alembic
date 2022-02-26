@@ -2,6 +2,12 @@
   --doc-family: ui-monospace, monospace;
   --doc-foreground: hsl(0, 0%, 7%);
   --doc-background: hsl(0, 0%, 93%);
+
+  /** Axioms */
+  --foregroundColor: black;
+  --backgroundColor: white;
+  --border-thin: 0.125rem;
+  --measure: 60ch;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,11 +19,13 @@
 
 /* Doc Page */
 .docsPage {
-  margin: 1rem;
+  padding: 1rem 1rem 10rem;
   position: relative;
 
   color: var(--doc-foreground);
   background-color: var(--doc-background);
+
+  font-family: Inter, system-ui, sans-serif;
 }
 .docsPage-header {
   margin: 0 0 1em;
@@ -28,4 +36,13 @@
   font-family: var(--doc-family);
 }
 .docsPage-components {
+}
+.docsPage-components > * + * {
+  margin-top: 50px;
+}
+
+doc-box,
+doc-section,
+component-def {
+  display: block;
 }

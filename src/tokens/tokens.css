@@ -13,6 +13,10 @@
   --s4: calc(var(--s3) * var(--ratio));
   --s5: calc(var(--s4) * var(--ratio));
 
+  /*
   --family-body: Inter, system-ui, sans-serif;
   --family-mono: ui-monospace, monospace;
+    
+  --measure: 60ch;
+  */
 }

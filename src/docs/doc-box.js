@@ -12,8 +12,8 @@ export class DocBox extends HTMLElement {
     return []
   }
 
-  get blockSize() {
-    return this.getAttribute('blockSize') ?? '50px'
+  get size() {
+    return this.getAttribute('size') ?? '100px'
   }
   get accent() {
     return this.getAttribute('accent') ?? 'rebeccapurple'
@@ -22,18 +22,16 @@ export class DocBox extends HTMLElement {
   constructor() {
     super()
 
-    this.classList.add('docBox')
-
     // this.attachShadow({ mode: 'open' })
     // this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
   render() {
-    this.dataset.i = `DocBox-${this.blockSize}-${this.accent}`
+    this.dataset.i = `DocBox-${this.size}-${this.accent}`
     addGlobalStyle(
       this.dataset.i,
       `
         [data-i="${this.dataset.i}"] {
-          height: ${this.blockSize};
+          height: ${this.size};
           background-color: ${this.accent};
         }
       `
