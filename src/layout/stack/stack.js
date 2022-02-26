@@ -1,12 +1,5 @@
 import { addGlobalStyle } from '../../lib/style.js'
 
-// const style = `
-// `
-//
-// const template = document.createElement('template')
-// template.innerHTML = `
-// `
-
 /**
  * StackLayout adds whitespace (margin) between flow (block) elements along a vertical axis
  *

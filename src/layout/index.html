@@ -76,6 +76,7 @@
             </p>
           </box-layout>
         </component-def>
+
         <component-def label="Box / Invert">
           <box-layout invert>
             <p>
@@ -87,6 +88,7 @@
             </p>
           </box-layout>
         </component-def>
+
         <component-def label="Box / No padding">
           <box-layout padding="0">
             <p>
@@ -98,6 +100,7 @@
             </p>
           </box-layout>
         </component-def>
+
         <component-def label="Box / Composed">
           <box-layout
             padding="0"
@@ -114,6 +117,28 @@
               adipiscing rhoncus diam lobortis iaculis eiusmod ipsum.
             </box-layout>
           </box-layout>
+        </component-def>
+      </doc-section>
+      <!--
+        Center
+       -->
+      <doc-section label="Center">
+        <component-def label="Center / Vanilla">
+          <center-layout>
+            <doc-box size="200px"> </doc-box>
+          </center-layout>
+        </component-def>
+
+        <component-def label="Center / Gutter">
+          <center-layout gutters="var(--s1)" style="background: white">
+            <doc-box size="200px"></doc-box>
+          </center-layout>
+        </component-def>
+
+        <component-def label="Center / Intrinsic">
+          <center-layout intrinsic>
+            <doc-box size="200px" display="inline"></doc-box>
+          </center-layout>
         </component-def>
       </doc-section>
     </main>
