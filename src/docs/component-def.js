@@ -26,6 +26,8 @@ const style = `
 .componentDef-code {
   margin: 0;
   font-family: ui-monospace, monospace;
+  max-width: 100%;
+  overflow-x: auto;
 }
 `
 
