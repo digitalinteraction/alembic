@@ -1,19 +1,21 @@
 const style = `
-.docResizer {
-  display: flex;
-  gap: 1rem;
-}
-.docResizer-content {
-  flex: 1;
-}
-.docResizer-handle {
-  width: 0.5rem;
-  
-  border-top-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  
-  background: var(--doc-foreground);
-  cursor: col-resize;
+@media (hover: hover) {
+  .docResizer {
+    display: flex;
+    gap: 1rem;
+  }
+  .docResizer-content {
+    flex: 1;
+  }
+  .docResizer-handle {
+    width: 0.5rem;
+    
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+    background: var(--doc-foreground);
+    cursor: col-resize;
+  }
 }
 `
 
