@@ -14,9 +14,13 @@
     </header>
     <main class="docsPage-components">
       <!--
-        STACK
+        Stack
        -->
       <doc-section label="Stack">
+        <p style="max-width: var(--measure)">
+          <code>StackLayout</code> adds whitespace between elements along the
+          vertical axis.
+        </p>
         <component-def label="Stack / Vanilla">
           <stack-layout>
             <doc-box size="50px"></doc-box>
@@ -65,6 +69,12 @@
         Box
        -->
       <doc-section label="Box">
+        <p style="max-width: var(--measure)">
+          <code>BoxLayout</code> is a basic primitive to show a container of
+          some elements. It has a <code>padding</code> and
+          <code>borderWidth</code> to configure the box. It can be inverted with
+          <code>invert</code> to swap the text and background colour.
+        </p>
         <component-def label="Box / Vanilla">
           <box-layout>
             <p>
@@ -123,6 +133,15 @@
         Center
        -->
       <doc-section label="Center">
+        <p style="max-width: var(--measure)">
+          <code>CenterLayout</code> ensures a block-level element is placed in
+          the horizontal middle of its parent. The element will be at most
+          <code>max</code> width and spacing will be added at either side. An
+          optional <code>gutters</code> can be applied to add padding to either
+          side of the cantered element. It can also use the
+          <code>intrinsic</code> width of the centered element so inline
+          elements will be perfectly centered (e.g. buttons).
+        </p>
         <component-def label="Center / Vanilla">
           <center-layout>
             <doc-box size="200px"> </doc-box>
@@ -145,6 +164,11 @@
         Cluster
        -->
       <doc-section label="Cluster">
+        <p style="max-width: var(--measure)">
+          <code>ClusterLayout</code> groups multiple items together based on
+          their intrinsic width and seperated by a gutter decided by the
+          <code>space</code> prop.
+        </p>
         <component-def label="Cluster / Vanilla">
           <cluster-layout>
             <doc-box size="200px" display="inline" role="listitem"></doc-box>
@@ -193,6 +217,16 @@
         Sidebar
        -->
       <doc-section label="Sidebar">
+        <p style="max-width: var(--measure)">
+          <code>SidebarLayout</code> places two elements side-by-side if space
+          permits it or stacks them on top of each other if not. The sidebar can
+          either be a set width or it's intrinsic width (based on the width of
+          the content inside it) and the content element will fill up the rest
+          of the horizontal space. When there is not enough space (e.g. on
+          mobile) where the content is less than
+          <code>contentMin</code> percentage, the sidebar and content stack
+          vertically.
+        </p>
         <component-def label="Sidebar / Vanilla">
           <sidebar-layout>
             <div style="background: royalblue; padding-inline-end: 2rem">
@@ -257,6 +291,13 @@
         Switcher
        -->
       <doc-section label="Switcher">
+        <p style="max-width: var(--measure)">
+          <code>SwitcherLayout</code> dynamically displays a set of columns
+          horizontally if there is enough space or vertically if not. It is
+          based on threshold which is the minimum width that it will show
+          elements horizontally. It has a limit where if exceeded elements will
+          always display vertically.
+        </p>
         <component-def label="Switcher / Vanilla">
           <switcher-layout>
             <doc-box></doc-box>
@@ -279,6 +320,13 @@
         Grid
        -->
       <doc-section label="Grid">
+        <p style="max-width: 60ch">
+          <code>GridLayout</code> creates a responsive CSS Grid where each
+          element has a <code>min</code> width. Element start at the minimum
+          width and grow proportionally until all elements fill the layout
+          horizontally or there is space for "ghost" elements. Each element has
+          a gutter decided by the <code>space</code> prop.
+        </p>
         <component-def label="Grid / Vanilla">
           <grid-layout>
             <doc-box></doc-box>
