@@ -4,6 +4,7 @@ import { CenterLayout } from './center/center.js'
 import { ClusterLayout } from './cluster/cluster.js'
 import { SidebarLayout } from './sidebar/sidebar.js'
 import { SwitcherLayout } from './switcher/switcher.js'
+import { GridLayout } from './grid/grid.js'
 
 if ('customElements' in window) {
   StackLayout.register()
@@ -12,4 +13,5 @@ if ('customElements' in window) {
   ClusterLayout.register()
   SidebarLayout.register()
   SwitcherLayout.register()
+  GridLayout.register()
 }
