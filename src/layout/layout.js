@@ -3,6 +3,7 @@ import { BoxLayout } from './box/box.js'
 import { CenterLayout } from './center/center.js'
 import { ClusterLayout } from './cluster/cluster.js'
 import { SidebarLayout } from './sidebar/sidebar.js'
+import { SwitcherLayout } from './switcher/switcher.js'
 
 if ('customElements' in window) {
   StackLayout.register()
@@ -10,4 +11,5 @@ if ('customElements' in window) {
   CenterLayout.register()
   ClusterLayout.register()
   SidebarLayout.register()
+  SwitcherLayout.register()
 }

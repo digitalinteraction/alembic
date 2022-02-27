@@ -1,0 +1,15 @@
+switcher-layout {
+  /* Flex things next to each other */
+  display: flex;
+
+  /* Wrap items around if they reach the end */
+  flex-wrap: wrap;
+}
+
+switcher-layout > * {
+  /* Use the "ideal" width to make a large +/- flex-basis relative to the layout's width.
+    If there is not enough space for a whole --measure inside the layout it makes a negative basis which
+    is ignored and *all* items fill 100% of the container, making the switch */
+  flex-basis: calc((var(--measure) - 100%) * 999);
+  flex-grow: 1;
+}
