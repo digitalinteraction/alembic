@@ -40,7 +40,9 @@ template.innerHTML = `
     <button class="componentDef-toggle">show code</button>
   </h3>
   <div class="componentDef-inner">
-    <slot></slot>
+    <doc-resizer>
+      <slot></slot>
+    </doc-resizer>
   </div>
 </section>
 `

@@ -41,7 +41,8 @@ export class DocBox extends HTMLElement {
           `
         : ` display: inline-block;
             height: 50px;
-            width: ${this.size};
+            width: 100%;
+            max-width: ${this.size};
           `
 
     addGlobalStyle(
