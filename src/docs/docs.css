@@ -47,8 +47,9 @@
   font-family: system-ui, sans-serif;
 }
 .docsPage-description > code {
-  text-decoration: underline dashed #aaa;
+  text-decoration: underline solid #aaa;
   font-family: 'SF Mono', ui-monospace, monospace;
+  font-weight: bold;
 }
 
 doc-box,
