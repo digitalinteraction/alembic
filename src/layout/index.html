@@ -17,10 +17,14 @@
         Stack
        -->
       <doc-section label="Stack">
-        <p class="docsPage-description">
-          <strong>StackLayout</strong> adds whitespace between elements along
-          the vertical axis.
-        </p>
+        <div class="docsPage-description">
+          <p>
+            <strong>StackLayout</strong> places elements vertically and adds
+            whitespace between them. Set <code>space</code> to control the
+            amount of whitespace or remove it. You can nest multiple
+            StackLayouts with different spacing.
+          </p>
+        </div>
         <component-def label="Stack / Vanilla">
           <stack-layout>
             <doc-box size="50px"></doc-box>
@@ -69,12 +73,14 @@
         Box
        -->
       <doc-section label="Box">
-        <p class="docsPage-description">
-          <strong>BoxLayout</strong> is a basic primitive to show a container of
-          some elements. It has a <code>padding</code> and
-          <code>borderWidth</code> to configure the box. It can be inverted with
-          <code>invert</code> to swap the text and background colour.
-        </p>
+        <div class="docsPage-description">
+          <p>
+            <strong>BoxLayout</strong> is a primitive to show a container of
+            other elements. It has a uniform <code>padding</code> and
+            <code>borderWidth</code> to configure the box. It can be inverted
+            with <code>invert</code> to swap the text and background colour.
+          </p>
+        </div>
         <component-def label="Box / Vanilla">
           <box-layout>
             <doc-text words="100"></doc-text>
@@ -111,15 +117,17 @@
         Center
        -->
       <doc-section label="Center">
-        <p class="docsPage-description">
-          <strong>CenterLayout</strong> ensures a block-level element is placed
-          in the horizontal middle of its parent. The element will be at most
-          <code>max</code> width and spacing will be added at either side. An
-          optional <code>gutters</code> can be applied to add padding to either
-          side of the cantered element. It can also use the
-          <code>intrinsic</code> width of the centered element so inline
-          elements will be perfectly centered (e.g. buttons).
-        </p>
+        <div class="docsPage-description">
+          <p>
+            <strong>CenterLayout</strong> ensures a block-level element is
+            placed in the horizontal middle of its parent. The element will be
+            at most <code>max</code> width and spacing will be added at either
+            side to ensure it. Use <code>gutters</code> to apply a padding to
+            either side of the cantered element, outside of the
+            <code>max</code> width. Use the <code>intrinsic</code> prop to use
+            the centered elements width, while it is less that <code>max</code>.
+          </p>
+        </div>
         <component-def label="Center / Vanilla">
           <center-layout>
             <doc-box size="200px"> </doc-box>
@@ -142,11 +150,15 @@
         Cluster
        -->
       <doc-section label="Cluster">
-        <p class="docsPage-description">
-          <strong>ClusterLayout</strong> groups multiple items together based on
-          their intrinsic width and seperated by a gutter decided by the
-          <code>space</code> prop.
-        </p>
+        <div class="docsPage-description">
+          <p>
+            <strong>ClusterLayout</strong> groups multiple items together based
+            on their intrinsic width and separated by a common gutter that
+            decided by the. Use the <code>justify</code> and
+            <code>align</code> props to control the Flexbox justification and
+            alignment. <code>space</code> prop.
+          </p>
+        </div>
         <component-def label="Cluster / Vanilla">
           <cluster-layout>
             <doc-box size="200px" display="inline" role="listitem"></doc-box>
@@ -195,16 +207,23 @@
         Sidebar
        -->
       <doc-section label="Sidebar">
-        <p class="docsPage-description">
-          <strong>SidebarLayout</strong> places two elements side-by-side if
-          space permits it or stacks them on top of each other if not. The
-          sidebar can either be a set width or it's intrinsic width (based on
-          the width of the content inside it) and the content element will fill
-          up the rest of the horizontal space. When there is not enough space
-          (e.g. on mobile) where the content is less than
-          <code>contentMin</code> percentage, the sidebar and content stack
-          vertically.
-        </p>
+        <div class="docsPage-description">
+          <p>
+            <strong>SidebarLayout</strong> places two elements side-by-side if
+            space permits it or stacks them on top of each other if not. The
+            sidebar can either be a set width (using <code>sideWidth</code>) or
+            use its intrinsic width (the width of the content inside it). The
+            content element will fill up the rest of the horizontal space next
+            to the sidebar.
+          </p>
+          <p>
+            Use the <code>side</code> prop to tell SidebarLayout which side to
+            put the sidebar on, either "left" or right"
+            <code>sideWidth</code> to specify a width for the sidebar. When the
+            content's width is less than the <code>contentMin</code> percentage,
+            the sidebar and content stack vertically.
+          </p>
+        </div>
         <component-def label="Sidebar / Vanilla">
           <sidebar-layout>
             <div style="background: royalblue; padding-inline-end: 2rem">
@@ -269,13 +288,22 @@
         Switcher
        -->
       <doc-section label="Switcher">
-        <p class="docsPage-description">
-          <strong>SwitcherLayout</strong> dynamically displays a set of columns
-          horizontally if there is enough space or vertically if not. It is
-          based on threshold which is the minimum width that it will show
-          elements horizontally. It has a limit where if exceeded elements will
-          always display vertically.
-        </p>
+        <div class="docsPage-description">
+          <p>
+            <strong>SwitcherLayout</strong> dynamically displays a set of
+            columns horizontally if there is enough space or stacks them
+            vertically if not. It is based on threshold which is the minimum
+            width that it will show elements horizontally. It has a limit where
+            if exceeded elements will always display vertically.
+          </p>
+          <p>
+            There is a <code>limit</code> prop that says how many elements it is
+            allowed to display horizontally, if exceeded all elements will
+            display vertically. If filled dynamically, this limit should be
+            taken into consideration, e.g. stop adding items after it has been
+            reached.
+          </p>
+        </div>
         <component-def label="Switcher / Vanilla">
           <switcher-layout>
             <doc-box></doc-box>
@@ -298,13 +326,22 @@
         Grid
        -->
       <doc-section label="Grid">
-        <p class="docsPage-description">
-          <strong>GridLayout</strong> creates a responsive CSS Grid where each
-          element has a <code>min</code> width. Element start at the minimum
-          width and grow proportionally until all elements fill the layout
-          horizontally or there is space for "ghost" elements. Each element has
-          a gutter decided by the <code>space</code> prop.
-        </p>
+        <div class="docsPage-description">
+          <p>
+            <strong>GridLayout</strong> creates a responsive CSS Grid where each
+            element has a <code>min</code>(imum) width. Element start at the
+            minimum width and grow proportionally until there is space for
+            "ghost" elements at which points all elements start from the minimum
+            width again. Set the <code>space</code> prop to configure the gutter
+            between elements.
+          </p>
+          <p>
+            GridLayout is suited for lists of same-sized content that are to be
+            displayed at roughly the same size. For example, a set of cards
+            showing people on a website. It avoids the last-row stretching of
+            some Flexbox implementations.
+          </p>
+        </div>
         <component-def label="Grid / Vanilla">
           <grid-layout>
             <doc-box></doc-box>
@@ -331,10 +368,15 @@
         Frame
        -->
       <doc-section label="Frame">
-        <p class="docsPage-description">
-          <strong>FrameLayout</strong> ensures it's child element has a fixed
-          aspect ratio and centers any content if not an image.
-        </p>
+        <div class="docsPage-description">
+          <p>
+            <strong>FrameLayout</strong> ensures it's child element has a fixed
+            aspect ratio by cropping around the center of the image. If content
+            is provided instead of an image, that will be centered with Flexbox
+            too. Set <code>ratio</code> to the desired aspect ratio in the
+            format "16:9".
+          </p>
+        </div>
         <component-def label="Frame / Vanilla">
           <frame-layout>
             <img src="../docs/assets/portrait-image.jpg" />
@@ -357,15 +399,22 @@
         Reel
        -->
       <doc-section label="Reel">
-        <p class="docsPage-description">
-          <strong>ReelLayout</strong> places elements horizontally with a set
-          <code>space</code> between them and ensures overflow scrolling
-          happens. Unless <code>noBar</code> is set, the ReelLayout will show
-          scrollbars to indicate that there is horizontally scrollable content.
-          Set the <code>height</code> to force all elements to be a set height,
-          otherwise it will use the elements intrinsic height (within a Flexbox
-          context).
-        </p>
+        <div class="docsPage-description">
+          <p>
+            <strong>ReelLayout</strong> places elements horizontally with a set
+            <code>space</code> between them and ensures overflow scrolling
+            happens. Unless <code>noBar</code> is set, the ReelLayout will show
+            scrollbars to indicate that there is horizontally scrollable
+            content.
+          </p>
+          <p>
+            Use the <code>height</code> prop to force all laid-out elements to
+            be a set height, otherwise it will use the elements' intrinsic
+            height (within a Flexbox context). Set <code>itemWidth</code> to
+            enforce a width on all elements instead of using their intrinsic
+            width.
+          </p>
+        </div>
 
         <component-def label="Reel / Vanilla">
           <reel-layout>
@@ -427,15 +476,18 @@
         Imposter
        -->
       <doc-section label="Imposter">
-        <p class="docsPage-description">
-          <strong>ImposterLayout</strong> positions an element over other
-          elements. The positioned element is vertically and horizontally
-          centered in it's nearest positioned parent and will not exceed it's
-          height or width. It can optionally be <code>fixed</code> to the
-          viewport instead. The width of the element is 50% of the positioned
-          parent unless overridden in CSS, it is setup to not exceed 100% (minus
-          margins).
-        </p>
+        <div class="docsPage-description">
+          <p>
+            <strong>ImposterLayout</strong> positions an element over other
+            elements. The positioned element is vertically and horizontally
+            centered in it's nearest positioned parent and will not exceed it's
+            height or width, unless <code>breakout</code> is set. It can
+            optionally be <code>fixed</code>-d to the viewport instead. The
+            width of the element is 50% of the positioned parent unless
+            overridden in CSS, it is setup to not exceed 100% of the parent's
+            height or width.
+          </p>
+        </div>
 
         <component-def label="Imposter / Vanilla">
           <div style="position: relative">
@@ -465,8 +517,8 @@
       <doc-section label="Icon">
         <p class="docsPage-description">
           <strong>IconLayout</strong> is for placing icons before or after text.
-          Set <code>space</code> to have a fixed bap between text and the icon,
-          otherwise the natural whitespace from the HTML is used. Use
+          Use <code>space</code> to have a fixed gap between the text and icon,
+          otherwise the natural whitespace from the HTML is used. Set
           <code>label</code> to markup an icon-only element with the correct
           accessibility attributes.
         </p>
@@ -510,7 +562,7 @@
         </component-def>
 
         <component-def label="Icon / Labelled">
-          <icon-layout label="close" style="font-size: 1.5rem">
+          <icon-layout title="Close" label="Close" style="font-size: 1.5rem">
             <svg>
               <use href="../docs/assets/icons.svg#cross"></use>
             </svg>
