@@ -459,6 +459,64 @@
           </div>
         </component-def>
       </doc-section>
+      <!--
+        Icon
+       -->
+      <doc-section label="Icon">
+        <p class="docsPage-description">
+          <strong>IconLayout</strong> is for placing icons before or after text.
+          Set <code>space</code> to have a fixed bap between text and the icon,
+          otherwise the natural whitespace from the HTML is used. Use
+          <code>label</code> to markup an icon-only element with the correct
+          accessibility attributes.
+        </p>
+
+        <component-def label="Icon / Vanilla">
+          <cluster-layout space="var(--s2)" style="font-size: 1.5rem">
+            <icon-layout>
+              <svg>
+                <use href="../docs/assets/icons.svg#left"></use>
+              </svg>
+              Back
+            </icon-layout>
+            <icon-layout>
+              <svg>
+                <use href="../docs/assets/icons.svg#up"></use>
+              </svg>
+              Up
+            </icon-layout>
+            <icon-layout>
+              <svg>
+                <use href="../docs/assets/icons.svg#down"></use>
+              </svg>
+              Down
+            </icon-layout>
+            <icon-layout>
+              Next
+              <svg>
+                <use href="../docs/assets/icons.svg#right"></use>
+              </svg>
+            </icon-layout>
+          </cluster-layout>
+        </component-def>
+
+        <component-def label="Icon / Spaced">
+          <icon-layout space="var(--s-1)" style="font-size: 1.5rem">
+            <svg>
+              <use href="../docs/assets/icons.svg#menu"></use>
+            </svg>
+            Menu
+          </icon-layout>
+        </component-def>
+
+        <component-def label="Icon / Labelled">
+          <icon-layout label="close" style="font-size: 1.5rem">
+            <svg>
+              <use href="../docs/assets/icons.svg#cross"></use>
+            </svg>
+          </icon-layout>
+        </component-def>
+      </doc-section>
     </main>
   </body>
 </html>

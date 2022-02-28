@@ -8,6 +8,7 @@ import { GridLayout } from './grid/grid.js'
 import { FrameLayout } from './frame/frame.js'
 import { ReelLayout } from './reel/reel.js'
 import { ImposterLayout } from './imposter/imposter.js'
+import { IconLayout } from './icon/icon.js'
 
 if ('customElements' in window) {
   StackLayout.register()
@@ -20,4 +21,5 @@ if ('customElements' in window) {
   FrameLayout.register()
   ReelLayout.register()
   ImposterLayout.register()
+  IconLayout.register()
 }
