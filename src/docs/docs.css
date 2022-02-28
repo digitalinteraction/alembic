@@ -49,9 +49,16 @@
   font-family: system-ui, sans-serif;
 }
 .docsPage-description > code {
-  text-decoration: underline solid #aaa;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: #aaa;
   font-family: var(--doc-family);
   font-weight: bold;
+}
+@media (prefers-color-scheme: dark) {
+  .docsPage-description > code {
+    text-decoration-color: #ccc;
+  }
 }
 
 doc-text:first-letter {
