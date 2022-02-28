@@ -21,7 +21,7 @@ const style = `
 .componentDef-toggle {
   font-family: inherit;
   font-weight: bold;
-  padding: 6px 8px;
+  padding: 4px 6px;
 }
 .componentDef-code {
   margin: 0;
