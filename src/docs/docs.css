@@ -14,6 +14,9 @@
   :root {
     --doc-foreground: hsl(0, 0%, 93%);
     --doc-background: hsl(0, 0%, 7%);
+
+    --foregroundColor: white;
+    --backgroundColor: black;
   }
 }
 
@@ -51,9 +54,14 @@
   font-weight: bold;
 }
 
+doc-text:first-letter {
+  text-transform: uppercase;
+}
+
 doc-box,
 doc-section,
 doc-resizer,
+doc-text,
 component-def {
   display: block;
 }

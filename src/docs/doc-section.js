@@ -28,7 +28,7 @@ template.innerHTML = `
 `
 
 export class DocSection extends HTMLElement {
-  static observedAttributes() {
+  static get observedAttributes() {
     return []
   }
 

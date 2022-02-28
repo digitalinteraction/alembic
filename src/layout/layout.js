@@ -7,6 +7,7 @@ import { SwitcherLayout } from './switcher/switcher.js'
 import { GridLayout } from './grid/grid.js'
 import { FrameLayout } from './frame/frame.js'
 import { ReelLayout } from './reel/reel.js'
+import { ImposterLayout } from './imposter/imposter.js'
 
 if ('customElements' in window) {
   StackLayout.register()
@@ -18,4 +19,5 @@ if ('customElements' in window) {
   GridLayout.register()
   FrameLayout.register()
   ReelLayout.register()
+  ImposterLayout.register()
 }
