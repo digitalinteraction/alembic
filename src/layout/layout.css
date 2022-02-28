@@ -5,6 +5,7 @@
     * --foregroundColor
     * --backgroundColor
     * --measure
+    * --border-thin
  */
 
 @import '../lib/reset.css';
@@ -17,3 +18,4 @@
 @import './sidebar/sidebar.css';
 @import './switcher/switcher.css';
 @import './grid/grid.css';
+@import './frame/frame.css';

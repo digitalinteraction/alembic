@@ -349,6 +349,32 @@
           </grid-layout>
         </component-def>
       </doc-section>
+      <!--
+        Frame
+       -->
+      <doc-section label="Frame">
+        <p style="max-width: 60ch">
+          <code>FrameLayout</code> ensures it's child element has a fixed aspect
+          ratio and centers any content if not an image.
+        </p>
+        <component-def label="Frame / Vanilla">
+          <frame-layout>
+            <img src="../docs/assets/portrait-image.jpg" />
+          </frame-layout>
+        </component-def>
+
+        <component-def label="Frame / 5:1">
+          <frame-layout ratio="5:1">
+            <img src="../docs/assets/portrait-image.jpg" />
+          </frame-layout>
+        </component-def>
+
+        <component-def label="Frame / Content">
+          <frame-layout>
+            <p>Coming soon ...</p>
+          </frame-layout>
+        </component-def>
+      </doc-section>
     </main>
   </body>
 </html>
