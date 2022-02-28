@@ -17,9 +17,9 @@
         Stack
        -->
       <doc-section label="Stack">
-        <p style="max-width: var(--measure)">
-          <code>StackLayout</code> adds whitespace between elements along the
-          vertical axis.
+        <p class="docsPage-description">
+          <strong>StackLayout</strong> adds whitespace between elements along
+          the vertical axis.
         </p>
         <component-def label="Stack / Vanilla">
           <stack-layout>
@@ -69,8 +69,8 @@
         Box
        -->
       <doc-section label="Box">
-        <p style="max-width: var(--measure)">
-          <code>BoxLayout</code> is a basic primitive to show a container of
+        <p class="docsPage-description">
+          <strong>BoxLayout</strong> is a basic primitive to show a container of
           some elements. It has a <code>padding</code> and
           <code>borderWidth</code> to configure the box. It can be inverted with
           <code>invert</code> to swap the text and background colour.
@@ -133,9 +133,9 @@
         Center
        -->
       <doc-section label="Center">
-        <p style="max-width: var(--measure)">
-          <code>CenterLayout</code> ensures a block-level element is placed in
-          the horizontal middle of its parent. The element will be at most
+        <p class="docsPage-description">
+          <strong>CenterLayout</strong> ensures a block-level element is placed
+          in the horizontal middle of its parent. The element will be at most
           <code>max</code> width and spacing will be added at either side. An
           optional <code>gutters</code> can be applied to add padding to either
           side of the cantered element. It can also use the
@@ -164,8 +164,8 @@
         Cluster
        -->
       <doc-section label="Cluster">
-        <p style="max-width: var(--measure)">
-          <code>ClusterLayout</code> groups multiple items together based on
+        <p class="docsPage-description">
+          <strong>ClusterLayout</strong> groups multiple items together based on
           their intrinsic width and seperated by a gutter decided by the
           <code>space</code> prop.
         </p>
@@ -217,13 +217,13 @@
         Sidebar
        -->
       <doc-section label="Sidebar">
-        <p style="max-width: var(--measure)">
-          <code>SidebarLayout</code> places two elements side-by-side if space
-          permits it or stacks them on top of each other if not. The sidebar can
-          either be a set width or it's intrinsic width (based on the width of
-          the content inside it) and the content element will fill up the rest
-          of the horizontal space. When there is not enough space (e.g. on
-          mobile) where the content is less than
+        <p class="docsPage-description">
+          <strong>SidebarLayout</strong> places two elements side-by-side if
+          space permits it or stacks them on top of each other if not. The
+          sidebar can either be a set width or it's intrinsic width (based on
+          the width of the content inside it) and the content element will fill
+          up the rest of the horizontal space. When there is not enough space
+          (e.g. on mobile) where the content is less than
           <code>contentMin</code> percentage, the sidebar and content stack
           vertically.
         </p>
@@ -291,8 +291,8 @@
         Switcher
        -->
       <doc-section label="Switcher">
-        <p style="max-width: var(--measure)">
-          <code>SwitcherLayout</code> dynamically displays a set of columns
+        <p class="docsPage-description">
+          <strong>SwitcherLayout</strong> dynamically displays a set of columns
           horizontally if there is enough space or vertically if not. It is
           based on threshold which is the minimum width that it will show
           elements horizontally. It has a limit where if exceeded elements will
@@ -320,8 +320,8 @@
         Grid
        -->
       <doc-section label="Grid">
-        <p style="max-width: 60ch">
-          <code>GridLayout</code> creates a responsive CSS Grid where each
+        <p class="docsPage-description">
+          <strong>GridLayout</strong> creates a responsive CSS Grid where each
           element has a <code>min</code> width. Element start at the minimum
           width and grow proportionally until all elements fill the layout
           horizontally or there is space for "ghost" elements. Each element has
@@ -353,9 +353,9 @@
         Frame
        -->
       <doc-section label="Frame">
-        <p style="max-width: 60ch">
-          <code>FrameLayout</code> ensures it's child element has a fixed aspect
-          ratio and centers any content if not an image.
+        <p class="docsPage-description">
+          <strong>FrameLayout</strong> ensures it's child element has a fixed
+          aspect ratio and centers any content if not an image.
         </p>
         <component-def label="Frame / Vanilla">
           <frame-layout>
@@ -375,6 +375,76 @@
           </frame-layout>
         </component-def>
       </doc-section>
+      <!--
+        Reel
+       -->
+      <doc-section label="Reel">
+        <p class="docsPage-description">
+          <strong>ReelLayout</strong> places elements horizontally with a set
+          <code>space</code> between them and ensures overflow scrolling
+          happens. Unless <code>noBar</code> is set, the ReelLayout will show
+          scrollbars to indicate that there is horizontally scrollable content.
+          Set the <code>height</code> to force all elements to be a set height,
+          otherwise it will use the elements intrinsic height (within a Flexbox
+          context).
+        </p>
+
+        <component-def label="Reel / Vanilla">
+          <reel-layout>
+            <doc-box style="width: 200px"></doc-box>
+            <doc-box style="width: 300px"></doc-box>
+            <doc-box style="width: 150px"></doc-box>
+            <doc-box style="width: 400px"></doc-box>
+            <doc-box style="width: 100px"></doc-box>
+            <doc-box style="width: 200px"></doc-box>
+            <doc-box style="width: 100px"></doc-box>
+            <doc-box style="width: 300px"></doc-box>
+            <doc-box style="width: 200px"></doc-box>
+          </reel-layout>
+        </component-def>
+
+        <component-def label="Reel / Fixed width">
+          <reel-layout itemWidth="200px">
+            <doc-box style="width: 200px"></doc-box>
+            <doc-box style="width: 300px"></doc-box>
+            <doc-box style="width: 150px"></doc-box>
+            <doc-box style="width: 400px"></doc-box>
+            <doc-box style="width: 100px"></doc-box>
+            <doc-box style="width: 200px"></doc-box>
+            <doc-box style="width: 100px"></doc-box>
+            <doc-box style="width: 300px"></doc-box>
+            <doc-box style="width: 200px"></doc-box>
+          </reel-layout>
+        </component-def>
+
+        <component-def label="Reel / Gapless">
+          <reel-layout space="0">
+            <doc-box style="width: 200px"></doc-box>
+            <doc-box style="width: 300px" accent="royalblue"></doc-box>
+            <doc-box style="width: 150px" accent="coral"></doc-box>
+            <doc-box style="width: 400px"></doc-box>
+            <doc-box style="width: 200px" accent="royalblue"></doc-box>
+            <doc-box style="width: 100px" accent="coral"></doc-box>
+            <doc-box style="width: 100px"></doc-box>
+            <doc-box style="width: 300px" accent="royalblue"></doc-box>
+            <doc-box style="width: 200px" accent="coral"></doc-box>
+          </reel-layout>
+        </component-def>
+      </doc-section>
+
+      <component-def label="Reel / No bar">
+        <reel-layout noBar>
+          <doc-box style="width: 200px"></doc-box>
+          <doc-box style="width: 300px"></doc-box>
+          <doc-box style="width: 150px"></doc-box>
+          <doc-box style="width: 400px"></doc-box>
+          <doc-box style="width: 100px"></doc-box>
+          <doc-box style="width: 200px"></doc-box>
+          <doc-box style="width: 100px"></doc-box>
+          <doc-box style="width: 300px"></doc-box>
+          <doc-box style="width: 200px"></doc-box>
+        </reel-layout>
+      </component-def>
     </main>
   </body>
 </html>

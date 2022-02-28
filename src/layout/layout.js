@@ -6,6 +6,7 @@ import { SidebarLayout } from './sidebar/sidebar.js'
 import { SwitcherLayout } from './switcher/switcher.js'
 import { GridLayout } from './grid/grid.js'
 import { FrameLayout } from './frame/frame.js'
+import { ReelLayout } from './reel/reel.js'
 
 if ('customElements' in window) {
   StackLayout.register()
@@ -16,4 +17,5 @@ if ('customElements' in window) {
   SwitcherLayout.register()
   GridLayout.register()
   FrameLayout.register()
+  ReelLayout.register()
 }
