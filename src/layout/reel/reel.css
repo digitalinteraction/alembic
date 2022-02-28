@@ -21,17 +21,16 @@ reel-layout::-webkit-scrollbar {
 }
 
 reel-layout::-webkit-scrollbar-track {
-  background-color: var(--foregroundColor);
+  background-color: var(--backgroundColor);
 }
 
 reel-layout::-webkit-scrollbar-thumb {
-  background-color: var(--backgroundColor);
+  background-color: var(--foregroundColor);
   background-image: linear-gradient(
-    var(--foregroundColor) 0,
-    var(--foregroundColor) 0.25rem,
+    var(--backgroundColor) 0,
     var(--backgroundColor) 0.25rem,
-    var(--backgroundColor) 0.75rem,
-    var(--foregroundColor) 0.75rem
+    var(--foregroundColor) 0.25rem,
+    var(--foregroundColor) 0.75rem,
+    var(--backgroundColor) 0.75rem
   );
-  margin-inline: 0.5rem;
 }
