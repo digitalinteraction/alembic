@@ -1,12 +1,5 @@
 import { addGlobalStyle } from '../../lib/style.js'
 
-//
-// Props:
-// - padding - how much spacing for content
-// - borderWidth - how thick the border is
-// - invert - swap fore- & back-ground colors
-//
-
 /**
  * BoxLayout is a custom element for generic containers of things
  *
@@ -44,7 +37,7 @@ export class BoxLayout extends HTMLElement {
 
   render() {
     this.dataset.i = `BoxLayout-${this.padding}${this.borderWidth}${this.invert}`
-    const invertRules = this.invert
+    const invertRule = this.invert
       ? `color: var(--backgroundColor); background-color: var(--foregroundColor);`
       : `color: var(--foregroundColor); background-color: var(--backgroundColor);`
     addGlobalStyle(
@@ -53,7 +46,7 @@ export class BoxLayout extends HTMLElement {
         [data-i="${this.dataset.i}"] {
           padding: ${this.padding};
           border: ${this.borderWidth} solid;
-          ${invertRules}
+          ${invertRule}
         }
       `
     )
