@@ -6,6 +6,7 @@ const style = `
   }
   .docResizer-content {
     flex: 1;
+    max-width: calc(100% - 1rem - 0.5rem); /* 100% - gap - handleWidth */
   }
   .docResizer-handle {
     width: 0.5rem;
@@ -16,6 +17,9 @@ const style = `
     background: var(--doc-foreground);
     cursor: col-resize;
   }
+}
+* {
+  box-sizing: border-box;
 }
 `
 
