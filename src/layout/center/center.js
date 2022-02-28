@@ -38,21 +38,21 @@ export class CenterLayout extends HTMLElement {
   render() {
     this.dataset.i = `CenterLayout-${this.max}${this.gutters}${this.intrinsic}`
 
-    const guttersRule = this.gutters ? `padding-inline: ${this.gutters};` : ''
+    const guttersRule = `padding-inline: ${this.gutters};`
 
-    const intrinsicRule = this.intrinsic
-      ? `display: flex;
-        flex-direction: column;
-        align-items: center;`
-      : ''
+    const intrinsicRule = `
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    `
 
     addGlobalStyle(
       this.dataset.i,
       `
         [data-i="${this.dataset.i}"] {
           max-width: ${this.max};
-          ${guttersRule}
-          ${intrinsicRule}
+          ${this.gutters ? guttersRule : ''}
+          ${this.intrinsic ? intrinsicRule : ''}
         }
       `
     )
