@@ -40,6 +40,16 @@
 .docsPage-components > * + * {
   margin-top: 50px;
 }
+.docsPage-description {
+  max-width: 80ch;
+  font-size: 1.2em;
+  font-family: var(--doc-family);
+  font-family: system-ui, sans-serif;
+}
+.docsPage-description > code {
+  text-decoration: underline dashed #aaa;
+  font-family: 'SF Mono', ui-monospace, monospace;
+}
 
 doc-box,
 doc-section,
