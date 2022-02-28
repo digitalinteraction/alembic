@@ -62,5 +62,11 @@ export class DocResizer extends HTMLElement {
         { once: true }
       )
     })
+
+    // Reset the control if the window size changed
+    window.addEventListener('resize', () => {
+      if (resized) resized = 0
+      if (root.style) root.style = ''
+    })
   }
 }
