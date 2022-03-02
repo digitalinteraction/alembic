@@ -82,7 +82,6 @@ export class ComponentDef extends HTMLElement {
         .map((l) => l.replace(indent, ''))
         .join('\n')
         .replace(/\s*data-i=".+"/g, '')
-        .replace(/\s*style=".+"/g, '')
         .trim()
       // console.log(this.children)
     })
