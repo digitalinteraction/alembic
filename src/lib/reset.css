@@ -44,3 +44,11 @@ textarea,
 select {
   font: inherit;
 }
+
+/* Remove list styles when the role is set, suggesting default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
