@@ -9,7 +9,7 @@ reel-layout > * {
   flex: 0 0 var(--item-width);
 }
 
-// NOTE — this was duplicated in ./reel.js
+/* NOTE — this was duplicated in ./reel.js */
 reel-layout > img {
   block-size: 100%;
   flex-basis: auto;
