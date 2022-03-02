@@ -2,7 +2,7 @@ A Design System for Open Lab research projects
 
 **Contents**
 
-- [Layouts](src/layout)
+- [Layouts](src/layouts)
 
 ---
 
