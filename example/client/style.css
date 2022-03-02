@@ -1,0 +1,58 @@
+@import '../../src/layouts/layout.css';
+
+:root {
+  --measure: 60ch;
+  --accent: #8402f8;
+  --border-thin: 1px;
+
+  --font-fancy: 'Playfair Display', serif;
+  --font-system: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.type-largeMenuItem {
+  color: #000000;
+  text-decoration: none;
+  font-family: var(--font-fancy);
+  font-weight: 600;
+  font-size: var(--s2);
+}
+.type-largeMenuItem:hover,
+.type-smallMenuItem:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+.type-smallMenuItem {
+  color: #000000;
+  text-decoration: none;
+  font-family: var(--font-fancy);
+  font-weight: 600;
+  font-size: var(--s1);
+}
+.type-menuHeading {
+  font-family: var(--font-system);
+  color: #7e7e7e;
+}
+.type-largeTopic {
+  color: black;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 3px;
+  transition: text-decoration-thickness 150ms ease;
+
+  font-family: var(--font-fancy);
+  font-weight: 500;
+  font-size: calc(1.5rem + 1vw);
+}
+.type-largeTopic:hover {
+  text-decoration-thickness: 8px;
+}
+.type-footerText {
+  font-family: var(--font-system);
+  color: #585858;
+  font-size: 14px;
+}
+.type-footerText a {
+  font-weight: 500;
+  color: #000000;
+}

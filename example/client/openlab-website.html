@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <title>OL Website | Alembic</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="dist/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display:500,600&amp;display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body style="background-color: #f2f2f2">
+    <sidebar-layout sidewidth="20ch" space="0">
+      <box-layout
+        padding="var(--s3)"
+        style="
+          border-color: #dadfe1;
+          box-sizing: content-box;
+          --backgroundColor: white;
+          padding-right: calc(var(--s3) + 10%);
+        "
+      >
+        <!-- Left hand side -->
+        <!-- TODO: update to use cover later-->
+        <stack-layout space="var(--s2)">
+          <a href="#">
+            <img
+              src="https://openlab.ncl.ac.uk/static/openlab-vertical.svg"
+              alt="Open Lab"
+            />
+          </a>
+          <stack-layout space="0">
+            <p class="type-menuHeading">Menu</p>
+            <ul role="list">
+              <li><a class="type-largeMenuItem" href="#">People</a></li>
+              <li><a class="type-largeMenuItem" href="#">Research</a></li>
+              <li><a class="type-largeMenuItem" href="#">Publications</a></li>
+              <li><a class="type-largeMenuItem" href="#">Search</a></li>
+              <li><a class="type-largeMenuItem" href="#">News</a></li>
+            </ul>
+          </stack-layout>
+          <stack-layout space="0">
+            <p class="type-menuHeading">More</p>
+            <ul role="list">
+              <li><a class="type-smallMenuItem" href="#">About</a></li>
+              <li><a class="type-smallMenuItem" href="#">Contact</a></li>
+            </ul>
+          </stack-layout>
+        </stack-layout>
+      </box-layout>
+
+      <!-- Right hand side -->
+      <!-- TODO: update to use cover later-->
+      <box-layout
+        padding="var(--s3)"
+        borderWidth="0"
+        style="
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        "
+      >
+        <div></div>
+        <cluster-layout space="var(--s0)" style="max-width: 800px">
+          <a class="type-largeTopic" href="#" style="--accent: #8402f8">
+            Digital Health
+          </a>
+          <a class="type-largeTopic" href="#" style="--accent: #79e31d">
+            Educational Technology
+          </a>
+          <a class="type-largeTopic" href="#" style="--accent: #ff7202">
+            Digital Sustainability
+          </a>
+          <a class="type-largeTopic" href="#" style="--accent: #c736d3">
+            Design Futures
+          </a>
+          <a class="type-largeTopic" href="#" style="--accent: #f6dd22">
+            Digital Social Innovation
+          </a>
+          <a class="type-largeTopic" href="#" style="--accent: #ff024f">
+            Machine Learning
+          </a>
+          <a class="type-largeTopic" href="#" style="--accent: #12e7ff">
+            CHI2021
+          </a>
+        </cluster-layout>
+        <cluster-layout justify="flex-end">
+          <p class="type-footerText">
+            Open Lab | HCI research |
+            <a href="#">Digital Civics</a> |
+            <a href="#">Newcastle University</a> |
+            <a href="#">Cookies</a>
+          </p>
+        </cluster-layout>
+      </box-layout>
+    </sidebar-layout>
+    <script type="module" src="dist/app.js"></script>
+  </body>
+</html>
