@@ -10,29 +10,24 @@
     />
   </head>
   <body style="background-color: #f2f2f2">
-    <sidebar-layout sidewidth="20ch" space="0" style="min-height: 100vh">
+    <sidebar-layout space="0" sideWidth="20ch">
       <box-layout
-        padding="var(--s3)"
+        padding="0"
         style="
           border-color: #dadfe1;
-          box-sizing: content-box;
           --backgroundColor: white;
-          padding-right: calc(var(--s3) + 10%);
+          padding-inline-end: 10%;
         "
       >
         <!-- Left hand side -->
-        <!-- TODO: update to use cover later-->
-        <stack-layout
-          space="var(--s2)"
-          style="min-height: 100%; justify-content: space-between"
-        >
+        <cover-layout space="var(--s3)" centered=".mainMenu">
           <a href="#">
             <img
               src="https://openlab.ncl.ac.uk/static/openlab-vertical.svg"
               alt="Open Lab"
             />
           </a>
-          <stack-layout space="0">
+          <stack-layout space="0" class="mainMenu">
             <p class="type-menuHeading">Menu</p>
             <ul role="list">
               <li><a class="type-largeMenuItem" href="#">People</a></li>
@@ -49,25 +44,17 @@
               <li><a class="type-smallMenuItem" href="#">Contact</a></li>
             </ul>
           </stack-layout>
-        </stack-layout>
+        </cover-layout>
       </box-layout>
 
       <!-- Right hand side -->
       <!-- TODO: update to use cover later-->
-      <box-layout
-        padding="var(--s3)"
-        borderWidth="0"
-        style="
-          min-height: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        "
-      >
+      <cover-layout space="var(--s3)" centered=".topicList">
         <div></div>
         <cluster-layout
           space="var(--s0)"
           style="max-width: 40ch; font-size: calc(1.5rem + 1vw)"
+          class="topicList"
         >
           <a class="type-largeTopic" href="#" style="--accent: #8402f8">
             Digital Health
@@ -99,7 +86,7 @@
             <a href="#">Cookies</a>
           </p>
         </cluster-layout>
-      </box-layout>
+      </cover-layout>
     </sidebar-layout>
     <script type="module" src="dist/app.js"></script>
   </body>
