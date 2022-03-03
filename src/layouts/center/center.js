@@ -11,7 +11,7 @@ export class CenterLayout extends HTMLElement {
   static get observedAttributes() {
     return ['max', 'gutters', 'intrinsic']
   }
-  static register() {
+  static defineElement() {
     customElements.define('center-layout', CenterLayout)
   }
 

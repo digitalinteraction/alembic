@@ -11,7 +11,7 @@ export class SwitcherLayout extends HTMLElement {
   static get observedAttributes() {
     return ['threshold', 'space', 'limit']
   }
-  static register() {
+  static defineElement() {
     customElements.define('switcher-layout', SwitcherLayout)
   }
 

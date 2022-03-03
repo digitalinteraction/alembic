@@ -1,5 +1,6 @@
 :root {
-  --doc-family: 'SF Mono', ui-monospace, monospace;
+  --doc-family: Inter, system-ui, sans-serif;
+  --doc-mono: 'SF Mono', ui-monospace, monospace;
   --doc-foreground: hsl(0, 0%, 7%);
   --doc-background: hsl(0, 0%, 93%);
 
@@ -28,7 +29,7 @@
   color: var(--doc-foreground);
   background-color: var(--doc-background);
 
-  font-family: Inter, system-ui, sans-serif;
+  font-family: var(--doc-family);
 }
 .docsPage-header {
   margin: 0 0 1em;
@@ -36,7 +37,6 @@
   z-index: 1;
 }
 .docsPage-title {
-  font-family: var(--doc-family);
 }
 .docsPage-components {
 }
@@ -46,7 +46,6 @@
 .docsPage-description {
   max-width: 80ch;
   font-size: 1.2em;
-  font-family: system-ui, sans-serif;
 }
 .docsPage-description > * + * {
   margin-top: 1rem;
@@ -55,7 +54,7 @@
   text-decoration: underline;
   text-decoration-style: dashed;
   text-decoration-color: #aaa;
-  font-family: var(--doc-family);
+  font-family: var(--doc-mono);
   font-weight: bold;
 }
 @media (prefers-color-scheme: dark) {

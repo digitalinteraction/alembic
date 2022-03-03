@@ -9,7 +9,7 @@ export class StackLayout extends HTMLElement {
   static get observedAttributes() {
     return ['space']
   }
-  static register() {
+  static defineElement() {
     customElements.define('stack-layout', StackLayout)
   }
 

@@ -9,7 +9,7 @@ export class FrameLayout extends HTMLElement {
   static get observedAttributes() {
     return ['ratio']
   }
-  static register() {
+  static defineElement() {
     customElements.define('frame-layout', FrameLayout)
   }
 

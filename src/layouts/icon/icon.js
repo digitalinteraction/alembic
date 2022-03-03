@@ -10,7 +10,7 @@ export class IconLayout extends HTMLElement {
   static get observedAttributes() {
     return ['space', 'label']
   }
-  static register() {
+  static defineElement() {
     customElements.define('icon-layout', IconLayout)
   }
 

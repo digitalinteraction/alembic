@@ -11,7 +11,7 @@ export class BoxLayout extends HTMLElement {
   static get observedAttributes() {
     return ['borderWidth', 'padding', 'invert']
   }
-  static register() {
+  static defineElement() {
     customElements.define('box-layout', BoxLayout)
   }
 

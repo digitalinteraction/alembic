@@ -12,7 +12,7 @@ export class ReelLayout extends HTMLElement {
   static get observedAttributes() {
     return ['itemWidth', 'height', 'space', 'noBar']
   }
-  static register() {
+  static defineElement() {
     customElements.define('reel-layout', ReelLayout)
   }
 

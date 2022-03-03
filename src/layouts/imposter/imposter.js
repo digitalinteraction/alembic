@@ -11,7 +11,7 @@ export class ImposterLayout extends HTMLElement {
   static get observedAttributes() {
     return ['breakout', 'margin', 'fixed']
   }
-  static register() {
+  static defineElement() {
     customElements.define('imposter-layout', ImposterLayout)
   }
 

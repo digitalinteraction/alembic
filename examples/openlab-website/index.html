@@ -10,7 +10,7 @@
     />
   </head>
   <body style="background-color: #f2f2f2">
-    <sidebar-layout sidewidth="20ch" space="0">
+    <sidebar-layout sidewidth="20ch" space="0" style="min-height: 100vh">
       <box-layout
         padding="var(--s3)"
         style="
@@ -22,7 +22,10 @@
       >
         <!-- Left hand side -->
         <!-- TODO: update to use cover later-->
-        <stack-layout space="var(--s2)">
+        <stack-layout
+          space="var(--s2)"
+          style="min-height: 100%; justify-content: space-between"
+        >
           <a href="#">
             <img
               src="https://openlab.ncl.ac.uk/static/openlab-vertical.svg"
@@ -55,14 +58,17 @@
         padding="var(--s3)"
         borderWidth="0"
         style="
-          min-height: 100vh;
+          min-height: 100%;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
         "
       >
         <div></div>
-        <cluster-layout space="var(--s0)" style="max-width: 800px">
+        <cluster-layout
+          space="var(--s0)"
+          style="max-width: 40ch; font-size: calc(1.5rem + 1vw)"
+        >
           <a class="type-largeTopic" href="#" style="--accent: #8402f8">
             Digital Health
           </a>

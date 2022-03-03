@@ -10,7 +10,7 @@ export class GridLayout extends HTMLElement {
   static get observedAttributes() {
     return ['min', 'space']
   }
-  static register() {
+  static defineElement() {
     customElements.define('grid-layout', GridLayout)
   }
 

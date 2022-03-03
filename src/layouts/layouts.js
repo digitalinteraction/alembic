@@ -10,16 +10,18 @@ import { ReelLayout } from './reel/reel.js'
 import { ImposterLayout } from './imposter/imposter.js'
 import { IconLayout } from './icon/icon.js'
 
-if ('customElements' in window) {
-  StackLayout.register()
-  BoxLayout.register()
-  CenterLayout.register()
-  ClusterLayout.register()
-  SidebarLayout.register()
-  SwitcherLayout.register()
-  GridLayout.register()
-  FrameLayout.register()
-  ReelLayout.register()
-  ImposterLayout.register()
-  IconLayout.register()
+export function defineLayoutElements() {
+  if (!('customElements' in window)) return
+
+  StackLayout.defineElement()
+  BoxLayout.defineElement()
+  CenterLayout.defineElement()
+  ClusterLayout.defineElement()
+  SidebarLayout.defineElement()
+  SwitcherLayout.defineElement()
+  GridLayout.defineElement()
+  FrameLayout.defineElement()
+  ReelLayout.defineElement()
+  ImposterLayout.defineElement()
+  IconLayout.defineElement()
 }

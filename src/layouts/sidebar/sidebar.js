@@ -13,7 +13,7 @@ export class SidebarLayout extends HTMLElement {
   static get observedAttributes() {
     return ['side', 'sideWidth', 'contentMin', 'space', 'noStretch']
   }
-  static register() {
+  static defineElement() {
     customElements.define('sidebar-layout', SidebarLayout)
   }
 

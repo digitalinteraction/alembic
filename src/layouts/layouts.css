@@ -8,9 +8,6 @@
     * --border-thin
  */
 
-@import '../lib/reset.css';
-@import '../tokens/tokens.css';
-
 @import './stack/stack.css';
 @import './box/box.css';
 @import './center/center.css';

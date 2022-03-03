@@ -1,4 +1,6 @@
-@import '../../src/layouts/layout.css';
+@import '../../src/lib/reset.css';
+@import '../../src/tokens/tokens.css';
+@import '../../src/layouts/layouts.css';
 
 :root {
   --measure: 60ch;
@@ -42,7 +44,6 @@
 
   font-family: var(--font-fancy);
   font-weight: 500;
-  font-size: calc(1.5rem + 1vw);
 }
 .type-largeTopic:hover {
   text-decoration-thickness: 8px;

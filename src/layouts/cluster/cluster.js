@@ -13,7 +13,7 @@ export class ClusterLayout extends HTMLElement {
   static get observedAttributes() {
     return ['justify', 'align', 'space']
   }
-  static register() {
+  static defineElement() {
     customElements.define('cluster-layout', ClusterLayout)
   }
 

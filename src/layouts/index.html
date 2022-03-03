@@ -3,10 +3,18 @@
     <title>Alembic | Layout</title>
     <meta charset="utf8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="./layout.css" />
+
+    <link rel="stylesheet" href="../lib/reset.css" />
+    <link rel="stylesheet" href="../tokens/tokens.css" />
+    <link rel="stylesheet" href="./layouts.css" />
+
     <link rel="stylesheet" href="../docs/docs.css" />
     <script type="module" src="../docs/docs.js"></script>
-    <script type="module" src="./layout.js"></script>
+
+    <script type="module">
+      import { defineLayoutElements } from './layouts.js'
+      defineLayoutElements()
+    </script>
   </head>
   <body class="docsPage">
     <header class="docsPage-header">
