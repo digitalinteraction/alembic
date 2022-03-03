@@ -4,6 +4,7 @@ import { CenterLayout } from './center/center.js'
 import { ClusterLayout } from './cluster/cluster.js'
 import { SidebarLayout } from './sidebar/sidebar.js'
 import { SwitcherLayout } from './switcher/switcher.js'
+import { CoverLayout } from './cover/cover.js'
 import { GridLayout } from './grid/grid.js'
 import { FrameLayout } from './frame/frame.js'
 import { ReelLayout } from './reel/reel.js'
@@ -19,6 +20,7 @@ export function defineLayoutElements() {
   ClusterLayout.defineElement()
   SidebarLayout.defineElement()
   SwitcherLayout.defineElement()
+  CoverLayout.defineElement()
   GridLayout.defineElement()
   FrameLayout.defineElement()
   ReelLayout.defineElement()
@@ -33,6 +35,7 @@ export {
   ClusterLayout,
   SidebarLayout,
   SwitcherLayout,
+  CoverLayout,
   GridLayout,
   FrameLayout,
   ReelLayout,

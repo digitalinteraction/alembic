@@ -142,7 +142,7 @@
         </component-def>
 
         <component-def label="Center / Gutter">
-          <center-layout gutters="var(--s1)" style="background: white">
+          <center-layout gutters="var(--s1)" class="showPadding">
             <doc-box size="200px"></doc-box>
           </center-layout>
         </component-def>
@@ -327,6 +327,63 @@
             <doc-box></doc-box>
             <doc-box></doc-box>
           </switcher-layout>
+        </component-def>
+      </doc-section>
+      <!--
+        Cover
+       -->
+      <doc-section label="Cover">
+        <div class="docsPage-description">
+          <p>
+            <strong>CoverLayout</strong> fills a minimum vertical height and
+            centers a principle element vertically in the layout. It also places
+            accessory elements above/below which keep their intrinsic height. By
+            default a nested "h1" element is the principle element, set
+            <code>centered</code> to a CSS selector for an alternate principle
+            element.
+          </p>
+          <p>
+            Use <code>space</code> to control the minimum space between all
+            elements and set <code>noPad</code> if you don't want padding on the
+            top-level layout itself. The default minimum height of the layout is
+            "100vh" but it can be overidden with the
+            <code>minHeight</code> prop.
+          </p>
+        </div>
+        <component-def label="Cover / Vanilla">
+          <cover-layout class="showPadding">
+            <doc-box size="50px"></doc-box>
+            <h1>Hello, Cover!</h1>
+            <doc-box size="50px"></doc-box>
+          </cover-layout>
+        </component-def>
+
+        <component-def label="Cover / Shorter">
+          <cover-layout minHeight="400px" noPad>
+            <doc-box size="50px"></doc-box>
+            <h1>Hello, Cover!</h1>
+            <doc-box size="50px"></doc-box>
+          </cover-layout>
+        </component-def>
+
+        <component-def label="Cover / Custom center">
+          <cover-layout centered=".center" minHeight="400px" noPad>
+            <doc-box size="50px"></doc-box>
+            <doc-box class="center" size="100px" accent="royalblue"></doc-box>
+            <doc-box size="50px"></doc-box>
+          </cover-layout>
+        </component-def>
+
+        <component-def label="Cover / Single">
+          <cover-layout centered=".center" minHeight="400px" noPad>
+            <doc-box class="center" size="200px" accent="royalblue"></doc-box>
+          </cover-layout>
+        </component-def>
+
+        <component-def label="Cover / No padding">
+          <cover-layout centered=".center" minHeight="400px" noPad>
+            <doc-box class="center" size="200px" accent="royalblue"></doc-box>
+          </cover-layout>
         </component-def>
       </doc-section>
       <!--

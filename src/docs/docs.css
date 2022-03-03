@@ -74,3 +74,17 @@ doc-text,
 component-def {
   display: block;
 }
+
+.showPadding {
+  background-image: linear-gradient(
+      to bottom,
+      var(--doc-background) 0%,
+      var(--doc-background) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      var(--backgroundColor) 0%,
+      var(--backgroundColor) 100%
+    );
+  background-clip: content-box, padding-box;
+}

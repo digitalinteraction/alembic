@@ -1,0 +1,6 @@
+cover-layout {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100vh;
+  padding: var(--s1);
+}
