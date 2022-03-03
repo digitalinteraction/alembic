@@ -1,3 +1,9 @@
-every-layout
+#
+# Files to ignore from git source control
+#
+
 node_modules
+*.env
+.DS_Store
 dist
+every-layout

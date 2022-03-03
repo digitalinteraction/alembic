@@ -1,3 +1,3 @@
-import { defineLayoutElements } from '../../src/layouts/layouts.js'
+import { defineLayoutElements } from '@openlab/alembic/layouts.js'
 
 defineLayoutElements()

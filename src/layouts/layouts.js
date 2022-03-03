@@ -25,3 +25,17 @@ export function defineLayoutElements() {
   ImposterLayout.defineElement()
   IconLayout.defineElement()
 }
+
+export {
+  StackLayout,
+  BoxLayout,
+  CenterLayout,
+  ClusterLayout,
+  SidebarLayout,
+  SwitcherLayout,
+  GridLayout,
+  FrameLayout,
+  ReelLayout,
+  ImposterLayout,
+  IconLayout,
+}

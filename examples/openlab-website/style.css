@@ -1,6 +1,8 @@
-@import '../../src/lib/reset.css';
-@import '../../src/tokens/tokens.css';
-@import '../../src/layouts/layouts.css';
+/* @import '../../src/dist/reset.css'; */
+/* @import '../../src/dist/layouts.css'; */
+
+@import '@openlab/alembic/reset.css';
+@import '@openlab/alembic/layouts.css';
 
 :root {
   --measure: 60ch;

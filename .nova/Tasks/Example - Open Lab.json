@@ -5,5 +5,6 @@
       "script" : "cd examples\/openlab-website\nmkdir -p dist\nnpm run build"
     }
   },
-  "identifier" : "4BADC877-0306-4A7C-8C69-C55F519E9A6E"
+  "identifier" : "4BADC877-0306-4A7C-8C69-C55F519E9A6E",
+  "openLogOnRun" : "fail"
 }

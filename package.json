@@ -1,12 +1,15 @@
 {
-  "name": "alembic",
-  "version": "1.0.0",
-  "description": "---",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "@openlab/alembic",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./*": "./dist/*"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "scripts": {
+    "build": "bin/build.sh"
+  },
+  "devDependencies": {
+    "@parcel/css-cli": "^1.5.0",
+    "esbuild": "^0.14.24"
+  }
 }
