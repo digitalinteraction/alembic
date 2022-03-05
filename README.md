@@ -2,7 +2,7 @@ A Design System for Open Lab research projects
 
 ## Contents
 
-- [Layouts](src/layouts)
+- [Layouts](https://digitalinteraction.github.io/alembic/src/layouts/)
 
 ## 0.1.0 API
 
@@ -30,7 +30,7 @@ defineLayoutElements()
 // e.g. `StackLayout.defineElement()`
 ```
 
-[**Component usage →**](src/layouts)
+[**Component usage →**](https://digitalinteraction.github.io/alembic/src/layouts/)
 
 ## Release process
 
