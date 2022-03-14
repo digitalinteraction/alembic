@@ -7,6 +7,9 @@ mkdir -p dist
 PARCEL_CSS_ARGS="--bundle"
 ESBUILD_ARGS="--bundle --format=esm --platform=browser"
 
+# Build module entrypoint
+npx esbuild $ESBUILD_ARGS src/module.js --outfile=dist/module.js
+
 # Build docs
 npx parcel-css $PARCEL_CSS_ARGS src/docs/docs.css -o dist/docs.css
 npx esbuild $ESBUILD_ARGS src/docs/docs.js --outfile=dist/docs.js
