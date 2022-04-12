@@ -21,6 +21,59 @@
     </header>
     <main class="docsPage-components">
       <!--
+        About
+      -->
+      <doc-section label="About">
+        <div class="docsPage-description">
+          <p>
+            Layouts are
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements"
+              >custom elements</a
+            >
+            that's single responsibility is to position and arrange their child
+            elements in a responsive way. These elements can be reused and
+            nested as much as you like to compose web pages together.
+          </p>
+          <p>
+            They share a common set of css variables that need to be set on you
+            :root element:
+          </p>
+          <ul>
+            <li>
+              <code>--measure</code> — The desired width of text-based content
+            </li>
+            <li>
+              Scale variables. These are created using a modular scale (<a
+                href="https://every-layout.dev/rudiments/modular-scale/"
+                >more info</a
+              >) to work nicely with a font size of 1rem and line-height of 1.5.
+              Think of them as starting at -5 going though 0 and up to 5. They
+              create a curve of values which create pleasing spacing.
+              <strong>These are provided by alembic.</strong>
+              <ul>
+                <li><code>--s-5</code> — Smallest value</li>
+                <li><code>--s-4</code></li>
+                <li><code>--s-3</code></li>
+                <li><code>--s-2</code></li>
+                <li><code>--s-1</code></li>
+                <li><code>--s0</code></li>
+                <li><code>--s1</code> — Common default scale</li>
+                <li><code>--s2</code></li>
+                <li><code>--s3</code></li>
+                <li><code>--s4</code></li>
+                <li><code>--s5</code> — Largest largest</li>
+              </ul>
+            </li>
+            <li><code>--border-thin</code> — the width of a thin border</li>
+            <li><code>--backgroundColor</code></li>
+            <li><code>--foregroundColor</code></li>
+            <li><code>--item-width</code> — reel only</li>
+          </ul>
+        </div>
+      </doc-section>
+
+      <!--
         Stack
        -->
       <doc-section label="Stack">
