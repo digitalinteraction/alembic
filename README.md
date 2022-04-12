@@ -18,6 +18,7 @@ A Design System for Open Lab research projects
 ```js
 import {
   defineLayoutElements,
+  layoutCustomElementNames,
   StackLayout,
   ...,
   IconLayout,

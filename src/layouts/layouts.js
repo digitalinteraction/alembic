@@ -28,6 +28,21 @@ export function defineLayoutElements() {
   IconLayout.defineElement()
 }
 
+export const layoutCustomElementNames = [
+  'stack-layout',
+  'box-layout',
+  'center-layout',
+  'cluster-layout',
+  'sidebar-layout',
+  'switcher-layout',
+  'cover-layout',
+  'grid-layout',
+  'frame-layout',
+  'reel-layout',
+  'imposter-layout',
+  'icon-layout',
+]
+
 export {
   StackLayout,
   BoxLayout,
