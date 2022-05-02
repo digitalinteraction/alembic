@@ -24,9 +24,14 @@
 
 .markdownPage {
   max-width: calc(var(--doc-measure) + calc(2 * var(--s1)));
-  background: white;
+  background-color: #ffffff;
   padding: var(--s1);
   border-radius: var(--s-3);
+}
+@media (prefers-color-scheme: dark) {
+  .markdownPage {
+    background-color: #22272e;
+  }
 }
 
 /*
@@ -139,23 +144,33 @@ code.variable {
 pre[class^='language'] {
   font-family: var(--doc-mono);
   padding: var(--s0);
-  color: #24292f;
-  background: #f6f8fa;
+  color: var(--prism-foreground, #24292f);
+  background: var(--prism-background, #f6f8fa);
   border-radius: var(--s-2);
   overflow-x: auto;
 }
 code .token.rule,
 code .token.keyword {
-  color: #cf222e;
+  color: var(--prism-keyword, #cf222e);
 }
 code .token.string {
-  color: #0a3069;
+  color: var(--prism-string, #0a3069);
 }
 code .token.function {
-  color: #8250df;
+  color: var(--prism-function, #8250df);
 }
 code .token.comment {
-  color: #6e7781;
+  color: var(--prism-comment, #6e7781);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --prism-foreground: #adbac7;
+    --prism-background: #2d333b;
+    --prism-keyword: #f47067;
+    --prism-string: #96d0ff;
+    --prism-function: #dcbdfb;
+    --prism-comment: #768390;
+  }
 }
 
 /*
