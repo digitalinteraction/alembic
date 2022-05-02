@@ -4,6 +4,7 @@ set -e
 
 mkdir -p dist
 
+PATH_PREFIX=${PATH_PREFIX:-/}
 PARCEL_CSS_ARGS="--bundle"
 ESBUILD_ARGS="--bundle --format=esm --platform=browser"
 
@@ -41,4 +42,6 @@ npx esbuild $ESBUILD_ARGS \
 # 
 
 # --config is needed until https://github.com/11ty/eleventy/issues/1029
-npx eleventy --config=.eleventy.cjs
+npx eleventy \
+  --config=.eleventy.cjs \
+  --pathprefix=$PATH_PREFIX

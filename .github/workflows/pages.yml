@@ -23,4 +23,5 @@ jobs:
           target_branch: gh-pages
           build_dir: dist
         env:
+          PATH_PREFIX: /alembic/
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
