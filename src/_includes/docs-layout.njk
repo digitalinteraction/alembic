@@ -8,6 +8,8 @@ nav:
     name: Forms
 ---
 
+{% set currentPage = page.url | url %}
+
 <html>
   <head>
     <title>⚗️ Alembic | {{ title }}</title>
@@ -39,7 +41,7 @@ nav:
               <a
                 class="docsNav-item"
                 href="{{ pageUrl }}"
-                {{ 'aria-current="page"' if pageUrl == page.url }}
+                {{ 'aria-current="page"' if pageUrl == currentPage }}
               > {{ item.name }} </a>
             </li>
             {% endfor %}
