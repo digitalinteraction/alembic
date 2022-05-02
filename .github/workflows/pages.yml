@@ -12,8 +12,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: 'npm'
 
-      - run: npm ci --no-audit
+      - run: npm install --no-audit
 
       - run: ./bin/build.sh
         env:
