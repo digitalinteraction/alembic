@@ -45,3 +45,8 @@ npx esbuild $ESBUILD_ARGS \
 npx eleventy \
   --config=.eleventy.cjs \
   --pathprefix=$PATH_PREFIX
+
+#
+# Copy types
+#
+cp src/module.d.ts dist/module.d.ts

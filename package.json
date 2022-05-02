@@ -10,6 +10,7 @@
   ],
   "main": "dist/module.js",
   "module": "dist/module.js",
+  "types": "dist/module.d.ts",
   "exports": {
     ".": "./dist/module.js",
     "./*": "./dist/*"
