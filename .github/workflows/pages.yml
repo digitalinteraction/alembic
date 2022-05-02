@@ -16,6 +16,8 @@ jobs:
       - run: npm ci --no-audit
 
       - run: ./bin/build.sh
+        env:
+          PATH_PREFIX: /alembic/
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
@@ -23,5 +25,4 @@ jobs:
           target_branch: gh-pages
           build_dir: dist
         env:
-          PATH_PREFIX: /alembic/
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
