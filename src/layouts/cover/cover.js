@@ -6,7 +6,7 @@ import { addGlobalStyle } from '../../lib/style.js'
  *
  * @property {string} centered=h1 A CSS `selector` e.g. an element/class for the principle element
  * @property {string} space=var(--s1) The minimum space between all child elements
- * @property {string} minHeight=100hv The minimum block-size (height) for the entire layout
+ * @property {string} minHeight=100vh The minimum block-size (height) for the entire layout
  * @property {boolean} noPad=false Whether the spacing should also pad the inside of the layout
  */
 export class CoverLayout extends HTMLElement {

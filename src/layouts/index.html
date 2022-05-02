@@ -9,22 +9,21 @@ title: Layout
     <!--
       About
     -->
-
     <doc-section label="About">
-      <div class="docContent">
+      <div class="layoutInfo">
         <p>
           Layouts are
           <a
             href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements"
             >custom elements</a
           >
-          that's single responsibility is to position and arrange their child
-          elements in a responsive way. These elements can be reused and nested
-          as much as you like to compose web pages together.
+          that's only responsibility is to responsively position and arrange its
+          child elements. These elements can be reused and nested as much as you
+          like to compose pages together.
         </p>
         <p>
-          They share a common set of css variables that need to be set on you
-          :root element:
+          They share a common set of css variables that need to be set on your
+          <code>:root</code> element:
         </p>
         <ul>
           <li>
@@ -36,7 +35,7 @@ title: Layout
               >more info</a
             >) to work nicely with a font size of 1rem and line-height of 1.5.
             Think of them as starting at -5 going though 0 and up to 5. They
-            create a curve of values which create pleasing spacing.
+            form a curve of values which creates pleasing spacing.
             <strong>These are provided by alembic.</strong>
             <ul>
               <li><code>--s-5</code> — Smallest value</li>
@@ -52,10 +51,10 @@ title: Layout
               <li><code>--s5</code> — Largest largest</li>
             </ul>
           </li>
-          <li><code>--border-thin</code> — the width of a thin border</li>
+          <li><code>--border-thin</code> — the width of a thin border </li>
           <li><code>--backgroundColor</code></li>
           <li><code>--foregroundColor</code></li>
-          <li><code>--item-width</code> — reel only</li>
+          <li><code>--item-width</code> — used by Reel layout</li>
         </ul>
       </div>
     </doc-section>
@@ -64,13 +63,8 @@ title: Layout
       Stack
      -->
     <doc-section label="Stack">
-      <div class="docContent">
-        <p>
-          <strong>StackLayout</strong> places elements vertically and adds
-          whitespace between them. Set <code>space</code> to control the amount
-          of whitespace or remove it. You can nest multiple StackLayouts with
-          different spacing.
-        </p>
+      <div class="layoutInfo">
+        {{ collections.stackLayout[0].templateContent | safe }}
       </div>
       <component-def label="Stack / Vanilla">
         <stack-layout>
@@ -116,17 +110,13 @@ title: Layout
         </stack-layout>
       </component-def>
     </doc-section>
+
     <!--
       Box
      -->
     <doc-section label="Box">
-      <div class="docContent">
-        <p>
-          <strong>BoxLayout</strong> is a primitive to show a container of other
-          elements. It has a uniform <code>padding</code> and
-          <code>borderWidth</code> to configure the box. It can be inverted with
-          <code>invert</code> to swap the text and background colour.
-        </p>
+      <div class="layoutInfo">
+        {{ collections.boxLayout[0].templateContent | safe }}
       </div>
       <component-def label="Box / Vanilla">
         <box-layout>
@@ -157,20 +147,13 @@ title: Layout
         </box-layout>
       </component-def>
     </doc-section>
+
     <!--
       Center
      -->
     <doc-section label="Center">
-      <div class="docContent">
-        <p>
-          <strong>CenterLayout</strong> ensures a block-level element is placed
-          in the horizontal middle of its parent. The element will be at most
-          <code>max</code> width and spacing will be added at either side to
-          ensure it. Use <code>gutters</code> to apply a padding to either side
-          of the cantered element, outside of the <code>max</code> width. Use
-          the <code>intrinsic</code> prop to use the centered elements width,
-          while it is less that <code>max</code>.
-        </p>
+      <div class="layoutInfo">
+        {{ collections.centerLayout[0].templateContent | safe }}
       </div>
       <component-def label="Center / Vanilla">
         <center-layout>
@@ -190,18 +173,13 @@ title: Layout
         </center-layout>
       </component-def>
     </doc-section>
+
     <!--
       Cluster
      -->
     <doc-section label="Cluster">
-      <div class="docContent">
-        <p>
-          <strong>ClusterLayout</strong> groups multiple items together based on
-          their intrinsic width and separated by a common gutter that decided by
-          the. Use the <code>justify</code> and <code>align</code> props to
-          control the Flexbox justification and alignment.
-          <code>space</code> prop.
-        </p>
+      <div class="layoutInfo">
+        {{ collections.clusterLayout[0].templateContent | safe }}
       </div>
       <component-def label="Cluster / Vanilla">
         <cluster-layout>
@@ -246,26 +224,13 @@ title: Layout
         </cluster-layout>
       </component-def>
     </doc-section>
+
     <!--
       Sidebar
      -->
     <doc-section label="Sidebar">
-      <div class="docContent">
-        <p>
-          <strong>SidebarLayout</strong> places two elements side-by-side if
-          space permits it or stacks them on top of each other if not. The
-          sidebar can either be a set width (using <code>sideWidth</code>) or
-          use its intrinsic width (the width of the content inside it). The
-          content element will fill up the rest of the horizontal space next to
-          the sidebar.
-        </p>
-        <p>
-          Use the <code>side</code> prop to tell SidebarLayout which side to put
-          the sidebar on, either "left" or right" <code>sideWidth</code> to
-          specify a width for the sidebar. When the content's width is less than
-          the <code>contentMin</code> percentage, the sidebar and content stack
-          vertically.
-        </p>
+      <div class="layoutInfo">
+        {{ collections.sidebarLayout[0].templateContent | safe }}
       </div>
       <component-def label="Sidebar / Vanilla">
         <sidebar-layout>
@@ -327,24 +292,13 @@ title: Layout
         </sidebar-layout>
       </component-def>
     </doc-section>
+
     <!--
       Switcher
      -->
     <doc-section label="Switcher">
-      <div class="docContent">
-        <p>
-          <strong>SwitcherLayout</strong> dynamically displays a set of columns
-          horizontally if there is enough space or stacks them vertically if
-          not. It is based on threshold which is the minimum width that it will
-          show elements horizontally. It has a limit where if exceeded elements
-          will always display vertically.
-        </p>
-        <p>
-          There is a <code>limit</code> prop that says how many elements it is
-          allowed to display horizontally, if exceeded all elements will display
-          vertically. If filled dynamically, this limit should be taken into
-          consideration, e.g. stop adding items after it has been reached.
-        </p>
+      <div class="layoutInfo">
+        {{ collections.switcherLayout[0].templateContent | safe }}
       </div>
       <component-def label="Switcher / Vanilla">
         <switcher-layout>
@@ -364,25 +318,13 @@ title: Layout
         </switcher-layout>
       </component-def>
     </doc-section>
+
     <!--
       Cover
      -->
     <doc-section label="Cover">
-      <div class="docContent">
-        <p>
-          <strong>CoverLayout</strong> fills a minimum vertical height and
-          centers a principle element vertically in the layout. It also places
-          accessory elements above/below which keep their intrinsic height. By
-          default a nested "h1" element is the principle element, set
-          <code>centered</code> to a CSS selector for an alternate principle
-          element.
-        </p>
-        <p>
-          Use <code>space</code> to control the minimum space between all
-          elements and set <code>noPad</code> if you don't want padding on the
-          top-level layout itself. The default minimum height of the layout is
-          "100vh" but it can be overidden with the <code>minHeight</code> prop.
-        </p>
+      <div class="layoutInfo">
+        {{ collections.coverLayout[0].templateContent | safe }}
       </div>
       <component-def label="Cover / Vanilla">
         <cover-layout class="showPadding">
@@ -420,25 +362,13 @@ title: Layout
         </cover-layout>
       </component-def>
     </doc-section>
+
     <!--
       Grid
      -->
     <doc-section label="Grid">
-      <div class="docContent">
-        <p>
-          <strong>GridLayout</strong> creates a responsive CSS Grid where each
-          element has a <code>min</code>(imum) width. Element start at the
-          minimum width and grow proportionally until there is space for "ghost"
-          elements at which points all elements start from the minimum width
-          again. Set the <code>space</code> prop to configure the gutter between
-          elements.
-        </p>
-        <p>
-          GridLayout is suited for lists of same-sized content that are to be
-          displayed at roughly the same size. For example, a set of cards
-          showing people on a website. It avoids the last-row stretching of some
-          Flexbox implementations.
-        </p>
+      <div class="layoutInfo">
+        {{ collections.gridLayout[0].templateContent | safe }}
       </div>
       <component-def label="Grid / Vanilla">
         <grid-layout>
@@ -462,28 +392,23 @@ title: Layout
         </grid-layout>
       </component-def>
     </doc-section>
+
     <!--
       Frame
      -->
     <doc-section label="Frame">
-      <div class="docContent">
-        <p>
-          <strong>FrameLayout</strong> ensures it's child element has a fixed
-          aspect ratio by cropping around the center of the image. If content is
-          provided instead of an image, that will be centered with Flexbox too.
-          Set <code>ratio</code> to the desired aspect ratio in the format
-          "16:9".
-        </p>
+      <div class="layoutInfo">
+        {{ collections.frameLayout[0].templateContent | safe }}
       </div>
       <component-def label="Frame / Vanilla">
         <frame-layout>
-          <img src="../docs/assets/portrait-image.jpg" />
+          <img src="{{ '/assets/portrait-image.svg' | url }}" />
         </frame-layout>
       </component-def>
 
       <component-def label="Frame / 5:1">
         <frame-layout ratio="5:1">
-          <img src="../docs/assets/portrait-image.jpg" />
+          <img src="{{ '/assets/portrait-image.svg' | url }}" />
         </frame-layout>
       </component-def>
 
@@ -493,23 +418,13 @@ title: Layout
         </frame-layout>
       </component-def>
     </doc-section>
+
     <!--
       Reel
      -->
     <doc-section label="Reel">
-      <div class="docContent">
-        <p>
-          <strong>ReelLayout</strong> places elements horizontally with a set
-          <code>space</code> between them and ensures overflow scrolling
-          happens. Unless <code>noBar</code> is set, the ReelLayout will show
-          scrollbars to indicate that there is horizontally scrollable content.
-        </p>
-        <p>
-          Use the <code>height</code> prop to force all laid-out elements to be
-          a set height, otherwise it will use the elements' intrinsic height
-          (within a Flexbox context). Set <code>itemWidth</code> to enforce a
-          width on all elements instead of using their intrinsic width.
-        </p>
+      <div class="layoutInfo">
+        {{ collections.reelLayout[0].templateContent | safe }}
       </div>
 
       <component-def label="Reel / Vanilla">
@@ -568,20 +483,13 @@ title: Layout
         </reel-layout>
       </component-def>
     </doc-section>
+
     <!--
       Imposter
      -->
     <doc-section label="Imposter">
-      <div class="docContent">
-        <p>
-          <strong>ImposterLayout</strong> positions an element over other
-          elements. The positioned element is vertically and horizontally
-          centered in it's nearest positioned parent and will not exceed it's
-          height or width, unless <code>breakout</code> is set. It can
-          optionally be <code>fixed</code>-d to the viewport instead. The width
-          of the element is 50% of the positioned parent unless overridden in
-          CSS, it is setup to not exceed 100% of the parent's height or width.
-        </p>
+      <div class="layoutInfo">
+        {{ collections.imposterLayout[0].templateContent | safe }}
       </div>
 
       <component-def label="Imposter / Vanilla">
@@ -617,42 +525,39 @@ title: Layout
         </div>
       </component-def>
     </doc-section>
+
     <!--
       Icon
      -->
     <doc-section label="Icon">
-      <p class="docContent">
-        <strong>IconLayout</strong> is for placing icons before or after text.
-        Use <code>space</code> to have a fixed gap between the text and icon,
-        otherwise the natural whitespace from the HTML is used. Set
-        <code>label</code> to markup an icon-only element with the correct
-        accessibility attributes.
-      </p>
+      <div class="layoutInfo">
+        {{ collections.iconLayout[0].templateContent | safe }}
+      </div>
 
       <component-def label="Icon / Vanilla">
         <cluster-layout space="var(--s2)" style="font-size: 1.5rem">
           <icon-layout>
             <svg>
-              <use href="../docs/assets/icons.svg#left"></use>
+              <use href="{{ '/assets/icons.svg#left' | url }}"></use>
             </svg>
             Back
           </icon-layout>
           <icon-layout>
             <svg>
-              <use href="../docs/assets/icons.svg#up"></use>
+              <use href="{{'/assets/icons.svg#up' | url }}"></use>
             </svg>
             Up
           </icon-layout>
           <icon-layout>
             <svg>
-              <use href="../docs/assets/icons.svg#down"></use>
+              <use href="{{ '/assets/icons.svg#down' | url }}"></use>
             </svg>
             Down
           </icon-layout>
           <icon-layout>
             Next
             <svg>
-              <use href="../docs/assets/icons.svg#right"></use>
+              <use href="{{ '/assets/icons.svg#right' | url }}"></use>
             </svg>
           </icon-layout>
         </cluster-layout>
@@ -661,7 +566,7 @@ title: Layout
       <component-def label="Icon / Spaced">
         <icon-layout space="var(--s-1)" style="font-size: 1.5rem">
           <svg>
-            <use href="../docs/assets/icons.svg#menu"></use>
+            <use href="{{ '/assets/icons.svg#menu' | url }}"></use>
           </svg>
           Menu
         </icon-layout>
@@ -670,7 +575,7 @@ title: Layout
       <component-def label="Icon / Labelled">
         <icon-layout title="Close" label="Close" style="font-size: 1.5rem">
           <svg>
-            <use href="../docs/assets/icons.svg#cross"></use>
+            <use href="{{ '/assets/icons.svg#cross' | url }}"></use>
           </svg>
         </icon-layout>
       </component-def>

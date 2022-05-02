@@ -22,6 +22,8 @@
   }
 }
 
+/* TODO: find a way to refactor these two */
+.layoutInfo,
 .markdownPage {
   max-width: calc(var(--doc-measure) + calc(2 * var(--s1)));
   background-color: #ffffff;
@@ -29,26 +31,31 @@
   border-radius: var(--s-3);
 }
 @media (prefers-color-scheme: dark) {
-  .markdownPage {
-    background-color: #22272e;
+  .markdownPage,
+  .layoutInfo {
+    background-color: hsl(215, 3%, 13%);
   }
 }
 
 /*
   Globals
 */
-code.variable {
-  text-decoration: underline;
-  text-decoration-style: dashed;
-  text-decoration-color: #aaa;
+code:not([class]) {
   font-family: var(--doc-mono);
-  font-weight: bold;
-  -webkit-user-select: all;
-  user-select: all;
+  border-radius: var(--s-4);
+  padding: 0 var(--s-3);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+a {
+  /* color: hsl(225, 76%, 45%); */
+  color: hsl(238, 90%, 56%);
 }
 @media (prefers-color-scheme: dark) {
-  code.variable {
-    text-decoration-color: #ccc;
+  code:not([class]) {
+    background-color: rgba(255, 255, 255, 0.075);
+  }
+  a {
+    color: hsl(238, 100%, 71%);
   }
 }
 
@@ -128,14 +135,44 @@ code.variable {
 }
 
 /*
-  Content
+  Layout info block
 */
-.docContent {
+.layoutInfo {
   max-width: var(--doc-measure);
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
-.docContent > * + * {
+.layoutInfo > * + * {
   margin-block-start: var(--s0);
+}
+.layoutInfo table {
+  font-size: 1rem;
+  border-collapse: collapse;
+}
+.layoutInfo table th {
+  border-bottom: var(--border-thin) solid #ccc;
+}
+.layoutInfo table th,
+.layoutInfo table td {
+  padding: var(--s-2) var(--s-1);
+  text-align: inherit;
+  word-break: keep-all;
+}
+.layoutInfo td:nth-child(1) {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: #aaa;
+  font-family: var(--doc-mono);
+  font-weight: bold;
+  -webkit-user-select: all;
+  user-select: all;
+}
+@media (prefers-color-scheme: dark) {
+  .layoutInfo td:nth-child(1) {
+    text-decoration-color: #ccc;
+  }
+}
+.layoutInfo table td:nth-child(3) {
+  font-family: var(--doc-mono);
 }
 
 /*
@@ -164,8 +201,8 @@ code .token.comment {
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --prism-foreground: #adbac7;
-    --prism-background: #2d333b;
+    --prism-foreground: hsl(210, 13%, 88%);
+    --prism-background: hsl(214, 10%, 16%);
     --prism-keyword: #f47067;
     --prism-string: #96d0ff;
     --prism-function: #dcbdfb;

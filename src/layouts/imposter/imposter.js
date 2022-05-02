@@ -3,7 +3,7 @@ import { addGlobalStyle } from '../../lib/style.js'
 /**
  * ImposterLayout positions an element over any other element
  *
- * @property {boolean} breakout=var(--s1) ...
+ * @property {boolean} breakout=false ...
  * @property {string} margin=0 The minimum space between the element and it's positioning container (when `breakout` isn't used)
  * @property {boolean} fixed=false Whether to fix the element to the viewport instead
  */

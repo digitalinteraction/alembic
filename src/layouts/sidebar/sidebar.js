@@ -6,8 +6,8 @@ import { addGlobalStyle } from '../../lib/style.js'
  * @property {string} side=left Which side to put the sidebar on, only "right" or "left" are allowed.
  * @property {string} sideWidth=null A CSS `length`, for the sidebar's width. If `null` use the intrinsic content width.
  * @property {string} contentMin=50% A CSS `percentage`, representing the minimum horizontal width of the content element.
- * @property {string} space=var(--s1) A CSS `margin` of space between the sidebar and content.
- * @property {boolean} noStretch=false Keep the sidebar and content thier natural height
+ * @property {string} space=var(--s1) A CSS `gap` of space between the sidebar and content.
+ * @property {boolean} noStretch=false Keep the sidebar and content their natural height
  */
 export class SidebarLayout extends HTMLElement {
   static get observedAttributes() {
