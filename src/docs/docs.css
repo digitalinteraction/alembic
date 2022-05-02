@@ -1,13 +1,14 @@
 :root {
   --doc-family: Inter, system-ui, sans-serif;
   --doc-mono: 'SF Mono', ui-monospace, monospace;
-  --doc-foreground: hsl(0, 0%, 7%);
+  --doc-foreground: hsl(298, 7%, 19%);
   --doc-background: hsl(0, 0%, 93%);
+  --doc-measure: 80ch;
 
   /** Axioms */
   --foregroundColor: black;
   --backgroundColor: white;
-  --border-thin: 0.125rem;
+  --border-thin: 0.2rem;
   --measure: 60ch;
 }
 
@@ -21,36 +22,17 @@
   }
 }
 
-/* Doc Page */
-.docsPage {
-  padding: 1rem 1rem 10rem;
-  position: relative;
+.markdownPage {
+  max-width: calc(var(--doc-measure) + calc(2 * var(--s1)));
+  background: white;
+  padding: var(--s1);
+  border-radius: var(--s-3);
+}
 
-  color: var(--doc-foreground);
-  background-color: var(--doc-background);
-
-  font-family: var(--doc-family);
-}
-.docsPage-header {
-  margin: 0 0 1em;
-  background: var(--doc-background);
-  z-index: 1;
-}
-.docsPage-title {
-}
-.docsPage-components {
-}
-.docsPage-components > * + * {
-  margin-top: 50px;
-}
-.docsPage-description {
-  max-width: 80ch;
-  font-size: 1.2em;
-}
-.docsPage-description > * + * {
-  margin-top: 1rem;
-}
-.docsPage-description code {
+/*
+  Globals
+*/
+code.variable {
   text-decoration: underline;
   text-decoration-style: dashed;
   text-decoration-color: #aaa;
@@ -60,23 +42,139 @@
   user-select: all;
 }
 @media (prefers-color-scheme: dark) {
-  .docsPage-description code {
+  code.variable {
     text-decoration-color: #ccc;
   }
 }
 
+/*
+  Docs layout
+*/
+.docsLayout {
+  color: var(--doc-foreground);
+  background-color: var(--doc-background);
+  font-family: var(--doc-family);
+}
+.docsLayout-header {
+  padding: var(--s0) var(--s0) var(--s3);
+  border-right: var(--border-thin) solid var(--doc-foreground);
+}
+.docsLayout-main {
+  padding: var(--s0) var(--s0) var(--s5);
+  position: relative;
+  min-height: 100vh;
+}
+@media (min-width: 1024px) {
+  .docsLayout-header,
+  .docsLayout-main {
+    padding-inline: var(--s2);
+  }
+}
+
+/*
+  Navigation
+*/
+.docsNav {
+}
+.docsNav ul > * {
+  margin-block-start: var(--s-1);
+}
+.docsNav-brand {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.75rem;
+  color: var(--doc-foreground);
+  text-decoration: none;
+}
+.docsNav-brand a:hover {
+  text-decoration: underline;
+}
+.docsNav-item {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--doc-foreground);
+}
+.docsNav-item::after {
+  content: ' →';
+  text-decoration: none;
+}
+.docsNav-item[aria-current] {
+  border: var(--border-thin) solid rebeccapurple;
+  border-image: linear-gradient(
+    to bottom right,
+    hsl(281, 100%, 50%) 0%,
+    hsl(211, 100%, 50%) 25%,
+    hsl(143, 81%, 46%) 50%,
+    hsl(37, 91%, 45%) 75%,
+    hsl(337, 100%, 50%) 100%
+  );
+  border-image-slice: 1;
+  padding: var(--s-3);
+  margin: calc(-1 * var(--s-3) - var(--border-thin));
+}
+
+/*
+  General page
+*/
+.docsTitle {
+  font-size: 2.5rem;
+  margin: 0 0 var(--s0);
+}
+
+/*
+  Content
+*/
+.docContent {
+  max-width: var(--doc-measure);
+  font-size: 1.2em;
+}
+.docContent > * + * {
+  margin-block-start: var(--s0);
+}
+
+/*
+  Prismjs — minimal copy from GitHub css
+*/
+pre[class^='language'] {
+  font-family: var(--doc-mono);
+  padding: var(--s0);
+  color: #24292f;
+  background: #f6f8fa;
+  border-radius: var(--s-2);
+  overflow-x: auto;
+}
+code .token.rule,
+code .token.keyword {
+  color: #cf222e;
+}
+code .token.string {
+  color: #0a3069;
+}
+code .token.function {
+  color: #8250df;
+}
+code .token.comment {
+  color: #6e7781;
+}
+
+/*
+  Custom elements
+*/
 doc-text:first-letter {
   text-transform: uppercase;
 }
-
+component-def,
 doc-box,
-doc-section,
 doc-resizer,
-doc-text,
-component-def {
+doc-section,
+doc-text {
   display: block;
 }
 
+/*
+  Utilities
+*/
 .showPadding {
   background-image: linear-gradient(
       to bottom,

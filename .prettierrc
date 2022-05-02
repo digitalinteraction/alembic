@@ -1,4 +1,4 @@
-{
-  "semi": false,
-  "singleQuote": true
-}
+# yaml-language-server: $schema=http://json.schemastore.org/prettierrc
+semi: false
+singleQuote: true
+htmlWhitespaceSensitivity: strict

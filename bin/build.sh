@@ -35,3 +35,10 @@ npx esbuild $ESBUILD_ARGS \
   layouts=src/layouts/layouts.js \
   reset=src/lib/reset.css \
   lib=src/lib/lib.js
+
+#
+# Build the docs pages
+# 
+
+# --config is needed until https://github.com/11ty/eleventy/issues/1029
+npx eleventy --config=.eleventy.cjs

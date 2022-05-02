@@ -1,4 +1,5 @@
 {
   "workspace.color" : 2,
-  "workspace.name" : "alembic"
+  "workspace.name" : "alembic",
+  "workspace.preview_root" : "dist"
 }
