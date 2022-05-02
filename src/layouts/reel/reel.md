@@ -10,6 +10,8 @@ Use the `height` prop to force all laid-out elements to be a set height,
 otherwise it will use the elements' intrinsic height.
 Set `itemWidth` to force a width on all elements instead of using their intrinsic width.
 
+If JavaScript is not available, ReelLayout will fall back to setting each element's width with the `--item-width` custom property.
+
 | Attribute | Type           | Default   | Info                            |
 | --------- | -------------- | --------- | ------------------------------- |
 | itemWidth | CSS flex-basis | auto      | Set to fix each elements width  |
