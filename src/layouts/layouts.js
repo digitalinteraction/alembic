@@ -14,34 +14,25 @@ import { IconLayout } from './icon/icon.js'
 export function defineLayoutElements() {
   if (!('customElements' in window)) return
 
-  StackLayout.defineElement()
-  BoxLayout.defineElement()
-  CenterLayout.defineElement()
-  ClusterLayout.defineElement()
-  SidebarLayout.defineElement()
-  SwitcherLayout.defineElement()
-  CoverLayout.defineElement()
-  GridLayout.defineElement()
-  FrameLayout.defineElement()
-  ReelLayout.defineElement()
-  ImposterLayout.defineElement()
-  IconLayout.defineElement()
+  for (const layout of Object.values(layoutMap)) layout.defineElement()
 }
 
-export const layoutCustomElementNames = [
-  'stack-layout',
-  'box-layout',
-  'center-layout',
-  'cluster-layout',
-  'sidebar-layout',
-  'switcher-layout',
-  'cover-layout',
-  'grid-layout',
-  'frame-layout',
-  'reel-layout',
-  'imposter-layout',
-  'icon-layout',
-]
+export const layoutMap = {
+  'stack-layout': StackLayout,
+  'box-layout': BoxLayout,
+  'center-layout': CenterLayout,
+  'cluster-layout': ClusterLayout,
+  'sidebar-layout': SidebarLayout,
+  'switcher-layout': SwitcherLayout,
+  'cover-layout': CoverLayout,
+  'grid-layout': GridLayout,
+  'frame-layout': FrameLayout,
+  'reel-layout': ReelLayout,
+  'imposter-layout': ImposterLayout,
+  'icon-layout': IconLayout,
+}
+
+export const layoutCustomElementNames = Object.keys(layoutMap)
 
 export {
   StackLayout,

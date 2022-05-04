@@ -1,4 +1,9 @@
-import { addGlobalStyle } from '../../lib/style.js'
+import { addGlobalStyle, trimCss } from '../../lib/style.js'
+
+const defaults = {
+  min: '250px',
+  space: 'var(--s1)',
+}
 
 /**
  * GridLayout creates a responsive grid using CSS Grid
@@ -13,37 +18,42 @@ export class GridLayout extends HTMLElement {
   static defineElement() {
     customElements.define('grid-layout', GridLayout)
   }
+  static getStyles(attrs) {
+    const { min, space } = { ...defaults, ...attrs }
+    const id = `GridLayout-${min}${space}`
+    const css = trimCss`
+      [data-i="${id}"] {
+        grid-gap: ${space};
+      }
+      
+      @supports (width: min(${min}, 100%)) {
+        [data-i="${id}"] {
+          grid-template-columns: repeat(auto-fill, minmax(min(${min}, 100%), 1fr));
+        }
+      }
+    `
+    return { id, css }
+  }
 
   get min() {
-    return this.getAttribute('min') || '250px'
+    return this.getAttribute('min') || defaults.min
   }
   set min(value) {
     return this.setAttribute('min', value)
   }
 
   get space() {
-    return this.getAttribute('space') || 'var(--s1)'
+    return this.getAttribute('space') || defaults.space
   }
   set space(value) {
     return this.setAttribute('space', value)
   }
 
   render() {
-    this.dataset.i = `GridLayout-${this.min}${this.space}`
-    addGlobalStyle(
-      this.dataset.i,
-      `
-        [data-i="${this.dataset.i}"] {
-          grid-gap: ${this.space};
-        }
-        
-        @supports (width: min(${this.min}, 100%)) {
-          [data-i="${this.dataset.i}"] {
-            grid-template-columns: repeat(auto-fill, minmax(min(${this.min}, 100%), 1fr));
-          }
-        }
-      `
-    )
+    const { min, space } = this
+    const { id, css } = GridLayout.getStyles({ min, space })
+    this.dataset.i = id
+    addGlobalStyle(id, css)
   }
   connectedCallback() {
     this.render()

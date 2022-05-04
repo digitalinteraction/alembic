@@ -1,4 +1,8 @@
-import { addGlobalStyle } from '../../lib/style.js'
+import { addGlobalStyle, trimCss } from '../../lib/lib.js'
+
+const defaults = {
+  space: 'var(--s1)',
+}
 
 /**
  * StackLayout adds whitespace (margin) between flow (block) elements along a vertical axis
@@ -12,24 +16,29 @@ export class StackLayout extends HTMLElement {
   static defineElement() {
     customElements.define('stack-layout', StackLayout)
   }
+  static getStyles(attrs) {
+    const { space } = { ...defaults, ...attrs }
+    const id = `StackLayout-${space}`
+    const css = trimCss`
+      [data-i="${id}"] > * + * {
+        margin-block-start: ${space};
+      }
+    `
+    return { id, css }
+  }
 
   get space() {
-    return this.getAttribute('space') ?? 'var(--s1)'
+    return this.getAttribute('space') ?? defaults.space
   }
   set space(value) {
     this.setAttribute('space', value)
   }
 
   render() {
-    this.dataset.i = `StackLayout-${this.space}`
-    addGlobalStyle(
-      this.dataset.i,
-      `
-        [data-i="${this.dataset.i}"] > * + * {
-          margin-block-start: ${this.space};
-        }
-      `
-    )
+    const { space } = this
+    const { id, css } = StackLayout.getStyles({ space })
+    this.dataset.i = id
+    addGlobalStyle(id, css)
   }
   connectedCallback() {
     this.render()

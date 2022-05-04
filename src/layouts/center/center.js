@@ -1,4 +1,10 @@
-import { addGlobalStyle } from '../../lib/style.js'
+import { addGlobalStyle, trimCss } from '../../lib/lib.js'
+
+const defaults = {
+  max: 'var(--measure)',
+  gutters: null,
+  intrinsic: false,
+}
 
 /**
  * CenterLayout ensures a block-level element is horizontally centered with a max-width value representing the typographic measure
@@ -14,31 +20,11 @@ export class CenterLayout extends HTMLElement {
   static defineElement() {
     customElements.define('center-layout', CenterLayout)
   }
+  static getStyles(attrs) {
+    const { max, gutters, intrinsic } = { ...defaults, ...attrs }
+    const id = `CenterLayout-${max}${gutters}${intrinsic}`
 
-  get max() {
-    return this.getAttribute('max') || 'var(--measure)'
-  }
-  set max(value) {
-    return this.setAttribute('max', value)
-  }
-  get gutters() {
-    return this.getAttribute('gutters') || null
-  }
-  set gutters(value) {
-    return this.setAttribute('gutters', value)
-  }
-  get intrinsic() {
-    return this.hasAttribute('intrinsic')
-  }
-  set intrinsic(value) {
-    if (value) this.setAttribute('intrinsic', '')
-    else this.removeAttribute('intrinsic')
-  }
-
-  render() {
-    this.dataset.i = `CenterLayout-${this.max}${this.gutters}${this.intrinsic}`
-
-    const guttersRule = `padding-inline: ${this.gutters};`
+    const guttersRule = `padding-inline: ${gutters};`
 
     const intrinsicRule = `
       display: flex;
@@ -46,16 +32,42 @@ export class CenterLayout extends HTMLElement {
       align-items: center;
     `
 
-    addGlobalStyle(
-      this.dataset.i,
-      `
-        [data-i="${this.dataset.i}"] {
-          max-width: ${this.max};
-          ${this.gutters ? guttersRule : ''}
-          ${this.intrinsic ? intrinsicRule : ''}
-        }
-      `
-    )
+    const css = trimCss`
+      [data-i="${id}"] {
+        max-width: ${max};
+        ${gutters ? guttersRule : ''}
+        ${intrinsic ? intrinsicRule : ''}
+      }
+    `
+
+    return { id, css }
+  }
+
+  get max() {
+    return this.getAttribute('max') || defaults.max
+  }
+  set max(value) {
+    return this.setAttribute('max', value)
+  }
+  get gutters() {
+    return this.getAttribute('gutters') || defaults.gutters
+  }
+  set gutters(value) {
+    return this.setAttribute('gutters', value)
+  }
+  get intrinsic() {
+    return this.hasAttribute('intrinsic') || defaults.intrinsic
+  }
+  set intrinsic(value) {
+    if (value) this.setAttribute('intrinsic', '')
+    else this.removeAttribute('intrinsic')
+  }
+
+  render() {
+    const { max, gutters, intrinsic } = this
+    const { id, css } = CenterLayout.getStyles({ max, gutters, intrinsic })
+    this.dataset.i = id
+    addGlobalStyle(id, css)
   }
   connectedCallback() {
     this.render()

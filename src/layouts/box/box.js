@@ -1,4 +1,10 @@
-import { addGlobalStyle } from '../../lib/style.js'
+import { addGlobalStyle, trimCss } from '../../lib/lib.js'
+
+const defaults = {
+  padding: 'var(--s1)',
+  borderWidth: 'var(--border-thin)',
+  invert: false,
+}
 
 /**
  * BoxLayout is a custom element for generic containers of things
@@ -14,15 +20,30 @@ export class BoxLayout extends HTMLElement {
   static defineElement() {
     customElements.define('box-layout', BoxLayout)
   }
+  static getStyles(attrs) {
+    const { padding, borderWidth, invert } = { ...defaults, ...attrs }
+    const id = `BoxLayout-${padding}${borderWidth}${invert}`
+    const invertRule = invert
+      ? `color: var(--backgroundColor); background-color: var(--foregroundColor);`
+      : `color: var(--foregroundColor); background-color: var(--backgroundColor);`
+    const css = trimCss`
+      [data-i="${id}"] {
+        padding: ${padding};
+        border: ${borderWidth} solid;
+        ${invertRule}
+      }
+    `
+    return { id, css }
+  }
 
   get padding() {
-    return this.getAttribute('padding') || 'var(--s1)'
+    return this.getAttribute('padding') || defaults.padding
   }
   set padding(value) {
     return this.setAttribute('padding', value)
   }
   get borderWidth() {
-    return this.getAttribute('borderWidth') || 'var(--border-thin)'
+    return this.getAttribute('borderWidth') || defaults.borderWidth
   }
   set borderWidth(value) {
     return this.setAttribute('borderWidth', value)
@@ -36,20 +57,10 @@ export class BoxLayout extends HTMLElement {
   }
 
   render() {
-    this.dataset.i = `BoxLayout-${this.padding}${this.borderWidth}${this.invert}`
-    const invertRule = this.invert
-      ? `color: var(--backgroundColor); background-color: var(--foregroundColor);`
-      : `color: var(--foregroundColor); background-color: var(--backgroundColor);`
-    addGlobalStyle(
-      this.dataset.i,
-      `
-        [data-i="${this.dataset.i}"] {
-          padding: ${this.padding};
-          border: ${this.borderWidth} solid;
-          ${invertRule}
-        }
-      `
-    )
+    const { padding, borderWidth, invert } = this
+    const { id, css } = BoxLayout.getStyles({ padding, borderWidth, invert })
+    this.dataset.i = id
+    addGlobalStyle(id, css)
   }
   connectedCallback() {
     this.render()

@@ -1,4 +1,11 @@
-import { addGlobalStyle } from '../../lib/style.js'
+import { addGlobalStyle, trimCss } from '../../lib/style.js'
+
+const defaults = {
+  itemWidth: 'auto',
+  height: 'auto',
+  space: 'var(--s0)',
+  noBar: false,
+}
 
 /**
  * ReelLayout places elements horizontally and facilitates scrolling overflow
@@ -15,23 +22,51 @@ export class ReelLayout extends HTMLElement {
   static defineElement() {
     customElements.define('reel-layout', ReelLayout)
   }
+  static getStyles(attrs) {
+    const { itemWidth, height, space, noBar } = { ...defaults, ...attrs }
+    const id = `ReelLayout-${itemWidth}${height}${space}${noBar}`
+    const barRule = `
+      [data-i="${id}"] {
+        scrollbar-width: none;
+      }
+      [data-i="${id}"]::-webkit-scrollbar {
+        display: none;
+      }
+    `
+    const css = trimCss`
+      [data-i="${id}"] {
+        height: ${height};
+      }
+      [data-i="${id}"] > * {
+        flex: 0 0 ${itemWidth};
+      }
+      [data-i="${id}"] > * + * {
+        margin-inline-start: ${space};
+      }
+      [data-i="${id}"].overflowing {
+        ${!noBar ? `padding-bottom: ${space}` : ''}
+      }
+      ${noBar ? barRule : ''}
+    `
+    return { id, css }
+  }
 
   get itemWidth() {
-    return this.getAttribute('itemWidth') || 'auto'
+    return this.getAttribute('itemWidth') || defaults.itemWidth
   }
   set itemWidth(value) {
     return this.setAttribute('itemWidth', value)
   }
 
   get height() {
-    return this.getAttribute('height') || 'auto'
+    return this.getAttribute('height') || defaults.height
   }
   set height(value) {
     return this.setAttribute('height', value)
   }
 
   get space() {
-    return this.getAttribute('space') || 'var(--s0)'
+    return this.getAttribute('space') || defaults.space
   }
   set space(value) {
     return this.setAttribute('space', value)
@@ -50,35 +85,15 @@ export class ReelLayout extends HTMLElement {
   }
 
   render() {
-    this.dataset.i = `ReelLayout-${this.itemWidth}${this.height}${this.space}${this.noBar}`
-
-    const barRule = `
-      [data-i="${this.dataset.i}"] {
-        scrollbar-width: none;
-      }
-      [data-i="${this.dataset.i}"]::-webkit-scrollbar {
-        display: none;
-      }
-    `
-
-    addGlobalStyle(
-      this.dataset.i,
-      `
-        [data-i="${this.dataset.i}"] {
-          height: ${this.height};
-        }
-        [data-i="${this.dataset.i}"] > * {
-          flex: 0 0 ${this.itemWidth};
-        }
-        [data-i="${this.dataset.i}"] > * + * {
-          margin-inline-start: ${this.space};
-        }
-        [data-i="${this.dataset.i}"].overflowing {
-          ${!this.noBar ? `padding-bottom: ${this.space}` : ''}
-        }
-        ${this.noBar ? barRule : ''}
-      `
-    )
+    const { itemWidth, height, space, noBar } = this
+    const { id, css } = ReelLayout.getStyles({
+      itemWidth,
+      height,
+      space,
+      noBar,
+    })
+    this.dataset.i = id
+    addGlobalStyle(id, css)
   }
   connectedCallback() {
     this.render()
