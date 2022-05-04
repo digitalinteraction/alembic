@@ -3,7 +3,13 @@ layout: md-docs-layout.njk
 title: Home
 ---
 
-## 0.1.0 API
+## 0.1.x API
+
+**install**
+
+```bash
+npm install @openlab/alembic@0.1.x
+```
 
 **import styles**
 
