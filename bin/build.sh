@@ -24,7 +24,8 @@ npx esbuild $ESBUILD_ARGS \
   layouts=src/layouts/layouts.css \
   layouts=src/layouts/layouts.js \
   reset=src/lib/reset.css \
-  lib=src/lib/lib.js
+  lib=src/lib/lib.js \
+  fake-dom-env=src/lib/fake-dom-env.js
 
 #
 # Build the docs pages

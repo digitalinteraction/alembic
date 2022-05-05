@@ -48,3 +48,44 @@ export {
   ImposterLayout,
   IconLayout,
 }
+
+/**
+  Take a HTML file with some layouts in it, compute their styles
+  and inject them into the document using `<!-- @openlab/alembic inject-css -->`
+*/
+export function injectStyles(inputHtml) {
+  const styles = new Map()
+
+  // Loop through each tag ending in "-layout"
+  for (const tag of inputHtml.matchAll(/<(\w+-layout)\s*(.*)>/g)) {
+    const [layout, attrs] = tag.slice(1)
+
+    if (!layoutMap[layout]) {
+      console.warn('Skipping unknown layout %o', layout)
+      continue
+    }
+
+    // Parse HTML attributes into an object
+    const props = {}
+    for (const attr of attrs.matchAll(/(\w+)="(.*?)"/g)) {
+      props[attr[1]] = attr[2]
+    }
+
+    // Compute and store the style if it is new
+    const { id, css } = layoutMap[layout].getStyles(props)
+    if (styles.has(id)) continue
+    styles.set(id, css)
+  }
+
+  // Generate stylesheets for each style
+  const stylesheets = []
+  for (const [id, css] of styles) {
+    stylesheets.push(`<style id="${id}">${css}</style>`)
+  }
+
+  // Inject the styles into the HTML
+  return inputHtml.replace(
+    /<!--\s+@openlab\/alembic\s+inject-css\s+-->/,
+    stylesheets.join('')
+  )
+}

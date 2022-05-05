@@ -1,14 +1,8 @@
 {
-  "name": "client",
-  "version": "1.0.0",
-  "description": "",
   "type": "module",
   "scripts": {
     "build": "esbuild --bundle --outdir=dist --format=esm app.js style.css"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@openlab/alembic": "file:../.."
   },
