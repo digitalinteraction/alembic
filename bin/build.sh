@@ -22,7 +22,8 @@ npx esbuild --bundle --format=esm --platform=browser --outdir=dist \
   layouts=src/layouts/layouts.css \
   layouts=src/layouts/layouts.js \
   reset=src/lib/reset.css \
-  lib=src/lib/lib.js
+  lib=src/lib/lib.js \
+  fake-dom-env=src/lib/fake-dom-env.js 
 
 #
 # Build cjs
