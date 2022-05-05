@@ -8,12 +8,18 @@
   "files": [
     "dist/*"
   ],
-  "main": "dist/module.js",
+  "main": "dist/module.cjs",
   "module": "dist/module.js",
   "types": "dist/module.d.ts",
   "exports": {
-    ".": "./dist/module.js",
-    "./*": "./dist/*"
+    ".": {
+      "require": "./dist/module.cjs",
+      "default": "./dist/module.js"
+    },
+    "./*": {
+      "require": "./dist/*.cjs",
+      "default": "./dist/*"
+    }
   },
   "scripts": {
     "build": "bin/build.sh"

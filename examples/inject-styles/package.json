@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@openlab/alembic": "file:../.."
+  }
+}

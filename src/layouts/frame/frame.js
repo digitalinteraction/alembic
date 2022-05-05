@@ -1,4 +1,9 @@
-import { addGlobalStyle } from '../../lib/style.js'
+import { addGlobalStyle, trimCss } from '../../lib/style.js'
+
+const ratioRegex = () => /^(\d+):(\d+)$/
+const defaults = {
+  ratio: '16:9',
+}
 
 /**
  * FrameLayout displays an element with an aspect ratio
@@ -12,9 +17,23 @@ export class FrameLayout extends HTMLElement {
   static defineElement() {
     customElements.define('frame-layout', FrameLayout)
   }
+  static getStyles(attrs) {
+    const { ratio } = { ...defaults, ...attrs }
+
+    const parsedRatio = ratioRegex().exec(ratio)
+    if (!parsedRatio) throw new Error(`Invalid ratio '${ratio}'`)
+
+    const id = `FrameLayout-${ratio}`
+    const css = trimCss`
+      [data-i="${id}"] {
+        aspect-ratio: ${parsedRatio[1]} / ${parsedRatio[2]};
+      }
+    `
+    return { id, css }
+  }
 
   get ratio() {
-    return this.getAttribute('ratio') || '16:9'
+    return this.getAttribute('ratio') || defaults.ratio
   }
   set ratio(value) {
     return this.setAttribute('ratio', value)
@@ -24,7 +43,7 @@ export class FrameLayout extends HTMLElement {
     if (this.children.length != 1) {
       console.warn('<frame-layout> should only have one child element')
     }
-    const ratio = /^(\d+):(\d+)$/.exec(this.ratio)
+    const ratio = ratioRegex().exec(this.ratio)
     if (!ratio) {
       console.error(
         '<frame-layout> `ratio` must in the format %o but got %o',
@@ -34,15 +53,9 @@ export class FrameLayout extends HTMLElement {
       return
     }
 
-    this.dataset.i = `FrameLayout-${this.ratio}`
-    addGlobalStyle(
-      this.dataset.i,
-      `
-        [data-i="${this.dataset.i}"] {
-          aspect-ratio: ${ratio[1]} / ${ratio[2]};
-        }
-      `
-    )
+    const { id, css } = FrameLayout.getStyles({ ratio: this.ratio })
+    this.dataset.i = id
+    addGlobalStyle(id, css)
   }
   connectedCallback() {
     this.render()

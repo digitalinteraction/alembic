@@ -24,11 +24,12 @@ npm install @openlab/alembic@0.1.x
 import {
   defineLayoutElements,
   layoutCustomElementNames,
+  layoutMap,
   StackLayout,
   ...,
   IconLayout,
 } from '@openlab/alembic/layouts.js'
-import { addGlobalStyle } from '@openlab/alembic/lib.js'
+import { addGlobalStyle, trimCss } from '@openlab/alembic/lib.js'
 
 defineLayoutElements()
 
@@ -36,4 +37,40 @@ defineLayoutElements()
 // e.g. `StackLayout.defineElement()`
 ```
 
-<!-- [**Component usage →**](https://digitalinteraction.github.io/alembic/src/layouts/) -->
+**static generation**
+
+Each layout has a static method `getStyles(attributes)` which is used to compute styles.
+When statically generating content, you can precompute the styles layouts will need
+and inject them into HTML before it is served to clients.
+
+> You need to import `@openlab/alembic/fake-dom-env.js` first which
+> stubs-out HTMLElement so the layouts can be imported from Node.js.
+
+```js
+import '@openlab/alembic/fake-dom-env.js'
+import { injectStyles } from '@openlab/alembic'
+
+const inputFile = `
+<html>
+  <head>
+    ...
+    <!-- @openlab/alembic inject-css -->
+  </head>
+  <body>
+    <box-layout padding="0"> ... </box-layout>
+  </body>
+</html>
+`
+
+console.log(injectStyles(inputFile))
+```
+
+<details>
+<summary>CommonJs imports</summary>
+
+```js
+require('@openlab/alembic/fake-dom-env')
+const { injectStyles } = require('@openlab/alembic')
+```
+
+</details>

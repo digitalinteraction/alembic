@@ -1,1 +1,1 @@
-export { addGlobalStyle } from './style.js'
+export { addGlobalStyle, trimCss } from './style.js'

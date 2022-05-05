@@ -3,10 +3,9 @@
 set -e
 
 mkdir -p dist
+rm -r dist/* || true
 
 PATH_PREFIX=${PATH_PREFIX:-/}
-PARCEL_CSS_ARGS="--bundle"
-ESBUILD_ARGS="--bundle --format=esm --platform=browser"
 
 # 
 # Copy assets
@@ -16,15 +15,23 @@ cp -R src/assets dist/assets/
 #
 # Build resources
 #
-npx esbuild $ESBUILD_ARGS \
-  --outdir=dist \
+npx esbuild --bundle --format=esm --platform=browser --outdir=dist \
   module=src/module.js \
   docs=src/docs/docs.css \
   docs=src/docs/docs.js \
   layouts=src/layouts/layouts.css \
   layouts=src/layouts/layouts.js \
   reset=src/lib/reset.css \
-  lib=src/lib/lib.js
+  lib=src/lib/lib.js \
+  fake-dom-env=src/lib/fake-dom-env.js 
+
+#
+# Build cjs
+#
+npx esbuild --bundle --format=cjs --platform=neutral --outdir=dist \
+  --out-extension:.js=.cjs \
+  module=src/module.js \
+  fake-dom-env=src/lib/fake-dom-env.js 
 
 #
 # Build the docs pages
