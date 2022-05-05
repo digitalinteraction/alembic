@@ -64,3 +64,13 @@ const inputFile = `
 
 console.log(injectStyles(inputFile))
 ```
+
+<details>
+<summary>CommonJs imports</summary>
+
+```js
+require('@openlab/alembic/fake-dom-env')
+const { injectStyles } = require('@openlab/alembic')
+```
+
+</details>
