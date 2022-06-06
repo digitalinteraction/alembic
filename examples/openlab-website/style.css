@@ -80,7 +80,7 @@
 .openlabPage > aside {
   width: 3rem;
   border-right: 1px solid #dadfe1;
-  --backgroundColor: white;
+  --color-background: white;
   position: relative;
 }
 .openlabPage > aside > * {
@@ -96,7 +96,7 @@
 }
 
 .projectCard {
-  --backgroundColor: white;
+  --color-background: white;
   text-decoration: none;
   margin-inline: 0.5em;
 }
@@ -122,7 +122,7 @@
 box-layout.headerBar {
   border-bottom-width: 1px;
   border-color: #dadfe1;
-  --backgroundColor: white;
+  --color-background: white;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 .headerBar reel-layout {

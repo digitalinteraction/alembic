@@ -255,8 +255,8 @@ doc-text {
     ),
     linear-gradient(
       to bottom,
-      var(--backgroundColor) 0%,
-      var(--backgroundColor) 100%
+      var(--color-background) 0%,
+      var(--color-background) 100%
     );
   background-clip: content-box, padding-box;
 }
