@@ -13,10 +13,12 @@
   "types": "dist/module.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/module.d.ts",
       "require": "./dist/module.cjs",
       "default": "./dist/module.js"
     },
     "./*": {
+      "types": "./dist/module.d.ts",
       "require": "./dist/*.cjs",
       "default": "./dist/*"
     }
