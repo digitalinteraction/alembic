@@ -1,0 +1,252 @@
+---
+layout: docs-layout.njk
+title: Docs
+---
+
+<main>
+  <h2 class="docsTitle">{{ title }}</h2>
+  <stack-layout space="var(--s3)">
+    <!--
+      About
+    -->
+    <doc-section label="About" prefix="docs-">
+      <div class="layoutInfo">
+        <p>
+          This page contains information about the custom elements and CSS
+          classes available to document alembic. Warning: it gets a bit
+          recursive.
+        </p>
+      </div>
+    </doc-section>
+
+    <!--
+      ComponentDef
+    -->
+    <doc-section label="Component Definition">
+      <div class="layoutInfo">
+        <p>
+          <strong>ComponentDef</strong> is for visualising a UI component and
+          providing example source code at the same time.
+        </p>
+        <p
+          >It also provides a side-control on non-touch devices to compress or
+          stretch the defined component, to see how it behaves responsibly.</p
+        >
+        <table>
+          <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Info</th>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>string</td>
+            <td><code>''</code></td>
+            <td>The name of the component / permutation</td>
+          </tr>
+        </table>
+      </div>
+      <component-def>
+        <component-def label="Paragraph">
+          <p>Hello, there! Forgive the recursion</p>
+        </component-def>
+      </component-def>
+    </doc-section>
+
+    <!--
+      DocBox
+    -->
+    <doc-section label="Doc Box">
+      <div class="layoutInfo">
+        <p>
+          <strong>DocBox</strong> is a custom element to show placeholder
+          content to demonstrate layouts and other components.
+        </p>
+        <table>
+          <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Info</th>
+          </tr>
+          <tr>
+            <td>size</td>
+            <td>CSS Length</td>
+            <td><code>100px</code></td>
+            <td>
+              How big you want the box to be, the dimension is determined by
+              <code>display</code>
+            </td>
+          </tr>
+          <tr>
+            <td>accent</td>
+            <td>CSS color</td>
+            <td><code>rebeccapurple</code></td>
+            <td>
+              What colour to fill in the box, useful to distinguish multiple
+              DocBoxes
+            </td>
+          </tr>
+          <tr>
+            <td>display</td>
+            <td><code>block</code> or <code>inline-block</code></td>
+            <td><code>block</code></td>
+            <td>
+              Which dimension the <code>size</code> applies to. If
+              <code>block</code>, size is the height of the box. If
+              <code>inline-block</code>, size is the width of the box and the
+              height is set to <code>50px</code>.
+            </td>
+          </tr>
+        </table>
+      </div>
+      <component-def label="DocBox / block">
+        <doc-box size="100px"></doc-box>
+      </component-def>
+      <component-def label="DocBox / inline-block">
+        <doc-box size="150px" display="inline-block"></doc-box>
+      </component-def>
+      <component-def label="DocBox / accent">
+        <doc-box accent="coral"></doc-box>
+      </component-def>
+    </doc-section>
+
+    <!--
+      DocResizer
+    -->
+    <doc-section label="Doc Resizer">
+      <div class="layoutInfo">
+        <p>
+          <strong>DocResizer</strong> provides a control for stretching or
+          compressing its children to test their responsiveness. It only shows
+          on non-touch devices.
+        </p>
+        <p>
+          It's automatically added to <code>component-def</code> elements so
+          there are two below, the inner is the one to checkout.
+        </p>
+        <component-def label="DocResizer / vanilla">
+          <doc-resizer>
+            <doc-box size="50px"></doc-box>
+          </doc-resizer>
+        </component-def>
+      </div>
+    </doc-section>
+
+    <!--
+      DocSection
+    -->
+    <doc-section label="Doc Section">
+      <div class="layoutInfo">
+        <p>
+          <strong>DocSection</strong> is a grouping of
+          <code>component-def</code> elements with a <code>.layoutInfo</code> at
+          the top to add extra details. Just like this section you're reading
+          now. The <code>label</code> is also to generate an ID for the
+          persistent <code>details-extra</code> element, so it stays open or
+          closed over pages refreshes.
+        </p>
+        <p>
+          <code>.layoutInfo</code> should probably be renamed to something more
+          agnostic.
+        </p>
+        <table>
+          <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Info</th>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>string</td>
+            <td><code>''</code></td>
+            <td>
+              The name of the section, used to generate an id to restore the
+              details
+            </td>
+          </tr>
+          <tr>
+            <td>prefix</td>
+            <td>string</td>
+            <td><code>''</code></td>
+            <td>A prefix for the generated ID, to ensure its unique</td>
+          </tr>
+        </table>
+      </div>
+      <component-def>
+        <doc-section label="DocSection / vanilla">
+          <div class="layoutInfo">
+            Here is some information about this component. It's another
+            recursive one.
+          </div>
+          <component-def label="MyElement / vanilla">
+            <p>An an example of a component</p>
+          </component-def>
+        </doc-section>
+      </component-def>
+    </doc-section>
+
+    <!--
+      DocText
+    -->
+    <doc-section label="Doc Text">
+      <div class="layoutInfo">
+        <p>
+          <strong>DocText</strong> generates dummy text to fill out a parent
+          element.
+        </p>
+        <table>
+          <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Info</th>
+          </tr>
+          <tr>
+            <td>words</td>
+            <td>string</td>
+            <td><code>5</code></td>
+            <td>
+              How many words to generate or a range. e.g. <code>9,13</code>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <component-def label="DocText / vanilla">
+        <doc-text words="15"></doc-text>
+      </component-def>
+      <component-def label="DocText / rang">
+        <doc-text words="15,30"></doc-text>
+      </component-def>
+    </doc-section>
+
+    <!--
+      Misc
+    -->
+    <doc-section label="Misc" prefix="docs-">
+      <div class="layoutInfo">
+        <p> Other CSS classes available: </p>
+        <ul>
+          <li>
+            <code>.docsTitle</code> — The title for a documentation page,
+            probably a <code>h2</code>.
+          </li>
+          <li>
+            <code>.layoutInfo</code> — The page-like section for the top of a
+            <code>doc-section</code>.
+          </li>
+          <li>
+            <code>.markdownPage</code> — Similar to <code>layoutInfo</code>, but
+            for WYSIWYG-type content, e.g. HTML from markdown.
+          </li>
+          <li>
+            <code>.showPadding</code> — A hack to visualise the padding on an
+            element.
+          </li>
+        </ul>
+      </div>
+    </doc-section>
+  </stack-layout>
+</main>

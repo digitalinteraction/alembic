@@ -12,7 +12,7 @@ const style = `
   font-weight: bold;
 }
 ::slotted(*:not(:first-child)) {
-  margin-block-start: 50px;
+  margin-block-start: var(--s2);
 }
 `
 
@@ -33,6 +33,9 @@ export class DocSection extends HTMLElement {
   get title() {
     return this.getAttribute('label') ?? ''
   }
+  get prefix() {
+    return this.getAttribute('prefix') ?? ''
+  }
   get detailsUtilsElem() {
     return this.shadowRoot.querySelector('.docSection-detailUtils')
   }
@@ -52,7 +55,7 @@ export class DocSection extends HTMLElement {
   }
   render() {
     this.titleElem.textContent = this.title
-    this.detailsUtilsElem.persist = this.getSlug(this.title)
+    this.detailsUtilsElem.persist = this.prefix + this.getSlug(this.title)
   }
   connectedCallback() {
     this.render()
