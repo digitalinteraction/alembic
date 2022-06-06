@@ -3,7 +3,11 @@
 set -e
 
 mkdir -p dist
-rm -r dist/* || true
+
+if [ $NODE_ENV != "development" ]
+then
+  rm -r dist/* || true
+fi
 
 PATH_PREFIX=${PATH_PREFIX:-/}
 

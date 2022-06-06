@@ -10,24 +10,14 @@ nav:
 
 {% set currentPage = page.url | url %}
 
+<!DOCTYPE html>
 <html>
   <head>
     <title>⚗️ Alembic | {{ title }}</title>
     <meta charset="utf8" />
     <meta name="viewport" content="width=device-width" />
-    <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚗️</text></svg>"> -->
-
-    <link rel="stylesheet" href="{{ '/lib.js' | url }}" />
-    <link rel="stylesheet" href="{{ '/reset.css' | url }}" />
-    <link rel="stylesheet" href="{{ '/layouts.css' | url }}" />
-
     <link rel="stylesheet" href="{{ '/docs.css' | url }} " />
     <script type="module" src="{{ '/docs.js' | url }}"></script>
-
-    <script type="module">
-      import { defineLayoutElements } from '{{ '/layouts.js' | url }}'
-      defineLayoutElements()
-    </script>
   </head>
   <body class="docsLayout">
     <sidebar-layout space="0" sideWidth="25ch" contentMin="66%">

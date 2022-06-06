@@ -1,3 +1,6 @@
+@import '../lib/reset.css';
+@import '../layouts/layouts.css';
+
 :root {
   --doc-family: Inter, system-ui, sans-serif;
   --doc-mono: 'SF Mono', ui-monospace, monospace;
@@ -248,4 +251,15 @@ doc-text {
       var(--backgroundColor) 100%
     );
   background-clip: content-box, padding-box;
+}
+
+/** Markdown page */
+.markdownPage pre {
+  margin-block-end: 0;
+}
+.markdownPage-heading {
+  font-size: 1.5em;
+  font-family: var(--doc-family);
+  cursor: pointer;
+  font-weight: bold;
 }
