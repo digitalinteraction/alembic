@@ -9,11 +9,11 @@
           "type" : "runTask"
         }
       ],
-      "script" : "cd examples\/openlab-website\nmkdir -p dist\nnpm run build"
+      "script" : "cd examples\/openlab-website\nmkdir -p dist\nnpm install --no-audit\nnpm run build"
     },
     "run" : {
       "enabled" : true,
-      "script" : "cd examples\/openlab-website\nnpm install --no-audit\nnpm run serve"
+      "script" : "cd examples\/openlab-website\nnpm run serve"
     }
   },
   "buildBeforeRunning" : true,
