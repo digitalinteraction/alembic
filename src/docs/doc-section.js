@@ -20,8 +20,8 @@ const template = document.createElement('template')
 template.innerHTML = `
 <style>${style}</style>
 <section class="docSection">
-  <details-utils>
-    <details class="docSection-details">
+  <details-utils class="docSection-detailUtils">
+    <details>
       <summary class="docSection-title"></summary>
       <slot></slot>
     </details>
@@ -33,8 +33,8 @@ export class DocSection extends HTMLElement {
   get title() {
     return this.getAttribute('label') ?? ''
   }
-  get detailsElem() {
-    return this.shadowRoot.querySelector('.docSection-details')
+  get detailsUtilsElem() {
+    return this.shadowRoot.querySelector('.docSection-detailUtils')
   }
   get titleElem() {
     return this.shadowRoot.querySelector('.docSection-title')
@@ -47,14 +47,12 @@ export class DocSection extends HTMLElement {
 
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
+
+    this.render()
   }
   render() {
     this.titleElem.textContent = this.title
-    this.detailsElem.id = this.getSlug(this.title)
-
-    this.detailsElem.open = Boolean(
-      localStorage.getItem(`doc-section.${this.id}`)
-    )
+    this.detailsUtilsElem.persist = this.getSlug(this.title)
   }
   connectedCallback() {
     this.render()

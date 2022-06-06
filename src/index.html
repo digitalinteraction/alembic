@@ -9,8 +9,8 @@ title: Home
   <stack-layout>
     {% for version in collections.api | apiSort %}
     <div class="markdownPage">
-      <details-utils>
-        <details id="{{ version.fileSlug }}">
+      <details-utils persist="{{ version.fileSlug }}">
+        <details>
           <summary class="markdownPage-heading">
             {{ version.data.title }}
           </summary>

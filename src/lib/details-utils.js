@@ -1,9 +1,8 @@
-const template = document.createElement('template')
-template.innerHTML = `
-  <slot></slot>
-`
-
 export class DetailsUtils extends HTMLElement {
+  static get observedAttributes() {
+    return ['persist']
+  }
+
   static defineElement() {
     customElements.define('details-utils', DetailsUtils)
   }
@@ -11,12 +10,23 @@ export class DetailsUtils extends HTMLElement {
   get detailsElem() {
     return this.querySelector('details')
   }
+  get persist() {
+    return this.getAttribute('persist')
+  }
+  set persist(value) {
+    return this.setAttribute('persist', value)
+  }
 
   constructor() {
     super()
 
     this.detailsElem?.addEventListener('toggle', (e) => {
-      const key = `details-utils.${e.target.id}`
+      if (!this.persist) {
+        console.debug('details-utils: skip %o', e.target)
+        return
+      }
+
+      const key = `details-utils.${this.persist}`
       if (e.target.open) localStorage.setItem(key, 'true')
       else localStorage.removeItem(key)
     })
@@ -25,14 +35,15 @@ export class DetailsUtils extends HTMLElement {
   render() {
     const { detailsElem } = this
 
-    if (!detailsElem.id) console.warn('details-utils: details "id" not set')
-
-    if (detailsElem) {
-      const key = `details-utils.${detailsElem.id}`
+    if (this.persist) {
+      const key = `details-utils.${this.persist}`
       detailsElem.open = Boolean(localStorage.getItem(key))
     }
   }
   connectedCallback() {
+    this.render()
+  }
+  attributeChangedCallback() {
     this.render()
   }
 }
