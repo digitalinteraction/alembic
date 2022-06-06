@@ -6,7 +6,7 @@ mkdir -p dist
 
 if [[ "$NODE_ENV" != "development" ]]
 then
-  rm -r dist/* || true
+  rm -r dist/* > /dev/null || true
 fi
 
 PATH_PREFIX=${PATH_PREFIX:-/}
@@ -14,7 +14,8 @@ PATH_PREFIX=${PATH_PREFIX:-/}
 # 
 # Copy assets
 # 
-cp -R src/assets dist/assets/
+mkdir -p dist/assets
+cp -R src/assets/* dist/assets/
 
 #
 # Build resources
@@ -48,4 +49,4 @@ npx eleventy \
 #
 # Copy types
 #
-cp src/module.d.ts dist/module.d.ts
+cp -R src/types/* dist/
