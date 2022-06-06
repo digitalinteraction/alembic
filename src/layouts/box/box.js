@@ -24,8 +24,8 @@ export class BoxLayout extends HTMLElement {
     const { padding, borderWidth, invert } = { ...defaults, ...attrs }
     const id = `BoxLayout-${padding}${borderWidth}${invert}`
     const invertRule = invert
-      ? `color: var(--backgroundColor); background-color: var(--foregroundColor);`
-      : `color: var(--foregroundColor); background-color: var(--backgroundColor);`
+      ? `color: var(--color-background); background-color: var(--color-foreground);`
+      : `color: var(--color-foreground); background-color: var(--color-background);`
     const css = trimCss`
       [data-i="${id}"] {
         padding: ${padding};

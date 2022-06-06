@@ -2,8 +2,8 @@
   Tokens:
     * scale values:
       --s-5, --s-4, --s-3, --s-2, --s-1, --s0, --s1, --s2, --s3, --s4, --s5
-    * --foregroundColor
-    * --backgroundColor
+    * --color-foreground
+    * --color-background
     * --measure
     * --border-thin
  */

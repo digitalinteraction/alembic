@@ -2,7 +2,7 @@ reel-layout {
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
-  scrollbar-color: var(--backgroundColor) var(--foregroundColor);
+  scrollbar-color: var(--color-background) var(--color-foreground);
 }
 
 reel-layout > * {
@@ -21,16 +21,16 @@ reel-layout::-webkit-scrollbar {
 }
 
 reel-layout::-webkit-scrollbar-track {
-  background-color: var(--backgroundColor);
+  background-color: var(--color-background);
 }
 
 reel-layout::-webkit-scrollbar-thumb {
-  background-color: var(--foregroundColor);
+  background-color: var(--color-foreground);
   background-image: linear-gradient(
-    var(--backgroundColor) 0,
-    var(--backgroundColor) 0.25rem,
-    var(--foregroundColor) 0.25rem,
-    var(--foregroundColor) 0.75rem,
-    var(--backgroundColor) 0.75rem
+    var(--color-background) 0,
+    var(--color-background) 0.25rem,
+    var(--color-foreground) 0.25rem,
+    var(--color-foreground) 0.75rem,
+    var(--color-background) 0.75rem
   );
 }

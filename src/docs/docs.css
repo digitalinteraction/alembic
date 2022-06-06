@@ -9,8 +9,8 @@
   --doc-measure: 80ch;
 
   /** Axioms */
-  --foregroundColor: black;
-  --backgroundColor: white;
+  --color-foreground: black;
+  --color-background: white;
   --border-thin: 0.2rem;
   --measure: 60ch;
 }
@@ -20,8 +20,8 @@
     --doc-foreground: hsl(0, 0%, 93%);
     --doc-background: hsl(0, 0%, 7%);
 
-    --foregroundColor: white;
-    --backgroundColor: black;
+    --color-foreground: white;
+    --color-background: black;
   }
 }
 
@@ -211,6 +211,12 @@ code .token.function {
 code .token.comment {
   color: var(--prism-comment, #6e7781);
 }
+code .token.property {
+  color: var(--prism-property, #0550ae);
+}
+code .token.selector {
+  color: var(--prism-selector, #11632a);
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --prism-foreground: hsl(210, 13%, 88%);
@@ -219,6 +225,8 @@ code .token.comment {
     --prism-string: #96d0ff;
     --prism-function: #dcbdfb;
     --prism-comment: #768390;
+    --prism-property: #6cb6ff;
+    --prism-selector: #8ddb8c;
   }
 }
 

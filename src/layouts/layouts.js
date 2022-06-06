@@ -11,12 +11,18 @@ import { ReelLayout } from './reel/reel.js'
 import { ImposterLayout } from './imposter/imposter.js'
 import { IconLayout } from './icon/icon.js'
 
+/** 
+  Register every Layout custom element in one go
+ */
 export function defineLayoutElements() {
   if (!('customElements' in window)) return
 
   for (const layout of Object.values(layoutMap)) layout.defineElement()
 }
 
+/** 
+  `layoutMap` is a map of custom element name to Layout class
+ */
 export const layoutMap = {
   'stack-layout': StackLayout,
   'box-layout': BoxLayout,
@@ -32,6 +38,11 @@ export const layoutMap = {
   'icon-layout': IconLayout,
 }
 
+/**
+  layoutCustomElementNames is an array of all custom element names,
+  useful for telling compilers (like Vue) to ignore these custom elements.
+  The order of these is NOT guaranteed
+ */
 export const layoutCustomElementNames = Object.keys(layoutMap)
 
 export {
@@ -52,8 +63,8 @@ export {
 /**
   Take a HTML file with some layouts in it, compute their styles
   and inject them into the document using `<!-- @openlab/alembic inject-css -->`
-*/
-export function injectStyles(inputHtml) {
+ */
+export function injectLayoutStyles(inputHtml) {
   const styles = new Map()
 
   // Loop through each tag ending in "-layout"
