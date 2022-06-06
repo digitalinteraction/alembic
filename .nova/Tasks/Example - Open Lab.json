@@ -6,7 +6,7 @@
     },
     "run" : {
       "enabled" : true,
-      "script" : "cd examples\/openlab-website\nnpm run serve"
+      "script" : "cd examples\/openlab-website\nnpm install --no-audit\nnpm run serve"
     }
   },
   "buildBeforeRunning" : true,
