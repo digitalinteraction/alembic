@@ -4,7 +4,7 @@ set -e
 
 mkdir -p dist
 
-if [ $NODE_ENV != "development" ]
+if [[ "$NODE_ENV" != "development" ]]
 then
   rm -r dist/* || true
 fi
