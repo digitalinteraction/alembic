@@ -80,7 +80,7 @@
 .openlabPage > aside {
   width: 3rem;
   border-right: 1px solid #dadfe1;
-  --color-background: white;
+  background-color: white;
   position: relative;
 }
 .openlabPage > aside > * {

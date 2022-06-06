@@ -1,7 +1,8 @@
 {
   "type": "module",
   "scripts": {
-    "build": "esbuild --bundle --outdir=dist --format=esm app.js style.css"
+    "build": "esbuild --bundle --outdir=dist --format=esm app.js style.css",
+    "serve": "serve"
   },
   "dependencies": {
     "@openlab/alembic": "file:../.."
