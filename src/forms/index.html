@@ -3,4 +3,47 @@ layout: docs-layout.njk
 title: Forms
 ---
 
-<p>Coming soon</p>
+<!-- ... -->
+<doc-section label="About" prefix="forms-">
+  <div class="layoutInfo">
+    <p>
+      Forms provide patterns for creating HTML forms that are easy to use and
+      accessible for as many as possible.
+    </p>
+  </div>
+</doc-section>
+
+<doc-section label="Field">
+  <div class="layoutInfo">
+    <p>
+      <strong>Field</strong> is the bread and butter of a form, so it is
+      important to get right. It <strong>Must</strong> have a label to prompt
+      the field to be filled in. It can have a hint too, when the label needs
+      more explanation. It may have a <code>placeholder</code> but it isn't
+      advised, an empty-box is more enticing to fill in.
+    </p>
+    <p>TODO: work on guidelines for copy</p>
+  </div>
+
+  <component-def label="Field / text">
+    <div class="field">
+      <label for="whatHappened">
+        <span class="field-label">What happened?</span>
+        <span class="field-hint">
+          Include as much information as possible.
+        </span>
+        <input type="text" id="whatHappened" name="whatHappened" />
+      </label>
+    </div>
+  </component-def>
+
+  <component-def label="Field / textarea">
+    <div class="field">
+      <label for="nextAction">
+        <span class="field-label">What did you do next?</span>
+        <span class="field-hint"> Did you react? How so? </span>
+      </label>
+      <textarea id="nextAction" rows="3" name="nextAction"> </textarea>
+    </div>
+  </component-def>
+</doc-section>

@@ -1,0 +1,136 @@
+/*
+  General
+ */
+fieldset > :not(legend) + *,
+form > * + * {
+  margin-top: var(--s0);
+}
+.field,
+.checkboxGroup,
+.checkbox {
+  max-width: 22em;
+}
+
+/*
+  Field
+ */
+.field label {
+  margin-bottom: var(--s-4);
+  display: block;
+  line-height: 1.25;
+}
+.field-label {
+  font-weight: 600;
+  display: block;
+}
+.field-hint {
+  font-weight: 400;
+  display: block;
+  margin-bottom: var(--s-4);
+  color: var(--color-darkish);
+  font-size: 0.9em;
+}
+.field input,
+.field select,
+.field textarea {
+  background-color: transparent;
+  border: var(--border-thin) solid var(--entrypoint);
+  margin: 0;
+  border-radius: var(--border-thin);
+  padding: 0.25em;
+  width: 100%;
+}
+.field input[type='checkbox'] {
+  width: initial;
+}
+.field textarea {
+  resize: vertical;
+  min-height: 5em;
+}
+.field select {
+  line-height: 1.5;
+}
+
+/*
+  Fieldset
+ */
+fieldset {
+  border-style: dashed;
+  border-width: var(--border-thin);
+  padding: var(--s-1);
+}
+fieldset legend {
+  font-size: var(--s1);
+  font-weight: 600;
+}
+.fieldset-hint {
+  font-weight: 400;
+  display: block;
+  font-size: 0.9em;
+  margin-block-start: calc(-1 * var(--s-1));
+}
+
+/*
+  Checkbox group
+ */
+.checkboxGroup {
+}
+.checkboxGroup-label {
+  font-weight: 600;
+  display: block;
+}
+
+/*
+  Checkbox
+ */
+.checkbox {
+  padding: 0.25em 0.5em;
+  border-width: var(--border-thin);
+  border-radius: var(--border-thin);
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  gap: var(--s-2);
+}
+.checkbox:not(:hover) {
+  border-color: transparent;
+}
+.checkbox input {
+  font-size: 1rem;
+  margin: 0;
+  flex-grow: 0;
+}
+
+/*
+  Messages
+ */
+.formInfoMessage,
+.formErrorMessage,
+.formSuccessMessage {
+  border-radius: var(--border-thick);
+  border: var(--border-thick) solid;
+  padding: var(--s-1);
+}
+.formInfoMessage {
+  border-color: royalblue;
+  background-color: rgba(65, 105, 225, 0.15);
+}
+.formErrorMessage {
+  border-color: #ce4760;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+.formSuccessMessage {
+  border-color: var(--color-kellyGreen);
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+/**
+  Range hints
+ */
+.rangeHints {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: var(--s-5);
+}

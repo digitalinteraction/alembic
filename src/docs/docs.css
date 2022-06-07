@@ -1,5 +1,7 @@
 @import '../lib/reset.css';
+@import '../lib/globals.css';
 @import '../layouts/layouts.css';
+@import '../forms/forms.css';
 
 :root {
   --doc-family: Inter, system-ui, sans-serif;
@@ -8,11 +10,23 @@
   --doc-background: hsl(0, 0%, 93%);
   --doc-measure: 80ch;
 
-  /** Axioms */
+  /** Alembic variables */
   --color-foreground: black;
   --color-background: white;
   --border-thin: 0.2rem;
   --measure: 60ch;
+
+  /* WIP axioms */
+  --entrypoint: #708090; /* A colour to indicate something a user should fill in */
+  --focus: coral; /* A colour to bring attention to what the user is currently doing */
+  --measure-measure: 30ch;
+
+  /* WIP forms */
+  --color-darkish: #888;
+  --border-thick: 5px;
+  --color-info: royalblue;
+  --color-error: tomato;
+  --color-success: yellowgreen;
 }
 
 @media (prefers-color-scheme: dark) {
