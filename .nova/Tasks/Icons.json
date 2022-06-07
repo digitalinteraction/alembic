@@ -1,0 +1,29 @@
+{
+  "actions" : {
+    "build" : {
+      "postActions" : [
+        {
+          "script" : ".\/bin\/icons.js svg src\/assets\/icons.svg",
+          "type" : "runScript"
+        },
+        {
+          "action" : "build",
+          "taskName" : "Development",
+          "type" : "runTask"
+        }
+      ]
+    }
+  },
+  "extension" : {
+    "identifier" : "panic.JavaScript",
+    "name" : "JavaScript"
+  },
+  "extensionTemplate" : "nodeDebug",
+  "extensionValues" : {
+    "launchArgs" : [
+      "svg",
+      "svg\/dist"
+    ],
+    "scriptPath" : "bin\/icons.js"
+  }
+}
