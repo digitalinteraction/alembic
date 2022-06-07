@@ -3,586 +3,579 @@ layout: docs-layout.njk
 title: Layout
 ---
 
-<main>
-  <h2 class="docsTitle">Layouts</h2>
-  <stack-layout space="var(--s3)">
-    <!--
-      About
-    -->
-    <doc-section label="About" prefix="layouts-">
-      <div class="layoutInfo">
-        <p>
-          Layouts are
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements"
-            >custom elements</a
-          >
-          that's only responsibility is to responsively position and arrange its
-          child elements. These elements can be reused and nested as much as you
-          like to compose pages together.
-        </p>
-        <p>
-          They share a common set of css variables that need to be set on your
-          <code>:root</code> element, see a
-          <a href="{{ '/' | url }}">specific version</a> for more info.
-        </p>
-        <p>
-          Scale variables. These are created using a modular scale (<a
-            href="https://every-layout.dev/rudiments/modular-scale/"
-            >more info</a
-          >) to work nicely with a font size of 1rem and line-height of 1.5.
-          Think of them as starting at -5 going though 0 and up to 5. They form
-          a curve of values which creates pleasing spacing.
-          <strong>These are provided by Alembic.</strong>
-        </p>
+<!--
+  About
+-->
+<doc-section label="About" prefix="layouts-">
+  <div class="layoutInfo">
+    <p>
+      Layouts are
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements"
+        >custom elements</a
+      >
+      that's only responsibility is to responsively position and arrange its
+      child elements. These elements can be reused and nested as much as you
+      like to compose pages together.
+    </p>
+    <p>
+      They share a common set of css variables that need to be set on your
+      <code>:root</code> element, see a
+      <a href="{{ '/' | url }}">specific version</a> for more info.
+    </p>
+    <p>
+      Scale variables. These are created using a modular scale (<a
+        href="https://every-layout.dev/rudiments/modular-scale/"
+        >more info</a
+      >) to work nicely with a font size of 1rem and line-height of 1.5. Think
+      of them as starting at -5 going though 0 and up to 5. They form a curve of
+      values which creates pleasing spacing.
+      <strong>These are provided by Alembic.</strong>
+    </p>
+    <ul>
+      <li><code>--s-5</code> — Smallest value</li>
+      <li><code>--s-4</code></li>
+      <li><code>--s-3</code></li>
+      <li><code>--s-2</code></li>
+      <li><code>--s-1</code></li>
+      <li><code>--s0</code></li>
+      <li><code>--s1</code> — Common default scale</li>
+      <li><code>--s2</code></li>
+      <li><code>--s3</code></li>
+      <li><code>--s4</code></li>
+      <li><code>--s5</code> — Largest largest</li>
+    </ul>
+  </div>
+</doc-section>
+
+<!--
+  Stack
+ -->
+<doc-section label="Stack">
+  <div class="layoutInfo">
+    {{ collections.stackLayout[0].templateContent | safe }}
+  </div>
+  <component-def label="Stack / Vanilla">
+    <stack-layout>
+      <doc-box size="50px"></doc-box>
+      <doc-box size="50px"></doc-box>
+      <doc-box size="50px"></doc-box>
+    </stack-layout>
+  </component-def>
+
+  <component-def label="Stack / Small">
+    <stack-layout space="var(--s-1)">
+      <doc-box size="50px"></doc-box>
+      <doc-box size="50px"></doc-box>
+      <doc-box size="50px"></doc-box>
+    </stack-layout>
+  </component-def>
+
+  <component-def label="Stack / Gapless">
+    <stack-layout space="0">
+      <doc-box size="50px"></doc-box>
+      <doc-box size="50px" accent="coral"></doc-box>
+      <doc-box size="50px" accent="royalblue"></doc-box>
+    </stack-layout>
+  </component-def>
+
+  <component-def label="Stack / Nested">
+    <stack-layout>
+      <stack-layout space="var(--s-1)">
+        <doc-box size="50px"></doc-box>
+        <doc-box size="50px"></doc-box>
+        <doc-box size="50px"></doc-box>
+      </stack-layout>
+      <stack-layout space="var(--s-1)">
+        <doc-box size="50px" accent="royalblue"></doc-box>
+        <doc-box size="50px" accent="royalblue"></doc-box>
+        <doc-box size="50px" accent="royalblue"></doc-box>
+      </stack-layout>
+      <stack-layout space="var(--s-1)">
+        <doc-box size="50px"></doc-box>
+        <doc-box size="50px"></doc-box>
+        <doc-box size="50px"></doc-box>
+      </stack-layout>
+    </stack-layout>
+  </component-def>
+</doc-section>
+
+<!--
+  Box
+ -->
+<doc-section label="Box">
+  <div class="layoutInfo">
+    {{ collections.boxLayout[0].templateContent | safe }}
+  </div>
+  <component-def label="Box / Vanilla">
+    <box-layout>
+      <doc-text words="100"></doc-text>
+    </box-layout>
+  </component-def>
+
+  <component-def label="Box / Invert">
+    <box-layout invert>
+      <doc-text words="100"></doc-text>
+    </box-layout>
+  </component-def>
+
+  <component-def label="Box / No padding">
+    <box-layout padding="0">
+      <doc-text words="100"></doc-text>
+    </box-layout>
+  </component-def>
+
+  <component-def label="Box / Composed">
+    <box-layout padding="0" style="border-radius: 0.5rem; overflow: hidden">
+      <box-layout borderWidth="0" padding="var(--s0)" invert>
+        <doc-text words="5,7"></doc-text>
+      </box-layout>
+      <box-layout borderWidth="0" padding="var(--s0)">
+        <doc-text words="100"></doc-text>
+      </box-layout>
+    </box-layout>
+  </component-def>
+</doc-section>
+
+<!--
+  Center
+ -->
+<doc-section label="Center">
+  <div class="layoutInfo">
+    {{ collections.centerLayout[0].templateContent | safe }}
+  </div>
+  <component-def label="Center / Vanilla">
+    <center-layout>
+      <doc-box size="200px"> </doc-box>
+    </center-layout>
+  </component-def>
+
+  <component-def label="Center / Gutter">
+    <center-layout gutters="var(--s1)" class="showPadding">
+      <doc-box size="200px"></doc-box>
+    </center-layout>
+  </component-def>
+
+  <component-def label="Center / Intrinsic">
+    <center-layout intrinsic>
+      <doc-box size="200px" display="inline"></doc-box>
+    </center-layout>
+  </component-def>
+</doc-section>
+
+<!--
+  Cluster
+ -->
+<doc-section label="Cluster">
+  <div class="layoutInfo">
+    {{ collections.clusterLayout[0].templateContent | safe }}
+  </div>
+  <component-def label="Cluster / Vanilla">
+    <cluster-layout>
+      <doc-box size="200px" display="inline" role="listitem"></doc-box>
+      <doc-box size="350px" display="inline" role="listitem"></doc-box>
+      <doc-box size="200px" display="inline" role="listitem"></doc-box>
+      <doc-box size="250px" display="inline" role="listitem"></doc-box>
+      <doc-box size="200px" display="inline" role="listitem"></doc-box>
+      <doc-box size="300px" display="inline" role="listitem"></doc-box>
+      <doc-box size="200px" display="inline" role="listitem"></doc-box>
+      <doc-box size="500px" display="inline" role="listitem"></doc-box>
+      <doc-box size="150px" display="inline" role="listitem"></doc-box>
+      <doc-box size="250px" display="inline" role="listitem"></doc-box>
+      <doc-box size="100px" display="inline" role="listitem"></doc-box>
+      <doc-box size="250px" display="inline" role="listitem"></doc-box>
+    </cluster-layout>
+  </component-def>
+
+  <component-def label="Cluster / Flush">
+    <cluster-layout space="0">
+      <doc-box size="200px" display="inline"> </doc-box>
+      <doc-box size="200px" display="inline" accent="royalblue"> </doc-box>
+      <doc-box size="200px" display="inline" accent="coral"> </doc-box>
+    </cluster-layout>
+  </component-def>
+
+  <component-def label="Cluster / End justified">
+    <cluster-layout justify="flex-end">
+      <doc-box size="200px" display="inline"></doc-box>
+      <doc-box size="200px" display="inline"></doc-box>
+      <doc-box size="200px" display="inline"></doc-box>
+    </cluster-layout>
+  </component-def>
+
+  <component-def label="Cluster / Aligned">
+    <cluster-layout align="center">
+      <doc-box size="200px" display="inline" style="height: 100px"> </doc-box>
+      <doc-box size="200px" display="inline"> </doc-box>
+      <doc-box size="200px" display="inline" style="height: 75px"> </doc-box>
+    </cluster-layout>
+  </component-def>
+</doc-section>
+
+<!--
+  Sidebar
+ -->
+<doc-section label="Sidebar">
+  <div class="layoutInfo">
+    {{ collections.sidebarLayout[0].templateContent | safe }}
+  </div>
+  <component-def label="Sidebar / Vanilla">
+    <sidebar-layout>
+      <div style="background: royalblue; padding-inline-end: 2rem">
         <ul>
-          <li><code>--s-5</code> — Smallest value</li>
-          <li><code>--s-4</code></li>
-          <li><code>--s-3</code></li>
-          <li><code>--s-2</code></li>
-          <li><code>--s-1</code></li>
-          <li><code>--s0</code></li>
-          <li><code>--s1</code> — Common default scale</li>
-          <li><code>--s2</code></li>
-          <li><code>--s3</code></li>
-          <li><code>--s4</code></li>
-          <li><code>--s5</code> — Largest largest</li>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
         </ul>
       </div>
-    </doc-section>
+      <doc-box size="300px"></doc-box>
+    </sidebar-layout>
+  </component-def>
 
-    <!--
-      Stack
-     -->
-    <doc-section label="Stack">
-      <div class="layoutInfo">
-        {{ collections.stackLayout[0].templateContent | safe }}
+  <component-def label="Sidebar / No stretch">
+    <sidebar-layout noStretch>
+      <div style="background: royalblue; padding-inline-end: 2rem">
+        <ul>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+        </ul>
       </div>
-      <component-def label="Stack / Vanilla">
-        <stack-layout>
-          <doc-box size="50px"></doc-box>
-          <doc-box size="50px"></doc-box>
-          <doc-box size="50px"></doc-box>
-        </stack-layout>
-      </component-def>
+      <doc-box size="300px"></doc-box>
+    </sidebar-layout>
+  </component-def>
 
-      <component-def label="Stack / Small">
-        <stack-layout space="var(--s-1)">
-          <doc-box size="50px"></doc-box>
-          <doc-box size="50px"></doc-box>
-          <doc-box size="50px"></doc-box>
-        </stack-layout>
-      </component-def>
-
-      <component-def label="Stack / Gapless">
-        <stack-layout space="0">
-          <doc-box size="50px"></doc-box>
-          <doc-box size="50px" accent="coral"></doc-box>
-          <doc-box size="50px" accent="royalblue"></doc-box>
-        </stack-layout>
-      </component-def>
-
-      <component-def label="Stack / Nested">
-        <stack-layout>
-          <stack-layout space="var(--s-1)">
-            <doc-box size="50px"></doc-box>
-            <doc-box size="50px"></doc-box>
-            <doc-box size="50px"></doc-box>
-          </stack-layout>
-          <stack-layout space="var(--s-1)">
-            <doc-box size="50px" accent="royalblue"></doc-box>
-            <doc-box size="50px" accent="royalblue"></doc-box>
-            <doc-box size="50px" accent="royalblue"></doc-box>
-          </stack-layout>
-          <stack-layout space="var(--s-1)">
-            <doc-box size="50px"></doc-box>
-            <doc-box size="50px"></doc-box>
-            <doc-box size="50px"></doc-box>
-          </stack-layout>
-        </stack-layout>
-      </component-def>
-    </doc-section>
-
-    <!--
-      Box
-     -->
-    <doc-section label="Box">
-      <div class="layoutInfo">
-        {{ collections.boxLayout[0].templateContent | safe }}
+  <component-def label="Sidebar / Gapless">
+    <sidebar-layout space="0">
+      <div style="background: royalblue; padding-inline-end: 2rem">
+        <ul>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+        </ul>
       </div>
-      <component-def label="Box / Vanilla">
-        <box-layout>
-          <doc-text words="100"></doc-text>
-        </box-layout>
-      </component-def>
+      <doc-box size="300px"></doc-box>
+    </sidebar-layout>
+  </component-def>
 
-      <component-def label="Box / Invert">
+  <component-def label="Sidebar / Side width">
+    <sidebar-layout sideWidth="20ch">
+      <div style="background: royalblue; padding-inline-end: 2rem">
+        <ul>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="5,7"></doc-text></li>
+        </ul>
+      </div>
+      <doc-box size="300px"></doc-box>
+    </sidebar-layout>
+  </component-def>
+</doc-section>
+
+<!--
+  Switcher
+ -->
+<doc-section label="Switcher">
+  <div class="layoutInfo">
+    {{ collections.switcherLayout[0].templateContent | safe }}
+  </div>
+  <component-def label="Switcher / Vanilla">
+    <switcher-layout>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+    </switcher-layout>
+  </component-def>
+
+  <component-def label="Switcher / Too many">
+    <switcher-layout>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+    </switcher-layout>
+  </component-def>
+</doc-section>
+
+<!--
+  Cover
+ -->
+<doc-section label="Cover">
+  <div class="layoutInfo">
+    {{ collections.coverLayout[0].templateContent | safe }}
+  </div>
+  <component-def label="Cover / Vanilla">
+    <cover-layout class="showPadding">
+      <doc-box size="50px"></doc-box>
+      <h1>Hello, Cover!</h1>
+      <doc-box size="50px"></doc-box>
+    </cover-layout>
+  </component-def>
+
+  <component-def label="Cover / Shorter">
+    <cover-layout minHeight="400px" noPad>
+      <doc-box size="50px"></doc-box>
+      <h1>Hello, Cover!</h1>
+      <doc-box size="50px"></doc-box>
+    </cover-layout>
+  </component-def>
+
+  <component-def label="Cover / Custom center">
+    <cover-layout centered=".center" minHeight="400px" noPad>
+      <doc-box size="50px"></doc-box>
+      <doc-box class="center" size="100px" accent="royalblue"></doc-box>
+      <doc-box size="50px"></doc-box>
+    </cover-layout>
+  </component-def>
+
+  <component-def label="Cover / Single">
+    <cover-layout centered=".center" minHeight="400px" noPad>
+      <doc-box class="center" size="200px" accent="royalblue"></doc-box>
+    </cover-layout>
+  </component-def>
+
+  <component-def label="Cover / No padding">
+    <cover-layout centered=".center" minHeight="400px" noPad>
+      <doc-box class="center" size="200px" accent="royalblue"></doc-box>
+    </cover-layout>
+  </component-def>
+</doc-section>
+
+<!--
+  Grid
+ -->
+<doc-section label="Grid">
+  <div class="layoutInfo">
+    {{ collections.gridLayout[0].templateContent | safe }}
+  </div>
+  <component-def label="Grid / Vanilla">
+    <grid-layout>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+    </grid-layout>
+  </component-def>
+
+  <component-def label="Grid / Wider">
+    <grid-layout min="400px">
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+      <doc-box></doc-box>
+    </grid-layout>
+  </component-def>
+</doc-section>
+
+<!--
+  Frame
+ -->
+<doc-section label="Frame">
+  <div class="layoutInfo">
+    {{ collections.frameLayout[0].templateContent | safe }}
+  </div>
+  <component-def label="Frame / Vanilla">
+    <frame-layout>
+      <img src="{{ '/assets/portrait-image.svg' | url }}" />
+    </frame-layout>
+  </component-def>
+
+  <component-def label="Frame / 5:1">
+    <frame-layout ratio="5:1">
+      <img src="{{ '/assets/portrait-image.svg' | url }}" />
+    </frame-layout>
+  </component-def>
+
+  <component-def label="Frame / Content">
+    <frame-layout>
+      <p>Coming soon ...</p>
+    </frame-layout>
+  </component-def>
+</doc-section>
+
+<!--
+  Reel
+ -->
+<doc-section label="Reel">
+  <div class="layoutInfo">
+    {{ collections.reelLayout[0].templateContent | safe }}
+  </div>
+
+  <component-def label="Reel / Vanilla">
+    <reel-layout>
+      <doc-box style="width: 200px"></doc-box>
+      <doc-box style="width: 300px"></doc-box>
+      <doc-box style="width: 150px"></doc-box>
+      <doc-box style="width: 400px"></doc-box>
+      <doc-box style="width: 100px"></doc-box>
+      <doc-box style="width: 200px"></doc-box>
+      <doc-box style="width: 100px"></doc-box>
+      <doc-box style="width: 300px"></doc-box>
+      <doc-box style="width: 200px"></doc-box>
+    </reel-layout>
+  </component-def>
+
+  <component-def label="Reel / Fixed width">
+    <reel-layout itemWidth="200px">
+      <doc-box style="width: 200px"></doc-box>
+      <doc-box style="width: 300px"></doc-box>
+      <doc-box style="width: 150px"></doc-box>
+      <doc-box style="width: 400px"></doc-box>
+      <doc-box style="width: 100px"></doc-box>
+      <doc-box style="width: 200px"></doc-box>
+      <doc-box style="width: 100px"></doc-box>
+      <doc-box style="width: 300px"></doc-box>
+      <doc-box style="width: 200px"></doc-box>
+    </reel-layout>
+  </component-def>
+
+  <component-def label="Reel / Gapless">
+    <reel-layout space="0">
+      <doc-box style="width: 200px"></doc-box>
+      <doc-box style="width: 300px" accent="royalblue"></doc-box>
+      <doc-box style="width: 150px" accent="coral"></doc-box>
+      <doc-box style="width: 400px"></doc-box>
+      <doc-box style="width: 200px" accent="royalblue"></doc-box>
+      <doc-box style="width: 100px" accent="coral"></doc-box>
+      <doc-box style="width: 100px"></doc-box>
+      <doc-box style="width: 300px" accent="royalblue"></doc-box>
+      <doc-box style="width: 200px" accent="coral"></doc-box>
+    </reel-layout>
+  </component-def>
+
+  <component-def label="Reel / No bar">
+    <reel-layout noBar>
+      <doc-box style="width: 200px"></doc-box>
+      <doc-box style="width: 300px"></doc-box>
+      <doc-box style="width: 150px"></doc-box>
+      <doc-box style="width: 400px"></doc-box>
+      <doc-box style="width: 100px"></doc-box>
+      <doc-box style="width: 200px"></doc-box>
+      <doc-box style="width: 100px"></doc-box>
+      <doc-box style="width: 300px"></doc-box>
+      <doc-box style="width: 200px"></doc-box>
+    </reel-layout>
+  </component-def>
+</doc-section>
+
+<!--
+  Imposter
+ -->
+<doc-section label="Imposter">
+  <div class="layoutInfo">
+    {{ collections.imposterLayout[0].templateContent | safe }}
+  </div>
+
+  <component-def label="Imposter / Vanilla">
+    <div style="position: relative">
+      <doc-text words="500"></doc-text>
+      <imposter-layout>
         <box-layout invert>
-          <doc-text words="100"></doc-text>
-        </box-layout>
-      </component-def>
-
-      <component-def label="Box / No padding">
-        <box-layout padding="0">
-          <doc-text words="100"></doc-text>
-        </box-layout>
-      </component-def>
-
-      <component-def label="Box / Composed">
-        <box-layout padding="0" style="border-radius: 0.5rem; overflow: hidden">
-          <box-layout borderWidth="0" padding="var(--s0)" invert>
-            <doc-text words="5,7"></doc-text>
-          </box-layout>
-          <box-layout borderWidth="0" padding="var(--s0)">
-            <doc-text words="100"></doc-text>
-          </box-layout>
-        </box-layout>
-      </component-def>
-    </doc-section>
-
-    <!--
-      Center
-     -->
-    <doc-section label="Center">
-      <div class="layoutInfo">
-        {{ collections.centerLayout[0].templateContent | safe }}
-      </div>
-      <component-def label="Center / Vanilla">
-        <center-layout>
-          <doc-box size="200px"> </doc-box>
-        </center-layout>
-      </component-def>
-
-      <component-def label="Center / Gutter">
-        <center-layout gutters="var(--s1)" class="showPadding">
-          <doc-box size="200px"></doc-box>
-        </center-layout>
-      </component-def>
-
-      <component-def label="Center / Intrinsic">
-        <center-layout intrinsic>
-          <doc-box size="200px" display="inline"></doc-box>
-        </center-layout>
-      </component-def>
-    </doc-section>
-
-    <!--
-      Cluster
-     -->
-    <doc-section label="Cluster">
-      <div class="layoutInfo">
-        {{ collections.clusterLayout[0].templateContent | safe }}
-      </div>
-      <component-def label="Cluster / Vanilla">
-        <cluster-layout>
-          <doc-box size="200px" display="inline" role="listitem"></doc-box>
-          <doc-box size="350px" display="inline" role="listitem"></doc-box>
-          <doc-box size="200px" display="inline" role="listitem"></doc-box>
-          <doc-box size="250px" display="inline" role="listitem"></doc-box>
-          <doc-box size="200px" display="inline" role="listitem"></doc-box>
-          <doc-box size="300px" display="inline" role="listitem"></doc-box>
-          <doc-box size="200px" display="inline" role="listitem"></doc-box>
-          <doc-box size="500px" display="inline" role="listitem"></doc-box>
-          <doc-box size="150px" display="inline" role="listitem"></doc-box>
-          <doc-box size="250px" display="inline" role="listitem"></doc-box>
-          <doc-box size="100px" display="inline" role="listitem"></doc-box>
-          <doc-box size="250px" display="inline" role="listitem"></doc-box>
-        </cluster-layout>
-      </component-def>
-
-      <component-def label="Cluster / Flush">
-        <cluster-layout space="0">
-          <doc-box size="200px" display="inline"> </doc-box>
-          <doc-box size="200px" display="inline" accent="royalblue"> </doc-box>
-          <doc-box size="200px" display="inline" accent="coral"> </doc-box>
-        </cluster-layout>
-      </component-def>
-
-      <component-def label="Cluster / End justified">
-        <cluster-layout justify="flex-end">
-          <doc-box size="200px" display="inline"></doc-box>
-          <doc-box size="200px" display="inline"></doc-box>
-          <doc-box size="200px" display="inline"></doc-box>
-        </cluster-layout>
-      </component-def>
-
-      <component-def label="Cluster / Aligned">
-        <cluster-layout align="center">
-          <doc-box size="200px" display="inline" style="height: 100px">
-          </doc-box>
-          <doc-box size="200px" display="inline"> </doc-box>
-          <doc-box size="200px" display="inline" style="height: 75px">
-          </doc-box>
-        </cluster-layout>
-      </component-def>
-    </doc-section>
-
-    <!--
-      Sidebar
-     -->
-    <doc-section label="Sidebar">
-      <div class="layoutInfo">
-        {{ collections.sidebarLayout[0].templateContent | safe }}
-      </div>
-      <component-def label="Sidebar / Vanilla">
-        <sidebar-layout>
-          <div style="background: royalblue; padding-inline-end: 2rem">
-            <ul>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-            </ul>
-          </div>
-          <doc-box size="300px"></doc-box>
-        </sidebar-layout>
-      </component-def>
-
-      <component-def label="Sidebar / No stretch">
-        <sidebar-layout noStretch>
-          <div style="background: royalblue; padding-inline-end: 2rem">
-            <ul>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-            </ul>
-          </div>
-          <doc-box size="300px"></doc-box>
-        </sidebar-layout>
-      </component-def>
-
-      <component-def label="Sidebar / Gapless">
-        <sidebar-layout space="0">
-          <div style="background: royalblue; padding-inline-end: 2rem">
-            <ul>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-            </ul>
-          </div>
-          <doc-box size="300px"></doc-box>
-        </sidebar-layout>
-      </component-def>
-
-      <component-def label="Sidebar / Side width">
-        <sidebar-layout sideWidth="20ch">
-          <div style="background: royalblue; padding-inline-end: 2rem">
-            <ul>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-              <li><doc-text words="5,7"></doc-text></li>
-            </ul>
-          </div>
-          <doc-box size="300px"></doc-box>
-        </sidebar-layout>
-      </component-def>
-    </doc-section>
-
-    <!--
-      Switcher
-     -->
-    <doc-section label="Switcher">
-      <div class="layoutInfo">
-        {{ collections.switcherLayout[0].templateContent | safe }}
-      </div>
-      <component-def label="Switcher / Vanilla">
-        <switcher-layout>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-        </switcher-layout>
-      </component-def>
-
-      <component-def label="Switcher / Too many">
-        <switcher-layout>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-        </switcher-layout>
-      </component-def>
-    </doc-section>
-
-    <!--
-      Cover
-     -->
-    <doc-section label="Cover">
-      <div class="layoutInfo">
-        {{ collections.coverLayout[0].templateContent | safe }}
-      </div>
-      <component-def label="Cover / Vanilla">
-        <cover-layout class="showPadding">
-          <doc-box size="50px"></doc-box>
-          <h1>Hello, Cover!</h1>
-          <doc-box size="50px"></doc-box>
-        </cover-layout>
-      </component-def>
-
-      <component-def label="Cover / Shorter">
-        <cover-layout minHeight="400px" noPad>
-          <doc-box size="50px"></doc-box>
-          <h1>Hello, Cover!</h1>
-          <doc-box size="50px"></doc-box>
-        </cover-layout>
-      </component-def>
-
-      <component-def label="Cover / Custom center">
-        <cover-layout centered=".center" minHeight="400px" noPad>
-          <doc-box size="50px"></doc-box>
-          <doc-box class="center" size="100px" accent="royalblue"></doc-box>
-          <doc-box size="50px"></doc-box>
-        </cover-layout>
-      </component-def>
-
-      <component-def label="Cover / Single">
-        <cover-layout centered=".center" minHeight="400px" noPad>
-          <doc-box class="center" size="200px" accent="royalblue"></doc-box>
-        </cover-layout>
-      </component-def>
-
-      <component-def label="Cover / No padding">
-        <cover-layout centered=".center" minHeight="400px" noPad>
-          <doc-box class="center" size="200px" accent="royalblue"></doc-box>
-        </cover-layout>
-      </component-def>
-    </doc-section>
-
-    <!--
-      Grid
-     -->
-    <doc-section label="Grid">
-      <div class="layoutInfo">
-        {{ collections.gridLayout[0].templateContent | safe }}
-      </div>
-      <component-def label="Grid / Vanilla">
-        <grid-layout>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-        </grid-layout>
-      </component-def>
-
-      <component-def label="Grid / Wider">
-        <grid-layout min="400px">
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-          <doc-box></doc-box>
-        </grid-layout>
-      </component-def>
-    </doc-section>
-
-    <!--
-      Frame
-     -->
-    <doc-section label="Frame">
-      <div class="layoutInfo">
-        {{ collections.frameLayout[0].templateContent | safe }}
-      </div>
-      <component-def label="Frame / Vanilla">
-        <frame-layout>
-          <img src="{{ '/assets/portrait-image.svg' | url }}" />
-        </frame-layout>
-      </component-def>
-
-      <component-def label="Frame / 5:1">
-        <frame-layout ratio="5:1">
-          <img src="{{ '/assets/portrait-image.svg' | url }}" />
-        </frame-layout>
-      </component-def>
-
-      <component-def label="Frame / Content">
-        <frame-layout>
-          <p>Coming soon ...</p>
-        </frame-layout>
-      </component-def>
-    </doc-section>
-
-    <!--
-      Reel
-     -->
-    <doc-section label="Reel">
-      <div class="layoutInfo">
-        {{ collections.reelLayout[0].templateContent | safe }}
-      </div>
-
-      <component-def label="Reel / Vanilla">
-        <reel-layout>
-          <doc-box style="width: 200px"></doc-box>
-          <doc-box style="width: 300px"></doc-box>
-          <doc-box style="width: 150px"></doc-box>
-          <doc-box style="width: 400px"></doc-box>
-          <doc-box style="width: 100px"></doc-box>
-          <doc-box style="width: 200px"></doc-box>
-          <doc-box style="width: 100px"></doc-box>
-          <doc-box style="width: 300px"></doc-box>
-          <doc-box style="width: 200px"></doc-box>
-        </reel-layout>
-      </component-def>
-
-      <component-def label="Reel / Fixed width">
-        <reel-layout itemWidth="200px">
-          <doc-box style="width: 200px"></doc-box>
-          <doc-box style="width: 300px"></doc-box>
-          <doc-box style="width: 150px"></doc-box>
-          <doc-box style="width: 400px"></doc-box>
-          <doc-box style="width: 100px"></doc-box>
-          <doc-box style="width: 200px"></doc-box>
-          <doc-box style="width: 100px"></doc-box>
-          <doc-box style="width: 300px"></doc-box>
-          <doc-box style="width: 200px"></doc-box>
-        </reel-layout>
-      </component-def>
-
-      <component-def label="Reel / Gapless">
-        <reel-layout space="0">
-          <doc-box style="width: 200px"></doc-box>
-          <doc-box style="width: 300px" accent="royalblue"></doc-box>
-          <doc-box style="width: 150px" accent="coral"></doc-box>
-          <doc-box style="width: 400px"></doc-box>
-          <doc-box style="width: 200px" accent="royalblue"></doc-box>
-          <doc-box style="width: 100px" accent="coral"></doc-box>
-          <doc-box style="width: 100px"></doc-box>
-          <doc-box style="width: 300px" accent="royalblue"></doc-box>
-          <doc-box style="width: 200px" accent="coral"></doc-box>
-        </reel-layout>
-      </component-def>
-
-      <component-def label="Reel / No bar">
-        <reel-layout noBar>
-          <doc-box style="width: 200px"></doc-box>
-          <doc-box style="width: 300px"></doc-box>
-          <doc-box style="width: 150px"></doc-box>
-          <doc-box style="width: 400px"></doc-box>
-          <doc-box style="width: 100px"></doc-box>
-          <doc-box style="width: 200px"></doc-box>
-          <doc-box style="width: 100px"></doc-box>
-          <doc-box style="width: 300px"></doc-box>
-          <doc-box style="width: 200px"></doc-box>
-        </reel-layout>
-      </component-def>
-    </doc-section>
-
-    <!--
-      Imposter
-     -->
-    <doc-section label="Imposter">
-      <div class="layoutInfo">
-        {{ collections.imposterLayout[0].templateContent | safe }}
-      </div>
-
-      <component-def label="Imposter / Vanilla">
-        <div style="position: relative">
           <doc-text words="500"></doc-text>
-          <imposter-layout>
-            <box-layout invert>
-              <doc-text words="500"></doc-text>
-            </box-layout>
-          </imposter-layout>
-        </div>
-      </component-def>
+        </box-layout>
+      </imposter-layout>
+    </div>
+  </component-def>
 
-      <component-def label="Imposter / Margin">
-        <div style="position: relative">
+  <component-def label="Imposter / Margin">
+    <div style="position: relative">
+      <doc-text words="500"></doc-text>
+      <imposter-layout margin="1rem">
+        <box-layout invert>
           <doc-text words="500"></doc-text>
-          <imposter-layout margin="1rem">
-            <box-layout invert>
-              <doc-text words="500"></doc-text>
-            </box-layout>
-          </imposter-layout>
-        </div>
-      </component-def>
+        </box-layout>
+      </imposter-layout>
+    </div>
+  </component-def>
 
-      <component-def label="Imposter / Sized">
-        <div style="position: relative">
+  <component-def label="Imposter / Sized">
+    <div style="position: relative">
+      <doc-text words="500"></doc-text>
+      <imposter-layout margin="1rem" style="width: var(--measure)">
+        <box-layout invert>
           <doc-text words="500"></doc-text>
-          <imposter-layout margin="1rem" style="width: var(--measure)">
-            <box-layout invert>
-              <doc-text words="500"></doc-text>
-            </box-layout>
-          </imposter-layout>
-        </div>
-      </component-def>
-    </doc-section>
+        </box-layout>
+      </imposter-layout>
+    </div>
+  </component-def>
+</doc-section>
 
-    <!--
-      Icon
-     -->
-    <doc-section label="Icon">
-      <div class="layoutInfo">
-        {{ collections.iconLayout[0].templateContent | safe }}
-      </div>
+<!--
+  Icon
+ -->
+<doc-section label="Icon">
+  <div class="layoutInfo">
+    {{ collections.iconLayout[0].templateContent | safe }}
+  </div>
 
-      <component-def label="Icon / Vanilla">
-        <cluster-layout space="var(--s2)" style="font-size: 1.5rem">
-          <icon-layout>
-            <svg>
-              <use href="{{ '/assets/icons.svg#left' | url }}"></use>
-            </svg>
-            Back
-          </icon-layout>
-          <icon-layout>
-            <svg>
-              <use href="{{'/assets/icons.svg#up' | url }}"></use>
-            </svg>
-            Up
-          </icon-layout>
-          <icon-layout>
-            <svg>
-              <use href="{{ '/assets/icons.svg#down' | url }}"></use>
-            </svg>
-            Down
-          </icon-layout>
-          <icon-layout>
-            Next
-            <svg>
-              <use href="{{ '/assets/icons.svg#right' | url }}"></use>
-            </svg>
-          </icon-layout>
-          <icon-layout>
-            <svg>
-              <use href="{{ '/assets/icons.svg#add' | url }}"></use>
-            </svg>
-            Add
-          </icon-layout>
-          <icon-layout>
-            <svg>
-              <use href="{{ '/assets/icons.svg#minus' | url }}"></use>
-            </svg>
-            Minus
-          </icon-layout>
-        </cluster-layout>
-      </component-def>
+  <component-def label="Icon / Vanilla">
+    <cluster-layout space="var(--s2)" style="font-size: 1.5rem">
+      <icon-layout>
+        <svg>
+          <use href="{{ '/assets/icons.svg#left' | url }}"></use>
+        </svg>
+        Back
+      </icon-layout>
+      <icon-layout>
+        <svg>
+          <use href="{{'/assets/icons.svg#up' | url }}"></use>
+        </svg>
+        Up
+      </icon-layout>
+      <icon-layout>
+        <svg>
+          <use href="{{ '/assets/icons.svg#down' | url }}"></use>
+        </svg>
+        Down
+      </icon-layout>
+      <icon-layout>
+        Next
+        <svg>
+          <use href="{{ '/assets/icons.svg#right' | url }}"></use>
+        </svg>
+      </icon-layout>
+      <icon-layout>
+        <svg>
+          <use href="{{ '/assets/icons.svg#add' | url }}"></use>
+        </svg>
+        Add
+      </icon-layout>
+      <icon-layout>
+        <svg>
+          <use href="{{ '/assets/icons.svg#minus' | url }}"></use>
+        </svg>
+        Minus
+      </icon-layout>
+    </cluster-layout>
+  </component-def>
 
-      <component-def label="Icon / Spaced">
-        <icon-layout space="var(--s-1)" style="font-size: 1.5rem">
-          <svg>
-            <use href="{{ '/assets/icons.svg#menu' | url }}"></use>
-          </svg>
-          Menu
-        </icon-layout>
-      </component-def>
+  <component-def label="Icon / Spaced">
+    <icon-layout space="var(--s-1)" style="font-size: 1.5rem">
+      <svg>
+        <use href="{{ '/assets/icons.svg#menu' | url }}"></use>
+      </svg>
+      Menu
+    </icon-layout>
+  </component-def>
 
-      <component-def label="Icon / Labelled">
-        <icon-layout title="Close" label="Close" style="font-size: 1.5rem">
-          <svg>
-            <use href="{{ '/assets/icons.svg#cross' | url }}"></use>
-          </svg>
-        </icon-layout>
-      </component-def>
-    </doc-section>
-  </stack-layout>
-</main>
+  <component-def label="Icon / Labelled">
+    <icon-layout title="Close" label="Close" style="font-size: 1.5rem">
+      <svg>
+        <use href="{{ '/assets/icons.svg#cross' | url }}"></use>
+      </svg>
+    </icon-layout>
+  </component-def>
+</doc-section>

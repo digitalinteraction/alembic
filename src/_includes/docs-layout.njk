@@ -8,6 +8,7 @@ nav:
     name: Docs
   - url: /forms/
     name: Forms
+spacing: var(--s3)
 ---
 
 {% set currentPage = page.url | url %}
@@ -40,7 +41,12 @@ nav:
           </ul>
         </nav>
       </header>
-      <main class="docsLayout-main"> {{ content | safe }} </main>
+      <main class="docsLayout-main">
+        <h2 class="docsTitle">{{ title }}</h2>
+        <stack-layout space="{{ spacing }}">
+          {{ content | safe }}
+        </stack-layout>
+      </main>
     </sidebar-layout>
   </body>
 </html>

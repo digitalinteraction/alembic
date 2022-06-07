@@ -1,25 +1,18 @@
 ---
 layout: docs-layout.njk
 title: Home
+spacing: 'var(--s1)'
 ---
 
-<main>
-  <h1 class="docsTitle">Home</h1>
-
-  <stack-layout>
-    {% for version in collections.api | apiSort %}
-    <div class="markdownPage">
-      <details-utils persist="{{ version.fileSlug }}">
-        <details>
-          <summary class="markdownPage-heading">
-            {{ version.data.title }}
-          </summary>
-          <stack-layout space="var(--s0)">
-            {{ version.templateContent | safe }}
-          </stack-layout>
-        </details>
-      </details-utils>
-    </div>
-    {% endfor %}
-  </stack-layout>
-</main>
+{% for version in collections.api | apiSort %}
+<div class="markdownPage">
+  <details-utils persist="{{ version.fileSlug }}">
+    <details>
+      <summary class="markdownPage-heading"> {{ version.data.title }} </summary>
+      <stack-layout space="var(--s0)">
+        {{ version.templateContent | safe }}
+      </stack-layout>
+    </details>
+  </details-utils>
+</div>
+{% endfor %}
