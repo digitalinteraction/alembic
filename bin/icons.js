@@ -56,11 +56,12 @@ async function main() {
   }
 
   const files = await fs.readdir(inputDir)
+  const svgFiles = files.filter((f) => f.endsWith('.svg'))
+
+  if (svgFiles.length === 0) throw new Error(`No SVG files in '${inputDir}`)
+
   const symbols = []
-
   for (const filename of files) {
-    if (!filename.endsWith('.svg')) continue
-
     const file = path.join(inputDir, filename)
     const data = await fs.readFile(file)
     const result = Svgo.optimize(data, {
