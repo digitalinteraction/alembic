@@ -253,8 +253,7 @@ doc-text:first-letter {
 component-def,
 doc-box,
 doc-resizer,
-doc-section,
-doc-text {
+doc-section {
   display: block;
 }
 
