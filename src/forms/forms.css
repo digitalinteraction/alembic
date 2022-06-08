@@ -59,8 +59,7 @@ form > * + * {
   Fieldset
  */
 fieldset {
-  border-style: dashed;
-  border-width: var(--border-thin);
+  border: var(--border-thin) solid var(--fillable);
   padding: var(--s-1);
 }
 fieldset legend {
@@ -89,8 +88,7 @@ fieldset legend {
  */
 .checkbox {
   padding: 0.25em 0.5em;
-  border-width: var(--border-thin);
-  border-radius: var(--border-thin);
+  border: var(--border-thin) solid var(--fillable);
   display: flex;
   align-items: center;
   justify-content: stretch;
@@ -108,24 +106,18 @@ fieldset legend {
 /*
   Messages
  */
-.formInfoMessage,
-.formErrorMessage,
-.formSuccessMessage {
-  border-radius: var(--border-thick);
+.formMessage {
   border: var(--border-thick) solid;
   padding: var(--s-1);
 }
-.formInfoMessage {
-  border-color: royalblue;
-  background-color: rgba(65, 105, 225, 0.15);
+.formMessage[data-accent='info'] {
+  border-color: var(--color-info);
 }
-.formErrorMessage {
-  border-color: #ce4760;
-  background-color: rgba(255, 0, 0, 0.1);
+.formMessage[data-accent='error'] {
+  border-color: var(--color-error);
 }
-.formSuccessMessage {
-  border-color: var(--color-kellyGreen);
-  background-color: rgba(0, 255, 0, 0.1);
+.formMessage[data-accent='success'] {
+  border-color: var(--color-success);
 }
 
 /**
