@@ -57,7 +57,10 @@ title: Docs
   <div class="layoutInfo">
     <p>
       <strong>DocBox</strong> is a custom element to show placeholder content to
-      demonstrate layouts and other components.
+      demonstrate layouts and other components. Depending on whether
+      <code>width</code> or <code>height</code> is set, the box will be
+      <code>block</code> or <code>inline-block</code>. If neither is set, the
+      intrinsic values for both are used, i.e. based on the box's content.
     </p>
     <table>
       <tr>
@@ -67,13 +70,16 @@ title: Docs
         <th>Info</th>
       </tr>
       <tr>
-        <td>size</td>
+        <td>width</td>
         <td>CSS Length</td>
-        <td><code>100px</code></td>
-        <td>
-          How big you want the box to be, the dimension is determined by
-          <code>display</code>
-        </td>
+        <td><code>null</code></td>
+        <td> How wide the box should be horizontally (inline axis) </td>
+      </tr>
+      <tr>
+        <td>height</td>
+        <td>CSS Length</td>
+        <td><code>null</code></td>
+        <td> How tall the box should be vertically (block axis) </td>
       </tr>
       <tr>
         <td>accent</td>
@@ -84,27 +90,21 @@ title: Docs
           DocBoxes
         </td>
       </tr>
-      <tr>
-        <td>display</td>
-        <td><code>block</code> or <code>inline-block</code></td>
-        <td><code>block</code></td>
-        <td>
-          Which dimension the <code>size</code> applies to. If
-          <code>block</code>, size is the height of the box. If
-          <code>inline-block</code>, size is the width of the box and the height
-          is set to <code>50px</code>.
-        </td>
-      </tr>
     </table>
   </div>
   <component-def label="DocBox / block">
-    <doc-box size="100px"></doc-box>
+    <doc-box height="100px"></doc-box>
   </component-def>
   <component-def label="DocBox / inline-block">
-    <doc-box size="150px" display="inline-block"></doc-box>
+    <doc-box height="50px" width="150px"></doc-box>
+  </component-def>
+  <component-def label="DocBox / intrinsic">
+    <doc-box>
+      <p><doc-text words="50"></doc-text></p>
+    </doc-box>
   </component-def>
   <component-def label="DocBox / accent">
-    <doc-box accent="coral"></doc-box>
+    <doc-box height="50px" accent="coral"></doc-box>
   </component-def>
 </doc-section>
 
@@ -125,7 +125,7 @@ title: Docs
   </div>
   <component-def label="DocResizer / vanilla">
     <doc-resizer>
-      <doc-box size="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
     </doc-resizer>
   </component-def>
 </doc-section>

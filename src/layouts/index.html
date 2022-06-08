@@ -57,44 +57,44 @@ title: Layout
   </div>
   <component-def label="Stack / Vanilla">
     <stack-layout>
-      <doc-box size="50px"></doc-box>
-      <doc-box size="50px"></doc-box>
-      <doc-box size="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
     </stack-layout>
   </component-def>
 
   <component-def label="Stack / Small">
     <stack-layout space="var(--s-1)">
-      <doc-box size="50px"></doc-box>
-      <doc-box size="50px"></doc-box>
-      <doc-box size="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
     </stack-layout>
   </component-def>
 
   <component-def label="Stack / Gapless">
     <stack-layout space="0">
-      <doc-box size="50px"></doc-box>
-      <doc-box size="50px" accent="coral"></doc-box>
-      <doc-box size="50px" accent="royalblue"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px" accent="coral"></doc-box>
+      <doc-box height="50px" accent="royalblue"></doc-box>
     </stack-layout>
   </component-def>
 
   <component-def label="Stack / Nested">
     <stack-layout>
       <stack-layout space="var(--s-1)">
-        <doc-box size="50px"></doc-box>
-        <doc-box size="50px"></doc-box>
-        <doc-box size="50px"></doc-box>
+        <doc-box height="50px"></doc-box>
+        <doc-box height="50px"></doc-box>
+        <doc-box height="50px"></doc-box>
       </stack-layout>
       <stack-layout space="var(--s-1)">
-        <doc-box size="50px" accent="royalblue"></doc-box>
-        <doc-box size="50px" accent="royalblue"></doc-box>
-        <doc-box size="50px" accent="royalblue"></doc-box>
+        <doc-box height="50px" accent="royalblue"></doc-box>
+        <doc-box height="50px" accent="royalblue"></doc-box>
+        <doc-box height="50px" accent="royalblue"></doc-box>
       </stack-layout>
       <stack-layout space="var(--s-1)">
-        <doc-box size="50px"></doc-box>
-        <doc-box size="50px"></doc-box>
-        <doc-box size="50px"></doc-box>
+        <doc-box height="50px"></doc-box>
+        <doc-box height="50px"></doc-box>
+        <doc-box height="50px"></doc-box>
       </stack-layout>
     </stack-layout>
   </component-def>
@@ -146,19 +146,19 @@ title: Layout
   </div>
   <component-def label="Center / Vanilla">
     <center-layout>
-      <doc-box size="200px"> </doc-box>
+      <doc-box height="300px"> </doc-box>
     </center-layout>
   </component-def>
 
   <component-def label="Center / Gutter">
     <center-layout gutters="var(--s1)" class="showPadding">
-      <doc-box size="200px"></doc-box>
+      <doc-box height="300px"></doc-box>
     </center-layout>
   </component-def>
 
   <component-def label="Center / Intrinsic">
     <center-layout intrinsic>
-      <doc-box size="200px" display="inline"></doc-box>
+      <doc-box height="300px" width="300px"></doc-box>
     </center-layout>
   </component-def>
 </doc-section>
@@ -172,42 +172,42 @@ title: Layout
   </div>
   <component-def label="Cluster / Vanilla">
     <cluster-layout>
-      <doc-box size="200px" display="inline" role="listitem"></doc-box>
-      <doc-box size="350px" display="inline" role="listitem"></doc-box>
-      <doc-box size="200px" display="inline" role="listitem"></doc-box>
-      <doc-box size="250px" display="inline" role="listitem"></doc-box>
-      <doc-box size="200px" display="inline" role="listitem"></doc-box>
-      <doc-box size="300px" display="inline" role="listitem"></doc-box>
-      <doc-box size="200px" display="inline" role="listitem"></doc-box>
-      <doc-box size="500px" display="inline" role="listitem"></doc-box>
-      <doc-box size="150px" display="inline" role="listitem"></doc-box>
-      <doc-box size="250px" display="inline" role="listitem"></doc-box>
-      <doc-box size="100px" display="inline" role="listitem"></doc-box>
-      <doc-box size="250px" display="inline" role="listitem"></doc-box>
+      <doc-box width="200px" role="listitem"></doc-box>
+      <doc-box width="350px" role="listitem"></doc-box>
+      <doc-box width="200px" role="listitem"></doc-box>
+      <doc-box width="250px" role="listitem"></doc-box>
+      <doc-box width="200px" role="listitem"></doc-box>
+      <doc-box width="300px" role="listitem"></doc-box>
+      <doc-box width="200px" role="listitem"></doc-box>
+      <doc-box width="500px" role="listitem"></doc-box>
+      <doc-box width="150px" role="listitem"></doc-box>
+      <doc-box width="250px" role="listitem"></doc-box>
+      <doc-box width="100px" role="listitem"></doc-box>
+      <doc-box width="250px" role="listitem"></doc-box>
     </cluster-layout>
   </component-def>
 
   <component-def label="Cluster / Flush">
     <cluster-layout space="0">
-      <doc-box size="200px" display="inline"> </doc-box>
-      <doc-box size="200px" display="inline" accent="royalblue"> </doc-box>
-      <doc-box size="200px" display="inline" accent="coral"> </doc-box>
+      <doc-box width="200px"> </doc-box>
+      <doc-box width="200px" accent="royalblue"> </doc-box>
+      <doc-box width="200px" accent="coral"> </doc-box>
     </cluster-layout>
   </component-def>
 
   <component-def label="Cluster / End justified">
     <cluster-layout justify="flex-end">
-      <doc-box size="200px" display="inline"></doc-box>
-      <doc-box size="200px" display="inline"></doc-box>
-      <doc-box size="200px" display="inline"></doc-box>
+      <doc-box width="200px"></doc-box>
+      <doc-box width="200px"></doc-box>
+      <doc-box width="200px"></doc-box>
     </cluster-layout>
   </component-def>
 
   <component-def label="Cluster / Aligned">
     <cluster-layout align="center">
-      <doc-box size="200px" display="inline" style="height: 100px"> </doc-box>
-      <doc-box size="200px" display="inline"> </doc-box>
-      <doc-box size="200px" display="inline" style="height: 75px"> </doc-box>
+      <doc-box width="200px" height="100px"></doc-box>
+      <doc-box width="200px" height="50px"></doc-box>
+      <doc-box width="200px" height="70px"></doc-box>
     </cluster-layout>
   </component-def>
 </doc-section>
@@ -221,61 +221,59 @@ title: Layout
   </div>
   <component-def label="Sidebar / Vanilla">
     <sidebar-layout>
-      <div style="background: royalblue; padding-inline-end: 2rem">
+      <doc-box accent="royalblue">
         <ul>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
         </ul>
-      </div>
-      <doc-box size="300px"></doc-box>
+      </doc-box>
+      <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
 
   <component-def label="Sidebar / No stretch">
     <sidebar-layout noStretch>
-      <div style="background: royalblue; padding-inline-end: 2rem">
-        <ul>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
-        </ul>
-      </div>
-      <doc-box size="300px"></doc-box>
+      <doc-box accent="royalblue">
+        <p><doc-text words="3,5"></doc-text></p>
+        <p><doc-text words="3,5"></doc-text></p>
+        <p><doc-text words="3,5"></doc-text></p>
+        <p><doc-text words="3,5"></doc-text></p>
+        <p><doc-text words="3,5"></doc-text></p>
+      </doc-box>
+      <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
 
   <component-def label="Sidebar / Gapless">
     <sidebar-layout space="0">
-      <div style="background: royalblue; padding-inline-end: 2rem">
+      <doc-box accent="royalblue">
         <ul>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
         </ul>
-      </div>
-      <doc-box size="300px"></doc-box>
+      </doc-box>
+      <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
 
   <component-def label="Sidebar / Side width">
     <sidebar-layout sideWidth="20ch">
-      <div style="background: royalblue; padding-inline-end: 2rem">
+      <doc-box accent="royalblue">
         <ul>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
-          <li><doc-text words="5,7"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
+          <li><doc-text words="3,5"></doc-text></li>
         </ul>
-      </div>
-      <doc-box size="300px"></doc-box>
+      </doc-box>
+      <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
 </doc-section>
@@ -289,19 +287,19 @@ title: Layout
   </div>
   <component-def label="Switcher / Vanilla">
     <switcher-layout>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
+      <doc-box height="100px"></doc-box>
+      <doc-box height="100px"></doc-box>
+      <doc-box height="100px"></doc-box>
     </switcher-layout>
   </component-def>
 
   <component-def label="Switcher / Too many">
     <switcher-layout>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
     </switcher-layout>
   </component-def>
 </doc-section>
@@ -315,37 +313,31 @@ title: Layout
   </div>
   <component-def label="Cover / Vanilla">
     <cover-layout class="showPadding">
-      <doc-box size="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
       <h1>Hello, Cover!</h1>
-      <doc-box size="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
     </cover-layout>
   </component-def>
 
   <component-def label="Cover / Shorter">
     <cover-layout minHeight="400px" noPad>
-      <doc-box size="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
       <h1>Hello, Cover!</h1>
-      <doc-box size="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
     </cover-layout>
   </component-def>
 
   <component-def label="Cover / Custom center">
     <cover-layout centered=".center" minHeight="400px" noPad>
-      <doc-box size="50px"></doc-box>
-      <doc-box class="center" size="100px" accent="royalblue"></doc-box>
-      <doc-box size="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box class="center" height="100px" accent="royalblue"></doc-box>
+      <doc-box height="50px"></doc-box>
     </cover-layout>
   </component-def>
 
   <component-def label="Cover / Single">
     <cover-layout centered=".center" minHeight="400px" noPad>
-      <doc-box class="center" size="200px" accent="royalblue"></doc-box>
-    </cover-layout>
-  </component-def>
-
-  <component-def label="Cover / No padding">
-    <cover-layout centered=".center" minHeight="400px" noPad>
-      <doc-box class="center" size="200px" accent="royalblue"></doc-box>
+      <doc-box class="center" height="200px" accent="royalblue"></doc-box>
     </cover-layout>
   </component-def>
 </doc-section>
@@ -359,23 +351,23 @@ title: Layout
   </div>
   <component-def label="Grid / Vanilla">
     <grid-layout>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
     </grid-layout>
   </component-def>
 
   <component-def label="Grid / Wider">
     <grid-layout min="400px">
-      <doc-box></doc-box>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
-      <doc-box></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
+      <doc-box height="50px"></doc-box>
     </grid-layout>
   </component-def>
 </doc-section>
@@ -416,57 +408,73 @@ title: Layout
 
   <component-def label="Reel / Vanilla">
     <reel-layout>
-      <doc-box style="width: 200px"></doc-box>
-      <doc-box style="width: 300px"></doc-box>
-      <doc-box style="width: 150px"></doc-box>
-      <doc-box style="width: 400px"></doc-box>
-      <doc-box style="width: 100px"></doc-box>
-      <doc-box style="width: 200px"></doc-box>
-      <doc-box style="width: 100px"></doc-box>
-      <doc-box style="width: 300px"></doc-box>
-      <doc-box style="width: 200px"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
+      <doc-box height="50px" width="300px"></doc-box>
+      <doc-box height="50px" width="150px"></doc-box>
+      <doc-box height="50px" width="400px"></doc-box>
+      <doc-box height="50px" width="100px"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
+      <doc-box height="50px" width="100px"></doc-box>
+      <doc-box height="50px" width="300px"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
     </reel-layout>
   </component-def>
 
   <component-def label="Reel / Fixed width">
     <reel-layout itemWidth="200px">
-      <doc-box style="width: 200px"></doc-box>
-      <doc-box style="width: 300px"></doc-box>
-      <doc-box style="width: 150px"></doc-box>
-      <doc-box style="width: 400px"></doc-box>
-      <doc-box style="width: 100px"></doc-box>
-      <doc-box style="width: 200px"></doc-box>
-      <doc-box style="width: 100px"></doc-box>
-      <doc-box style="width: 300px"></doc-box>
-      <doc-box style="width: 200px"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
+      <doc-box height="50px" width="300px"></doc-box>
+      <doc-box height="50px" width="150px"></doc-box>
+      <doc-box height="50px" width="400px"></doc-box>
+      <doc-box height="50px" width="100px"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
+      <doc-box height="50px" width="100px"></doc-box>
+      <doc-box height="50px" width="300px"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
     </reel-layout>
   </component-def>
 
   <component-def label="Reel / Gapless">
     <reel-layout space="0">
-      <doc-box style="width: 200px"></doc-box>
-      <doc-box style="width: 300px" accent="royalblue"></doc-box>
-      <doc-box style="width: 150px" accent="coral"></doc-box>
-      <doc-box style="width: 400px"></doc-box>
-      <doc-box style="width: 200px" accent="royalblue"></doc-box>
-      <doc-box style="width: 100px" accent="coral"></doc-box>
-      <doc-box style="width: 100px"></doc-box>
-      <doc-box style="width: 300px" accent="royalblue"></doc-box>
-      <doc-box style="width: 200px" accent="coral"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
+      <doc-box height="50px" width="300px" accent="royalblue"></doc-box>
+      <doc-box height="50px" width="150px" accent="coral"></doc-box>
+      <doc-box height="50px" width="400px"></doc-box>
+      <doc-box height="50px" width="200px" accent="royalblue"></doc-box>
+      <doc-box height="50px" width="100px" accent="coral"></doc-box>
+      <doc-box height="50px" width="100px"></doc-box>
+      <doc-box height="50px" width="300px" accent="royalblue"></doc-box>
+      <doc-box height="50px" width="200px" accent="coral"></doc-box>
     </reel-layout>
   </component-def>
 
   <component-def label="Reel / No bar">
     <reel-layout noBar>
-      <doc-box style="width: 200px"></doc-box>
-      <doc-box style="width: 300px"></doc-box>
-      <doc-box style="width: 150px"></doc-box>
-      <doc-box style="width: 400px"></doc-box>
-      <doc-box style="width: 100px"></doc-box>
-      <doc-box style="width: 200px"></doc-box>
-      <doc-box style="width: 100px"></doc-box>
-      <doc-box style="width: 300px"></doc-box>
-      <doc-box style="width: 200px"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
+      <doc-box height="50px" width="300px"></doc-box>
+      <doc-box height="50px" width="150px"></doc-box>
+      <doc-box height="50px" width="400px"></doc-box>
+      <doc-box height="50px" width="100px"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
+      <doc-box height="50px" width="100px"></doc-box>
+      <doc-box height="50px" width="300px"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
+    </reel-layout>
+  </component-def>
+
+  <component-def label="Reel / Styled">
+    <reel-layout
+      style="--color-foreground: royalblue; --color-background: wheat"
+    >
+      <doc-box height="50px" width="200px"></doc-box>
+      <doc-box height="50px" width="300px"></doc-box>
+      <doc-box height="50px" width="150px"></doc-box>
+      <doc-box height="50px" width="400px"></doc-box>
+      <doc-box height="50px" width="100px"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
+      <doc-box height="50px" width="100px"></doc-box>
+      <doc-box height="50px" width="300px"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
     </reel-layout>
   </component-def>
 </doc-section>

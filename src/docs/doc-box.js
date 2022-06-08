@@ -2,21 +2,23 @@ import { addGlobalStyle } from '../lib/style.js'
 
 /**
  * DocBox is a coloured box to represent content while demonstrating a layout
- *
- * @property {string} size=100px How long or tall to make the box
- * @property {string} accent=rebeccapurple A CSS colour to fill the box
- * @property {string} display=block Whether to size vertically (block) or horizontally (inline)
  */
 export class DocBox extends HTMLElement {
   static get observedAttributes() {
-    return []
+    return ['height', 'width', 'accent']
   }
 
-  get size() {
-    return this.getAttribute('size') ?? '100px'
+  get height() {
+    return this.getAttribute('height') ?? null
   }
-  set size(value) {
-    this.setAttribute('size', value)
+  set height(value) {
+    this.setAttribute('height', value)
+  }
+  get width() {
+    return this.getAttribute('width') ?? null
+  }
+  set width(value) {
+    this.setAttribute('width', value)
   }
   get accent() {
     return this.getAttribute('accent') ?? 'rebeccapurple'
@@ -24,33 +26,25 @@ export class DocBox extends HTMLElement {
   set accent(value) {
     this.setAttribute('accent', value)
   }
-  get display() {
-    return this.getAttribute('display') ?? 'block'
-  }
-  set display(value) {
-    this.setAttribute('display', value)
-  }
 
   render() {
-    this.dataset.i = `DocBox-${this.size}${this.accent}${this.display}`
+    this.dataset.i = `DocBox-${this.width}${this.height}${this.accent}`
 
-    const displayRule =
-      this.display === 'block'
-        ? ` display: block;
-            min-height: ${this.size};
-          `
-        : ` display: inline-block;
-            height: 50px;
-            width: 100%;
-            max-width: ${this.size};
-          `
+    let rules = [
+      `display: ${this.width !== null ? 'inline-block' : 'block'}`,
+      `background-color: ${this.accent}`,
+      `color: white`,
+      `color: color-contrast(white vs black, ${this.accent});`,
+    ]
+
+    if (this.height !== null) rules.push(`height: ${this.height}`)
+    if (this.width !== null) rules.push(`width: 100%; max-width: ${this.width}`)
 
     addGlobalStyle(
       this.dataset.i,
       `
         [data-i="${this.dataset.i}"] {
-          ${displayRule}
-          background-color: ${this.accent};
+          ${rules.join(';')}
         }
       `
     )
