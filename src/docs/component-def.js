@@ -1,45 +1,11 @@
-const style = `
-.componentDef {
-}
-.componentDef-heading {
-  font-family: var(--doc-family);
-  margin-block: 0 0.1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.componentDef-title {
-}
-.componentDef-inner {
-  border: 3px dashed var(--doc-foreground);
-  border-radius: 3px;
-  padding: 1rem;
-}
-.componentDef-isUnpadded .componentDef-inner {
-  padding: 0;
-}
-.componentDef-toggle {
-  font-family: inherit;
-  font-weight: bold;
-  padding: 4px 6px;
-}
-.componentDef-code {
-  margin: 0;
-  font-family: ui-monospace, monospace;
-  max-width: 100%;
-  overflow-x: auto;
-}
-`
-
 const template = document.createElement('template')
 template.innerHTML = `
-<style>${style}</style>
-<section class="componentDef">
-  <h3 class="componentDef-heading">
-    <span class="componentDef-title"></span>
-    <button class="componentDef-toggle">show code</button>
+<section part="section">
+  <h3 part="heading">
+    <span part="title"></span>
+    <button part="toggle">show code</button>
   </h3>
-  <div class="componentDef-inner">
+  <div part="inner">
     <doc-resizer>
       <slot></slot>
     </doc-resizer>
@@ -49,11 +15,18 @@ template.innerHTML = `
 
 export class ComponentDef extends HTMLElement {
   static get observedAttributes() {
-    return ['title']
+    return ['title', 'no-pad']
   }
 
   get title() {
     return this.getAttribute('label') ?? ''
+  }
+  get noPad() {
+    return this.hasAttribute('no-pad')
+  }
+  set noPad(value) {
+    if (value) this.setAttribute('no-pad', '')
+    else this.removeAttribute('no-pad')
   }
 
   constructor() {
@@ -62,10 +35,10 @@ export class ComponentDef extends HTMLElement {
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
 
-    const button = this.shadowRoot.querySelector('.componentDef-toggle')
+    const button = this.shadowRoot.querySelector("[part='toggle']")
     const slot = this.shadowRoot.querySelector('slot')
     const pre = document.createElement('pre')
-    pre.classList.add('componentDef-code')
+    pre.setAttribute('part', 'code')
 
     button.addEventListener('click', () => {
       const showCode = Boolean(slot.parentElement)
@@ -87,7 +60,7 @@ export class ComponentDef extends HTMLElement {
     })
   }
   render() {
-    const titleElem = this.shadowRoot.querySelector('.componentDef-title')
+    const titleElem = this.shadowRoot.querySelector("[part='title']")
     titleElem.textContent = this.title
   }
   connectedCallback() {

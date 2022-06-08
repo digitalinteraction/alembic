@@ -17,9 +17,9 @@
   --measure: 60ch;
 
   /* WIP axioms */
-  --entrypoint: #708090; /* A colour to indicate something a user should fill in */
+  --fillable: darkblue; /* A colour to indicate something a user should fill in */
   --focus: coral; /* A colour to bring attention to what the user is currently doing */
-  --measure-measure: 30ch;
+  --form-measure: 40ch;
 
   /* WIP forms */
   --color-darkish: #888;
@@ -284,4 +284,44 @@ doc-text {
   font-family: var(--doc-family);
   cursor: pointer;
   font-weight: bold;
+}
+
+/* Component def */
+component-def::part(section) {
+}
+component-def::part(heading) {
+  font-family: var(--doc-family);
+  margin-block: 0 0.1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.componentDef-title {
+}
+component-def::part(inner) {
+  border: 3px dashed var(--doc-foreground);
+  border-radius: 3px;
+  padding: 1rem;
+}
+component-def[no-pad]::part(inner) {
+  padding: 0;
+}
+component-def::part(toggle) {
+  font-family: inherit;
+  font-weight: bold;
+  padding: 4px 6px;
+  background-color: #cacad5;
+  border: 2px solid #cacad5;
+  border-radius: 3px;
+  font-size: 0.7em;
+  box-shadow: none;
+}
+component-def::part(toggle):hover {
+  background: #d6d6e3;
+}
+component-def::part(code) {
+  margin: 0;
+  font-family: ui-monospace, monospace;
+  max-width: 100%;
+  overflow-x: auto;
 }
