@@ -325,3 +325,20 @@ component-def::part(code) {
   max-width: 100%;
   overflow-x: auto;
 }
+
+/* Doc resizer */
+/* TODO: but ::part doesn't work when it self is in a component-def */
+
+/* Doc section */
+doc-section {
+  position: relative;
+}
+doc-section::part(title) {
+  position: sticky;
+  top: 0;
+  background: var(--doc-background);
+  font-size: 1.5em;
+  font-family: var(--doc-family);
+  cursor: pointer;
+  font-weight: bold;
+}

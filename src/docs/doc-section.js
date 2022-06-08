@@ -1,16 +1,4 @@
 const style = `
-.docSection {
-  position: relative;
-}
-.docSection-title {
-  position: sticky;
-  top: 0;
-  background: var(--doc-background);
-  font-size: 1.5em;
-  font-family: var(--doc-family);
-  cursor: pointer;
-  font-weight: bold;
-}
 ::slotted(*:not(:first-child)) {
   margin-block-start: var(--s2);
 }
@@ -19,14 +7,12 @@ const style = `
 const template = document.createElement('template')
 template.innerHTML = `
 <style>${style}</style>
-<section class="docSection">
-  <details-utils class="docSection-detailUtils">
-    <details>
-      <summary class="docSection-title"></summary>
-      <slot></slot>
-    </details>
-  </details-utils>
-</section>
+<details-utils part="detailUtils">
+  <details>
+    <summary part="title"></summary>
+    <slot></slot>
+  </details>
+</details-utils>
 `
 
 export class DocSection extends HTMLElement {
@@ -37,10 +23,10 @@ export class DocSection extends HTMLElement {
     return this.getAttribute('prefix') ?? ''
   }
   get detailsUtilsElem() {
-    return this.shadowRoot.querySelector('.docSection-detailUtils')
+    return this.shadowRoot.querySelector("[part='detailUtils']")
   }
   get titleElem() {
-    return this.shadowRoot.querySelector('.docSection-title')
+    return this.shadowRoot.querySelector("[part='title']")
   }
 
   constructor() {
