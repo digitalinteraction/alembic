@@ -28,7 +28,7 @@ export class DetailsUtils extends HTMLElement {
       }
 
       const offset = e.target.getBoundingClientRect().top
-      if (offset < 0) {
+      if (e.target.open === false && offset < 0) {
         window.scrollTo({ top: window.scrollY + offset })
       }
     })
