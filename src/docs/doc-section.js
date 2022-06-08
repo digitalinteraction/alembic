@@ -1,4 +1,6 @@
-const style = `
+import { trimCss } from '../lib/lib.js'
+
+const style = trimCss`
 ::slotted(*:not(:first-child)) {
   margin-block-start: var(--s2);
 }

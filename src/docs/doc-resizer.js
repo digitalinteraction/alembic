@@ -1,14 +1,16 @@
-const style = `
+import { trimCss } from '../lib/lib.js'
+
+const style = trimCss`
 @media (hover: hover) {
-  .docResizer {
+  :host {
     display: flex;
     gap: 1rem;
   }
-  .docResizer-content {
+  ::part(content) {
     flex: 1;
     max-width: calc(100% - 1rem - 0.5rem); /* 100% - gap - handleWidth */
   }
-  .docResizer-handle {
+  ::part(handle) {
     width: 0.5rem;
     
     border-top-left-radius: 5px;
@@ -26,12 +28,10 @@ const style = `
 const template = document.createElement('template')
 template.innerHTML = `
 <style>${style}</style>
-<div class="docResizer">
-  <div class="docResizer-content">
-    <slot></slot>
-  </div>
-  <div class="docResizer-handle" title="Drag to resize">
-  </div>
+<div part="content">
+  <slot></slot>
+</div>
+<div part="handle" title="Drag to resize">
 </div>
 `
 
@@ -40,23 +40,24 @@ export class DocResizer extends HTMLElement {
     return []
   }
 
+  get handleElem() {
+    return this.shadowRoot.querySelector("[part='handle']")
+  }
+
   constructor() {
     super()
 
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
 
-    const root = this.shadowRoot.querySelector('.docResizer')
-    const handle = this.shadowRoot.querySelector('.docResizer-handle')
-
     let resized = 0
-    handle.addEventListener('mousedown', (e) => {
+    this.handleElem.addEventListener('mousedown', (e) => {
       let current = e.screenX + resized
 
-      function onMove(e) {
+      const onMove = (e) => {
         e.preventDefault()
         resized = Math.max(0, current - e.screenX)
-        root.style = `margin-inline-end: ${resized}px`
+        this.style.marginInlineEnd = `${resized}px`
       }
 
       window.addEventListener('mousemove', onMove)
@@ -70,7 +71,7 @@ export class DocResizer extends HTMLElement {
     // Reset the control if the window size changed
     window.addEventListener('resize', () => {
       if (resized) resized = 0
-      if (root.style) root.style = ''
+      if (this.style.marginInlineEnd) this.style.marginInlineEnd = null
     })
   }
 }
