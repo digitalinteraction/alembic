@@ -8,7 +8,12 @@ form > * + * {
 .field,
 .checkboxGroup,
 .checkbox {
-  max-width: 22em;
+  max-width: var(--form-measure);
+}
+
+:is(input, select, textarea, button):focus {
+  outline: var(--s-4) solid var(--focus);
+  outline-offset: var(--border-thin);
 }
 
 /*
@@ -34,10 +39,9 @@ form > * + * {
 .field select,
 .field textarea {
   background-color: transparent;
-  border: var(--border-thin) solid var(--entrypoint);
+  border: var(--border-thin) solid var(--fillable);
   margin: 0;
-  border-radius: var(--border-thin);
-  padding: 0.25em;
+  padding: var(--s-2);
   width: 100%;
 }
 .field input[type='checkbox'] {
