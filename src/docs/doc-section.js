@@ -55,7 +55,8 @@ export class DocSection extends HTMLElement {
   }
   render() {
     this.titleElem.textContent = this.title
-    this.detailsUtilsElem.persist = this.prefix + this.getSlug(this.title)
+    this.id = this.getSlug(this.title)
+    this.detailsUtilsElem.persist = this.prefix + this.id
   }
   connectedCallback() {
     this.render()
