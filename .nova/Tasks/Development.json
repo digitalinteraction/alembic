@@ -3,6 +3,10 @@
     "build" : {
       "enabled" : true,
       "path" : "bin\/build.sh"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "nova dist\/index.html"
     }
   },
   "environment" : {
