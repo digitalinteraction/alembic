@@ -9,6 +9,7 @@
       "script" : "nova dist\/index.html"
     }
   },
+  "buildBeforeRunning" : true,
   "environment" : {
     "NODE_ENV" : "development"
   }
