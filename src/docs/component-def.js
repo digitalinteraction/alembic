@@ -37,8 +37,10 @@ export class ComponentDef extends HTMLElement {
 
     const button = this.shadowRoot.querySelector("[part='toggle']")
     const slot = this.shadowRoot.querySelector('slot')
+
     const pre = document.createElement('pre')
     pre.setAttribute('part', 'code')
+    pre.innerText = this.renderCode(this.innerHTML)
 
     button.addEventListener('click', () => {
       const showCode = Boolean(slot.parentElement)
@@ -47,16 +49,6 @@ export class ComponentDef extends HTMLElement {
       button.textContent = showCode ? 'hide code' : 'show code'
 
       current.replaceWith(next)
-
-      const indent = /[ \t]+/.exec(this.innerHTML)
-
-      pre.textContent = this.innerHTML
-        .split(/\r?\n/)
-        .map((l) => l.replace(indent, ''))
-        .join('\n')
-        .replace(/\s*data-i=".+"/g, '')
-        .trim()
-      // console.log(this.children)
     })
   }
   render() {
@@ -68,5 +60,16 @@ export class ComponentDef extends HTMLElement {
   }
   attributeChangedCallback() {
     this.render()
+  }
+
+  renderCode(html) {
+    const indent = /[ \t]+/.exec(html)
+
+    return html
+      .split(/\r?\n/)
+      .map((l) => l.replace(indent, ''))
+      .join('\n')
+      .replace(/\s*data-i=".+"/g, '')
+      .trim()
   }
 }

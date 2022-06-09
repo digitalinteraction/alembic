@@ -257,17 +257,7 @@ doc-section {
   Utilities
 */
 .showPadding {
-  background-image: linear-gradient(
-      to bottom,
-      var(--doc-background) 0%,
-      var(--doc-background) 100%
-    ),
-    linear-gradient(
-      to bottom,
-      var(--color-background) 0%,
-      var(--color-background) 100%
-    );
-  background-clip: content-box, padding-box;
+  outline: 2px dashed red;
 }
 
 /** Markdown page */
@@ -294,9 +284,8 @@ component-def::part(heading) {
 .componentDef-title {
 }
 component-def::part(inner) {
-  border: 3px dashed var(--doc-foreground);
-  border-radius: 3px;
-  padding: 1rem;
+  border: 3px dotted var(--doc-foreground);
+  padding: var(--s0);
 }
 component-def[no-pad]::part(inner) {
   padding: 0;
@@ -310,6 +299,7 @@ component-def::part(toggle) {
   border-radius: 3px;
   font-size: 0.7em;
   box-shadow: none;
+  text-shadow: 1px 2px 3px rgba(255, 255, 255, 0.3);
 }
 component-def::part(toggle):hover {
   background: #d6d6e3;
