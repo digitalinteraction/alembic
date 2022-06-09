@@ -35,7 +35,9 @@ spacing: var(--s3)
                 class="docsNav-item"
                 href="{{ pageUrl }}"
                 {{ 'aria-current="page"' if pageUrl == currentPage }}
-              > {{ item.name }} </a>
+              >
+                {{ item.name }} →
+              </a>
             </li>
             {% endfor %}
           </ul>
