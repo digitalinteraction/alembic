@@ -8,7 +8,7 @@ form > * + * {
 .field,
 .checkboxGroup,
 .checkbox {
-  max-width: var(--form-measure);
+  max-width: var(--task);
 }
 
 :is(input, select, textarea, button):focus {

@@ -19,7 +19,7 @@
   /* WIP axioms */
   --fillable: darkblue; /* A colour to indicate something a user should fill in */
   --focus: coral; /* A colour to bring attention to what the user is currently doing */
-  --form-measure: 40ch;
+  --task: 40ch;
 
   /* WIP forms */
   --color-darkish: #888;
