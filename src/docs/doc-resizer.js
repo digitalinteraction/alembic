@@ -1,15 +1,21 @@
 import { trimCss } from '../lib/lib.js'
 
 const style = trimCss`
+/* These styles are used in Firefox/chrome */
 @media (hover: hover) {
+  doc-resizer,
   :host {
     display: flex;
     gap: 1rem;
+    box-sizing: border-box;
   }
+  doc-resizer::part(content),
   ::part(content) {
     flex: 1;
     max-width: calc(100% - 1rem - 0.5rem); /* 100% - gap - handleWidth */
+    box-sizing: border-box;
   }
+  doc-resizer::part(handle),
   ::part(handle) {
     width: 0.5rem;
     
@@ -18,10 +24,8 @@ const style = trimCss`
     
     background: var(--doc-foreground);
     cursor: col-resize;
+    box-sizing: border-box;
   }
-}
-* {
-  box-sizing: border-box;
 }
 `
 

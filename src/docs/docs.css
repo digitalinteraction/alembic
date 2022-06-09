@@ -326,7 +326,27 @@ component-def::part(code) {
 }
 
 /* Doc resizer */
-/* TODO: but ::part doesn't work when it self is in a component-def */
+/* These styles are used in Safari, they're also set in doc-resizer.js for Firefox/chrome */
+doc-resizer {
+  display: flex;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+doc-resizer::part(content) {
+  flex: 1;
+  max-width: calc(100% - 1rem - 0.5rem); /* 100% - gap - handleWidth */
+  box-sizing: border-box;
+}
+doc-resizer::part(handle) {
+  width: 0.5rem;
+
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  background: var(--doc-foreground);
+  cursor: col-resize;
+  box-sizing: border-box;
+}
 
 /* Doc section */
 doc-section {
