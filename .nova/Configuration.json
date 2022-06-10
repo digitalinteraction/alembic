@@ -2,6 +2,5 @@
   "workspace.color" : 2,
   "workspace.name" : "alembic",
   "workspace.preview_append_paths" : false,
-  "workspace.preview_root" : "dist",
-  "workspace.preview_server_port" : 8080
+  "workspace.preview_root" : "dist"
 }
