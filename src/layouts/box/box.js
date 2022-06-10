@@ -29,7 +29,7 @@ export class BoxLayout extends HTMLElement {
     const css = trimCss`
       [data-i="${id}"] {
         padding: ${padding};
-        border: ${borderWidth} solid;
+        border-width: ${borderWidth};
         ${invertRule}
       }
     `
