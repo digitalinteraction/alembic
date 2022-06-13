@@ -1,6 +1,21 @@
 import { trimCss } from '../lib/lib.js'
 
 const style = trimCss`
+:host {
+  position: relative;
+}
+:host::part(title) {
+  position: sticky;
+  top: 0;
+  background: var(--doc-background);
+  font-size: 1.5em;
+  font-family: var(--doc-family);
+  cursor: pointer;
+  font-weight: bold;
+}
+:host::slotted(*:not(:first-child)) {
+  margin-block-start: var(--s2);
+}
 ::slotted(*:not(:first-child)) {
   margin-block-start: var(--s2);
 }
