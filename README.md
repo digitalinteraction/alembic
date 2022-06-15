@@ -30,6 +30,7 @@ A Design System for Open Lab research projects.
 - avoid JavaScript's default exports
 - sub-modules should explicitly export things, avoid `export * from '...'`-type code
 - pure functions where possible
+- exported code prefixed with `_` (an underscore) is internal, should not be used and may change between major releases
 
 ---
 

@@ -63,40 +63,67 @@ export {
 /**
   Take a HTML file with some layouts in it, compute their styles
   and inject them into the document using `<!-- @openlab/alembic inject-css -->`
+  @param {string} inputHtml
  */
 export function injectLayoutStyles(inputHtml) {
   const styles = new Map()
 
-  // Loop through each tag ending in "-layout"
-  for (const tag of inputHtml.matchAll(/<(\w+-layout)\s*(.*)>/g)) {
-    const [layout, attrs] = tag.slice(1)
+  inputHtml = inputHtml.replace(
+    /<(\w+-layout)[\s\n\r]+?([\w\W]*?)>/g,
+    (match, layout, attrs) => {
+      const props = _parseHtmlAttributes(attrs)
+      const result = _processLayoutMatch(layout, props, styles)
 
-    if (!layoutMap[layout]) {
-      console.warn('Skipping unknown layout %o', layout)
-      continue
+      if (!result) {
+        console.warn('Skipping unknown layout %o', layout)
+        return match
+      }
+
+      if (!styles.has(result.id)) styles.set(result.id, result.css)
+      return result.newTag
     }
-
-    // Parse HTML attributes into an object
-    const props = {}
-    for (const attr of attrs.matchAll(/(\w+)="(.*?)"/g)) {
-      props[attr[1]] = attr[2]
-    }
-
-    // Compute and store the style if it is new
-    const { id, css } = layoutMap[layout].getStyles(props)
-    if (styles.has(id)) continue
-    styles.set(id, css)
-  }
+  )
 
   // Generate stylesheets for each style
-  const stylesheets = []
-  for (const [id, css] of styles) {
-    stylesheets.push(`<style id="${id}">${css}</style>`)
-  }
+  const stlyesheets = Array.from(styles.entries())
+    .map(([id, css]) => _createLayoutStyle(id, css))
+    .join('')
 
-  // Inject the styles into the HTML
+  return _injectLayoutStyles(inputHtml, stlyesheets)
+}
+
+export function _injectLayoutStyles(inputHtml, styles) {
   return inputHtml.replace(
     /<!--\s+@openlab\/alembic\s+inject-css\s+-->/,
-    stylesheets.join('')
+    styles
   )
+}
+
+export function _createLayoutStyle(id, css) {
+  return `<style id="${id}">${css}</style>`
+}
+
+export function _parseHtmlAttributes(attrs) {
+  const props = {}
+  for (const attr of attrs.matchAll(/(\w+)="(.*?)"/g)) {
+    props[attr[1]] = attr[2]
+  }
+  return props
+}
+
+export function _processLayoutMatch(layout, props) {
+  if (!layoutMap[layout]) return null
+
+  const styles = layoutMap[layout].getStyles(props)
+  const newTag = `<${layout} ${_formatHtmlAttributes(props)} data-i="${
+    styles.id
+  }">`
+
+  return { ...styles, newTag }
+}
+
+export function _formatHtmlAttributes(attrs) {
+  return Array.from(Object.keys(attrs))
+    .map((key) => `${key}="${attrs[key]}"`)
+    .join(' ')
 }
