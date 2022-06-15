@@ -2,8 +2,7 @@
 # A GitHub workflow to run NPM based builds and tests for every push
 #
 # help:
-# - https://docs.github.com/en/actions/language-and-framework-guides/using-nodejs-with-github-actions
-# - https://docs.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows
+# - https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 #
 
 name: Node.js CI
