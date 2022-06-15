@@ -1,0 +1,11 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "path" : "bin\/build.sh"
+    }
+  },
+  "environment" : {
+    "NODE_ENV" : "production"
+  }
+}

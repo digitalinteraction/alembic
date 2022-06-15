@@ -8,19 +8,19 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: 'npm'
 
-      - run: npm install --no-audit
+      - run: npm ci
 
       - run: ./bin/build.sh
         env:
           PATH_PREFIX: /alembic/
+          NODE_ENV: production
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2

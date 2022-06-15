@@ -20,7 +20,7 @@ spacing: var(--s3)
     <meta charset="utf8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="{{ '/docs.css' | url }} " />
-    <script type="module" src="{{ '/docs.js' | url }}"></script>
+    <!-- @openlab/alembic inject-css -->
   </head>
   <body class="docsLayout">
     <sidebar-layout space="0" sideWidth="25ch" contentMin="66%">
@@ -50,5 +50,6 @@ spacing: var(--s3)
         </stack-layout>
       </main>
     </sidebar-layout>
+    <script type="module" src="{{ '/docs.js' | url }}"></script>
   </body>
 </html>

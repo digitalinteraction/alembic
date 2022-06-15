@@ -1,5 +1,8 @@
+require('@openlab/alembic/fake-dom-env')
+
 const UserConfig = require('@11ty/eleventy/src/UserConfig')
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
+const { injectLayoutStyles } = require('@openlab/alembic')
 
 /** @param {UserConfig} eleventyConfig */
 module.exports = function (eleventyConfig) {
@@ -9,6 +12,12 @@ module.exports = function (eleventyConfig) {
       b.data.title.localeCompare(a.data.title)
     )
   })
+
+  if (process.env.NODE_ENV === 'production') {
+    eleventyConfig.addTransform('html', (content) =>
+      injectLayoutStyles(content)
+    )
+  }
 
   return {
     markdownTemplateEngine: 'njk',
