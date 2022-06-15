@@ -27,6 +27,7 @@ const style = trimCss`
   font-size: 0.7em;
   box-shadow: none;
   text-shadow: 1px 2px 3px rgba(255, 255, 255, 0.3);
+  color: inherit;
 }
 :host::part(toggle):hover {
   background: #d6d6e3;
