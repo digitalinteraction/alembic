@@ -64,6 +64,12 @@ describe('#_parseHtmlAttributes', () => {
       space: '5px',
     })
   })
+  it('should parse no-value properties', () => {
+    const result = _parseHtmlAttributes('noBar')
+    assert.deepEqual(result, {
+      noBar: '',
+    })
+  })
 })
 
 describe('#_processLayoutMatch', () => {
