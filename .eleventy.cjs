@@ -13,11 +13,7 @@ module.exports = function (eleventyConfig) {
     )
   })
 
-  if (process.env.NODE_ENV === 'production') {
-    eleventyConfig.addTransform('html', (content) =>
-      injectLayoutStyles(content)
-    )
-  }
+  eleventyConfig.addTransform('html', (content) => injectLayoutStyles(content))
 
   return {
     markdownTemplateEngine: 'njk',
