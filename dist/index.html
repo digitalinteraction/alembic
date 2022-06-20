@@ -1,0 +1,141 @@
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>⚗️ Alembic | 🏠 Home</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/docs.css " />
+    <style id="SidebarLayout-left25ch66%0false">[data-i="SidebarLayout-left25ch66%0false"] { gap: 0; } [data-i="SidebarLayout-left25ch66%0false"] > * { flex-basis: 25ch; } [data-i="SidebarLayout-left25ch66%0false"] > :last-child { flex-basis: 0; flex-grow: 999; min-inline-size: 66%; }</style><style id="StackLayout-var(--s1)">[data-i="StackLayout-var(--s1)"] > * + * { margin-block-start: var(--s1); }</style><style id="StackLayout-var(--s0)">[data-i="StackLayout-var(--s0)"] > * + * { margin-block-start: var(--s0); }</style>
+  </head>
+  <body class="docsLayout">
+    <sidebar-layout space="0" sideWidth="25ch" contentMin="66%" data-i="SidebarLayout-left25ch66%0false">
+      <header class="docsLayout-header">
+        <nav class="docsNav">
+          <a class="docsNav-brand" href="/">⚗️ Alembic</a>
+          <ul role="list">
+            
+            <li>
+              
+              <a
+                class="docsNav-item"
+                href="/"
+                aria-current=&quot;page&quot;
+              >
+                Home →
+              </a>
+            </li>
+            
+            <li>
+              
+              <a
+                class="docsNav-item"
+                href="/layouts/"
+                
+              >
+                Layouts →
+              </a>
+            </li>
+            
+            <li>
+              
+              <a
+                class="docsNav-item"
+                href="/docs/"
+                
+              >
+                Docs →
+              </a>
+            </li>
+            
+            <li>
+              
+              <a
+                class="docsNav-item"
+                href="/forms/"
+                
+              >
+                Forms →
+              </a>
+            </li>
+            
+          </ul>
+        </nav>
+      </header>
+      <main class="docsLayout-main">
+        <h2 class="docsTitle">🏠 Home</h2>
+        <stack-layout space="var(--s1)" data-i="StackLayout-var(--s1)">
+          
+
+<div class="markdownPage">
+  <details-utils persist="0_2_x">
+    <details>
+      <summary class="markdownPage-heading"> 0.2.x API </summary>
+      <stack-layout space="var(--s0)" data-i="StackLayout-var(--s0)">
+        <p><strong>install</strong></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> @openlab/alembic@0.2.x</code></pre>
+<p><strong>import styles</strong></p>
+<pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'@openlab/alembic/reset.css'</span><span class="token punctuation">;</span></span><br><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'@openlab/alembic/layouts.css'</span><span class="token punctuation">;</span></span><br><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'@openlab/alembic/forms.css'</span><span class="token punctuation">;</span></span><br><br><span class="token comment">/* Example variables */</span><br><span class="token selector">:root</span> <span class="token punctuation">{</span><br>  <span class="token comment">/* The colour of text for the current node (BoxLayout, ReelLayout) */</span><br>  <span class="token property">--color-foreground</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span><br><br>  <span class="token comment">/* The colour of the background for the current node (BoxLayout, ReelLayout) */</span><br>  <span class="token property">--color-background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span><br><br>  <span class="token comment">/* The size of a thin-style border border (BoxLayout) */</span><br>  <span class="token property">--border-thin</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span><br><br>  <span class="token comment">/* The size of a thin-style border border (FormMessage) */</span><br>  <span class="token property">--border-thick</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span><br><br>  <span class="token comment">/* The maximum width of readable content (SwitcherLayout, CenterLayout) */</span><br>  <span class="token property">--measure</span><span class="token punctuation">:</span> 60ch<span class="token punctuation">;</span><br><br>  <span class="token comment">/* For non-JavaScript ReelLayout usage (ReelLayout) */</span><br>  <span class="token property">--item-width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">/* Experimental variables */</span><br><span class="token selector">:root</span> <span class="token punctuation">{</span><br>  <span class="token comment">/* A colour to indicate something a user should fill in */</span><br>  <span class="token property">--fillable</span><span class="token punctuation">:</span> darkblue<span class="token punctuation">;</span><br><br>  <span class="token comment">/* A colour to bring attention to what the user is currently doing */</span><br>  <span class="token property">--focus</span><span class="token punctuation">:</span> coral<span class="token punctuation">;</span><br><br>  <span class="token comment">/* The largest width of something interact-able, a single "task" for the user */</span><br>  <span class="token property">--gestalt</span><span class="token punctuation">:</span> 40ch<span class="token punctuation">;</span><br><br>  <span class="token comment">/* WIP */</span><br>  <span class="token property">--color-darkish</span><span class="token punctuation">:</span> #888<span class="token punctuation">;</span> <span class="token comment">/* (Field) */</span><br>  <span class="token property">--color-info</span><span class="token punctuation">:</span> royalblue<span class="token punctuation">;</span> <span class="token comment">/* (FormMessage) */</span><br>  <span class="token property">--color-error</span><span class="token punctuation">:</span> tomato<span class="token punctuation">;</span> <span class="token comment">/* (FormMessage) */</span><br>  <span class="token property">--color-success</span><span class="token punctuation">:</span> yellowgreen<span class="token punctuation">;</span> <span class="token comment">/* (FormMessage) */</span><br><span class="token punctuation">}</span></code></pre>
+<p><strong>layout usage</strong></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span><br>  defineLayoutElements<span class="token punctuation">,</span><br>  layoutCustomElementNames<span class="token punctuation">,</span><br>  layoutMap<span class="token punctuation">,</span><br>  StackLayout<span class="token punctuation">,</span><br>  <span class="token operator">...</span><span class="token punctuation">,</span><br>  IconLayout<span class="token punctuation">,</span><br><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@openlab/alembic/layouts.js'</span><br><br><br><span class="token comment">// Register each layout's custom element</span><br><span class="token function">defineLayoutElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><br><span class="token comment">// layoutMap is a map of custom element name to Layout class</span><br>layoutMap<span class="token punctuation">[</span><span class="token string">'switcher-layout'</span><span class="token punctuation">]</span> <span class="token comment">// SwitcherLayout</span><br><br><span class="token comment">// layoutCustomElementNames is an array of all custom element names,</span><br><span class="token comment">// useful for telling compilers (like Vue) to ignore these custom elements.</span><br><span class="token comment">// The order of these is NOT guaranteed</span><br>layoutCustomElementNames <span class="token comment">// [ 'stack-layout', 'box-layout', ... ]</span><br><br><span class="token comment">// Each layout class is exported too, so you can manually define just the ones you want</span><br><span class="token comment">// e.g. `StackLayout.defineElement()`</span></code></pre>
+<p><strong>lib usage</strong></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> addGlobalStyle<span class="token punctuation">,</span> trimCss<span class="token punctuation">,</span> DetailsUtils <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@openlab/alembic/lib.js'</span><br><br><span class="token comment">// Add a style to the root document under a unique identifier</span><br><span class="token comment">// If another style is requested with the same id, it will be ignored</span><br><span class="token function">addGlobalStyle</span><span class="token punctuation">(</span><span class="token string">'my-id'</span><span class="token punctuation">,</span> <span class="token string">'p { color: rebeccapurple; }'</span><span class="token punctuation">)</span><br><br><span class="token comment">// Remove whitespace from a css string</span><br>trimCss<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">p {<br>  color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>color<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br>}</span><span class="token template-punctuation string">`</span></span><br><br><span class="token comment">// Adds &lt;details-utils> custom element to wrap a details/summary</span><br><span class="token comment">// and persist its open="" attribute based on the `id` on the &lt;details> element</span><br>DetailsUtils<span class="token punctuation">.</span><span class="token function">defineElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><strong>static generation</strong></p>
+<p>Each layout has a static method <code>getStyles(attributes)</code> which is used to compute its styles.
+When statically generating content, you can precompute the styles that layouts will need
+and inject them into HTML before it is served to clients.</p>
+<blockquote>
+<p>You need to import <code>@openlab/alembic/fake-dom-env.js</code> first which
+stubs-out HTMLElement so the layouts can be imported from Node.js.
+This stub shouldn't be used for anything else.</p>
+</blockquote>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@openlab/alembic/fake-dom-env.js'</span><br><span class="token keyword">import</span> <span class="token punctuation">{</span> injectLayoutStyles <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@openlab/alembic'</span><br><br><span class="token keyword">const</span> inputFile <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>&lt;html><br>  &lt;head><br>    ...<br>    &lt;!-- @openlab/alembic inject-css --><br>  &lt;/head><br>  &lt;body><br>    &lt;box-layout padding="0"> ... &lt;/box-layout><br>  &lt;/body><br>&lt;/html><br></span><span class="token template-punctuation string">`</span></span><br><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">injectLayoutStyles</span><span class="token punctuation">(</span>inputFile<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<details>
+<summary>CommonJs imports</summary>
+<pre class="language-js"><code class="language-js"><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@openlab/alembic/fake-dom-env'</span><span class="token punctuation">)</span><br><span class="token keyword">const</span> <span class="token punctuation">{</span> injectLayoutStyles <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@openlab/alembic'</span><span class="token punctuation">)</span></code></pre>
+</details>
+
+      </stack-layout>
+    </details>
+  </details-utils>
+</div>
+
+<div class="markdownPage">
+  <details-utils persist="0_1_x">
+    <details>
+      <summary class="markdownPage-heading"> 0.1.x API </summary>
+      <stack-layout space="var(--s0)" data-i="StackLayout-var(--s0)">
+        <p><strong>install</strong></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> @openlab/alembic@0.1.x</code></pre>
+<p><strong>import styles</strong></p>
+<pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'@openlab/alembic/reset.css'</span><span class="token punctuation">;</span></span><br><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'@openlab/alembic/layouts.css'</span><span class="token punctuation">;</span></span><br><br><span class="token comment">/* Example variables */</span><br><span class="token selector">:root</span> <span class="token punctuation">{</span><br>  <span class="token property">--foregroundColor</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span><br>  <span class="token property">--backgroundColor</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span><br>  <span class="token property">--border-thin</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span><br>  <span class="token property">--measure</span><span class="token punctuation">:</span> 60ch<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p><strong>import scripts</strong></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span><br>  defineLayoutElements<span class="token punctuation">,</span><br>  layoutCustomElementNames<span class="token punctuation">,</span><br>  layoutMap<span class="token punctuation">,</span><br>  StackLayout<span class="token punctuation">,</span><br>  <span class="token operator">...</span><span class="token punctuation">,</span><br>  IconLayout<span class="token punctuation">,</span><br><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@openlab/alembic/layouts.js'</span><br><span class="token keyword">import</span> <span class="token punctuation">{</span> addGlobalStyle<span class="token punctuation">,</span> trimCss <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@openlab/alembic/lib.js'</span><br><br><span class="token function">defineLayoutElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><br><span class="token comment">// Each layout is exported so you can manually define them,</span><br><span class="token comment">// e.g. `StackLayout.defineElement()`</span></code></pre>
+<p><strong>static generation</strong></p>
+<p>Each layout has a static method <code>getStyles(attributes)</code> which is used to compute styles.
+When statically generating content, you can precompute the styles layouts will need
+and inject them into HTML before it is served to clients.</p>
+<blockquote>
+<p>You need to import <code>@openlab/alembic/fake-dom-env.js</code> first which
+stubs-out HTMLElement so the layouts can be imported from Node.js.</p>
+</blockquote>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@openlab/alembic/fake-dom-env.js'</span><br><span class="token keyword">import</span> <span class="token punctuation">{</span> injectStyles <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@openlab/alembic'</span><br><br><span class="token keyword">const</span> inputFile <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>&lt;html><br>  &lt;head><br>    ...<br>    &lt;!-- @openlab/alembic inject-css --><br>  &lt;/head><br>  &lt;body><br>    &lt;box-layout padding="0"> ... &lt;/box-layout><br>  &lt;/body><br>&lt;/html><br></span><span class="token template-punctuation string">`</span></span><br><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">injectStyles</span><span class="token punctuation">(</span>inputFile<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<details>
+<summary>CommonJs imports</summary>
+<pre class="language-js"><code class="language-js"><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@openlab/alembic/fake-dom-env'</span><span class="token punctuation">)</span><br><span class="token keyword">const</span> <span class="token punctuation">{</span> injectStyles <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@openlab/alembic'</span><span class="token punctuation">)</span></code></pre>
+</details>
+
+      </stack-layout>
+    </details>
+  </details-utils>
+</div>
+
+
+        </stack-layout>
+      </main>
+    </sidebar-layout>
+    <script type="module" src="/docs.js"></script>
+  </body>
+</html>

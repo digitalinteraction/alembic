@@ -1,0 +1,147 @@
+/* src/layouts/stack/stack.css */
+stack-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+stack-layout > * + * {
+  margin-block-start: var(--s1);
+}
+
+/* src/layouts/box/box.css */
+box-layout {
+  display: block;
+  padding: var(--s1);
+  border-width: var(--border-thin);
+  border-style: solid;
+  outline: var(--border-thin) solid transparent;
+  outline-offset: calc(var(--border-thin) * -1);
+}
+box-layout * {
+  color: inherit;
+}
+
+/* src/layouts/center/center.css */
+center-layout {
+  display: block;
+  box-sizing: content-box;
+  margin-inline: auto;
+  max-inline-size: var(--measure);
+}
+
+/* src/layouts/cluster/cluster.css */
+cluster-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* src/layouts/sidebar/sidebar.css */
+sidebar-layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+sidebar-layout > * {
+  flex-grow: 1;
+}
+
+/* src/layouts/switcher/switcher.css */
+switcher-layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+switcher-layout > * {
+  flex-basis: calc((var(--measure) - 100%) * 999);
+  flex-grow: 1;
+}
+
+/* src/layouts/cover/cover.css */
+cover-layout {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100vh;
+  padding: var(--s1);
+}
+
+/* src/layouts/grid/grid.css */
+grid-layout {
+  display: grid;
+  grid-gap: var(--s1);
+  align-content: start;
+  grid-template-columns: 100%;
+}
+
+/* src/layouts/frame/frame.css */
+frame-layout {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+frame-layout > img,
+frame-layout > video {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+/* src/layouts/reel/reel.css */
+reel-layout {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-color: var(--color-foreground) var(--color-background);
+}
+reel-layout > * {
+  flex: 0 0 var(--item-width);
+}
+reel-layout > img {
+  block-size: 100%;
+  flex-basis: auto;
+  inline-size: auto;
+}
+reel-layout::-webkit-scrollbar {
+  block-size: 0.8rem;
+}
+reel-layout::-webkit-scrollbar-track {
+  background-color: var(--color-background);
+  border-radius: 0.4rem;
+}
+reel-layout::-webkit-scrollbar-thumb {
+  background-color: var(--color-foreground);
+  border-radius: 0.4rem;
+}
+
+/* src/layouts/imposter/imposter.css */
+imposter-layout {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* src/layouts/icon/icon.css */
+icon-layout svg {
+  height: 0.75em;
+  height: 1cap;
+  width: 0.75em;
+  width: 1cap;
+}
+
+/* src/layouts/layouts.css */
+:root {
+  --ratio: 1.5;
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+}

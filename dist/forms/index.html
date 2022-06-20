@@ -1,0 +1,289 @@
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>⚗️ Alembic | 📋 Forms</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/docs.css " />
+    <style id="SidebarLayout-left25ch66%0false">[data-i="SidebarLayout-left25ch66%0false"] { gap: 0; } [data-i="SidebarLayout-left25ch66%0false"] > * { flex-basis: 25ch; } [data-i="SidebarLayout-left25ch66%0false"] > :last-child { flex-basis: 0; flex-grow: 999; min-inline-size: 66%; }</style><style id="StackLayout-var(--s3)">[data-i="StackLayout-var(--s3)"] > * + * { margin-block-start: var(--s3); }</style>
+  </head>
+  <body class="docsLayout">
+    <sidebar-layout space="0" sideWidth="25ch" contentMin="66%" data-i="SidebarLayout-left25ch66%0false">
+      <header class="docsLayout-header">
+        <nav class="docsNav">
+          <a class="docsNav-brand" href="/">⚗️ Alembic</a>
+          <ul role="list">
+            
+            <li>
+              
+              <a
+                class="docsNav-item"
+                href="/"
+                
+              >
+                Home →
+              </a>
+            </li>
+            
+            <li>
+              
+              <a
+                class="docsNav-item"
+                href="/layouts/"
+                
+              >
+                Layouts →
+              </a>
+            </li>
+            
+            <li>
+              
+              <a
+                class="docsNav-item"
+                href="/docs/"
+                
+              >
+                Docs →
+              </a>
+            </li>
+            
+            <li>
+              
+              <a
+                class="docsNav-item"
+                href="/forms/"
+                aria-current=&quot;page&quot;
+              >
+                Forms →
+              </a>
+            </li>
+            
+          </ul>
+        </nav>
+      </header>
+      <main class="docsLayout-main">
+        <h2 class="docsTitle">📋 Forms</h2>
+        <stack-layout space="var(--s3)" data-i="StackLayout-var(--s3)">
+          
+<!-- ... -->
+<doc-section label="About" prefix="forms-">
+  <div class="layoutInfo">
+    <p>
+      Forms provide patterns for creating HTML forms that are easy to use and
+      accessible for as many as possible.
+    </p>
+    <p> TODO: </p>
+    <ul>
+      <li> work on guidelines for microcopy </li>
+      <li> work on colour system </li>
+      <li> think about form actions and buttons </li>
+      <li>
+        refactor <code>fieldset</code> when a typography system is in place
+      </li>
+    </ul>
+  </div>
+</doc-section>
+
+<doc-section label="Field">
+  <div class="layoutInfo">
+    <p>
+      <strong>Field</strong> is the bread and butter of a form, so it is
+      important to get right. It <strong>Must</strong> have a label to prompt
+      the field to be filled in. It can have a hint too, when the label needs
+      more explanation. It may have a <code>placeholder</code> but it isn't
+      advised, an empty-box is more enticing to fill in.
+    </p>
+    <p>
+      Every field should have a unique id and the label should point to that id
+      using the <code>for</code> attribute.
+    </p>
+    <p>
+      A <code>range</code> input can have a <code>.rangeHints</code> inside the
+      <code>label</code> and any inline elements inside are evenly spread
+      horizontally to describe the range.
+    </p>
+    <p>TODO:</p>
+  </div>
+
+  <component-def label="Field / text">
+    <div class="field">
+      <label for="whatHappened">
+        <span class="field-label">What happened?</span>
+        <span class="field-hint">Describe the events in order</span>
+        <input type="text" id="whatHappened" name="whatHappened" />
+      </label>
+    </div>
+  </component-def>
+
+  <component-def label="Field / textarea">
+    <div class="field">
+      <label for="nextAction">
+        <span class="field-label">What did you do next?</span>
+      </label>
+      <textarea id="nextAction" rows="3" name="nextAction"> </textarea>
+    </div>
+  </component-def>
+
+  <component-def label="Field / select">
+    <div class="field">
+      <label for="favFruit">
+        <span class="field-label">Favourite fruit</span>
+      </label>
+      <select id="favFruit" name="favFruit">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="cherry">Cherry</option>
+      </select>
+    </div>
+  </component-def>
+
+  <component-def label="Field / range">
+    <div class="field">
+      <label for="trust">
+        <span class="field-label">How trustworthy is this story?</span>
+        <span class="rangeHints">
+          <span>Not at all</span>
+          <span>Very</span>
+        </span>
+      </label>
+      <input type="range" min="0" max="100" id="trust" name="trust" />
+    </div>
+  </component-def>
+</doc-section>
+
+<doc-section label="Checkbox">
+  <div class="layoutInfo">
+    <p>
+      <strong>Checkbox</strong> give users a binary option, yes or no, agree or
+      disagree. You can also group them together into a
+      <strong>CheckboxGroup</strong>
+    </p>
+  </div>
+
+  <component-def label="Checkbox / single">
+    <label class="checkbox" for="consent">
+      <input type="checkbox" id="consent" name="consent" required="" />
+      <span> I agree </span>
+    </label>
+  </component-def>
+
+  <component-def label="Checkbox / group">
+    <form submit="(e) => (e.preventDefaults(), console.log(e))">
+      <div class="checkboxGroup">
+        <p class="checkboxGroup-label">Pick your days</p>
+        <label class="checkbox" for="mon">
+          <input type="checkbox" id="mon" name="days" value="1" />
+          <span>Monday</span>
+        </label>
+        <label class="checkbox" for="tue">
+          <input type="checkbox" id="tue" name="days" value="2" />
+          <span>Tuesday</span>
+        </label>
+        <label class="checkbox" for="wed">
+          <input type="checkbox" id="wed" name="days" value="3" />
+          <span>Wednesday</span>
+        </label>
+        <label class="checkbox" for="thur">
+          <input type="checkbox" id="thur" name="days" value="4" />
+          <span>Thursday</span>
+        </label>
+        <label class="checkbox" for="fri">
+          <input type="checkbox" id="fri" name="days" value="5" />
+          <span>Friday</span>
+        </label>
+        <label class="checkbox" for="sat">
+          <input type="checkbox" id="sat" name="days" value="6" />
+          <span>Saturday</span>
+        </label>
+        <label class="checkbox" for="sun">
+          <input type="checkbox" id="sun" name="days" value="0" />
+          <span>Sunday</span>
+        </label>
+      </div>
+    </form>
+  </component-def>
+</doc-section>
+
+<doc-section label="FormMessage">
+  <div class="layoutInfo">
+    <p>
+      <strong>FormMessage</strong> is for displaying good/bad/information text
+      to users, usually in response to a form submission.
+    </p>
+    <p>They style is bare by default so it can more easily be overridden.</p>
+    <p>Note the use of <code>data-accent=X</code>.</p>
+  </div>
+
+  <component-def label="FormMessage / info">
+    <div class="formMessage" data-accent="info">
+      <doc-text words="50"></doc-text>
+    </div>
+  </component-def>
+
+  <component-def label="FormMessage / error">
+    <div class="formMessage" data-accent="error">
+      <doc-text words="50"></doc-text>
+    </div>
+  </component-def>
+
+  <component-def label="FormMessage / success">
+    <div class="formMessage" data-accent="success">
+      <doc-text words="50"></doc-text>
+    </div>
+  </component-def>
+</doc-section>
+
+<doc-section label="FieldSet">
+  <div class="layoutInfo">
+    <p>
+      <strong>FieldSet</strong> should be used to group related fields together.
+      Like a section of a form or a component of a larger entity. It should have
+      a <code>legend</code> as the first child to label the group. It can also
+      have a <code>.fieldset-hint</code> to provide a description of the
+      grouping that is in play.
+    </p>
+    <p>
+      Similar to <code>form</code>, <strong>FieldSet</strong> makes sure all
+      child elements are evenly spaced, just like a
+      <strong>StackLayout</strong>.
+    </p>
+  </div>
+
+  <component-def label="FieldSet / vanilla">
+    <fieldset>
+      <legend>Edit profile</legend>
+
+      <div class="field">
+        <label for="fullName">
+          <span class="field-label">Full name</span>
+        </label>
+        <input type="text" id="fullName" name="fullName" />
+      </div>
+
+      <div class="field">
+        <label for="email">
+          <span class="field-label">Email address</span>
+        </label>
+        <input type="email" id="email" name="email" />
+      </div>
+
+      <div class="field">
+        <label for="twitterHandle">
+          <span class="field-label">Twitter Handle</span>
+          <span class="field-hint">e.g. @Example</span>
+        </label>
+        <input type="text" id="twitterHandle" name="twitterHandle" />
+      </div>
+    </fieldset>
+  </component-def>
+</doc-section>
+
+        </stack-layout>
+      </main>
+    </sidebar-layout>
+    <script type="module" src="/docs.js"></script>
+  </body>
+</html>
