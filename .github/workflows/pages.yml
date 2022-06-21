@@ -19,7 +19,6 @@ jobs:
 
       - run: ./bin/build.sh
         env:
-          PATH_PREFIX: /alembic/
           NODE_ENV: production
 
       - name: Deploy to GitHub Pages
