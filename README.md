@@ -11,6 +11,15 @@ A Design System for Open Lab research projects.
 3. Run `npm version minor|major|patch`
 4. Run `npm publish`
 
+## Uses
+
+This library is used by several Open Lab projects:
+
+- [openlab.ncl.ac.uk](https://openlab.ncl.ac.uk) - [repo](http://github.com/digitalinteraction/openlab.ncl.ac.uk)
+- [datadiaries.uk](https://datadiaries.uk) - [repo](https://github.com/digitalinteraction/datadiaries-app)
+- [alembic.openlab.dev](https://alembic.openlab.dev) - (this repo)
+- [Coffee Club](https://github.com/digitalinteraction/beancounter)
+
 ## Coding conventions
 
 > TODO: find a better place for these
