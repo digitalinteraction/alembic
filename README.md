@@ -20,6 +20,25 @@ This library is used by several Open Lab projects:
 - [alembic.openlab.dev](https://alembic.openlab.dev) - (this repo)
 - [Coffee Club](https://github.com/digitalinteraction/beancounter)
 
+## Design
+
+**Goals**
+
+1. Provide a step up (design-wise) for developers
+2. Reduce duplication in effort/code/work
+3. Improve collaboration on projects and focus evolution in the same direction
+
+**What**
+
+* A library of components and patterns
+* A documentation site to describe the design system
+
+**To explore**
+
+* More accessibility concerns
+* Document the reason behind decisions / solutions
+* Think about adaptability, evolution and collaboration
+
 ## Coding conventions
 
 > TODO: find a better place for these
