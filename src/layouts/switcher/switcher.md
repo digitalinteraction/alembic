@@ -1,6 +1,7 @@
 ---
 permalink: false
 tags: switcherLayout
+tile: /assets/tiles/switcher.svg
 ---
 
 **SwitcherLayout** dynamically displays a set of columns horizontally if there is enough space or stacks them vertically if not.

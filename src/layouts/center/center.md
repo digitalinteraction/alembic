@@ -1,6 +1,7 @@
 ---
 permalink: false
 tags: centerLayout
+tile: /assets/tiles/center.svg
 ---
 
 **CenterLayout** ensures an element is centered horizontally in its parent.

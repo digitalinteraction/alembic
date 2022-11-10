@@ -1,6 +1,7 @@
 ---
 permalink: false
 tags: stackLayout
+tile: /assets/tiles/stack.svg
 ---
 
 **StackLayout** places elements vertically and adds empty space between them.

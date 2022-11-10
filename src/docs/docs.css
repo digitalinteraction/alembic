@@ -39,6 +39,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* TODO: find a way to refactor these two */
 .layoutInfo,
 .markdownPage {
@@ -276,3 +280,26 @@ doc-section {
 /* Doc resizer */
 
 /* Doc section */
+
+/* Layout tiles */
+.layoutNav {
+  position: sticky;
+  bottom: 0;
+  background: var(--doc-background);
+  margin-inline: calc(-1 * var(--s2));
+  padding: var(--s1);
+  border-top: var(--border-thin) solid var(--doc-foreground);
+}
+.layoutNav-item {
+  text-decoration: none;
+}
+.layoutNav-item > p {
+  text-decoration: none;
+  text-align: center;
+  color: var(--doc-foreground);
+}
+@media (prefers-color-scheme: dark) {
+  .layoutNav-item > img {
+    filter: invert(100%);
+  }
+}

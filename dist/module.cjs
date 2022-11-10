@@ -112,6 +112,9 @@ var DetailsUtils = class extends HTMLElement {
   attributeChangedCallback() {
     this.render();
   }
+  toggleOpen(force = !this.detailsElem.open) {
+    this.detailsElem.open = force;
+  }
 };
 
 // src/layouts/stack/stack.js
@@ -412,7 +415,10 @@ var SidebarLayout = class extends HTMLElement {
   }
   render() {
     if (!this.contentMin.includes("%")) {
-      console.warn("<sidebar-layout> `contentMin` property should be a percentage to prevent overflow. %o supplied", this.contentMin);
+      console.warn(
+        "<sidebar-layout> `contentMin` property should be a percentage to prevent overflow. %o supplied",
+        this.contentMin
+      );
     }
     const { side, sideWidth, contentMin, space, noStretch } = this;
     const { id, css } = SidebarLayout.getStyles({
@@ -673,7 +679,11 @@ var FrameLayout = class extends HTMLElement {
     }
     const ratio = ratioRegex().exec(this.ratio);
     if (!ratio) {
-      console.error("<frame-layout> `ratio` must in the format %o but got %o", "16:9", this.ratio);
+      console.error(
+        "<frame-layout> `ratio` must in the format %o but got %o",
+        "16:9",
+        this.ratio
+      );
       return;
     }
     const { id, css } = FrameLayout.getStyles({ ratio: this.ratio });
@@ -941,22 +951,28 @@ var layoutMap = {
 var layoutCustomElementNames = Object.keys(layoutMap);
 function injectLayoutStyles(inputHtml) {
   const styles = /* @__PURE__ */ new Map();
-  inputHtml = inputHtml.replace(/<(\w+-layout)[\s\n\r]+?([\w\W]*?)>/g, (match, layout, attrs) => {
-    const props = _parseHtmlAttributes(attrs);
-    const result = _processLayoutMatch(layout, props, styles);
-    if (!result) {
-      console.warn("Skipping unknown layout %o", layout);
-      return match;
+  inputHtml = inputHtml.replace(
+    /<(\w+-layout)[\s\n\r]+?([\w\W]*?)>/g,
+    (match, layout, attrs) => {
+      const props = _parseHtmlAttributes(attrs);
+      const result = _processLayoutMatch(layout, props, styles);
+      if (!result) {
+        console.warn("Skipping unknown layout %o", layout);
+        return match;
+      }
+      if (!styles.has(result.id))
+        styles.set(result.id, result.css);
+      return result.newTag;
     }
-    if (!styles.has(result.id))
-      styles.set(result.id, result.css);
-    return result.newTag;
-  });
+  );
   const stlyesheets = Array.from(styles.entries()).map(([id, css]) => _createLayoutStyle(id, css)).join("");
   return _injectLayoutStyles(inputHtml, stlyesheets);
 }
 function _injectLayoutStyles(inputHtml, styles) {
-  return inputHtml.replace(/<!--\s+@openlab\/alembic\s+inject-css\s+-->/, styles);
+  return inputHtml.replace(
+    /<!--\s+@openlab\/alembic\s+inject-css\s+-->/,
+    styles
+  );
 }
 function _createLayoutStyle(id, css) {
   return `<style id="${id}">${css}</style>`;

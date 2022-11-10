@@ -1,6 +1,7 @@
 ---
 permalink: false
 tags: imposterLayout
+tile: /assets/tiles/imposter.svg
 ---
 
 **ImposterLayout** positions an element over other elements.

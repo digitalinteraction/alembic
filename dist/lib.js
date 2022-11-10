@@ -64,6 +64,9 @@ var DetailsUtils = class extends HTMLElement {
   attributeChangedCallback() {
     this.render();
   }
+  toggleOpen(force = !this.detailsElem.open) {
+    this.detailsElem.open = force;
+  }
 };
 export {
   DetailsUtils,

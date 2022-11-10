@@ -1,6 +1,7 @@
 ---
 permalink: false
 tags: frameLayout
+tile: /assets/tiles/frame.svg
 ---
 
 **FrameLayout** ensures its child element has a fixed aspect ratio by cropping around the center of the image.

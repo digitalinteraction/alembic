@@ -1,6 +1,7 @@
 ---
 permalink: false
 tags: boxLayout
+tile: /assets/tiles/box.svg
 ---
 
 **BoxLayout** is a primitive to show a container of other elements.

@@ -64,6 +64,9 @@ var DetailsUtils = class extends HTMLElement {
   attributeChangedCallback() {
     this.render();
   }
+  toggleOpen(force = !this.detailsElem.open) {
+    this.detailsElem.open = force;
+  }
 };
 
 // src/layouts/stack/stack.js
@@ -364,7 +367,10 @@ var SidebarLayout = class extends HTMLElement {
   }
   render() {
     if (!this.contentMin.includes("%")) {
-      console.warn("<sidebar-layout> `contentMin` property should be a percentage to prevent overflow. %o supplied", this.contentMin);
+      console.warn(
+        "<sidebar-layout> `contentMin` property should be a percentage to prevent overflow. %o supplied",
+        this.contentMin
+      );
     }
     const { side, sideWidth, contentMin, space, noStretch } = this;
     const { id, css } = SidebarLayout.getStyles({
@@ -625,7 +631,11 @@ var FrameLayout = class extends HTMLElement {
     }
     const ratio = ratioRegex().exec(this.ratio);
     if (!ratio) {
-      console.error("<frame-layout> `ratio` must in the format %o but got %o", "16:9", this.ratio);
+      console.error(
+        "<frame-layout> `ratio` must in the format %o but got %o",
+        "16:9",
+        this.ratio
+      );
       return;
     }
     const { id, css } = FrameLayout.getStyles({ ratio: this.ratio });
@@ -1031,11 +1041,14 @@ var DocBox = class extends HTMLElement {
       rules.push(`height: ${this.height}`);
     if (this.width !== null)
       rules.push(`width: 100%; max-width: ${this.width}`);
-    addGlobalStyle(this.dataset.i, `
+    addGlobalStyle(
+      this.dataset.i,
+      `
         [data-i="${this.dataset.i}"] {
           ${rules.join(";")}
         }
-      `);
+      `
+    );
   }
   connectedCallback() {
     this.render();
@@ -1100,7 +1113,11 @@ var DocResizer = class extends HTMLElement {
         this.style.marginInlineEnd = `${resized}px`;
       };
       window.addEventListener("mousemove", onMove);
-      window.addEventListener("mouseup", () => window.removeEventListener("mousemove", onMove), { once: true });
+      window.addEventListener(
+        "mouseup",
+        () => window.removeEventListener("mousemove", onMove),
+        { once: true }
+      );
     });
     window.addEventListener("resize", () => {
       if (resized)
@@ -1170,13 +1187,18 @@ var DocSection = class extends HTMLElement {
   connectedCallback() {
     this.render();
   }
+  toggleOpen(force) {
+    this.detailsUtilsElem.toggleOpen(force);
+  }
   getSlug(input = "") {
     return input.toLowerCase().trim().replace(/[^\w\s]+/g, "").replace(/[\s-]+/g, "-");
   }
 };
 
 // src/docs/doc-text.js
-var LOREM_WORDS = JSON.parse('["a","ac","accumsan","adipiscing","aenean","aliqua","aliquam","aliquet","amet","ante","arcu","at","auctor","augue","bibendum","commodo","consectetur","convallis","curabitur","cursus","dapibus","diam","dictum","dictumst","dignissim","do","dolor","dolore","donec","dui","duis","egestas","eget","eiusmod","eleifend","elementum","elit","enim","erat","eros","est","et","etiam","eu","euismod","facilisi","facilisis","fames","faucibus","fermentum","feugiat","fringilla","fusce","gravida","habitasse","hac","hendrerit","iaculis","id","imperdiet","in","incididunt","integer","interdum","ipsum","justo","labore","lacinia","lacus","laoreet","lectus","leo","libero","ligula","lobortis","lorem","luctus","maecenas","magna","malesuada","massa","mattis","mauris","metus","mi","morbi","nam","nec","neque","nibh","nisl","non","nulla","nullam","nunc","odio","orci","ornare","pellentesque","pharetra","phasellus","placerat","platea","porta","porttitor","posuere","praesent","pretium","proin","pulvinar","purus","quam","quis","rhoncus","risus","sagittis","sapien","scelerisque","sed","sem","semper","sit","suspendisse","tellus","tempor","tempus","tincidunt","tortor","tristique","turpis","ullamcorper","ultrices","ultricies","urna","ut","varius","vehicula","vel","velit","vestibulum","vitae","viverra","volutpat","vulputate"]');
+var LOREM_WORDS = JSON.parse(
+  '["a","ac","accumsan","adipiscing","aenean","aliqua","aliquam","aliquet","amet","ante","arcu","at","auctor","augue","bibendum","commodo","consectetur","convallis","curabitur","cursus","dapibus","diam","dictum","dictumst","dignissim","do","dolor","dolore","donec","dui","duis","egestas","eget","eiusmod","eleifend","elementum","elit","enim","erat","eros","est","et","etiam","eu","euismod","facilisi","facilisis","fames","faucibus","fermentum","feugiat","fringilla","fusce","gravida","habitasse","hac","hendrerit","iaculis","id","imperdiet","in","incididunt","integer","interdum","ipsum","justo","labore","lacinia","lacus","laoreet","lectus","leo","libero","ligula","lobortis","lorem","luctus","maecenas","magna","malesuada","massa","mattis","mauris","metus","mi","morbi","nam","nec","neque","nibh","nisl","non","nulla","nullam","nunc","odio","orci","ornare","pellentesque","pharetra","phasellus","placerat","platea","porta","porttitor","posuere","praesent","pretium","proin","pulvinar","purus","quam","quis","rhoncus","risus","sagittis","sapien","scelerisque","sed","sem","semper","sit","suspendisse","tellus","tempor","tempus","tincidunt","tortor","tristique","turpis","ullamcorper","ultrices","ultricies","urna","ut","varius","vehicula","vel","velit","vestibulum","vitae","viverra","volutpat","vulputate"]'
+);
 var DocText = class extends HTMLElement {
   static get observedAttributes() {
     return ["words"];
@@ -1206,11 +1228,18 @@ var DocText = class extends HTMLElement {
         range = [number, number];
     }
     if (!range) {
-      console.error("<doc-text> invalid `range`, expected a number or a range like %o, got %o", "5,10", this.range);
+      console.error(
+        "<doc-text> invalid `range`, expected a number or a range like %o, got %o",
+        "5,10",
+        this.range
+      );
       return;
     }
     range = range.map((i) => parseInt(i, 10));
-    this.textNode.data = Array.from({ length: this.randomNumber(range[0], range[1]) }, () => LOREM_WORDS[this.randomNumber(0, LOREM_WORDS.length)]).join(" ");
+    this.textNode.data = Array.from(
+      { length: this.randomNumber(range[0], range[1]) },
+      () => LOREM_WORDS[this.randomNumber(0, LOREM_WORDS.length)]
+    ).join(" ");
   }
   connectedCallback() {
     this.render();
@@ -1229,4 +1258,18 @@ if ("customElements" in window) {
   customElements.define("doc-resizer", DocResizer);
   customElements.define("doc-section", DocSection);
   customElements.define("doc-text", DocText);
+  window.addEventListener("DOMContentLoaded", () => {
+    if (location.hash)
+      toggleSection(location.hash);
+    for (const elem of document.querySelectorAll(".layoutNav-item")) {
+      const url = new URL(elem.href, location.href);
+      elem.addEventListener("click", () => toggleSection(url.hash));
+    }
+  });
+}
+function toggleSection(selector) {
+  const target = document.querySelector(selector);
+  if (!target || typeof target.toggleOpen !== "function")
+    return;
+  target.toggleOpen(true);
 }

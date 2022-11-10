@@ -329,6 +329,9 @@ fieldset legend {
     --color-background: black;
   }
 }
+html {
+  scroll-behavior: smooth;
+}
 .layoutInfo,
 .markdownPage {
   max-width: calc(var(--doc-measure) + calc(2 * var(--s1)));
@@ -514,4 +517,25 @@ doc-section {
   font-family: var(--doc-family);
   cursor: pointer;
   font-weight: bold;
+}
+.layoutNav {
+  position: sticky;
+  bottom: 0;
+  background: var(--doc-background);
+  margin-inline: calc(-1 * var(--s2));
+  padding: var(--s1);
+  border-top: var(--border-thin) solid var(--doc-foreground);
+}
+.layoutNav-item {
+  text-decoration: none;
+}
+.layoutNav-item > p {
+  text-decoration: none;
+  text-align: center;
+  color: var(--doc-foreground);
+}
+@media (prefers-color-scheme: dark) {
+  .layoutNav-item > img {
+    filter: invert(100%);
+  }
 }

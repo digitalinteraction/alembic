@@ -1,6 +1,7 @@
 ---
 permalink: false
 tags: iconLayout
+tile: /assets/tiles/icon.svg
 ---
 
 **IconLayout** is for placing icons inline before or after text.

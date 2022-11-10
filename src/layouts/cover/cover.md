@@ -1,6 +1,7 @@
 ---
 permalink: false
 tags: coverLayout
+tile: /assets/tiles/cover.svg
 ---
 
 **CoverLayout** fills a minimum vertical height and centers a principle element vertically within that layout.

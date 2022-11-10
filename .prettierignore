@@ -1,0 +1,7 @@
+#
+# First to ignore from prettier
+#
+
+.nova
+dist
+svg

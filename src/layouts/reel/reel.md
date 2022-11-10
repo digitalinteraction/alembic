@@ -1,6 +1,7 @@
 ---
 permalink: false
 tags: reelLayout
+tile: /assets/tiles/reel.svg
 ---
 
 **ReelLayout** places elements horizontally with a set `space` between them and ensures overflow scrolling happens.

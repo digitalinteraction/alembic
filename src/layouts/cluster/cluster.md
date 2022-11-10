@@ -1,6 +1,7 @@
 ---
 permalink: false
 tags: clusterLayout
+tile: /assets/tiles/cluster.svg
 ---
 
 **ClusterLayout** groups multiple items together based on their intrinsic width and separated by a common gutter (set with `space`).

@@ -48,4 +48,8 @@ export class DetailsUtils extends HTMLElement {
   attributeChangedCallback() {
     this.render()
   }
+
+  toggleOpen(force = !this.detailsElem.open) {
+    this.detailsElem.open = force
+  }
 }

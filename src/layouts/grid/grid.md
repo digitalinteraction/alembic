@@ -1,6 +1,7 @@
 ---
 permalink: false
 tags: gridLayout
+tile: /assets/tiles/grid.svg
 ---
 
 **GridLayout** creates a responsive CSS Grid where each element has the same `min`(imum) width.

@@ -65,6 +65,10 @@ export class DocSection extends HTMLElement {
     this.render()
   }
 
+  toggleOpen(force) {
+    this.detailsUtilsElem.toggleOpen(force)
+  }
+
   getSlug(input = '') {
     return input
       .toLowerCase()
