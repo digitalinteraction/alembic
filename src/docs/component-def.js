@@ -1,43 +1,43 @@
 import { trimCss } from '../lib/lib.js'
 
 const style = trimCss`
-:host::part(section) {
-}
-:host::part(heading) {
-  font-family: var(--doc-family);
-  margin-block: 0 0.1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-:host::part(inner) {
-  border: 3px dotted var(--doc-foreground);
-  padding: var(--s0);
-}
-:host[no-pad]::part(inner) {
-  padding: 0;
-}
-:host::part(toggle) {
-  font-family: inherit;
-  font-weight: bold;
-  padding: 4px 6px;
-  background-color: #cacad5;
-  border: 2px solid #cacad5;
-  border-radius: 3px;
-  font-size: 0.7em;
-  box-shadow: none;
-  text-shadow: 1px 2px 3px rgba(255, 255, 255, 0.3);
-  color: black;
-}
-:host::part(toggle):hover {
-  background: #d6d6e3;
-}
-:host::part(code) {
-  margin: 0;
-  font-family: ui-monospace, monospace;
-  max-width: 100%;
-  overflow-x: auto;
-}
+  :host::part(section) {
+  }
+  :host::part(heading) {
+    font-family: var(--doc-family);
+    margin-block: 0 0.1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  :host::part(inner) {
+    border: 3px dotted var(--doc-foreground);
+    padding: var(--s0);
+  }
+  :host[no-pad]::part(inner) {
+    padding: 0;
+  }
+  :host::part(toggle) {
+    font-family: inherit;
+    font-weight: bold;
+    padding: 4px 6px;
+    background-color: #cacad5;
+    border: 2px solid #cacad5;
+    border-radius: 3px;
+    font-size: 0.7em;
+    box-shadow: none;
+    text-shadow: 1px 2px 3px rgba(255, 255, 255, 0.3);
+    color: black;
+  }
+  :host::part(toggle):hover {
+    background: #d6d6e3;
+  }
+  :host::part(code) {
+    margin: 0;
+    font-family: ui-monospace, monospace;
+    max-width: 100%;
+    overflow-x: auto;
+  }
 `
 
 const template = document.createElement('template')
