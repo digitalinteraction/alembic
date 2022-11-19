@@ -12,6 +12,7 @@ const style = trimCss`
   font-family: var(--doc-family);
   cursor: pointer;
   font-weight: bold;
+  z-index: 1;
 }
 :host::slotted(*:not(:first-child)) {
   margin-block-start: var(--s2);

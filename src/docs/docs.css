@@ -3,6 +3,12 @@
 @import '../layouts/layouts.css';
 @import '../forms/forms.css';
 
+/* 
+  z-index:
+  - 1 - doc-section::part(title)
+  - 2 - .layoutNav
+*/
+
 :root {
   --doc-family: Inter, system-ui, sans-serif;
   --doc-mono: 'SF Mono', ui-monospace, monospace;
@@ -108,6 +114,8 @@ a {
   Navigation
 */
 .docsNav {
+  position: sticky;
+  top: var(--s0);
 }
 .docsNav ul > * {
   margin-block-start: var(--s-1);
@@ -191,6 +199,9 @@ a {
   font-weight: bold;
   -webkit-user-select: all;
   user-select: all;
+}
+.layoutInfo table td:last-child {
+  min-width: 300px;
 }
 @media (prefers-color-scheme: dark) {
   .layoutInfo td:nth-child(1) {
@@ -286,9 +297,10 @@ doc-section {
   position: sticky;
   bottom: 0;
   background: var(--doc-background);
-  margin-inline: calc(-1 * var(--s2));
-  padding: var(--s1);
+  margin-inline: calc(-1 * var(--s0));
+  padding: var(--s-1);
   border-top: var(--border-thin) solid var(--doc-foreground);
+  z-index: 2;
 }
 .layoutNav-item {
   text-decoration: none;
@@ -298,8 +310,22 @@ doc-section {
   text-align: center;
   color: var(--doc-foreground);
 }
+.layoutNav img {
+  width: 64px;
+  height: 64px;
+}
 @media (prefers-color-scheme: dark) {
   .layoutNav-item > img {
     filter: invert(100%);
+  }
+}
+@media (min-width: 1024px) {
+  .layoutNav {
+    padding: var(--s1);
+    margin-inline: calc(-1 * var(--s2));
+  }
+  .layoutNav img {
+    width: 96px;
+    height: 96px;
   }
 }

@@ -160,8 +160,8 @@ You can nest multiple StackLayouts with different spacing.</p>
   <component-def label="Stack / Gapless">
     <stack-layout space="0" data-i="StackLayout-0">
       <doc-box height="50px"></doc-box>
-      <doc-box height="50px" accent="coral"></doc-box>
-      <doc-box height="50px" accent="royalblue"></doc-box>
+      <doc-box height="50px" pattern="b"></doc-box>
+      <doc-box height="50px" pattern="c"></doc-box>
     </stack-layout>
   </component-def>
 
@@ -173,9 +173,9 @@ You can nest multiple StackLayouts with different spacing.</p>
         <doc-box height="50px"></doc-box>
       </stack-layout>
       <stack-layout space="var(--s-1)" data-i="StackLayout-var(--s-1)">
-        <doc-box height="50px" accent="royalblue"></doc-box>
-        <doc-box height="50px" accent="royalblue"></doc-box>
-        <doc-box height="50px" accent="royalblue"></doc-box>
+        <doc-box height="50px" pattern="c"></doc-box>
+        <doc-box height="50px" pattern="c"></doc-box>
+        <doc-box height="50px" pattern="c"></doc-box>
       </stack-layout>
       <stack-layout space="var(--s-1)" data-i="StackLayout-var(--s-1)">
         <doc-box height="50px"></doc-box>
@@ -381,8 +381,8 @@ You can also use <code>justify</code> and <code>align</code> elements to control
   <component-def label="Cluster / Flush">
     <cluster-layout space="0" data-i="ClusterLayout-flex-startflex-start0">
       <doc-box width="200px" height="50px"> </doc-box>
-      <doc-box width="200px" height="50px" accent="royalblue"> </doc-box>
-      <doc-box width="200px" height="50px" accent="coral"> </doc-box>
+      <doc-box width="200px" height="50px" pattern="c"> </doc-box>
+      <doc-box width="200px" height="50px" pattern="b"> </doc-box>
     </cluster-layout>
   </component-def>
 
@@ -459,58 +459,28 @@ For example, when set to 60% the layout will collapse when the sidebar is taking
   </div>
   <component-def label="Sidebar / Vanilla">
     <sidebar-layout>
-      <doc-box accent="royalblue">
-        <ul>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-        </ul>
-      </doc-box>
+      <doc-box pattern="b" width="300px"></doc-box>
       <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
 
   <component-def label="Sidebar / No stretch">
     <sidebar-layout noStretch="" data-i="SidebarLayout-leftnull50%var(--s1)">
-      <doc-box accent="royalblue">
-        <p><doc-text words="3,5"></doc-text></p>
-        <p><doc-text words="3,5"></doc-text></p>
-        <p><doc-text words="3,5"></doc-text></p>
-        <p><doc-text words="3,5"></doc-text></p>
-        <p><doc-text words="3,5"></doc-text></p>
-      </doc-box>
+      <doc-box pattern="b" width="300px" height="100px"></doc-box>
       <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
 
   <component-def label="Sidebar / Gapless">
     <sidebar-layout space="0" data-i="SidebarLayout-leftnull50%0false">
-      <doc-box accent="royalblue">
-        <ul>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-        </ul>
-      </doc-box>
+      <doc-box pattern="b" width="300px"></doc-box>
       <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
 
   <component-def label="Sidebar / Side width">
     <sidebar-layout sideWidth="20ch" data-i="SidebarLayout-left20ch50%var(--s1)false">
-      <doc-box accent="royalblue">
-        <ul>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-        </ul>
-      </doc-box>
+      <doc-box pattern="b"></doc-box>
       <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
@@ -644,14 +614,14 @@ set <code>centered</code> to a CSS selector for an alternate principle element.<
   <component-def label="Cover / Custom center">
     <cover-layout centered=".center" minHeight="400px" noPad="" data-i="CoverLayout-.centervar(--s1)400px">
       <doc-box height="50px"></doc-box>
-      <doc-box class="center" height="100px" accent="royalblue"></doc-box>
+      <doc-box class="center" height="150px" pattern="b"></doc-box>
       <doc-box height="50px"></doc-box>
     </cover-layout>
   </component-def>
 
   <component-def label="Cover / Single">
     <cover-layout centered=".center" minHeight="400px" noPad="" data-i="CoverLayout-.centervar(--s1)400px">
-      <doc-box class="center" height="200px" accent="royalblue"></doc-box>
+      <doc-box class="center" height="200px" pattern="b"></doc-box>
     </cover-layout>
   </component-def>
 </doc-section>
@@ -845,14 +815,14 @@ Set <code>itemWidth</code> to force a width on all elements instead of using the
   <component-def label="Reel / Gapless">
     <reel-layout space="0" data-i="ReelLayout-autoauto0false">
       <doc-box height="50px" width="200px"></doc-box>
-      <doc-box height="50px" width="300px" accent="royalblue"></doc-box>
-      <doc-box height="50px" width="150px" accent="coral"></doc-box>
-      <doc-box height="50px" width="400px"></doc-box>
-      <doc-box height="50px" width="200px" accent="royalblue"></doc-box>
-      <doc-box height="50px" width="100px" accent="coral"></doc-box>
-      <doc-box height="50px" width="100px"></doc-box>
-      <doc-box height="50px" width="300px" accent="royalblue"></doc-box>
-      <doc-box height="50px" width="200px" accent="coral"></doc-box>
+      <doc-box height="50px" width="200px" pattern="b"></doc-box>
+      <doc-box height="50px" width="200px" pattern="c"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
+      <doc-box height="50px" width="200px" pattern="b"></doc-box>
+      <doc-box height="50px" width="200px" pattern="c"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
+      <doc-box height="50px" width="200px" pattern="b"></doc-box>
+      <doc-box height="50px" width="200px" pattern="c"></doc-box>
     </reel-layout>
   </component-def>
 
@@ -861,7 +831,7 @@ Set <code>itemWidth</code> to force a width on all elements instead of using the
       <doc-box height="50px" width="200px"></doc-box>
       <doc-box height="50px" width="300px"></doc-box>
       <doc-box height="50px" width="150px"></doc-box>
-      <doc-box height="50px" width="400px"></doc-box>
+      <doc-box height="50px" width="350px"></doc-box>
       <doc-box height="50px" width="100px"></doc-box>
       <doc-box height="50px" width="200px"></doc-box>
       <doc-box height="50px" width="100px"></doc-box>
@@ -930,10 +900,10 @@ it is setup to not exceed 100% of the parent's height or width.</p>
 
   <component-def label="Imposter / Vanilla">
     <div style="position: relative">
-      <doc-text words="500"></doc-text>
+      <doc-box height="400px" pattern="c"></doc-box>
       <imposter-layout>
         <box-layout invert="" data-i="BoxLayout-var(--s1)var(--border-thin)">
-          <doc-text words="500"></doc-text>
+          <doc-text words="400"></doc-text>
         </box-layout>
       </imposter-layout>
     </div>
@@ -941,10 +911,10 @@ it is setup to not exceed 100% of the parent's height or width.</p>
 
   <component-def label="Imposter / Margin">
     <div style="position: relative">
-      <doc-text words="500"></doc-text>
+      <doc-box height="400px" pattern="c"></doc-box>
       <imposter-layout margin="1rem" data-i="ImposterLayout-falsefalse1rem">
         <box-layout invert="" data-i="BoxLayout-var(--s1)var(--border-thin)">
-          <doc-text words="500"></doc-text>
+          <doc-text words="400"></doc-text>
         </box-layout>
       </imposter-layout>
     </div>
@@ -952,10 +922,10 @@ it is setup to not exceed 100% of the parent's height or width.</p>
 
   <component-def label="Imposter / Sized">
     <div style="position: relative">
-      <doc-text words="500"></doc-text>
+      <doc-box height="400px" pattern="c"></doc-box>
       <imposter-layout margin="1rem" style="width: var(--measure)" data-i="ImposterLayout-falsefalse1rem">
         <box-layout invert="" data-i="BoxLayout-var(--s1)var(--border-thin)">
-          <doc-text words="500"></doc-text>
+          <doc-text words="400"></doc-text>
         </box-layout>
       </imposter-layout>
     </div>

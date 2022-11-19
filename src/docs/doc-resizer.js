@@ -1,8 +1,8 @@
-import { trimCss } from '../lib/lib.js'
+import { trimCss as css } from '../lib/lib.js'
 
-const style = trimCss`
-/* These styles are used in Firefox/chrome */
-@media (hover: hover) {
+const style = css`
+  /* These styles are used in Firefox/chrome */
+  /* @media (hover: hover) { */
   :host {
     display: flex;
     gap: 1rem;
@@ -15,15 +15,23 @@ const style = trimCss`
   }
   :host::part(handle) {
     width: 0.5rem;
-    
+
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    
+
     background: var(--doc-foreground);
     cursor: col-resize;
     box-sizing: border-box;
   }
-}
+  @media (max-width: 1024px) {
+    :host::part(handle) {
+      width: 1rem;
+    }
+    :host::part(content) {
+      max-width: calc(100% - 1rem - 1rem); /* 100% - gap - handleWidth */
+    }
+  }
+  /* } */
 `
 
 const template = document.createElement('template')
@@ -36,13 +44,14 @@ template.innerHTML = `
 </div>
 `
 
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/setPointerCapture
+
 export class DocResizer extends HTMLElement {
+  #resized = 0
+  /**@type{HTMLElement}*/ #handleElem = null
+
   static get observedAttributes() {
     return []
-  }
-
-  get handleElem() {
-    return this.shadowRoot.querySelector("[part='handle']")
   }
 
   constructor() {
@@ -50,28 +59,27 @@ export class DocResizer extends HTMLElement {
 
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
+    this.#handleElem = this.shadowRoot.querySelector("[part='handle']")
 
-    let resized = 0
-    this.handleElem.addEventListener('mousedown', (e) => {
-      let current = e.screenX + resized
+    this.#handleElem.onpointerdown = (event) => {
+      let current = event.screenX + this.#resized
 
-      const onMove = (e) => {
-        e.preventDefault()
-        resized = Math.max(0, current - e.screenX)
-        this.style.marginInlineEnd = `${resized}px`
+      this.#handleElem.onpointermove = (event) => {
+        console.debug('onpointermove')
+        this.#resized = Math.max(0, current - event.screenX)
+        this.style.marginInlineEnd = `${this.#resized}px`
       }
 
-      window.addEventListener('mousemove', onMove)
-      window.addEventListener(
-        'mouseup',
-        () => window.removeEventListener('mousemove', onMove),
-        { once: true }
-      )
-    })
+      this.#handleElem.setPointerCapture(event.pointerId)
+    }
+    this.#handleElem.onpointerup = (event) => {
+      this.#handleElem.onpointermove = null
+      this.#handleElem.releasePointerCapture(event.pointerId)
+    }
 
     // Reset the control if the window size changed
     window.addEventListener('resize', () => {
-      if (resized) resized = 0
+      if (this.#resized) this.#resized = 0
       if (this.style.marginInlineEnd) this.style.marginInlineEnd = null
     })
   }

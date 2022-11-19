@@ -147,12 +147,12 @@
         <td> How tall the box should be vertically (block axis) </td>
       </tr>
       <tr>
-        <td>accent</td>
-        <td>CSS color</td>
-        <td><code>rebeccapurple</code></td>
+        <td>pattern</td>
+        <td><code>{a,b,c}</code></td>
+        <td><code>a</code></td>
         <td>
-          What colour to fill in the box, useful to distinguish multiple
-          DocBoxes
+          Which pattern to use, a is a block colour, b is hatched and c is
+          dotty.
         </td>
       </tr>
     </table>
@@ -168,8 +168,11 @@
       <p><doc-text words="50"></doc-text></p>
     </doc-box>
   </component-def>
-  <component-def label="DocBox / accent">
-    <doc-box height="50px" accent="coral"></doc-box>
+  <component-def label="DocBox / B pattern">
+    <doc-box height="50px" pattern="b"></doc-box>
+  </component-def>
+  <component-def label="DocBox / C pattern">
+    <doc-box height="50px" pattern="c"></doc-box>
   </component-def>
 </doc-section>
 

@@ -367,10 +367,7 @@ var SidebarLayout = class extends HTMLElement {
   }
   render() {
     if (!this.contentMin.includes("%")) {
-      console.warn(
-        "<sidebar-layout> `contentMin` property should be a percentage to prevent overflow. %o supplied",
-        this.contentMin
-      );
+      console.warn("<sidebar-layout> `contentMin` property should be a percentage to prevent overflow. %o supplied", this.contentMin);
     }
     const { side, sideWidth, contentMin, space, noStretch } = this;
     const { id, css } = SidebarLayout.getStyles({
@@ -631,11 +628,7 @@ var FrameLayout = class extends HTMLElement {
     }
     const ratio = ratioRegex().exec(this.ratio);
     if (!ratio) {
-      console.error(
-        "<frame-layout> `ratio` must in the format %o but got %o",
-        "16:9",
-        this.ratio
-      );
+      console.error("<frame-layout> `ratio` must in the format %o but got %o", "16:9", this.ratio);
       return;
     }
     const { id, css } = FrameLayout.getStyles({ ratio: this.ratio });
@@ -904,43 +897,43 @@ var layoutCustomElementNames = Object.keys(layoutMap);
 
 // src/docs/component-def.js
 var style = trimCss`
-:host::part(section) {
-}
-:host::part(heading) {
-  font-family: var(--doc-family);
-  margin-block: 0 0.1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-:host::part(inner) {
-  border: 3px dotted var(--doc-foreground);
-  padding: var(--s0);
-}
-:host[no-pad]::part(inner) {
-  padding: 0;
-}
-:host::part(toggle) {
-  font-family: inherit;
-  font-weight: bold;
-  padding: 4px 6px;
-  background-color: #cacad5;
-  border: 2px solid #cacad5;
-  border-radius: 3px;
-  font-size: 0.7em;
-  box-shadow: none;
-  text-shadow: 1px 2px 3px rgba(255, 255, 255, 0.3);
-  color: black;
-}
-:host::part(toggle):hover {
-  background: #d6d6e3;
-}
-:host::part(code) {
-  margin: 0;
-  font-family: ui-monospace, monospace;
-  max-width: 100%;
-  overflow-x: auto;
-}
+  :host::part(section) {
+  }
+  :host::part(heading) {
+    font-family: var(--doc-family);
+    margin-block: 0 0.1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  :host::part(inner) {
+    border: 3px dotted var(--doc-foreground);
+    padding: var(--s0);
+  }
+  :host[no-pad]::part(inner) {
+    padding: 0;
+  }
+  :host::part(toggle) {
+    font-family: inherit;
+    font-weight: bold;
+    padding: 4px 6px;
+    background-color: #cacad5;
+    border: 2px solid #cacad5;
+    border-radius: 3px;
+    font-size: 0.7em;
+    box-shadow: none;
+    text-shadow: 1px 2px 3px rgba(255, 255, 255, 0.3);
+    color: black;
+  }
+  :host::part(toggle):hover {
+    background: #d6d6e3;
+  }
+  :host::part(code) {
+    margin: 0;
+    font-family: ui-monospace, monospace;
+    max-width: 100%;
+    overflow-x: auto;
+  }
 `;
 var template = document.createElement("template");
 template.innerHTML = `
@@ -1009,7 +1002,7 @@ var ComponentDef = class extends HTMLElement {
 // src/docs/doc-box.js
 var DocBox = class extends HTMLElement {
   static get observedAttributes() {
-    return ["height", "width", "accent"];
+    return ["height", "width", "pattern"];
   }
   get height() {
     return this.getAttribute("height") ?? null;
@@ -1023,32 +1016,48 @@ var DocBox = class extends HTMLElement {
   set width(value) {
     this.setAttribute("width", value);
   }
-  get accent() {
-    return this.getAttribute("accent") ?? "rebeccapurple";
+  get pattern() {
+    return this.getAttribute("pattern") ?? "a";
   }
-  set accent(value) {
-    this.setAttribute("accent", value);
+  set pattern(value) {
+    this.setAttribute("pattern", value);
   }
   render() {
-    this.dataset.i = `DocBox-${this.width}${this.height}${this.accent}`;
-    let rules = [
+    this.dataset.i = `DocBox-${this.width}${this.height}${this.pattern}`;
+    const rules = [
       `display: ${this.width !== null ? "inline-block" : "block"}`,
-      `background-color: ${this.accent}`,
-      `color: white`,
-      `color: color-contrast(white vs black, ${this.accent});`
+      `color: var(--doc-background)`,
+      `color: color-contrast(white vs black, var(--doc-foreground))`
     ];
     if (this.height !== null)
       rules.push(`height: ${this.height}`);
     if (this.width !== null)
       rules.push(`width: 100%; max-width: ${this.width}`);
-    addGlobalStyle(
-      this.dataset.i,
-      `
+    switch (this.pattern) {
+      case "b":
+        rules.push(trimCss`
+          background-image: repeating-linear-gradient(
+            -45deg,
+            var(--doc-foreground),
+            var(--doc-foreground) 5px,
+            var(--doc-background) 5px,
+            var(--doc-background) 10px
+          )
+        `);
+        break;
+      case "c":
+        const size = "0.25em";
+        rules.push(`background-color: var(--doc-foreground)`, `background-image: radial-gradient(var(--doc-background) ${size}, transparent ${size}),radial-gradient(var(--doc-background) ${size}, transparent ${size})`, `background-size: calc(6 * ${size}) calc(6 * ${size})`, `background-position: calc(3 * ${size}) calc(3 * ${size}), 0 0`);
+        break;
+      default:
+        rules.push(`background-color: var(--doc-foreground)`);
+        break;
+    }
+    addGlobalStyle(this.dataset.i, `
         [data-i="${this.dataset.i}"] {
           ${rules.join(";")}
         }
-      `
-    );
+      `);
   }
   connectedCallback() {
     this.render();
@@ -1060,8 +1069,8 @@ var DocBox = class extends HTMLElement {
 
 // src/docs/doc-resizer.js
 var style2 = trimCss`
-/* These styles are used in Firefox/chrome */
-@media (hover: hover) {
+  /* These styles are used in Firefox/chrome */
+  /* @media (hover: hover) { */
   :host {
     display: flex;
     gap: 1rem;
@@ -1074,15 +1083,23 @@ var style2 = trimCss`
   }
   :host::part(handle) {
     width: 0.5rem;
-    
+
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    
+
     background: var(--doc-foreground);
     cursor: col-resize;
     box-sizing: border-box;
   }
-}
+  @media (max-width: 1024px) {
+    :host::part(handle) {
+      width: 1rem;
+    }
+    :host::part(content) {
+      max-width: calc(100% - 1rem - 1rem); /* 100% - gap - handleWidth */
+    }
+  }
+  /* } */
 `;
 var template2 = document.createElement("template");
 template2.innerHTML = `
@@ -1094,34 +1111,32 @@ template2.innerHTML = `
 </div>
 `;
 var DocResizer = class extends HTMLElement {
+  #resized = 0;
+  #handleElem = null;
   static get observedAttributes() {
     return [];
-  }
-  get handleElem() {
-    return this.shadowRoot.querySelector("[part='handle']");
   }
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template2.content.cloneNode(true));
-    let resized = 0;
-    this.handleElem.addEventListener("mousedown", (e) => {
-      let current = e.screenX + resized;
-      const onMove = (e2) => {
-        e2.preventDefault();
-        resized = Math.max(0, current - e2.screenX);
-        this.style.marginInlineEnd = `${resized}px`;
+    this.#handleElem = this.shadowRoot.querySelector("[part='handle']");
+    this.#handleElem.onpointerdown = (event) => {
+      let current = event.screenX + this.#resized;
+      this.#handleElem.onpointermove = (event2) => {
+        console.debug("onpointermove");
+        this.#resized = Math.max(0, current - event2.screenX);
+        this.style.marginInlineEnd = `${this.#resized}px`;
       };
-      window.addEventListener("mousemove", onMove);
-      window.addEventListener(
-        "mouseup",
-        () => window.removeEventListener("mousemove", onMove),
-        { once: true }
-      );
-    });
+      this.#handleElem.setPointerCapture(event.pointerId);
+    };
+    this.#handleElem.onpointerup = (event) => {
+      this.#handleElem.onpointermove = null;
+      this.#handleElem.releasePointerCapture(event.pointerId);
+    };
     window.addEventListener("resize", () => {
-      if (resized)
-        resized = 0;
+      if (this.#resized)
+        this.#resized = 0;
       if (this.style.marginInlineEnd)
         this.style.marginInlineEnd = null;
     });
@@ -1141,6 +1156,7 @@ var style3 = trimCss`
   font-family: var(--doc-family);
   cursor: pointer;
   font-weight: bold;
+  z-index: 1;
 }
 :host::slotted(*:not(:first-child)) {
   margin-block-start: var(--s2);
@@ -1196,9 +1212,7 @@ var DocSection = class extends HTMLElement {
 };
 
 // src/docs/doc-text.js
-var LOREM_WORDS = JSON.parse(
-  '["a","ac","accumsan","adipiscing","aenean","aliqua","aliquam","aliquet","amet","ante","arcu","at","auctor","augue","bibendum","commodo","consectetur","convallis","curabitur","cursus","dapibus","diam","dictum","dictumst","dignissim","do","dolor","dolore","donec","dui","duis","egestas","eget","eiusmod","eleifend","elementum","elit","enim","erat","eros","est","et","etiam","eu","euismod","facilisi","facilisis","fames","faucibus","fermentum","feugiat","fringilla","fusce","gravida","habitasse","hac","hendrerit","iaculis","id","imperdiet","in","incididunt","integer","interdum","ipsum","justo","labore","lacinia","lacus","laoreet","lectus","leo","libero","ligula","lobortis","lorem","luctus","maecenas","magna","malesuada","massa","mattis","mauris","metus","mi","morbi","nam","nec","neque","nibh","nisl","non","nulla","nullam","nunc","odio","orci","ornare","pellentesque","pharetra","phasellus","placerat","platea","porta","porttitor","posuere","praesent","pretium","proin","pulvinar","purus","quam","quis","rhoncus","risus","sagittis","sapien","scelerisque","sed","sem","semper","sit","suspendisse","tellus","tempor","tempus","tincidunt","tortor","tristique","turpis","ullamcorper","ultrices","ultricies","urna","ut","varius","vehicula","vel","velit","vestibulum","vitae","viverra","volutpat","vulputate"]'
-);
+var LOREM_WORDS = JSON.parse('["a","ac","accumsan","adipiscing","aenean","aliqua","aliquam","aliquet","amet","ante","arcu","at","auctor","augue","bibendum","commodo","consectetur","convallis","curabitur","cursus","dapibus","diam","dictum","dictumst","dignissim","do","dolor","dolore","donec","dui","duis","egestas","eget","eiusmod","eleifend","elementum","elit","enim","erat","eros","est","et","etiam","eu","euismod","facilisi","facilisis","fames","faucibus","fermentum","feugiat","fringilla","fusce","gravida","habitasse","hac","hendrerit","iaculis","id","imperdiet","in","incididunt","integer","interdum","ipsum","justo","labore","lacinia","lacus","laoreet","lectus","leo","libero","ligula","lobortis","lorem","luctus","maecenas","magna","malesuada","massa","mattis","mauris","metus","mi","morbi","nam","nec","neque","nibh","nisl","non","nulla","nullam","nunc","odio","orci","ornare","pellentesque","pharetra","phasellus","placerat","platea","porta","porttitor","posuere","praesent","pretium","proin","pulvinar","purus","quam","quis","rhoncus","risus","sagittis","sapien","scelerisque","sed","sem","semper","sit","suspendisse","tellus","tempor","tempus","tincidunt","tortor","tristique","turpis","ullamcorper","ultrices","ultricies","urna","ut","varius","vehicula","vel","velit","vestibulum","vitae","viverra","volutpat","vulputate"]');
 var DocText = class extends HTMLElement {
   static get observedAttributes() {
     return ["words"];
@@ -1228,18 +1242,11 @@ var DocText = class extends HTMLElement {
         range = [number, number];
     }
     if (!range) {
-      console.error(
-        "<doc-text> invalid `range`, expected a number or a range like %o, got %o",
-        "5,10",
-        this.range
-      );
+      console.error("<doc-text> invalid `range`, expected a number or a range like %o, got %o", "5,10", this.range);
       return;
     }
     range = range.map((i) => parseInt(i, 10));
-    this.textNode.data = Array.from(
-      { length: this.randomNumber(range[0], range[1]) },
-      () => LOREM_WORDS[this.randomNumber(0, LOREM_WORDS.length)]
-    ).join(" ");
+    this.textNode.data = Array.from({ length: this.randomNumber(range[0], range[1]) }, () => LOREM_WORDS[this.randomNumber(0, LOREM_WORDS.length)]).join(" ");
   }
   connectedCallback() {
     this.render();
