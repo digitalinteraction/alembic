@@ -105,7 +105,7 @@ export function _createLayoutStyle(id, css) {
 
 export function _parseHtmlAttributes(attrs) {
   const props = {}
-  for (const attr of attrs.matchAll(/(\w+)(?:="?([^"]*)"?)?/g)) {
+  for (const attr of attrs.matchAll(/(\w[\w-]+)(?:="?([^"]*)"?)?/g)) {
     props[attr[1]] = attr[2] ?? ''
   }
   return props

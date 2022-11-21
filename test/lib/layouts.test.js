@@ -70,6 +70,12 @@ describe('#_parseHtmlAttributes', () => {
       noBar: '',
     })
   })
+  it('should parse kebab-case properties', () => {
+    const result = _parseHtmlAttributes('data-accent="value"')
+    assert.deepEqual(result, {
+      'data-accent': 'value',
+    })
+  })
 })
 
 describe('#_processLayoutMatch', () => {
