@@ -1,9 +1,15 @@
-import { addGlobalStyle, trimCss } from '../../lib/style.js'
+import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
 
-const defaults = {
+const defaultAttributes = {
   breakout: false,
   fixed: false,
   margin: '0px',
+}
+
+export interface ImposterLayoutAttributes {
+  breakout?: boolean
+  fixed?: boolean
+  margin?: string
 }
 
 /**
@@ -13,15 +19,15 @@ const defaults = {
  * @property {string} margin=0 The minimum space between the element and it's positioning container (when `breakout` isn't used)
  * @property {boolean} fixed=false Whether to fix the element to the viewport instead
  */
-export class ImposterLayout extends HTMLElement {
+export class ImposterLayout extends getHTMLElement() {
   static get observedAttributes() {
     return ['breakout', 'margin', 'fixed']
   }
   static defineElement() {
     customElements.define('imposter-layout', ImposterLayout)
   }
-  static getStyles(attrs) {
-    const { breakout, fixed, margin } = { ...defaults, ...attrs }
+  static getStyles(attrs: ImposterLayoutAttributes) {
+    const { breakout, fixed, margin } = { ...defaultAttributes, ...attrs }
     const id = `ImposterLayout-${breakout}${fixed}${margin}`
 
     const normalisedMargin = margin === '0' ? '0px' : margin
@@ -41,26 +47,26 @@ export class ImposterLayout extends HTMLElement {
   }
 
   get breakout() {
-    return this.hasAttribute('breakout')
+    return this.hasAttribute('breakout') ?? defaultAttributes.breakout
   }
   set breakout(value) {
-    if (value) return this.setAttribute('breakout', '')
-    else return this.removeAttribute('breakout')
+    if (value) this.setAttribute('breakout', '')
+    else this.removeAttribute('breakout')
   }
 
   get fixed() {
-    return this.hasAttribute('fixed')
+    return this.hasAttribute('fixed') ?? defaultAttributes.fixed
   }
   set fixed(value) {
-    if (value) return this.setAttribute('fixed', '')
-    else return this.removeAttribute('fixed')
+    if (value) this.setAttribute('fixed', '')
+    else this.removeAttribute('fixed')
   }
 
   get margin() {
-    return this.getAttribute('margin') || defaults.margin
+    return this.getAttribute('margin') ?? defaultAttributes.margin
   }
   set margin(value) {
-    return this.setAttribute('margin', value)
+    this.setAttribute('margin', value)
   }
 
   render() {

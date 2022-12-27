@@ -1,9 +1,15 @@
-import { addGlobalStyle, trimCss } from '../../lib/lib.js'
+import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
 
-const defaults = {
+const defaultAttributes = {
   padding: 'var(--s1)',
   borderWidth: 'var(--border-thin)',
   invert: false,
+}
+
+export interface BoxLayoutAttributes {
+  padding?: string
+  borderWidth?: string
+  invert?: boolean
 }
 
 /**
@@ -13,15 +19,15 @@ const defaults = {
  * @property {string} borderWidth=var(--border-thin) A CSS `border-width` value
  * @property {boolean} invert=false Whether to flip fore/background colours
  */
-export class BoxLayout extends HTMLElement {
+export class BoxLayout extends getHTMLElement() {
   static get observedAttributes() {
     return ['borderWidth', 'padding', 'invert']
   }
   static defineElement() {
     customElements.define('box-layout', BoxLayout)
   }
-  static getStyles(attrs) {
-    const { padding, borderWidth, invert } = { ...defaults, ...attrs }
+  static getStyles(attrs: BoxLayoutAttributes) {
+    const { padding, borderWidth, invert } = { ...defaultAttributes, ...attrs }
     const id = `BoxLayout-${padding}${borderWidth}${invert}`
     const invertRule = invert
       ? `color: var(--color-background); background-color: var(--color-foreground);`
@@ -37,16 +43,16 @@ export class BoxLayout extends HTMLElement {
   }
 
   get padding() {
-    return this.getAttribute('padding') || defaults.padding
+    return this.getAttribute('padding') ?? defaultAttributes.padding
   }
   set padding(value) {
-    return this.setAttribute('padding', value)
+    this.setAttribute('padding', value)
   }
   get borderWidth() {
-    return this.getAttribute('borderWidth') || defaults.borderWidth
+    return this.getAttribute('borderWidth') ?? defaultAttributes.borderWidth
   }
   set borderWidth(value) {
-    return this.setAttribute('borderWidth', value)
+    this.setAttribute('borderWidth', value)
   }
   get invert() {
     return this.hasAttribute('invert')

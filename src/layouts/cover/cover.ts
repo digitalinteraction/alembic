@@ -1,10 +1,17 @@
-import { addGlobalStyle, trimCss } from '../../lib/lib.js'
+import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
 
-const defaults = {
+const defaultAttributes = {
   centered: 'h1',
   space: 'var(--s1)',
   minHeight: '100vh',
   noPad: false,
+}
+
+export interface CoverLayoutAttributes {
+  centered?: string
+  space?: string
+  minHeight?: string
+  noPad?: boolean
 }
 
 /**
@@ -16,15 +23,18 @@ const defaults = {
  * @property {string} minHeight=100vh The minimum block-size (height) for the entire layout
  * @property {boolean} noPad=false Whether the spacing should also pad the inside of the layout
  */
-export class CoverLayout extends HTMLElement {
+export class CoverLayout extends getHTMLElement() {
   static get observedAttributes() {
     return ['centered', 'space', 'minHeight', 'noPad']
   }
   static defineElement() {
     customElements.define('cover-layout', CoverLayout)
   }
-  static getStyles(attrs) {
-    const { centered, space, minHeight, noPad } = { ...defaults, ...attrs }
+  static getStyles(attrs: CoverLayoutAttributes) {
+    const { centered, space, minHeight, noPad } = {
+      ...defaultAttributes,
+      ...attrs,
+    }
     const id = `CoverLayout-${centered}${space}${minHeight}${noPad}`
     const css = trimCss`
       [data-i="${id}"] {
@@ -48,24 +58,24 @@ export class CoverLayout extends HTMLElement {
   }
 
   get centered() {
-    return this.getAttribute('centered') ?? defaults.centered
+    return this.getAttribute('centered') ?? defaultAttributes.centered
   }
   set centered(value) {
     this.setAttribute('centered', value)
   }
 
   get space() {
-    return this.getAttribute('space') ?? defaults.space
+    return this.getAttribute('space') ?? defaultAttributes.space
   }
   set space(value) {
     this.setAttribute('space', value)
   }
 
   get minHeight() {
-    return this.getAttribute('minHeight') || defaults.minHeight
+    return this.getAttribute('minHeight') ?? defaultAttributes.minHeight
   }
   set minHeight(value) {
-    return this.setAttribute('minHeight', value)
+    this.setAttribute('minHeight', value)
   }
 
   get noPad() {

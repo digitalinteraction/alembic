@@ -18,25 +18,30 @@ mkdir -p dist/assets
 cp -R src/assets/* dist/assets/
 
 #
+# Lint TypeScript & export types
+#
+npx tsc
+
+#
 # Build resources
 #
 npx esbuild --bundle --format=esm --platform=browser --outdir=dist \
-  module=src/module.js \
+  module=src/module.ts \
   docs=src/docs/docs.css \
   docs=src/docs/docs.js \
   layouts=src/layouts/layouts.css \
-  layouts=src/layouts/layouts.js \
+  layouts=src/layouts/layouts.ts \
   reset=src/lib/reset.css \
-  lib=src/lib/lib.js \
-  fake-dom-env=src/lib/fake-dom-env.js 
+  lib=src/lib/lib.ts \
+  everything=src/everything.css \
+  everything=src/everything.ts \
 
 #
 # Build cjs
 #
 npx esbuild --bundle --format=cjs --platform=neutral --outdir=dist \
   --out-extension:.js=.cjs \
-  module=src/module.js \
-  fake-dom-env=src/lib/fake-dom-env.js 
+  module=src/module.ts
 
 #
 # Build the docs pages
@@ -45,8 +50,3 @@ npx esbuild --bundle --format=cjs --platform=neutral --outdir=dist \
 npx eleventy \
   --config=.eleventy.cjs \
   --pathprefix=$PATH_PREFIX
-
-#
-# Copy types
-#
-cp -R src/types/* dist/

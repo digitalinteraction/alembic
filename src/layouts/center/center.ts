@@ -1,27 +1,34 @@
-import { addGlobalStyle, trimCss } from '../../lib/lib.js'
+import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
 
-const defaults = {
+const defaultAttributes = {
   max: 'var(--measure)',
-  gutters: null,
+  gutters: undefined,
   intrinsic: false,
+}
+
+export interface CenterLayoutAttributes {
+  max?: string
+  gutters?: string
+  intrinsic?: boolean
 }
 
 /**
  * CenterLayout ensures a block-level element is horizontally centered with a max-width value representing the typographic measure
  *
  * @property {string} max=var(--measure) A CSS `max-width` value
- * @property {string} gutters=0 A CSS `length` value representing the minimum space on either side of the content
+ * @property {string} gutters=null A CSS `length` value representing the minimum space on either side of the content
  * @property {boolean} intrinsic=false Center child elements based on their content width
  */
-export class CenterLayout extends HTMLElement {
+export class CenterLayout extends getHTMLElement() {
   static get observedAttributes() {
     return ['max', 'gutters', 'intrinsic']
   }
+
   static defineElement() {
     customElements.define('center-layout', CenterLayout)
   }
-  static getStyles(attrs) {
-    const { max, gutters, intrinsic } = { ...defaults, ...attrs }
+  static getStyles(attrs: CenterLayoutAttributes) {
+    const { max, gutters, intrinsic } = { ...defaultAttributes, ...attrs }
     const id = `CenterLayout-${max}${gutters}${intrinsic}`
 
     const guttersRule = `padding-inline: ${gutters};`
@@ -44,19 +51,20 @@ export class CenterLayout extends HTMLElement {
   }
 
   get max() {
-    return this.getAttribute('max') || defaults.max
+    return this.getAttribute('max') ?? defaultAttributes.max
   }
   set max(value) {
-    return this.setAttribute('max', value)
+    this.setAttribute('max', value)
   }
   get gutters() {
-    return this.getAttribute('gutters') || defaults.gutters
+    return this.getAttribute('gutters') ?? defaultAttributes.gutters
   }
   set gutters(value) {
-    return this.setAttribute('gutters', value)
+    if (value) this.setAttribute('gutters', value)
+    else this.removeAttribute('gutters')
   }
   get intrinsic() {
-    return this.hasAttribute('intrinsic') || defaults.intrinsic
+    return this.hasAttribute('intrinsic') ?? defaultAttributes.intrinsic
   }
   set intrinsic(value) {
     if (value) this.setAttribute('intrinsic', '')

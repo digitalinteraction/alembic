@@ -1,8 +1,13 @@
-import { addGlobalStyle, trimCss } from '../../lib/style.js'
+import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
 
-const defaults = {
+const defaultAttributes = {
   min: '250px',
   space: 'var(--s1)',
+}
+
+export interface GridLayoutAttributes {
+  min?: string
+  space?: string
 }
 
 /**
@@ -11,15 +16,15 @@ const defaults = {
  * @property {string} min=250px A CSS `length` for the x in `minmax(min(x, 100%), 1fr)`
  * @property {string} space=var(--s1) The space between grid cells
  */
-export class GridLayout extends HTMLElement {
+export class GridLayout extends getHTMLElement() {
   static get observedAttributes() {
     return ['min', 'space']
   }
   static defineElement() {
     customElements.define('grid-layout', GridLayout)
   }
-  static getStyles(attrs) {
-    const { min, space } = { ...defaults, ...attrs }
+  static getStyles(attrs: GridLayoutAttributes) {
+    const { min, space } = { ...defaultAttributes, ...attrs }
     const id = `GridLayout-${min}${space}`
     const css = trimCss`
       [data-i="${id}"] {
@@ -36,17 +41,17 @@ export class GridLayout extends HTMLElement {
   }
 
   get min() {
-    return this.getAttribute('min') || defaults.min
+    return this.getAttribute('min') ?? defaultAttributes.min
   }
   set min(value) {
-    return this.setAttribute('min', value)
+    this.setAttribute('min', value)
   }
 
   get space() {
-    return this.getAttribute('space') || defaults.space
+    return this.getAttribute('space') ?? defaultAttributes.space
   }
   set space(value) {
-    return this.setAttribute('space', value)
+    this.setAttribute('space', value)
   }
 
   render() {

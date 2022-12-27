@@ -1,9 +1,15 @@
-import { addGlobalStyle, trimCss } from '../../lib/lib.js'
+import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
 
-const defaults = {
+const defaultAttributes = {
   justify: 'flex-start',
   align: 'flex-start',
   space: 'var(--s1)',
+}
+
+export interface ClusterLayoutAttributes {
+  justify?: string
+  align?: string
+  space?: string
 }
 
 /**
@@ -15,15 +21,15 @@ const defaults = {
  * @property {string} align=flex-start A CSS `align-items` value
  * @property {string} space=var(--s1) A CSS `gap` value. The minimum space between the clustered child elements.
  */
-export class ClusterLayout extends HTMLElement {
+export class ClusterLayout extends getHTMLElement() {
   static get observedAttributes() {
     return ['justify', 'align', 'space']
   }
   static defineElement() {
     customElements.define('cluster-layout', ClusterLayout)
   }
-  static getStyles(attrs) {
-    const { justify, align, space } = { ...defaults, ...attrs }
+  static getStyles(attrs: ClusterLayoutAttributes) {
+    const { justify, align, space } = { ...defaultAttributes, ...attrs }
     const id = `ClusterLayout-${justify}${align}${space}`
     const css = trimCss`
       [data-i="${id}"] {
@@ -36,19 +42,19 @@ export class ClusterLayout extends HTMLElement {
   }
 
   get justify() {
-    return this.getAttribute('justify') ?? defaults.justify
+    return this.getAttribute('justify') ?? defaultAttributes.justify
   }
   set justify(value) {
     this.setAttribute('justify', value)
   }
   get align() {
-    return this.getAttribute('align') ?? defaults.align
+    return this.getAttribute('align') ?? defaultAttributes.align
   }
   set align(value) {
     this.setAttribute('align', value)
   }
   get space() {
-    return this.getAttribute('space') ?? defaults.space
+    return this.getAttribute('space') ?? defaultAttributes.space
   }
   set space(value) {
     this.setAttribute('space', value)

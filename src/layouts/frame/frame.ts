@@ -1,8 +1,13 @@
-import { addGlobalStyle, trimCss } from '../../lib/style.js'
+import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
 
 const ratioRegex = () => /^(\d+):(\d+)$/
-const defaults = {
+
+const defaultAttributes = {
   ratio: '16:9',
+}
+
+export interface FrameLayoutAttributes {
+  ratio?: string
 }
 
 /**
@@ -10,15 +15,15 @@ const defaults = {
  *
  * @property {string} ratio=16:9 The element's aspect ratio
  */
-export class FrameLayout extends HTMLElement {
+export class FrameLayout extends getHTMLElement() {
   static get observedAttributes() {
     return ['ratio']
   }
   static defineElement() {
     customElements.define('frame-layout', FrameLayout)
   }
-  static getStyles(attrs) {
-    const { ratio } = { ...defaults, ...attrs }
+  static getStyles(attrs: FrameLayoutAttributes) {
+    const { ratio } = { ...defaultAttributes, ...attrs }
 
     const parsedRatio = ratioRegex().exec(ratio)
     if (!parsedRatio) throw new Error(`Invalid ratio '${ratio}'`)
@@ -33,22 +38,24 @@ export class FrameLayout extends HTMLElement {
   }
 
   get ratio() {
-    return this.getAttribute('ratio') || defaults.ratio
+    return this.getAttribute('ratio') ?? defaultAttributes.ratio
   }
   set ratio(value) {
-    return this.setAttribute('ratio', value)
+    this.setAttribute('ratio', value)
   }
 
   render() {
     if (this.children.length != 1) {
       console.warn('<frame-layout> should only have one child element')
     }
+
     const ratio = ratioRegex().exec(this.ratio)
     if (!ratio) {
       console.error(
         '<frame-layout> `ratio` must in the format %o but got %o',
         '16:9',
-        this.ratio
+        this.ratio,
+        this
       )
       return
     }

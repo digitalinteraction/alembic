@@ -1,9 +1,15 @@
-import { addGlobalStyle, trimCss } from '../../lib/style.js'
+import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
 
-const defaults = {
+const defaultAttributes = {
   threshold: 'var(--measure)',
   space: 'var(--s1)',
   limit: '4',
+}
+
+export interface SwitcherLayoutAttributes {
+  threshold?: string
+  space?: string
+  limit?: string
 }
 
 /**
@@ -13,15 +19,15 @@ const defaults = {
  * @property {string} space=var(--s1) A CSS `margin` for the gap between elements
  * @property {integer} limit=4 The maximum number of elements allowed to display horizontally
  */
-export class SwitcherLayout extends HTMLElement {
+export class SwitcherLayout extends getHTMLElement() {
   static get observedAttributes() {
     return ['threshold', 'space', 'limit']
   }
   static defineElement() {
     customElements.define('switcher-layout', SwitcherLayout)
   }
-  static getStyles(attrs) {
-    const { threshold, space, limit } = { ...defaults, ...attrs }
+  static getStyles(attrs: SwitcherLayoutAttributes) {
+    const { threshold, space, limit } = { ...defaultAttributes, ...attrs }
     const id = `SwitcherLayout-${threshold}${space}${limit}`
     const nPlus1 = parseInt(limit) + 1
     const css = trimCss`
@@ -40,29 +46,33 @@ export class SwitcherLayout extends HTMLElement {
   }
 
   get threshold() {
-    return this.getAttribute('threshold') || defaults.threshold
+    return this.getAttribute('threshold') || defaultAttributes.threshold
   }
   set threshold(value) {
-    return this.setAttribute('threshold', value)
+    this.setAttribute('threshold', value)
   }
 
   get space() {
-    return this.getAttribute('space') || defaults.space
+    return this.getAttribute('space') || defaultAttributes.space
   }
   set space(value) {
-    return this.setAttribute('space', value)
+    this.setAttribute('space', value)
   }
 
   get limit() {
-    return this.getAttribute('limit') || defaults.limit
+    return this.getAttribute('limit') || defaultAttributes.limit
   }
   set limit(value) {
-    return this.setAttribute('limit', value)
+    this.setAttribute('limit', value)
   }
 
   render() {
     if (Number.isNaN(parseInt(this.limit))) {
-      console.warn('<switcher-layout> `limit` is not a number, %o', this.limit)
+      console.warn(
+        '<switcher-layout> `limit` is not a number, %o',
+        this.limit,
+        this
+      )
     }
 
     const { threshold, space, limit } = this

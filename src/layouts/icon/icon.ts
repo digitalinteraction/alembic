@@ -1,8 +1,13 @@
-import { addGlobalStyle, trimCss } from '../../lib/style.js'
+import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
 
-const defaults = {
-  space: null,
-  label: null,
+const defaultAttributes = {
+  space: undefined,
+  label: undefined,
+}
+
+export interface IconLayoutAttributes {
+  space?: string
+  label?: string
 }
 
 /**
@@ -11,16 +16,16 @@ const defaults = {
  * @property {string} space=null The space between the text and the icon. If null, the natural word spacing is preserved.
  * @property {string} label=null Turns the element into an image for assistive technologies and sets aria-label to the value.
  */
-export class IconLayout extends HTMLElement {
+export class IconLayout extends getHTMLElement() {
   static get observedAttributes() {
     return ['space', 'label']
   }
   static defineElement() {
     customElements.define('icon-layout', IconLayout)
   }
-  static getStyles(attrs) {
+  static getStyles(attrs: IconLayoutAttributes) {
     // `label` isn't used because it doesn't effect styles
-    const { space } = { ...defaults, ...attrs }
+    const { space } = { ...defaultAttributes, ...attrs }
     const id = `IconLayout-${space}`
 
     const spaceRule = trimCss`
@@ -39,17 +44,19 @@ export class IconLayout extends HTMLElement {
   }
 
   get space() {
-    return this.getAttribute('space') ?? defaults.space
+    return this.getAttribute('space') ?? defaultAttributes.space
   }
   set space(value) {
-    this.setAttribute('space', value)
+    if (value) this.setAttribute('space', value)
+    else this.removeAttribute('space')
   }
 
   get label() {
-    return this.getAttribute('label') ?? defaults.label
+    return this.getAttribute('label') ?? defaultAttributes.label
   }
   set label(value) {
-    this.setAttribute('label', value)
+    if (value) this.setAttribute('label', value)
+    else this.removeAttribute('label')
   }
 
   render() {

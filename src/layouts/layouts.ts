@@ -10,40 +10,35 @@ import { FrameLayout } from './frame/frame.js'
 import { ReelLayout } from './reel/reel.js'
 import { ImposterLayout } from './imposter/imposter.js'
 import { IconLayout } from './icon/icon.js'
+import { AlembicHTMLElement } from '../lib/lib.js'
 
 /** 
   Register every Layout custom element in one go
  */
 export function defineLayoutElements() {
-  if (!('customElements' in window)) return
+  if (!('customElements' in window)) {
+    throw new TypeError('Cannot call defineLayoutElements when not in the DOM')
+  }
 
-  for (const layout of Object.values(layoutMap)) layout.defineElement()
+  for (const layout of layoutCustomElements.values()) {
+    layout.defineElement()
+  }
 }
 
-/** 
-  `layoutMap` is a map of custom element name to Layout class
- */
-export const layoutMap = {
-  'stack-layout': StackLayout,
-  'box-layout': BoxLayout,
-  'center-layout': CenterLayout,
-  'cluster-layout': ClusterLayout,
-  'sidebar-layout': SidebarLayout,
-  'switcher-layout': SwitcherLayout,
-  'cover-layout': CoverLayout,
-  'grid-layout': GridLayout,
-  'frame-layout': FrameLayout,
-  'reel-layout': ReelLayout,
-  'imposter-layout': ImposterLayout,
-  'icon-layout': IconLayout,
-}
-
-/**
-  layoutCustomElementNames is an array of all custom element names,
-  useful for telling compilers (like Vue) to ignore these custom elements.
-  The order of these is NOT guaranteed
- */
-export const layoutCustomElementNames = Object.keys(layoutMap)
+export const layoutCustomElements = new Map<string, AlembicHTMLElement>([
+  ['box-layout', BoxLayout],
+  ['stack-layout', StackLayout],
+  ['center-layout', CenterLayout],
+  ['cluster-layout', ClusterLayout],
+  ['sidebar-layout', SidebarLayout],
+  ['switcher-layout', SwitcherLayout],
+  ['cover-layout', CoverLayout],
+  ['grid-layout', GridLayout],
+  ['frame-layout', FrameLayout],
+  ['reel-layout', ReelLayout],
+  ['imposter-layout', ImposterLayout],
+  ['icon-layout', IconLayout],
+])
 
 export {
   StackLayout,
@@ -65,17 +60,17 @@ export {
   and inject them into the document using `<!-- @openlab/alembic inject-css -->`
   @param {string} inputHtml
  */
-export function injectLayoutStyles(inputHtml) {
-  const styles = new Map()
+export function injectLayoutStyles(inputHtml: string) {
+  const styles = new Map<string, string>()
 
   inputHtml = inputHtml.replace(
     /<(\w+-layout)[\s\n\r]+?([\w\W]*?)>/g,
-    (match, layout, attrs) => {
+    (match, layoutName, attrs) => {
       const props = _parseHtmlAttributes(attrs)
-      const result = _processLayoutMatch(layout, props, styles)
+      const result = _processLayoutMatch(layoutName, props)
 
       if (!result) {
-        console.warn('Skipping unknown layout %o', layout)
+        console.warn('Skipping unknown layout %o', layoutName)
         return match
       }
 
@@ -85,44 +80,48 @@ export function injectLayoutStyles(inputHtml) {
   )
 
   // Generate stylesheets for each style
-  const stlyesheets = Array.from(styles.entries())
+  const stylesheets = Array.from(styles.entries())
     .map(([id, css]) => _createLayoutStyle(id, css))
     .join('')
 
-  return _injectLayoutStyles(inputHtml, stlyesheets)
+  return _injectLayoutStyles(inputHtml, stylesheets)
 }
 
-export function _injectLayoutStyles(inputHtml, styles) {
+export function _injectLayoutStyles(inputHtml: string, styles: string) {
   return inputHtml.replace(
     /<!--\s+@openlab\/alembic\s+inject-css\s+-->/,
     styles
   )
 }
 
-export function _createLayoutStyle(id, css) {
+export function _createLayoutStyle(id: string, css: string) {
   return `<style id="${id}">${css}</style>`
 }
 
-export function _parseHtmlAttributes(attrs) {
-  const props = {}
+export function _parseHtmlAttributes(attrs: string) {
+  const props: Record<string, string> = {}
   for (const attr of attrs.matchAll(/(\w[\w-]+)(?:="?([^"]*)"?)?/g)) {
     props[attr[1]] = attr[2] ?? ''
   }
   return props
 }
 
-export function _processLayoutMatch(layout, props) {
-  if (!layoutMap[layout]) return null
+export function _processLayoutMatch(
+  layoutName: string,
+  props: Record<string, string>
+) {
+  const layout = layoutCustomElements.get(layoutName)
+  if (!layout) return null
 
-  const styles = layoutMap[layout].getStyles(props)
-  const newTag = `<${layout} ${_formatHtmlAttributes(props)} data-i="${
+  const styles = layout.getStyles(props)
+  const newTag = `<${layoutName} ${_formatHtmlAttributes(props)} data-i="${
     styles.id
   }">`
 
   return { ...styles, newTag }
 }
 
-export function _formatHtmlAttributes(attrs) {
+export function _formatHtmlAttributes(attrs: Record<string, string>) {
   return Array.from(Object.keys(attrs))
     .map((key) => `${key}="${attrs[key]}"`)
     .join(' ')

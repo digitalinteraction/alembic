@@ -1,0 +1,5 @@
+/* Build for DEMO mode */
+
+@import './lib/reset.css';
+@import './layouts/layouts.css';
+@import './forms/forms.css';

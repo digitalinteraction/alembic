@@ -1,11 +1,19 @@
-import { addGlobalStyle, trimCss } from '../../lib/style.js'
+import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
 
-const defaults = {
+const defaultAttributes = {
   side: 'left',
-  sideWidth: null,
+  sideWidth: undefined,
   contentMin: '50%',
   space: 'var(--s1)',
   noStretch: false,
+}
+
+export interface SidebarLayoutAttributes {
+  side?: string
+  sideWidth?: string
+  contentMin?: string
+  space?: string
+  noStretch?: boolean
 }
 
 /**
@@ -17,16 +25,16 @@ const defaults = {
  * @property {string} space=var(--s1) A CSS `gap` of space between the sidebar and content.
  * @property {boolean} noStretch=false Keep the sidebar and content their natural height
  */
-export class SidebarLayout extends HTMLElement {
+export class SidebarLayout extends getHTMLElement() {
   static get observedAttributes() {
     return ['side', 'sideWidth', 'contentMin', 'space', 'noStretch']
   }
   static defineElement() {
     customElements.define('sidebar-layout', SidebarLayout)
   }
-  static getStyles(attrs) {
+  static getStyles(attrs: SidebarLayoutAttributes) {
     const { side, sideWidth, contentMin, space, noStretch } = {
-      ...defaults,
+      ...defaultAttributes,
       ...attrs,
     }
     const id = `SidebarLayout-${side}${sideWidth}${contentMin}${space}${noStretch}`
@@ -49,31 +57,32 @@ export class SidebarLayout extends HTMLElement {
   }
 
   get side() {
-    return this.getAttribute('side') || defaults.side
+    return this.getAttribute('side') || defaultAttributes.side
   }
   set side(value) {
-    return this.setAttribute('side', value)
+    this.setAttribute('side', value)
   }
 
   get sideWidth() {
-    return this.getAttribute('sideWidth') || defaults.sideWidth
+    return this.getAttribute('sideWidth') || defaultAttributes.sideWidth
   }
   set sideWidth(value) {
-    return this.setAttribute('sideWidth', value)
+    if (value) this.setAttribute('sideWidth', value)
+    else this.removeAttribute('sideWidth')
   }
 
   get contentMin() {
-    return this.getAttribute('contentMin') || defaults.contentMin
+    return this.getAttribute('contentMin') || defaultAttributes.contentMin
   }
   set contentMin(value) {
-    return this.setAttribute('contentMin', value)
+    this.setAttribute('contentMin', value)
   }
 
   get space() {
-    return this.getAttribute('space') || defaults.space
+    return this.getAttribute('space') || defaultAttributes.space
   }
   set space(value) {
-    return this.setAttribute('space', value)
+    this.setAttribute('space', value)
   }
 
   get noStretch() {

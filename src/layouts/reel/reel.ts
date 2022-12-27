@@ -1,10 +1,17 @@
-import { addGlobalStyle, trimCss } from '../../lib/style.js'
+import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
 
-const defaults = {
+const defaultAttributes = {
   itemWidth: 'auto',
   height: 'auto',
   space: 'var(--s0)',
   noBar: false,
+}
+
+export interface ReelLayoutAttributes {
+  itemWidth?: string
+  height?: string
+  space?: string
+  noBar?: boolean
 }
 
 /**
@@ -15,15 +22,18 @@ const defaults = {
  * @property {string} height=auto The height of the ReelLayout itself
  * @property {boolean} noBar=false Whether to hide the scrollbar
  */
-export class ReelLayout extends HTMLElement {
+export class ReelLayout extends getHTMLElement() {
   static get observedAttributes() {
     return ['itemWidth', 'height', 'space', 'noBar']
   }
   static defineElement() {
     customElements.define('reel-layout', ReelLayout)
   }
-  static getStyles(attrs) {
-    const { itemWidth, height, space, noBar } = { ...defaults, ...attrs }
+  static getStyles(attrs: ReelLayoutAttributes) {
+    const { itemWidth, height, space, noBar } = {
+      ...defaultAttributes,
+      ...attrs,
+    }
     const id = `ReelLayout-${itemWidth}${height}${space}${noBar}`
     const barRule = `
       [data-i="${id}"] {
@@ -52,24 +62,24 @@ export class ReelLayout extends HTMLElement {
   }
 
   get itemWidth() {
-    return this.getAttribute('itemWidth') || defaults.itemWidth
+    return this.getAttribute('itemWidth') || defaultAttributes.itemWidth
   }
   set itemWidth(value) {
-    return this.setAttribute('itemWidth', value)
+    this.setAttribute('itemWidth', value)
   }
 
   get height() {
-    return this.getAttribute('height') || defaults.height
+    return this.getAttribute('height') || defaultAttributes.height
   }
   set height(value) {
-    return this.setAttribute('height', value)
+    this.setAttribute('height', value)
   }
 
   get space() {
-    return this.getAttribute('space') || defaults.space
+    return this.getAttribute('space') || defaultAttributes.space
   }
   set space(value) {
-    return this.setAttribute('space', value)
+    this.setAttribute('space', value)
   }
 
   get noBar() {
@@ -80,7 +90,7 @@ export class ReelLayout extends HTMLElement {
     else this.removeAttribute('noBar')
   }
 
-  toggleOverflowClass(elem) {
+  toggleOverflowClass(elem: Element) {
     elem.classList.toggle('overflowing', this.scrollWidth > this.clientWidth)
   }
 
@@ -106,7 +116,7 @@ export class ReelLayout extends HTMLElement {
 
     if ('MutationObserver' in window) {
       new MutationObserver((entries) => {
-        this.toggleOverflowClass(entries[0].target)
+        this.toggleOverflowClass(entries[0].target as Element)
       }).observe(this, { childList: true })
     }
   }

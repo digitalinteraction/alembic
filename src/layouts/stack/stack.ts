@@ -1,7 +1,11 @@
-import { addGlobalStyle, trimCss } from '../../lib/lib.js'
+import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
 
-const defaults = {
+const defaultAttributes = {
   space: 'var(--s1)',
+}
+
+export interface StackLayoutAttributes {
+  space?: string
 }
 
 /**
@@ -9,15 +13,15 @@ const defaults = {
  *
  * @property {string} space=var(--s1) A CSS `margin` value
  */
-export class StackLayout extends HTMLElement {
+export class StackLayout extends getHTMLElement() {
   static get observedAttributes() {
     return ['space']
   }
   static defineElement() {
     customElements.define('stack-layout', StackLayout)
   }
-  static getStyles(attrs) {
-    const { space } = { ...defaults, ...attrs }
+  static getStyles(attrs: StackLayoutAttributes) {
+    const { space } = { ...defaultAttributes, ...attrs }
     const id = `StackLayout-${space}`
     const css = trimCss`
       [data-i="${id}"] > * + * {
@@ -28,7 +32,7 @@ export class StackLayout extends HTMLElement {
   }
 
   get space() {
-    return this.getAttribute('space') ?? defaults.space
+    return this.getAttribute('space') ?? defaultAttributes.space
   }
   set space(value) {
     this.setAttribute('space', value)

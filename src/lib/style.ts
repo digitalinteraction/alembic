@@ -2,7 +2,7 @@
   Create a global stylesheet under an identifier so it is only added once.
   If a style with the same id is requested again, it will not be added.
  */
-export function addGlobalStyle(id, style) {
+export function addGlobalStyle(id: string, style: string) {
   if (document.getElementById(id)) return
 
   const elem = document.createElement('style')
@@ -14,10 +14,8 @@ export function addGlobalStyle(id, style) {
 
 /**
   Trim all the whitespace from a CSS template literal.
-  @param {TemplateStringsArray} strings
-  @param {unknown[]} args
  */
-export function trimCss(strings, ...args) {
+export function trimCss(strings: TemplateStringsArray, ...args: unknown[]) {
   const parts = []
 
   for (let i = 0; i < strings.length; i++) {
