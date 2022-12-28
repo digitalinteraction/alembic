@@ -1,19 +1,15 @@
-require('@openlab/alembic/fake-dom-env')
-
-const UserConfig = require('@11ty/eleventy/src/UserConfig')
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
-const { injectLayoutStyles } = require('@openlab/alembic')
+const eleventyAlembic = require('@openlab/alembic/11ty').default
 
-/** @param {UserConfig} eleventyConfig */
+/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addPlugin(eleventyAlembic)
   eleventyConfig.addPlugin(syntaxHighlight)
   eleventyConfig.addFilter('apiSort', (items) => {
     return Array.from(items).sort((a, b) =>
       b.data.title.localeCompare(a.data.title)
     )
   })
-
-  eleventyConfig.addTransform('html', (content) => injectLayoutStyles(content))
 
   return {
     markdownTemplateEngine: 'njk',

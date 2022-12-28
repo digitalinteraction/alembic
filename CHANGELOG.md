@@ -20,6 +20,7 @@ JavaScript has been converted to TypeScript
 - **layouts:** `layoutMap` → use new `layoutCustomElements`
 - **layouts:** `layoutCustomElementNames` → use new `layoutCustomElements`
 - **lib:** `fake-dom-env.js` → not needed any more
+- drop CommonJs support
 
 ## 0.2.5
 

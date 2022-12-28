@@ -18,7 +18,7 @@ mkdir -p dist/assets
 cp -R src/assets/* dist/assets/
 
 #
-# Lint TypeScript & export types
+# Lint & build TypeScript
 #
 npx tsc
 
@@ -26,22 +26,15 @@ npx tsc
 # Build resources
 #
 npx esbuild --bundle --format=esm --platform=browser --outdir=dist \
-  module=src/module.ts \
-  docs=src/docs/docs.css \
-  docs=src/docs/docs.js \
-  layouts=src/layouts/layouts.css \
-  layouts=src/layouts/layouts.ts \
   reset=src/lib/reset.css \
-  lib=src/lib/lib.ts \
   everything=src/everything.css \
-  everything=src/everything.ts \
 
 #
-# Build cjs
+# Build 11ty
 #
-npx esbuild --bundle --format=cjs --platform=neutral --outdir=dist \
+npx esbuild --bundle --format=cjs --platform=node --outdir=dist \
   --out-extension:.js=.cjs \
-  module=src/module.ts
+  11ty=src/11ty.ts
 
 #
 # Build the docs pages

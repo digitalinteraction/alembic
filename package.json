@@ -23,12 +23,9 @@
       "default": "./dist/*"
     }
   },
-  "sideEffects": [
-    "./src/lib/fake-dom-env.js"
-  ],
   "scripts": {
     "build": "bin/build.sh",
-    "test": "mocha --recursive"
+    "test": "mocha"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
@@ -36,7 +33,7 @@
     "@types/mocha": "^10.0.0",
     "@types/svgo": "^2.6.3",
     "dedent": "^0.7.0",
-    "esbuild": "^0.15.13",
+    "esbuild": "^0.16.11",
     "mocha": "^10.0.0",
     "svgo": "^2.8.0",
     "ts-node": "^10.9.1",
