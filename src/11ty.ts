@@ -20,18 +20,18 @@ export interface EleventyConfig {
 
 // export interface AlembicEleventyOptions {}
 
-export default function eleventyAlembic(eleventyConfig: EleventyConfig) {
+export function eleventyAlembic(eleventyConfig: EleventyConfig) {
   eleventyConfig.addTransform('html', (content) => processHtml(content))
 
   eleventyConfig.on('eleventy.after', async ({ dir }) => {
     if (dir) {
       await fs.writeFile(
         path.join(dir.output, 'alembic/reset.css'),
-        await getBaseStyles()
+        getBaseStyles()
       )
       await fs.writeFile(
         path.join(dir.output, 'alembic/script.js'),
-        await getBaseScripts()
+        getBaseScripts()
       )
     }
   })

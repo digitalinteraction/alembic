@@ -1,7 +1,19 @@
-import { addGlobalStyle, trimCss } from '../lib/lib.js'
+import { addGlobalStyle, trimCss as css } from '../lib/lib.js'
+
+const defaultAttributes = {
+  height: undefined,
+  width: undefined,
+  pattern: 'a',
+}
+
+export interface DocBoxAttributes {
+  height?: string
+  width?: string
+  pattern?: 'a' | 'b' | 'c'
+}
 
 /**
- * DocBox is a coloured box to represent content while demonstrating a layout
+ * `DocBox` is a coloured box to represent content while demonstrating a layout
  */
 export class DocBox extends HTMLElement {
   static get observedAttributes() {
@@ -9,19 +21,21 @@ export class DocBox extends HTMLElement {
   }
 
   get height() {
-    return this.getAttribute('height') ?? null
+    return this.getAttribute('height') ?? defaultAttributes.height
   }
   set height(value) {
-    this.setAttribute('height', value)
+    if (value) this.setAttribute('height', value)
+    else this.removeAttribute('height')
   }
   get width() {
-    return this.getAttribute('width') ?? null
+    return this.getAttribute('width') ?? defaultAttributes.width
   }
   set width(value) {
-    this.setAttribute('width', value)
+    if (value) this.setAttribute('width', value)
+    else this.removeAttribute('width')
   }
   get pattern() {
-    return this.getAttribute('pattern') ?? 'a'
+    return this.getAttribute('pattern') ?? defaultAttributes.pattern
   }
   set pattern(value) {
     this.setAttribute('pattern', value)
@@ -41,14 +55,14 @@ export class DocBox extends HTMLElement {
 
     switch (this.pattern) {
       case 'b':
-        rules.push(trimCss`
+        rules.push(css`
           background-image: repeating-linear-gradient(
             -45deg,
             var(--doc-foreground),
             var(--doc-foreground) 5px,
             var(--doc-background) 5px,
             var(--doc-background) 10px
-          )
+          );
         `)
         break
       case 'c':
@@ -67,8 +81,8 @@ export class DocBox extends HTMLElement {
 
     addGlobalStyle(
       this.dataset.i,
-      `
-        [data-i="${this.dataset.i}"] {
+      css`
+        [data-i='${this.dataset.i}'] {
           ${rules.join(';')}
         }
       `

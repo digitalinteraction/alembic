@@ -1,43 +1,6 @@
 ---
-layout: docs-layout.njk
+layout: layouts-layout.njk
 title: 📐 Layout
-tiles:
-  - id: stack
-    tag: stackLayout
-    alt: Stack
-  - id: box
-    tag: boxLayout
-    alt: Box
-  - id: center
-    tag: centerLayout
-    alt: Center
-  - id: cluster
-    tag: clusterLayout
-    alt: Cluster
-  - id: sidebar
-    tag: sidebarLayout
-    alt: Sidebar
-  - id: switcher
-    tag: switcherLayout
-    alt: Switcher
-  - id: cover
-    tag: coverLayout
-    alt: Cover
-  - id: grid
-    tag: gridLayout
-    alt: Grid
-  - id: frame
-    tag: frameLayout
-    alt: Frame
-  - id: reel
-    tag: reelLayout
-    alt: Reel
-  - id: imposter
-    tag: imposterLayout
-    alt: Imposter
-  - id: icon
-    tag: iconLayout
-    alt: Icon
 ---
 
 <!--
@@ -594,17 +557,3 @@ tiles:
     </icon-layout>
   </component-def>
 </doc-section>
-
-<reel-layout class="layoutNav">
-  {% for item in tiles %}
-  <a href="#{{ item.id }}" class="layoutNav-item">
-    <img
-      width="96"
-      height="96"
-      src="{{ collections[item.tag][0].data.tile | url }}"
-      alt="{{ item.alt }}"
-    />
-    <p>{{item.alt}}</p>
-  </a>
-  {% endfor %}
-</reel-layout>

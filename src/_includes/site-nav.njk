@@ -1,0 +1,20 @@
+<nav class="docsNav">
+  <a class="docsNav-brand" href="{{ '/' | url }}">⚗️ Alembic</a>
+  <ul role="list">
+    {% for item in nav %}
+    <li>
+      {% set pageUrl = item.url | url %}
+      <a
+        class="docsNav-item"
+        href="{{ pageUrl }}"
+        {{ 'aria-current="page"' if pageUrl == page.url }}
+      >
+        <icon-layout>
+          {{ item.name}}
+          <svg><use href="{{ '/assets/icons.svg#right' | url }}"></use></svg>
+        </icon-layout>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>

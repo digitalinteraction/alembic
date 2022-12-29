@@ -1,4 +1,4 @@
-import { getHTMLElement } from './html.js'
+import { getHTMLElement } from '../lib/lib.js'
 
 const defaultAttributes = {
   persist: undefined,

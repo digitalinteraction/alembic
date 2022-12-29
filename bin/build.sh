@@ -23,11 +23,21 @@ cp -R src/assets/* dist/assets/
 npx tsc
 
 #
-# Build resources
+# Build css
 #
 npx esbuild --bundle --format=esm --platform=browser --outdir=dist \
   reset=src/lib/reset.css \
   everything=src/everything.css \
+  docs/docs=src/docs/docs.css
+  
+#
+# Build js
+#
+npx esbuild --bundle --format=esm --platform=neutral --outdir=dist --loader:.css=text \
+  everything=src/everything.ts \
+  module=src/module.ts \
+  tools=src/tools.ts \
+  docs/docs=src/docs/docs.ts
 
 #
 # Build 11ty
@@ -40,6 +50,6 @@ npx esbuild --bundle --format=cjs --platform=node --outdir=dist \
 # Build the docs pages
 #   --config is needed until https://github.com/11ty/eleventy/issues/1029
 # 
-npx eleventy \
-  --config=.eleventy.cjs \
-  --pathprefix=$PATH_PREFIX
+# npx eleventy \
+#   --config=.eleventy.cjs \
+#   --pathprefix=$PATH_PREFIX

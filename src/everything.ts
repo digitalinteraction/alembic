@@ -1,4 +1,9 @@
-/* Build for DEMO mode */
+//
+// For demo/trailing alembic, import from HTML to get everything setup
+//
 
-export * from './layouts/layouts.js'
-export * from './lib/lib.js'
+export * from './module.js'
+
+import { allCustomElements, defineCustomElements } from './module.js'
+
+defineCustomElements(allCustomElements)

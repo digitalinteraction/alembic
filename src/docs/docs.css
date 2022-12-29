@@ -102,10 +102,21 @@ a {
   position: relative;
   min-height: 100vh;
 }
+.docsLayout-footer {
+  padding: var(--s-1);
+  background: var(--doc-background);
+  position: sticky;
+  bottom: 0;
+  border-top: var(--border-thin) solid var(--doc-foreground);
+  z-index: 2;
+}
 @media (min-width: 1024px) {
   .docsLayout-header,
   .docsLayout-main {
     padding-inline: var(--s2);
+  }
+  .docsLayout-footer {
+    padding: var(--s1);
   }
 }
 
@@ -293,13 +304,6 @@ doc-section {
 
 /* Layout tiles */
 .layoutNav {
-  position: sticky;
-  bottom: 0;
-  background: var(--doc-background);
-  margin-inline: calc(-1 * var(--s0));
-  padding: var(--s-1);
-  border-top: var(--border-thin) solid var(--doc-foreground);
-  z-index: 2;
 }
 .layoutNav-item {
   text-decoration: none;
@@ -319,10 +323,6 @@ doc-section {
   }
 }
 @media (min-width: 1024px) {
-  .layoutNav {
-    padding: var(--s1);
-    margin-inline: calc(-1 * var(--s2));
-  }
   .layoutNav img {
     width: 96px;
     height: 96px;

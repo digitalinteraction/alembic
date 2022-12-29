@@ -28,3 +28,30 @@ export function trimCss(strings: TemplateStringsArray, ...args: unknown[]) {
 
   return parts.join('').replace(/\s\s+/g, ' ').trim()
 }
+
+// export interface AlembicStyleSheetOptions {}
+
+/** @experimental */
+export class AlembicStyleSheet {
+  #styles = new Map<string, string>()
+
+  reset(): void {
+    this.#styles.clear()
+  }
+
+  getStyles(): Map<string, string> {
+    return new Map(this.#styles)
+  }
+
+  addStyle({ id, css }: { id: string; css: string }) {
+    if (this.#styles.has(id)) return id
+    this.#styles.set(id, css)
+    return id
+  }
+
+  *[Symbol.iterator]() {
+    for (const [id, css] of this.#styles) {
+      yield [id, css]
+    }
+  }
+}

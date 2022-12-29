@@ -1,55 +1,17 @@
 ---
-nav:
-  - url: /
-    name: Home
-  - url: /layouts/
-    name: Layouts
-  - url: /docs/
-    name: Docs
-  - url: /forms/
-    name: Forms
-spacing: var(--s3)
+layout: html.njk
 ---
 
-{% set currentPage = page.url | url %}
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>⚗️ Alembic | {{ title }}</title>
-    <meta charset="utf8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="{{ '/docs.css' | url }} " />
-    <!-- @openlab/alembic inject-css -->
-  </head>
-  <body class="docsLayout">
-    <sidebar-layout space="0" sideWidth="25ch" contentMin="66%">
-      <header class="docsLayout-header">
-        <nav class="docsNav">
-          <a class="docsNav-brand" href="{{ '/' | url }}">⚗️ Alembic</a>
-          <ul role="list">
-            {% for item in nav %}
-            <li>
-              {% set pageUrl = item.url | url %}
-              <a
-                class="docsNav-item"
-                href="{{ pageUrl }}"
-                {{ 'aria-current="page"' if pageUrl == currentPage }}
-              >
-                {{ item.name }} →
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-        </nav>
-      </header>
-      <main class="docsLayout-main">
-        <h2 class="docsTitle">{{ title }}</h2>
-        <stack-layout space="{{ spacing }}">
-          {{ content | safe }}
-        </stack-layout>
-      </main>
-    </sidebar-layout>
-    <script type="module" src="{{ '/docs.js' | url }}"></script>
-  </body>
-</html>
+<div class="docsLayout">
+  <sidebar-layout space="0" sideWidth="25ch" contentMin="66%">
+    <header class="docsLayout-header">
+      {% include 'site-nav.njk' %}
+    </header>
+    <main class="docsLayout-main">
+      <h2 class="docsTitle">{{ title }}</h2>
+      <stack-layout space="var(--s3)">
+        {{ content | safe }}
+      </stack-layout>
+    </main>
+  </sidebar-layout>
+</div>

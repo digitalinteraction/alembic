@@ -1,5 +1,9 @@
 import { trimCss as css } from '../lib/lib.js'
 
+const defaultAttributes = {}
+
+export interface DocResizerAttributes {}
+
 const style = css`
   /* These styles are used in Firefox/chrome */
   /* @media (hover: hover) { */
@@ -31,7 +35,6 @@ const style = css`
       max-width: calc(100% - 1rem - 1rem); /* 100% - gap - handleWidth */
     }
   }
-  /* } */
 `
 
 const template = document.createElement('template')
@@ -48,7 +51,7 @@ template.innerHTML = `
 
 export class DocResizer extends HTMLElement {
   #resized = 0
-  /**@type{HTMLElement}*/ #handleElem = null
+  #handleElem: HTMLElement
 
   static get observedAttributes() {
     return []
@@ -58,8 +61,9 @@ export class DocResizer extends HTMLElement {
     super()
 
     this.attachShadow({ mode: 'open' })
-    this.shadowRoot.appendChild(template.content.cloneNode(true))
-    this.#handleElem = this.shadowRoot.querySelector("[part='handle']")
+    this.shadowRoot!.appendChild(template.content.cloneNode(true))
+
+    this.#handleElem = this.shadowRoot!.querySelector("[part='handle']")!
 
     this.#handleElem.onpointerdown = (event) => {
       let current = event.screenX + this.#resized
@@ -80,7 +84,7 @@ export class DocResizer extends HTMLElement {
     // Reset the control if the window size changed
     window.addEventListener('resize', () => {
       if (this.#resized) this.#resized = 0
-      if (this.style.marginInlineEnd) this.style.marginInlineEnd = null
+      if (this.style.marginInlineEnd) this.style.marginInlineEnd = ''
     })
   }
 }

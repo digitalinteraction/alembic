@@ -1,5 +1,13 @@
 import { trimCss } from '../lib/lib.js'
 
+// TODO: does noPad do anything?
+// TODO: is the "title" to "label" migration ok?
+
+export interface ComponentDefAttributes {
+  label?: string
+  noPad?: boolean
+}
+
 const style = trimCss`
   :host::part(section) {
   }
@@ -61,7 +69,7 @@ export class ComponentDef extends HTMLElement {
     return ['title', 'no-pad']
   }
 
-  get title() {
+  get label() {
     return this.getAttribute('label') ?? ''
   }
   get noPad() {
@@ -76,10 +84,11 @@ export class ComponentDef extends HTMLElement {
     super()
 
     this.attachShadow({ mode: 'open' })
-    this.shadowRoot.appendChild(template.content.cloneNode(true))
+    this.shadowRoot!.appendChild(template.content.cloneNode(true))
 
-    const button = this.shadowRoot.querySelector("[part='toggle']")
-    const slot = this.shadowRoot.querySelector('slot')
+    const button =
+      this.shadowRoot?.querySelector<HTMLButtonElement>("[part='toggle']")!
+    const slot = this.shadowRoot?.querySelector('slot')!
 
     const pre = document.createElement('pre')
     pre.setAttribute('part', 'code')
@@ -95,8 +104,8 @@ export class ComponentDef extends HTMLElement {
     })
   }
   render() {
-    const titleElem = this.shadowRoot.querySelector("[part='title']")
-    titleElem.textContent = this.title
+    const titleElem = this.shadowRoot?.querySelector("[part='title']")!
+    titleElem.textContent = this.label
   }
   connectedCallback() {
     this.render()
@@ -105,12 +114,12 @@ export class ComponentDef extends HTMLElement {
     this.render()
   }
 
-  renderCode(html) {
-    const indent = /[ \t]+/.exec(html)
+  renderCode(html: string) {
+    const indent = /[ \t]+/.exec(html)?.[0]
 
     return html
       .split(/\r?\n/)
-      .map((l) => l.replace(indent, ''))
+      .map((l) => (indent ? l.replace(indent, '') : l))
       .join('\n')
       .replace(/\s*data-i=".+"/g, '')
       .trim()

@@ -1,10 +1,11 @@
 import { layoutCustomElements } from './layouts/layouts.js'
-import { AlembicHTMLElement } from './lib/lib.js'
+import { AlembicStyleSheet } from './lib/lib.js'
 
 const allElements = new Map([...layoutCustomElements])
 
 export function processHtml(inputHtml: string): string {
-  const styles = new Map<string, string>()
+  const styles = new AlembicStyleSheet()
+
   let outputHtml = inputHtml
 
   for (const [elemName, element] of allElements) {
@@ -12,8 +13,7 @@ export function processHtml(inputHtml: string): string {
     outputHtml = outputHtml.replace(regex, (_match, attrText) => {
       const attrs = _parseHtmlAttributes(attrText)
 
-      const { id, css } = element.getStyles(attrs)
-      if (!styles.has(id)) styles.set(id, css)
+      const id = styles.addStyle(element.getStyles(attrs))
 
       return _recreateElement(elemName, attrText, id)
     })
@@ -23,7 +23,7 @@ export function processHtml(inputHtml: string): string {
     .map(([id, css]) => _createStyle(id, css))
     .join('')
 
-  // TODO: add base styles too?
+  // TODO: inject base styles too?
 
   outputHtml = outputHtml.replace(_commentRegex('inject-css'), allStyles)
 
@@ -31,35 +31,28 @@ export function processHtml(inputHtml: string): string {
 }
 
 export function getStyles(inputHtml: string): Map<string, unknown> {
-  const styles = new Map<string, string>()
+  const styles = new AlembicStyleSheet()
 
   for (let [match, element] of _iterateElements(inputHtml, allElements)) {
-    const attrs = _parseHtmlAttributes(match[1])
-    const { id, css } = element.getStyles(attrs)
-    styles.set(id, css)
+    styles.addStyle(element.getStyles(_parseHtmlAttributes(match[1])))
   }
 
-  return styles
+  return styles.getStyles()
 }
 
-export async function getBaseStyles(): Promise<string> {
+export function getBaseStyles(): string {
   // TODO: how to inline the reset.css file during build and return here?
   return `__ALEMBIC_BASE_STYLES__`
 }
 
-export async function getBaseScripts(): Promise<string> {
+export function getBaseScripts(): string {
   // TODO: how to inline the scripts files during build and return here?
   return `__ALEMBIC_BASE_SCRIPTS__`
 }
 
 // Internal
 
-// TODO: unit test these: (v)
-
-export function* _iterateElements(
-  html: string,
-  elements: Map<string, AlembicHTMLElement>
-) {
+export function* _iterateElements<T>(html: string, elements: Map<string, T>) {
   for (const [name, element] of elements) {
     const regex = _elementRegex(name)
     let match: RegExpMatchArray | null = null

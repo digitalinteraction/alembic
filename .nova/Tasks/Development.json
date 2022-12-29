@@ -2,14 +2,13 @@
   "actions" : {
     "build" : {
       "enabled" : true,
-      "path" : "bin\/build.sh"
+      "script" : "#!\/bin\/sh\nnpx eleventy --config=.eleventy.cjs"
     },
     "run" : {
       "enabled" : true,
-      "script" : "nova dist\/index.html"
+      "script" : "#!\/bin\/sh\nnpx eleventy --config=.eleventy.cjs --serve"
     }
   },
-  "buildBeforeRunning" : true,
   "environment" : {
     "NODE_ENV" : "development"
   }
