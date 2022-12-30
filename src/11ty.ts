@@ -16,23 +16,30 @@ export interface EleventyConfig {
     eventName: 'eleventy.after',
     callback: (args: EleventyEventArgs) => unknown
   ): void
+  dir: Partial<Record<string, string>>
 }
 
 // export interface AlembicEleventyOptions {}
 
 export function eleventyAlembic(eleventyConfig: EleventyConfig) {
-  eleventyConfig.addTransform('html', (content) => processHtml(content))
+  // TODO: resolve based on PATH_PREFIX?
+  const options = {
+    extraStyles: [`<link rel="stylesheet" href="/alembic/style.css">`],
+    extraScripts: [`<script type="module" src="/alembic/script.js"></script>`],
+  }
+
+  eleventyConfig.addTransform('html', (html) => processHtml(html, options))
 
   eleventyConfig.on('eleventy.after', async ({ dir }) => {
-    if (dir) {
-      await fs.writeFile(
-        path.join(dir.output, 'alembic/reset.css'),
-        getBaseStyles()
-      )
-      await fs.writeFile(
-        path.join(dir.output, 'alembic/script.js'),
-        getBaseScripts()
-      )
+    const outdir = dir ? dir.output : eleventyConfig.dir.output
+
+    if (!outdir) {
+      console.warn('[alembic-11ty] Cannot write base files')
+      return
     }
+
+    await fs.mkdir(path.join(outdir, 'alembic'), { recursive: true })
+    await fs.writeFile(path.join(outdir, 'alembic/style.css'), getBaseStyles())
+    await fs.writeFile(path.join(outdir, 'alembic/script.js'), getBaseScripts())
   })
 }

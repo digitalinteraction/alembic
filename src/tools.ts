@@ -6,7 +6,15 @@ import everythingJs from 'embed:./everything.js'
 
 const allElements = new Map([...layoutCustomElements])
 
-export function processHtml(inputHtml: string): string {
+export interface ProcessHtmlOptions {
+  extraStyles?: string[]
+  extraScripts?: string[]
+}
+
+export function processHtml(
+  inputHtml: string,
+  options: ProcessHtmlOptions = {}
+): string {
   const styles = new AlembicStyleSheet()
 
   let outputHtml = inputHtml
@@ -24,11 +32,14 @@ export function processHtml(inputHtml: string): string {
 
   const allStyles = Array.from(styles)
     .map(([id, css]) => _createStyle(id, css))
+    .concat(options.extraStyles ?? [])
     .join('')
 
-  // TODO: inject base styles too?
+  const allScripts = (options.extraScripts ?? []).join('')
 
-  outputHtml = outputHtml.replace(_commentRegex('inject-css'), allStyles)
+  outputHtml = outputHtml
+    .replace(_commentRegex('inject-css'), allStyles)
+    .replace(_commentRegex('inject-js'), allScripts)
 
   return outputHtml
 }

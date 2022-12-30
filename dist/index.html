@@ -1,145 +1,453 @@
-
-
-
 <!DOCTYPE html>
 <html>
   <head>
     <title>⚗️ Alembic | 🏠 Home</title>
     <meta charset="utf8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="/docs.css " />
-    <style id="SidebarLayout-left25ch66%0false">[data-i="SidebarLayout-left25ch66%0false"] { gap: 0; } [data-i="SidebarLayout-left25ch66%0false"] > * { flex-basis: 25ch; } [data-i="SidebarLayout-left25ch66%0false"] > :last-child { flex-basis: 0; flex-grow: 999; min-inline-size: 66%; }</style><style id="StackLayout-var(--s1)">[data-i="StackLayout-var(--s1)"] > * + * { margin-block-start: var(--s1); }</style><style id="StackLayout-var(--s0)">[data-i="StackLayout-var(--s0)"] > * + * { margin-block-start: var(--s0); }</style>
+    <link rel="stylesheet" href="/docs/docs.css " />
+    <style id="StackLayout-var(--s5)">[data-i="StackLayout-var(--s5)"] > * + * { margin-block-start: var(--s5); }</style><style id="CenterLayout-var(--measure)var(--s1)false">[data-i="CenterLayout-var(--measure)var(--s1)false"] { max-width: var(--measure); padding-inline: var(--s1); }</style><style id="ClusterLayout-flex-endflex-startvar(--s1)">[data-i="ClusterLayout-flex-endflex-startvar(--s1)"] { justify-content: flex-end; align-items: flex-start; gap: var(--s1); }</style><style id="CoverLayout-.homeHerovar(--s1)100vhfalse">[data-i="CoverLayout-.homeHerovar(--s1)100vhfalse"] { min-height: 100vh; padding: var(--s1); } [data-i="CoverLayout-.homeHerovar(--s1)100vhfalse"] > * { margin-block: var(--s1); } [data-i="CoverLayout-.homeHerovar(--s1)100vhfalse"] > :first-child:not(.homeHero) { margin-block-start: 0; } [data-i="CoverLayout-.homeHerovar(--s1)100vhfalse"] > :last-child:not(.homeHero) { margin-block-end: 0; } [data-i="CoverLayout-.homeHerovar(--s1)100vhfalse"] > .homeHero { margin-block: auto; }</style><style id="ReelLayout-autoautovar(--s0)">[data-i="ReelLayout-autoautovar(--s0)"] { height: auto; } [data-i="ReelLayout-autoautovar(--s0)"] > * { flex: 0 0 auto; } [data-i="ReelLayout-autoautovar(--s0)"] > * + * { margin-inline-start: var(--s0); } [data-i="ReelLayout-autoautovar(--s0)"].overflowing { padding-bottom: var(--s0) }</style><link rel="stylesheet" href="/alembic/style.css">
   </head>
-  <body class="docsLayout">
-    <sidebar-layout space="0" sideWidth="25ch" contentMin="66%" data-i="SidebarLayout-left25ch66%0false">
-      <header class="docsLayout-header">
-        <nav class="docsNav">
-          <a class="docsNav-brand" href="/">⚗️ Alembic</a>
-          <ul role="list">
-            
-            <li>
-              
-              <a
-                class="docsNav-item"
-                href="/"
-                aria-current=&quot;page&quot;
-              >
-                Home →
-              </a>
-            </li>
-            
-            <li>
-              
-              <a
-                class="docsNav-item"
-                href="/layouts/"
-                
-              >
-                Layouts →
-              </a>
-            </li>
-            
-            <li>
-              
-              <a
-                class="docsNav-item"
-                href="/docs/"
-                
-              >
-                Docs →
-              </a>
-            </li>
-            
-            <li>
-              
-              <a
-                class="docsNav-item"
-                href="/forms/"
-                
-              >
-                Forms →
-              </a>
-            </li>
-            
-          </ul>
-        </nav>
-      </header>
-      <main class="docsLayout-main">
-        <h2 class="docsTitle">🏠 Home</h2>
-        <stack-layout space="var(--s1)" data-i="StackLayout-var(--s1)">
-          
+  <body>
+    
+<cover-layout minheight="90vh" centered=".homeHero" data-i="CoverLayout-.homeHerovar(--s1)100vhfalse">
+  <cluster-layout justify="flex-end" data-i="ClusterLayout-flex-endflex-startvar(--s1)">
+    <a href="/install">Install</a>
+    <a href="/layouts">Layouts</a>
+    <a href="/forms">Forms</a>
+    <a href="https://github.com/digitalinteraction/alembic">GitHub</a>
+  </cluster-layout>
+  <div class="homeHero">
+    <h1>⚗️ Alembic</h1>
+    <p>Design system for research projects</p>
+  </div>
+</cover-layout>
 
-<div class="markdownPage">
-  <details-utils persist="0_2_x">
-    <details>
-      <summary class="markdownPage-heading"> 0.2.x API </summary>
-      <stack-layout space="var(--s0)" data-i="StackLayout-var(--s0)">
-        <p><strong>install</strong></p>
-<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> @openlab/alembic@0.2.x</code></pre>
-<p><strong>import styles</strong></p>
-<pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'@openlab/alembic/reset.css'</span><span class="token punctuation">;</span></span><br><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'@openlab/alembic/layouts.css'</span><span class="token punctuation">;</span></span><br><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'@openlab/alembic/forms.css'</span><span class="token punctuation">;</span></span><br><br><span class="token comment">/* Example variables */</span><br><span class="token selector">:root</span> <span class="token punctuation">{</span><br>  <span class="token comment">/* The colour of text for the current node (BoxLayout, ReelLayout) */</span><br>  <span class="token property">--color-foreground</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span><br><br>  <span class="token comment">/* The colour of the background for the current node (BoxLayout, ReelLayout) */</span><br>  <span class="token property">--color-background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span><br><br>  <span class="token comment">/* The size of a thin-style border border (BoxLayout) */</span><br>  <span class="token property">--border-thin</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span><br><br>  <span class="token comment">/* The size of a thin-style border border (FormMessage) */</span><br>  <span class="token property">--border-thick</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span><br><br>  <span class="token comment">/* The maximum width of readable content (SwitcherLayout, CenterLayout) */</span><br>  <span class="token property">--measure</span><span class="token punctuation">:</span> 60ch<span class="token punctuation">;</span><br><br>  <span class="token comment">/* For non-JavaScript ReelLayout usage (ReelLayout) */</span><br>  <span class="token property">--item-width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">/* Experimental variables */</span><br><span class="token selector">:root</span> <span class="token punctuation">{</span><br>  <span class="token comment">/* A colour to indicate something a user should fill in */</span><br>  <span class="token property">--fillable</span><span class="token punctuation">:</span> darkblue<span class="token punctuation">;</span><br><br>  <span class="token comment">/* A colour to bring attention to what the user is currently doing */</span><br>  <span class="token property">--focus</span><span class="token punctuation">:</span> coral<span class="token punctuation">;</span><br><br>  <span class="token comment">/* The largest width of something interact-able, a single "task" for the user */</span><br>  <span class="token property">--gestalt</span><span class="token punctuation">:</span> 40ch<span class="token punctuation">;</span><br><br>  <span class="token comment">/* WIP */</span><br>  <span class="token property">--color-darkish</span><span class="token punctuation">:</span> #888<span class="token punctuation">;</span> <span class="token comment">/* (Field) */</span><br>  <span class="token property">--color-info</span><span class="token punctuation">:</span> royalblue<span class="token punctuation">;</span> <span class="token comment">/* (FormMessage) */</span><br>  <span class="token property">--color-error</span><span class="token punctuation">:</span> tomato<span class="token punctuation">;</span> <span class="token comment">/* (FormMessage) */</span><br>  <span class="token property">--color-success</span><span class="token punctuation">:</span> yellowgreen<span class="token punctuation">;</span> <span class="token comment">/* (FormMessage) */</span><br><span class="token punctuation">}</span></code></pre>
-<p><strong>layout usage</strong></p>
-<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span><br>  defineLayoutElements<span class="token punctuation">,</span><br>  layoutCustomElementNames<span class="token punctuation">,</span><br>  layoutMap<span class="token punctuation">,</span><br>  StackLayout<span class="token punctuation">,</span><br>  <span class="token operator">...</span><span class="token punctuation">,</span><br>  IconLayout<span class="token punctuation">,</span><br><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@openlab/alembic/layouts.js'</span><br><br><br><span class="token comment">// Register each layout's custom element</span><br><span class="token function">defineLayoutElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><br><span class="token comment">// layoutMap is a map of custom element name to Layout class</span><br>layoutMap<span class="token punctuation">[</span><span class="token string">'switcher-layout'</span><span class="token punctuation">]</span> <span class="token comment">// SwitcherLayout</span><br><br><span class="token comment">// layoutCustomElementNames is an array of all custom element names,</span><br><span class="token comment">// useful for telling compilers (like Vue) to ignore these custom elements.</span><br><span class="token comment">// The order of these is NOT guaranteed</span><br>layoutCustomElementNames <span class="token comment">// [ 'stack-layout', 'box-layout', ... ]</span><br><br><span class="token comment">// Each layout class is exported too, so you can manually define just the ones you want</span><br><span class="token comment">// e.g. `StackLayout.defineElement()`</span></code></pre>
-<p><strong>lib usage</strong></p>
-<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> addGlobalStyle<span class="token punctuation">,</span> trimCss<span class="token punctuation">,</span> DetailsUtils <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@openlab/alembic/lib.js'</span><br><br><span class="token comment">// Add a style to the root document under a unique identifier</span><br><span class="token comment">// If another style is requested with the same id, it will be ignored</span><br><span class="token function">addGlobalStyle</span><span class="token punctuation">(</span><span class="token string">'my-id'</span><span class="token punctuation">,</span> <span class="token string">'p { color: rebeccapurple; }'</span><span class="token punctuation">)</span><br><br><span class="token comment">// Remove whitespace from a css string</span><br>trimCss<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">p {<br>  color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>color<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br>}</span><span class="token template-punctuation string">`</span></span><br><br><span class="token comment">// Adds &lt;details-utils> custom element to wrap a details/summary</span><br><span class="token comment">// and persist its open="" attribute based on the `id` on the &lt;details> element</span><br>DetailsUtils<span class="token punctuation">.</span><span class="token function">defineElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p><strong>static generation</strong></p>
-<p>Each layout has a static method <code>getStyles(attributes)</code> which is used to compute its styles.
-When statically generating content, you can precompute the styles that layouts will need
-and inject them into HTML before it is served to clients.</p>
-<blockquote>
-<p>You need to import <code>@openlab/alembic/fake-dom-env.js</code> first which
-stubs-out HTMLElement so the layouts can be imported from Node.js.
-This stub shouldn't be used for anything else.</p>
-</blockquote>
-<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@openlab/alembic/fake-dom-env.js'</span><br><span class="token keyword">import</span> <span class="token punctuation">{</span> injectLayoutStyles <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@openlab/alembic'</span><br><br><span class="token keyword">const</span> inputFile <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>&lt;html><br>  &lt;head><br>    &lt;!-- @openlab/alembic inject-css --><br>  &lt;/head><br>  &lt;body><br>    &lt;box-layout padding="0"> ... &lt;/box-layout><br>  &lt;/body><br>&lt;/html><br></span><span class="token template-punctuation string">`</span></span><br><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">injectLayoutStyles</span><span class="token punctuation">(</span>inputFile<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-<details>
-<summary>Output</summary>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>BoxLayout-0…<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">...</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>box-layout</span> <span class="token attr-name">padding</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">data-i</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>BoxLayout-0…<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span> ... <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>box-layout</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
-</details>
-<details>
-<summary>CommonJs imports</summary>
-<pre class="language-js"><code class="language-js"><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@openlab/alembic/fake-dom-env'</span><span class="token punctuation">)</span><br><span class="token keyword">const</span> <span class="token punctuation">{</span> injectLayoutStyles <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@openlab/alembic'</span><span class="token punctuation">)</span></code></pre>
-</details>
+ 
 
-      </stack-layout>
-    </details>
-  </details-utils>
-</div>
+<center-layout gutters="var(--s1)" data-i="CenterLayout-var(--measure)var(--s1)false">
+  <stack-layout space="var(--s5)" data-i="StackLayout-var(--s5)">
+    <section class="homeSection flow">
+      <h1>
+        <icon-layout> 
+<svg><use href="/assets/icons.svg#info"></use></svg>
+ About </icon-layout>
+      </h1>
+      <p>
+        Alembic is a Design System built with
+        <strong class="highlight">Modern CSS</strong> based on
+        <strong class="highlight">Progressive Enhancement</strong> to deliver
+        <strong class="highlight">accessible</strong> experiences on the web. It
+        is meant to work with the browser, not fight it, embracing HTML and CSS
+        & minimising JavaScript.
+      </p>
+      <p>
+        Alembic is a living project and a work in progress. Inspired by
+        <a href="https://cube.fyi">CUBE CSS</a>,
+        <a href="https://every-layout.dev/">EveryLayout</a>,
+        <a href="https://bulma.io/">Bulma</a> and
+        <a href="https://formdesignpatterns.com/">Form design patterns</a>.
+      </p>
+    </section>
+    <section class="homeSection flow">
+      <h1>
+        <icon-layout> 
+<svg><use href="/assets/icons.svg#download"></use></svg>
+ Install </icon-layout>
+      </h1>
+      <p> Add alembic to your project, depending on your setup. </p>
+      <ul>
+        <!-- <li> 
+<a href="/install/demo">
+  <icon-layout> Quick start 
+<svg><use href="/assets/icons.svg#right"></use></svg>
+ </icon-layout>
+</a>
+ </li> -->
+        <li> 
+<a href="/install/ssg">
+  <icon-layout> Static Site Generators 
+<svg><use href="/assets/icons.svg#right"></use></svg>
+ </icon-layout>
+</a>
+ </li>
+        <li> 
+<a href="/install/spa">
+  <icon-layout> Single Page Apps 
+<svg><use href="/assets/icons.svg#right"></use></svg>
+ </icon-layout>
+</a>
+ </li>
+        <li> 
+<a href="/install/ssr">
+  <icon-layout> Service-Side Rendering 
+<svg><use href="/assets/icons.svg#right"></use></svg>
+ </icon-layout>
+</a>
+ </li>
+      </ul>
+      <br />
+      <div class="quickstart flow">
+        <p>
+          <strong>Quick demo</strong> &ndash; Add these and hack away! If it's
+          working out, do a full install. 
+<a href="/install">
+  <icon-layout> Install 
+<svg><use href="/assets/icons.svg#right"></use></svg>
+ </icon-layout>
+</a>
 
-<div class="markdownPage">
-  <details-utils persist="0_1_x">
-    <details>
-      <summary class="markdownPage-heading"> 0.1.x API </summary>
-      <stack-layout space="var(--s0)" data-i="StackLayout-var(--s0)">
-        <p><strong>install</strong></p>
-<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> @openlab/alembic@0.1.x</code></pre>
-<p><strong>import styles</strong></p>
-<pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'@openlab/alembic/reset.css'</span><span class="token punctuation">;</span></span><br><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'@openlab/alembic/layouts.css'</span><span class="token punctuation">;</span></span><br><br><span class="token comment">/* Example variables */</span><br><span class="token selector">:root</span> <span class="token punctuation">{</span><br>  <span class="token property">--foregroundColor</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span><br>  <span class="token property">--backgroundColor</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span><br>  <span class="token property">--border-thin</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span><br>  <span class="token property">--measure</span><span class="token punctuation">:</span> 60ch<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
-<p><strong>import scripts</strong></p>
-<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span><br>  defineLayoutElements<span class="token punctuation">,</span><br>  layoutCustomElementNames<span class="token punctuation">,</span><br>  layoutMap<span class="token punctuation">,</span><br>  StackLayout<span class="token punctuation">,</span><br>  <span class="token operator">...</span><span class="token punctuation">,</span><br>  IconLayout<span class="token punctuation">,</span><br><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@openlab/alembic/layouts.js'</span><br><span class="token keyword">import</span> <span class="token punctuation">{</span> addGlobalStyle<span class="token punctuation">,</span> trimCss <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@openlab/alembic/lib.js'</span><br><br><span class="token function">defineLayoutElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><br><span class="token comment">// Each layout is exported so you can manually define them,</span><br><span class="token comment">// e.g. `StackLayout.defineElement()`</span></code></pre>
-<p><strong>static generation</strong></p>
-<p>Each layout has a static method <code>getStyles(attributes)</code> which is used to compute styles.
-When statically generating content, you can precompute the styles layouts will need
-and inject them into HTML before it is served to clients.</p>
-<blockquote>
-<p>You need to import <code>@openlab/alembic/fake-dom-env.js</code> first which
-stubs-out HTMLElement so the layouts can be imported from Node.js.</p>
-</blockquote>
-<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@openlab/alembic/fake-dom-env.js'</span><br><span class="token keyword">import</span> <span class="token punctuation">{</span> injectStyles <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@openlab/alembic'</span><br><br><span class="token keyword">const</span> inputFile <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>&lt;html><br>  &lt;head><br>    ...<br>    &lt;!-- @openlab/alembic inject-css --><br>  &lt;/head><br>  &lt;body><br>    &lt;box-layout padding="0"> ... &lt;/box-layout><br>  &lt;/body><br>&lt;/html><br></span><span class="token template-punctuation string">`</span></span><br><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">injectStyles</span><span class="token punctuation">(</span>inputFile<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-<details>
-<summary>CommonJs imports</summary>
-<pre class="language-js"><code class="language-js"><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@openlab/alembic/fake-dom-env'</span><span class="token punctuation">)</span><br><span class="token keyword">const</span> <span class="token punctuation">{</span> injectStyles <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@openlab/alembic'</span><span class="token punctuation">)</span></code></pre>
-</details>
+        </p>
+        <pre>
+&lt;link rel="stylesheet" href="https://alembic.openlab.dev/everything.css"&gt;</pre
+        >
+        <pre>
+&lt;script type="module" href="https://alembic.openlab.dev/everything.js"&gt;&lt;/script&gt;</pre
+        >
+      </div>
+    </section>
+    <section class="homeSection flow">
+      <h1>
+        <icon-layout> 
+<svg><use href="/assets/icons.svg#layouts"></use></svg>
+ Layouts </icon-layout>
+      </h1>
+      <p>
+        Building blocks for composing complex interfaces together with reusable
+        components. 
+<a href="/layouts">
+  <icon-layout> Layouts 
+<svg><use href="/assets/icons.svg#right"></use></svg>
+ </icon-layout>
+</a>
 
-      </stack-layout>
-    </details>
-  </details-utils>
-</div>
+      </p>
 
+      <reel-layout         class="layoutReel"
+        noBar
+        data-autoscroll="true"
+        style="margin-inline: calc(-1 * var(--s1))"
+       data-i="ReelLayout-autoautovar(--s0)">
+        
+        <span href="#stack" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/stack.svg"
+            alt="Stack"
+          />
+          <p>Stack</p>
+        </span>
+        
+        <span href="#box" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/box.svg"
+            alt="Box"
+          />
+          <p>Box</p>
+        </span>
+        
+        <span href="#center" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/center.svg"
+            alt="Center"
+          />
+          <p>Center</p>
+        </span>
+        
+        <span href="#cluster" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/cluster.svg"
+            alt="Cluster"
+          />
+          <p>Cluster</p>
+        </span>
+        
+        <span href="#sidebar" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/sidebar.svg"
+            alt="Sidebar"
+          />
+          <p>Sidebar</p>
+        </span>
+        
+        <span href="#switcher" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/switcher.svg"
+            alt="Switcher"
+          />
+          <p>Switcher</p>
+        </span>
+        
+        <span href="#cover" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/cover.svg"
+            alt="Cover"
+          />
+          <p>Cover</p>
+        </span>
+        
+        <span href="#grid" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/grid.svg"
+            alt="Grid"
+          />
+          <p>Grid</p>
+        </span>
+        
+        <span href="#frame" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/frame.svg"
+            alt="Frame"
+          />
+          <p>Frame</p>
+        </span>
+        
+        <span href="#reel" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/reel.svg"
+            alt="Reel"
+          />
+          <p>Reel</p>
+        </span>
+        
+        <span href="#imposter" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/imposter.svg"
+            alt="Imposter"
+          />
+          <p>Imposter</p>
+        </span>
+        
+        <span href="#icon" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/icon.svg"
+            alt="Icon"
+          />
+          <p>Icon</p>
+        </span>
+        
+        <span href="#stack" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/stack.svg"
+            alt="Stack"
+          />
+          <p>Stack</p>
+        </span>
+        
+        <span href="#box" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/box.svg"
+            alt="Box"
+          />
+          <p>Box</p>
+        </span>
+        
+        <span href="#center" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/center.svg"
+            alt="Center"
+          />
+          <p>Center</p>
+        </span>
+        
+        <span href="#cluster" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/cluster.svg"
+            alt="Cluster"
+          />
+          <p>Cluster</p>
+        </span>
+        
+        <span href="#sidebar" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/sidebar.svg"
+            alt="Sidebar"
+          />
+          <p>Sidebar</p>
+        </span>
+        
+        <span href="#switcher" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/switcher.svg"
+            alt="Switcher"
+          />
+          <p>Switcher</p>
+        </span>
+        
+        <span href="#cover" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/cover.svg"
+            alt="Cover"
+          />
+          <p>Cover</p>
+        </span>
+        
+        <span href="#grid" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/grid.svg"
+            alt="Grid"
+          />
+          <p>Grid</p>
+        </span>
+        
+        <span href="#frame" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/frame.svg"
+            alt="Frame"
+          />
+          <p>Frame</p>
+        </span>
+        
+        <span href="#reel" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/reel.svg"
+            alt="Reel"
+          />
+          <p>Reel</p>
+        </span>
+        
+        <span href="#imposter" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/imposter.svg"
+            alt="Imposter"
+          />
+          <p>Imposter</p>
+        </span>
+        
+        <span href="#icon" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="/assets/tiles/icon.svg"
+            alt="Icon"
+          />
+          <p>Icon</p>
+        </span>
+        
+      </reel-layout>
+    </section>
+    <section class="homeSection flow">
+      <h1>
+        <icon-layout> 
+<svg><use href="/assets/icons.svg#forms"></use></svg>
+ Forms </icon-layout>
+      </h1>
+      <p>
+        HTML patterns for creating simple accessible web forms. 
+<a href="/forms">
+  <icon-layout> Forms 
+<svg><use href="/assets/icons.svg#right"></use></svg>
+ </icon-layout>
+</a>
 
-        </stack-layout>
-      </main>
-    </sidebar-layout>
-    <script type="module" src="/docs.js"></script>
+      </p>
+    </section>
+    <section class="homeSection flow">
+      <h1>
+        <icon-layout> 
+<svg><use href="/assets/icons.svg#internal"></use></svg>
+ Internal </icon-layout>
+      </h1>
+      <p>Information for developing on Alembic itself.</p>
+      <ul>
+        <li>
+<a href="/internal/structure">
+  <icon-layout> Structure 
+<svg><use href="/assets/icons.svg#right"></use></svg>
+ </icon-layout>
+</a>
+</li>
+        <li>
+<a href="/internal/style-guide">
+  <icon-layout> Style Guide 
+<svg><use href="/assets/icons.svg#right"></use></svg>
+ </icon-layout>
+</a>
+</li>
+        <li>
+<a href="/internal/doc-tools">
+  <icon-layout> Doc tools 
+<svg><use href="/assets/icons.svg#right"></use></svg>
+ </icon-layout>
+</a>
+</li>
+      </ul>
+    </section>
+    <section class="homeSection flow">
+      <h1>
+        <icon-layout> 
+<svg><use href="/assets/icons.svg#question"></use></svg>
+ Something else? </icon-layout>
+      </h1>
+      <p>
+        Got something that should be a part of alembic?
+        <br />
+        
+<a href="/internal/contribute">
+  <icon-layout> Contribute 
+<svg><use href="/assets/icons.svg#right"></use></svg>
+ </icon-layout>
+</a>
+
+      </p>
+    </section>
+
+    <footer class="homeFooter">
+      <p>
+        Made by
+        <a href="https://openlab.ncl.ac.uk">Open Lab</a>
+        &amp;
+        <a href="https://github.com/digitalinteraction/alembic">Open Source</a>
+        &ndash; v0.2.4
+      </p>
+    </footer>
+  </stack-layout>
+</center-layout>
+
+    <script type="module" src="/docs/docs.js"></script>
   </body>
 </html>
