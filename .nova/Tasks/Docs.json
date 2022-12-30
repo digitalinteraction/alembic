@@ -2,10 +2,24 @@
   "actions" : {
     "build" : {
       "enabled" : true,
+      "preActions" : [
+        {
+          "action" : "build",
+          "taskName" : "Library",
+          "type" : "runTask"
+        }
+      ],
       "script" : "#!\/bin\/sh\nnpx eleventy --config=.eleventy.cjs"
     },
     "run" : {
       "enabled" : true,
+      "preActions" : [
+        {
+          "action" : "build",
+          "taskName" : "Library",
+          "type" : "runTask"
+        }
+      ],
       "script" : "#!\/bin\/sh\nnpx eleventy --config=.eleventy.cjs --serve"
     }
   },

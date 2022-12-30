@@ -28,12 +28,29 @@ title: 🏠 Home
   <stack-layout space="var(--s5)">
     <section class="homeSection flow">
       <h1>
-        <icon-layout> {{ icon('download') }} Install </icon-layout>
+        <icon-layout> {{ icon('info') }} About </icon-layout>
       </h1>
       <p>
-        Add alembic to your project, depending on your setup. If it's working
-        out, use a full install. {{ link('Install', '/install') }}
+        Alembic is a Design System built with
+        <strong class="highlight">Modern CSS</strong> based on
+        <strong class="highlight">Progressive Enhancement</strong> to deliver
+        <strong class="highlight">accessible</strong> experiences on the web. It
+        is meant to work with the browser, not fight it, embracing HTML and CSS
+        & minimising JavaScript.
       </p>
+      <p>
+        Alembic is a living project and a work in progress. Inspired by
+        <a href="https://cube.fyi">CUBE CSS</a>,
+        <a href="https://every-layout.dev/">EveryLayout</a>,
+        <a href="https://bulma.io/">Bulma</a> and
+        <a href="https://formdesignpatterns.com/">Form design patterns</a>.
+      </p>
+    </section>
+    <section class="homeSection flow">
+      <h1>
+        <icon-layout> {{ icon('download') }} Install </icon-layout>
+      </h1>
+      <p> Add alembic to your project, depending on your setup. </p>
       <ul>
         <!-- <li> {{ link('Quick start', '/install/demo') }} </li> -->
         <li> {{ link('Static Site Generators', '/install/ssg') }} </li>
@@ -42,7 +59,10 @@ title: 🏠 Home
       </ul>
       <br />
       <div class="quickstart flow">
-        <p><strong>Quick demo</strong> &ndash; Add these and hack away!</p>
+        <p>
+          <strong>Quick demo</strong> &ndash; Add these and hack away! If it's
+          working out, do a full install. {{ link('Install', '/install') }}
+        </p>
         <pre>
 &lt;link rel="stylesheet" href="{{ 'everything.css' | fullUrl }}"&gt;</pre
         >

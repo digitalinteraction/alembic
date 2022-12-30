@@ -9,10 +9,12 @@
         href="{{ pageUrl }}"
         {{ 'aria-current="page"' if pageUrl == page.url }}
       >
-        <icon-layout>
+        <cluster-layout align="center" justify="space-between">
           {{ item.name}}
-          <svg><use href="{{ '/assets/icons.svg#right' | url }}"></use></svg>
-        </icon-layout>
+          <icon-layout>
+            <svg><use href="{{ '/assets/icons.svg#right' | url }}"></use></svg>
+          </icon-layout>
+        </cluster-layout>
       </a>
     </li>
     {% endfor %}

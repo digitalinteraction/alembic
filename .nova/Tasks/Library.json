@@ -2,10 +2,10 @@
   "actions" : {
     "build" : {
       "enabled" : true,
-      "path" : "bin\/build.sh"
+      "path" : "bin\/build.js"
     }
   },
   "environment" : {
-    "NODE_ENV" : "production"
+    "NODE_ENV" : "development"
   }
 }

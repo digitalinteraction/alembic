@@ -1,6 +1,9 @@
 import { layoutCustomElements } from './layouts/layouts.js'
 import { AlembicStyleSheet } from './lib/lib.js'
 
+import everythingCss from 'embed:./everything.css'
+import everythingJs from 'embed:./everything.js'
+
 const allElements = new Map([...layoutCustomElements])
 
 export function processHtml(inputHtml: string): string {
@@ -41,13 +44,11 @@ export function getStyles(inputHtml: string): Map<string, unknown> {
 }
 
 export function getBaseStyles(): string {
-  // TODO: how to inline the reset.css file during build and return here?
-  return `__ALEMBIC_BASE_STYLES__`
+  return everythingCss
 }
 
 export function getBaseScripts(): string {
-  // TODO: how to inline the scripts files during build and return here?
-  return `__ALEMBIC_BASE_SCRIPTS__`
+  return everythingJs
 }
 
 // Internal
