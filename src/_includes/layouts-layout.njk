@@ -1,42 +1,5 @@
 ---
 layout: html.njk
-tiles:
-- id: stack
-  tag: stackLayout
-  alt: Stack
-- id: box
-  tag: boxLayout
-  alt: Box
-- id: center
-  tag: centerLayout
-  alt: Center
-- id: cluster
-  tag: clusterLayout
-  alt: Cluster
-- id: sidebar
-  tag: sidebarLayout
-  alt: Sidebar
-- id: switcher
-  tag: switcherLayout
-  alt: Switcher
-- id: cover
-  tag: coverLayout
-  alt: Cover
-- id: grid
-  tag: gridLayout
-  alt: Grid
-- id: frame
-  tag: frameLayout
-  alt: Frame
-- id: reel
-  tag: reelLayout
-  alt: Reel
-- id: imposter
-  tag: imposterLayout
-  alt: Imposter
-- id: icon
-  tag: iconLayout
-  alt: Icon
 ---
 
 <div class="docsLayout">
@@ -52,16 +15,16 @@ tiles:
         </stack-layout>
       </main>
       <footer class="docsLayout-footer">
-        <reel-layout class="layoutNav">
-          {% for item in tiles %}
-          <a href="#{{ item.id }}" class="layoutNav-item">
+        <reel-layout class="layoutReel">
+          {% for layout in layouts %}
+          <a href="#{{ layout.id }}" class="layoutReel-item">
             <img
               width="96"
               height="96"
-              src="{{ collections[item.tag][0].data.tile | url }}"
-              alt="{{ item.alt }}"
+              src="{{ collections[layout.tag][0].data.tile | url }}"
+              alt="{{ layout.name }}"
             />
-            <p>{{item.alt}}</p>
+            <p>{{layout.name}}</p>
           </a>
           {% endfor %}
         </reel-layout>

@@ -1,4 +1,8 @@
-import { defineCustomElements, layoutCustomElements } from '../module.js'
+import {
+  defineCustomElements,
+  layoutCustomElements,
+  ReelLayout,
+} from '../module.js'
 
 import { DetailsUtils } from './details-utils.js'
 import { ComponentDef } from './component-def.js'
@@ -23,10 +27,25 @@ window.addEventListener('DOMContentLoaded', () => {
   if (location.hash) toggleSection(location.hash)
 
   for (const elem of document.querySelectorAll<HTMLAnchorElement>(
-    'a.layoutNav-item'
+    'a.layoutReel-item'
   )) {
     const url = new URL(elem.href, location.href)
     elem.addEventListener('click', () => toggleSection(url.hash))
+  }
+
+  for (const elem of document.querySelectorAll<ReelLayout>(
+    'reel-layout.layoutReel[data-autoscroll="true"]'
+  )) {
+    let lastTick = Date.now()
+
+    function tick() {
+      let diff = Date.now() - lastTick
+      elem.scrollLeft =
+        (elem.scrollLeft + diff * 0.1) % (elem.scrollWidth * 0.5)
+      window.requestAnimationFrame(tick)
+      lastTick = Date.now()
+    }
+    window.requestAnimationFrame(tick)
   }
 })
 

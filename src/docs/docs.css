@@ -5,7 +5,7 @@
 /* 
   z-index:
   - 1 - doc-section::part(title)
-  - 2 - .layoutNav
+  - 2 - .layoutReel
 */
 
 :root {
@@ -46,6 +46,12 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--color-foreground);
+  background-color: var(--doc-background);
 }
 
 /* TODO: find a way to refactor these two */
@@ -303,28 +309,75 @@ doc-section {
 /* Doc section */
 
 /* Layout tiles */
-.layoutNav {
+.layoutReel {
+  padding-bottom: 0;
 }
-.layoutNav-item {
+.layoutReel > a {
   text-decoration: none;
 }
-.layoutNav-item > p {
+.layoutReel-item > p {
   text-decoration: none;
   text-align: center;
   color: var(--doc-foreground);
 }
-.layoutNav img {
+.layoutReel img {
   width: 64px;
   height: 64px;
 }
 @media (prefers-color-scheme: dark) {
-  .layoutNav-item > img {
+  .layoutReel-item > img {
     filter: invert(100%);
   }
 }
 @media (min-width: 1024px) {
-  .layoutNav img {
+  .layoutReel img {
     width: 96px;
     height: 96px;
   }
+}
+
+.homeHero {
+  text-align: center;
+  font-size: 1.25rem;
+}
+.homeHero h1 {
+  font-size: 4rem;
+}
+.homeFooter {
+  font-family: var(--doc-mono);
+  text-align: center;
+  opacity: 0.7;
+  margin-bottom: var(--s-1);
+}
+.homeFooter a {
+  color: inherit;
+  font-weight: bold;
+}
+.homeSection {
+  font-size: 1.3rem;
+}
+
+h1,
+h2,
+h3 {
+  margin: unset;
+  line-height: 1.2;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
+.quickstart {
+  padding: var(--s-1) var(--s1);
+  border-left: var(--s-2) dashed var(--doc-foreground);
+}
+.quickstart p {
+}
+.quickstart pre {
+  font-size: 0.9rem;
+  /* overflow-x: auto; */
+  user-select: all;
+  word-break: break-all;
+  white-space: pre-wrap;
 }

@@ -2,6 +2,9 @@ const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 const cp = require('child_process')
 const path = require('path')
 
+const pkg = require('./package.json')
+const site = require('./src/_data/site.json')
+
 // Load after initial build (which builds the plugin)
 cp.execFileSync(path.join(__dirname, 'bin/build.sh'))
 const { eleventyAlembic } = require('@openlab/alembic/11ty')
@@ -21,16 +24,11 @@ module.exports = function (eleventyConfig) {
       b.data.title.localeCompare(a.data.title)
     )
   })
+  eleventyConfig.addFilter('fullUrl', (path) => {
+    return new URL(path, site.url).href
+  })
 
-  // TODO: could this be in the 11ty library?
-  // eleventyConfig.addShortcode('icon', function (name, label = '') {
-  //   // console.log(this)
-  //   // const use = `<use href="{{ '/assets/icons.svg#left' | url }}"></use>`
-  //   // return `<svg>${use}</svg>`
-  //   // console.log(this.ctx)
-  //   // console.log(this.url)
-  //   // console.log(this.filters.url)
-  // })
+  eleventyConfig.addShortcode('pkgVersion', () => pkg.version)
 
   eleventyConfig.addWatchTarget('./src/**/*.css')
   eleventyConfig.addWatchTarget('./src/**/*.ts')

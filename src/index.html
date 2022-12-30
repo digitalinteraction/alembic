@@ -1,17 +1,123 @@
 ---
-layout: docs-layout.njk
+layout: html.njk
 title: 🏠 Home
 ---
 
-{% for version in collections.api | apiSort %}
-<div class="markdownPage">
-  <details-utils persist="{{ version.fileSlug }}">
-    <details>
-      <summary class="markdownPage-heading"> {{ version.data.title }} </summary>
-      <stack-layout space="var(--s0)">
-        {{ version.templateContent | safe }}
-      </stack-layout>
-    </details>
-  </details-utils>
-</div>
-{% endfor %}
+<cover-layout minheight="90vh" centered=".homeHero">
+  <cluster-layout justify="flex-end">
+    <a href="{{ '/install' | url }}">Install</a>
+    <a href="{{ '/layouts' | url }}">Layouts</a>
+    <a href="{{ '/forms' | url }}">Forms</a>
+    <a href="{{ site.githubUrl }}">GitHub</a>
+  </cluster-layout>
+  <div class="homeHero">
+    <h1>⚗️ Alembic</h1>
+    <p>Design system for research projects</p>
+  </div>
+</cover-layout>
+
+{% macro icon(icon) %}
+<svg><use href="{{ '/assets/icons.svg#' + icon | url }}"></use></svg>
+{% endmacro %} {% macro link(text, href) %}
+<a href="{{ href | url }}">
+  <icon-layout> {{ text }} {{ icon('right') }} </icon-layout>
+</a>
+{% endmacro %}
+
+<center-layout gutters="var(--s1)">
+  <stack-layout space="var(--s5)">
+    <section class="homeSection flow">
+      <h1>
+        <icon-layout> {{ icon('download') }} Install </icon-layout>
+      </h1>
+      <p>
+        Add alembic to your project, depending on your setup. If it's working
+        out, use a full install. {{ link('Install', '/install') }}
+      </p>
+      <ul>
+        <!-- <li> {{ link('Quick start', '/install/demo') }} </li> -->
+        <li> {{ link('Static Site Generators', '/install/ssg') }} </li>
+        <li> {{ link('Single Page Apps', '/install/spa') }} </li>
+        <li> {{ link('Service-Side Rendering', '/install/ssr') }} </li>
+      </ul>
+      <br />
+      <div class="quickstart flow">
+        <p><strong>Quick demo</strong> &ndash; Add these and hack away!</p>
+        <pre>
+&lt;link rel="stylesheet" href="{{ 'everything.css' | fullUrl }}"&gt;</pre
+        >
+        <pre>
+&lt;script type="module" href="{{ 'everything.js' | fullUrl }}"&gt;&lt;/script&gt;</pre
+        >
+      </div>
+    </section>
+    <section class="homeSection flow">
+      <h1>
+        <icon-layout> {{ icon('layouts') }} Layouts </icon-layout>
+      </h1>
+      <p>
+        Building blocks for composing complex interfaces together with reusable
+        components. {{ link('Layouts', '/layouts') }}
+      </p>
+
+      <reel-layout
+        class="layoutReel"
+        noBar
+        data-autoscroll="true"
+        style="margin-inline: calc(-1 * var(--s1))"
+      >
+        {% for layout in layouts.concat(layouts) %}
+        <span href="#{{ layout.id }}" class="layoutReel-item">
+          <img
+            width="96"
+            height="96"
+            src="{{ collections[layout.tag][0].data.tile | url }}"
+            alt="{{ layout.name }}"
+          />
+          <p>{{layout.name}}</p>
+        </span>
+        {% endfor %}
+      </reel-layout>
+    </section>
+    <section class="homeSection flow">
+      <h1>
+        <icon-layout> {{ icon('forms') }} Forms </icon-layout>
+      </h1>
+      <p>
+        HTML patterns for creating simple accessible web forms. {{ link('Forms',
+        '/forms') }}
+      </p>
+    </section>
+    <section class="homeSection flow">
+      <h1>
+        <icon-layout> {{ icon('internal') }} Internal </icon-layout>
+      </h1>
+      <p>Information for developing on Alembic itself.</p>
+      <ul>
+        <li>{{ link('Structure', '/internal/structure') }}</li>
+        <li>{{ link('Style Guide', '/internal/style-guide') }}</li>
+        <li>{{ link('Doc tools', '/internal/doc-tools') }}</li>
+      </ul>
+    </section>
+    <section class="homeSection flow">
+      <h1>
+        <icon-layout> {{ icon('question') }} Something else? </icon-layout>
+      </h1>
+      <p>
+        Got something that should be a part of alembic?
+        <br />
+        {{ link('Contribute', '/internal/contribute') }}
+      </p>
+    </section>
+
+    <footer class="homeFooter">
+      <p>
+        Made by
+        <a href="https://openlab.ncl.ac.uk">Open Lab</a>
+        &amp;
+        <a href="{{ site.githubUrl }}">Open Source</a>
+        &ndash; v{% pkgVersion %}
+      </p>
+    </footer>
+  </stack-layout>
+</center-layout>
