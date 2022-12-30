@@ -1001,17 +1001,11 @@ function _commentRegex(name) {
 
 // src/11ty.ts
 function eleventyAlembic(eleventyConfig) {
-  const css = import_path.default.join(eleventyConfig.dir.output, "alembic/style.css");
-  const js = import_path.default.join(eleventyConfig.dir.output, "alembic/script.js");
-  eleventyConfig.addTransform(
-    "html",
-    (content) => processHtml(content, {
-      extraStyles: [`<link rel="stylesheet" href="/alembic/style.css">`],
-      extraScripts: [
-        `<script type="module" src="/alembic/script.js"></script>`
-      ]
-    })
-  );
+  const options = {
+    extraStyles: [`<link rel="stylesheet" href="/alembic/style.css">`],
+    extraScripts: [`<script type="module" src="/alembic/script.js"></script>`]
+  };
+  eleventyConfig.addTransform("html", (html) => processHtml(html, options));
   eleventyConfig.on("eleventy.after", async ({ dir }) => {
     const outdir = dir ? dir.output : eleventyConfig.dir.output;
     if (!outdir) {
@@ -1019,8 +1013,8 @@ function eleventyAlembic(eleventyConfig) {
       return;
     }
     await import_promises.default.mkdir(import_path.default.join(outdir, "alembic"), { recursive: true });
-    await import_promises.default.writeFile(css, getBaseStyles());
-    await import_promises.default.writeFile(js, getBaseScripts());
+    await import_promises.default.writeFile(import_path.default.join(outdir, "alembic/style.css"), getBaseStyles());
+    await import_promises.default.writeFile(import_path.default.join(outdir, "alembic/script.js"), getBaseScripts());
   });
 }
 // Annotate the CommonJS export names for ESM import in node:
