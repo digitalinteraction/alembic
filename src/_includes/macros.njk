@@ -1,0 +1,8 @@
+{%- macro icon(icon) %}
+<svg><use href="{{ '/assets/icons.svg#' + icon | url }}"></use></svg>
+{%- endmacro %}
+
+{%- macro link(text, href) %}
+<a href="{{ href | url }}">
+<icon-layout>{{ text }} {{ icon('right') }}</icon-layout></a>
+{%- endmacro %}

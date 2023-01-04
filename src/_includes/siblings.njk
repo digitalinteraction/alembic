@@ -1,0 +1,22 @@
+{% from 'macros.njk' import icon %}
+
+<nav>
+  <ul>
+    {% for tag in siblings %}
+    {% for target in collections[tag] %}
+    <li>
+      {% if target.url | isCurrentPage(page.url) %}
+      <strong>{{ target.data.title }}</strong>
+      {% else %}
+      <a href="{{ target.url }}" >
+        <icon-layout>
+          {{ target.data.title }}
+          {{ icon('right') }}
+        </icon-layout>
+      </a>
+      {% endif %}
+    </li>
+    {% endfor %}
+    {% endfor %}
+  </ul>
+</nav>

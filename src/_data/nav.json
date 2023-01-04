@@ -1,7 +1,6 @@
 [
-  { "url": "/", "name": "Home" },
   { "url": "/install/", "name": "Install" },
   { "url": "/layouts/", "name": "Layouts" },
   { "url": "/forms/", "name": "Forms" },
-  { "url": "/internal/", "name": "Internal" }
+  { "url": "/development/", "name": "Development" }
 ]

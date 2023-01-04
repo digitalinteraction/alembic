@@ -30,7 +30,7 @@ jobs:
 
       - run: npm ci
 
-      - run: ./bin/build.sh
+      - run: ./scripts/build.js
         env:
           NODE_ENV: production
 

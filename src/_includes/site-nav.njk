@@ -3,11 +3,11 @@
   <ul role="list">
     {% for item in nav %}
     <li>
-      {% set pageUrl = item.url | url %}
+      {% set target = item.url | url %}
       <a
         class="docsNav-item"
-        href="{{ pageUrl }}"
-        {{ 'aria-current="page"' if pageUrl == page.url }}
+        href="{{ target }}"
+        {{ 'aria-current="page"' if target | isCurrentPage(page.url) }}
       >
         <cluster-layout align="center" justify="space-between">
           {{ item.name}}

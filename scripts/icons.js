@@ -10,7 +10,7 @@ const SVG_ATTRS =
 
 const USAGE = `
 Usage:
-  ./bin/icons.js <inputDir> <outputFile>
+  ./scripts/icons.js <inputDir> <outputFile>
 `
 
 const symbolifyPlugin = {

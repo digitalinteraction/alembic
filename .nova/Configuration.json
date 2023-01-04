@@ -1,6 +1,6 @@
 {
   "index.ignored_file_patterns" : [
-    "dist"
+    "dist\/*"
   ],
   "workspace.color" : 2,
   "workspace.name" : "alembic",

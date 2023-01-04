@@ -1,11 +1,23 @@
+const markdownIt = require('markdown-it')
+
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 const { eleventyAlembic } = require('@openlab/alembic/11ty')
 
 const pkg = require('./package.json')
 const site = require('./src/_data/site.json')
 
+// TODO: refactor this out when upgrading to eleventy@2
+const md = markdownIt({
+  html: true,
+})
+md.disable('code')
+
+// TODO: add watch/rebuild for src in development mode?
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function (eleventyConfig) {
+  eleventyConfig.setLibrary('md', md)
+
   eleventyConfig.addPlugin(eleventyAlembic)
   eleventyConfig.addPlugin(syntaxHighlight)
 
@@ -16,6 +28,9 @@ module.exports = function (eleventyConfig) {
   })
   eleventyConfig.addFilter('fullUrl', (path) => {
     return new URL(path, site.url).href
+  })
+  eleventyConfig.addFilter('isCurrentPage', (pageUrl, currentUrl) => {
+    return currentUrl.startsWith(pageUrl)
   })
 
   eleventyConfig.addShortcode('pkgVersion', () => pkg.version)

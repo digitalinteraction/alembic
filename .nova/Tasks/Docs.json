@@ -2,25 +2,29 @@
   "actions" : {
     "build" : {
       "enabled" : true,
+      "path" : "scripts\/build-docs.sh",
       "preActions" : [
         {
           "action" : "build",
           "taskName" : "Library",
           "type" : "runTask"
         }
-      ],
-      "script" : "#!\/bin\/sh\nnpx eleventy --config=.eleventy.cjs"
+      ]
+    },
+    "clean" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\nrm -r dist"
     },
     "run" : {
       "enabled" : true,
+      "path" : "scripts\/build-docs.sh",
       "preActions" : [
         {
           "action" : "build",
           "taskName" : "Library",
           "type" : "runTask"
         }
-      ],
-      "script" : "#!\/bin\/sh\nnpx eleventy --config=.eleventy.cjs --serve"
+      ]
     }
   },
   "environment" : {

@@ -1,0 +1,19 @@
+{# "links" must be set #}
+
+{% from 'macros.njk' import icon %}
+
+<grid-layout>
+  {% for link in links %}
+  <box-layout class="navCard">
+    <a href="{{ link.path | url }}">
+      <h2>
+        <icon-layout>
+          {{ link.title }}
+          {{ icon('right') }}
+        </icon-layout>
+      </h2>
+      <p> {{ link.subtitle }} </p>
+    </a>
+  </box-layout>
+  {% endfor %}
+</grid-layout>

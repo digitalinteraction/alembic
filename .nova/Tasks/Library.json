@@ -2,7 +2,7 @@
   "actions" : {
     "build" : {
       "enabled" : true,
-      "path" : "bin\/build.js"
+      "path" : "scripts\/build-library.js"
     }
   },
   "environment" : {

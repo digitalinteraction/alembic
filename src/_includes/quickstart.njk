@@ -1,0 +1,11 @@
+{% from 'macros.njk' import link %}
+
+<div class="quickstart flow">
+  <p>
+    <strong>Quick demo</strong> &ndash; Add these and hack away! If it's
+    working out, do a full install. {{ link('Install', '/install') }}
+  </p>
+  <pre>&lt;link rel="stylesheet" href="{{ 'everything.css' | fullUrl }}"&gt;</pre>
+  <pre>&lt;script type="module" href="{{ 'everything.js' | fullUrl }}"&gt;&lt;/script&gt;</pre>
+  <p><em>Not for production!</em></p>
+</div>

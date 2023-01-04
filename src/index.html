@@ -3,6 +3,8 @@ layout: html.njk
 title: 🏠 Home
 ---
 
+{% from 'macros.njk' import icon, link %}
+
 <cover-layout minheight="90vh" centered=".homeHero">
   <cluster-layout justify="flex-end">
     <a href="{{ '/install' | url }}">Install</a>
@@ -15,14 +17,6 @@ title: 🏠 Home
     <p>Design system for research projects</p>
   </div>
 </cover-layout>
-
-{% macro icon(icon) %}
-<svg><use href="{{ '/assets/icons.svg#' + icon | url }}"></use></svg>
-{% endmacro %} {% macro link(text, href) %}
-<a href="{{ href | url }}">
-  <icon-layout> {{ text }} {{ icon('right') }} </icon-layout>
-</a>
-{% endmacro %}
 
 <center-layout gutters="var(--s1)">
   <stack-layout space="var(--s5)">
@@ -52,24 +46,16 @@ title: 🏠 Home
       </h1>
       <p> Add alembic to your project, depending on your setup. </p>
       <ul>
-        <!-- <li> {{ link('Quick start', '/install/demo') }} </li> -->
         <li> {{ link('Static Site Generators', '/install/ssg') }} </li>
         <li> {{ link('Single Page Apps', '/install/spa') }} </li>
-        <li> {{ link('Service-Side Rendering', '/install/ssr') }} </li>
+        <li>
+          {{ link('Service-Side Rendering', '/install/ssr') }}
+          <em>(experimental)</em>
+        </li>
       </ul>
       <br />
-      <div class="quickstart flow">
-        <p>
-          <strong>Quick demo</strong> &ndash; Add these and hack away! If it's
-          working out, do a full install. {{ link('Install', '/install') }}
-        </p>
-        <pre>
-&lt;link rel="stylesheet" href="{{ 'everything.css' | fullUrl }}"&gt;</pre
-        >
-        <pre>
-&lt;script type="module" href="{{ 'everything.js' | fullUrl }}"&gt;&lt;/script&gt;</pre
-        >
-      </div>
+
+      {% include 'quickstart.njk' %}
     </section>
     <section class="homeSection flow">
       <h1>
@@ -114,9 +100,9 @@ title: 🏠 Home
       </h1>
       <p>Information for developing on Alembic itself.</p>
       <ul>
-        <li>{{ link('Structure', '/internal/structure') }}</li>
-        <li>{{ link('Style Guide', '/internal/style-guide') }}</li>
-        <li>{{ link('Doc tools', '/internal/doc-tools') }}</li>
+        <li>{{ link('Structure', '/development/structure') }}</li>
+        <li>{{ link('Style Guide', '/development/style-guide') }}</li>
+        <li>{{ link('Doc tools', '/development/doc-tools') }}</li>
       </ul>
     </section>
     <section class="homeSection flow">

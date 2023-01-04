@@ -1,19 +1,23 @@
 ---
 layout: docs-layout.njk
 title: Docs
+tags:
+  - development
+siblings:
+  - development
 ---
+
+{% include 'siblings.njk' %}
 
 <!--
   About
 -->
-<doc-section label="About" prefix="docs-">
-  <div class="layoutInfo">
-    <p>
-      This page contains information about the custom elements and CSS classes
-      available to document alembic. Warning: it gets a bit recursive.
-    </p>
-  </div>
-</doc-section>
+<div class="layoutInfo">
+  <p>
+    This page contains information about the custom elements and CSS classes
+    available to document alembic. Warning: it gets a bit recursive.
+  </p>
+</div>
 
 <!--
   ComponentDef

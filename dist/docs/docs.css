@@ -118,8 +118,9 @@ a {
   font-size: 1.75rem;
   color: var(--doc-foreground);
   text-decoration: none;
+  margin-bottom: var(--s2);
 }
-.docsNav-brand a:hover {
+.docsNav-brand:hover {
   text-decoration: underline;
 }
 .docsNav-item {
@@ -328,4 +329,13 @@ strong.highlight {
   strong.highlight {
     background-color: #333;
   }
+}
+.navCard {
+  border-radius: var(--s0);
+}
+.navCard a {
+  text-decoration: none;
+}
+.navCard a:hover :is(h1, h2, h3, h4) {
+  text-decoration: underline;
 }
