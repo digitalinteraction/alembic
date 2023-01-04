@@ -39,7 +39,13 @@ export function eleventyAlembic(eleventyConfig: EleventyConfig) {
     }
 
     await fs.mkdir(path.join(outdir, 'alembic'), { recursive: true })
-    await fs.writeFile(path.join(outdir, 'alembic/style.css'), getBaseStyles())
-    await fs.writeFile(path.join(outdir, 'alembic/script.js'), getBaseScripts())
+    await fs.writeFile(
+      path.join(outdir, 'alembic/style.css'),
+      await getBaseStyles()
+    )
+    await fs.writeFile(
+      path.join(outdir, 'alembic/script.js'),
+      await getBaseScripts()
+    )
   })
 }

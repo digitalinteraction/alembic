@@ -1,8 +1,8 @@
 import { layoutCustomElements } from './layouts/layouts.js'
 import { AlembicStyleSheet } from './lib/lib.js'
 
-import everythingCss from 'embed:./everything.css'
-import everythingJs from 'embed:./everything.js'
+// import everythingCss from 'embed:./everything.css'
+// import everythingJs from 'embed:./everything.js'
 
 const allElements = new Map([...layoutCustomElements])
 
@@ -54,12 +54,16 @@ export function getStyles(inputHtml: string): Map<string, unknown> {
   return styles.getStyles()
 }
 
-export function getBaseStyles(): string {
-  return everythingCss
+/** This is dynamic so the custom embed: protocol doesn't break unit tests... */
+export async function getBaseStyles(): Promise<string> {
+  const css = await import('embed:./everything.css')
+  return css.default
 }
 
-export function getBaseScripts(): string {
-  return everythingJs
+/** This is dynamic so the custom embed: protocol doesn't break unit tests... */
+export async function getBaseScripts(): Promise<string> {
+  const js = await import('embed:./everything.js')
+  return js.default
 }
 
 // Internal

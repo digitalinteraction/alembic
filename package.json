@@ -24,7 +24,7 @@
     }
   },
   "scripts": {
-    "build": "bin/build.js",
+    "build": "scripts/build.js",
     "test": "mocha"
   },
   "devDependencies": {

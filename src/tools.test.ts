@@ -5,8 +5,6 @@ import {
   _parseHtmlAttributes,
   _elementRegex,
   _commentRegex,
-  getStyles,
-  processHtml,
 } from './tools.js'
 
 import assert from 'node:assert/strict'
