@@ -2,7 +2,8 @@
 {% from 'macros.njk' import icon %}
 
 {% if siblings %}
-<nav>
+<nav class="siblings" aria-labelledby="siblings">
+  <p id="siblings">Pages</p>
   <ul>
     {% for tag in siblings %}
     {% for target in collections[tag] %}

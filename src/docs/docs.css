@@ -410,3 +410,16 @@ strong.highlight {
 .navCard a:hover :is(h1, h2, h3, h4) {
   text-decoration: underline;
 }
+
+.siblings {
+}
+.siblings p {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.siblings ul {
+  margin-block: var(--s-3) 0;
+  padding-inline-start: 2em;
+}
+.siblings ul li {
+}

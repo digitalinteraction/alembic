@@ -2,6 +2,9 @@
 layout: index.njk
 title: Install
 links:
+  - path: /install/demo
+    title: Quickstart
+    subtitle: Insert subtitle here...
   - path: /install/ssg
     title: Static Site Generators
     subtitle: Insert subtitle here...
@@ -16,5 +19,3 @@ links:
 <!-- Maybe use html.njk to make the demo better? -->
 
 Follow along to install Alembic!
-
-{% include 'quickstart.njk' %}
