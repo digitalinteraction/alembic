@@ -21,16 +21,20 @@ title: 🏠 Home
 <center-layout gutters="var(--s1)">
   <stack-layout space="var(--s5)">
     <section class="homeSection flow">
-      <h1>
+      <h2>
         <icon-layout> {{ icon('info') }} About </icon-layout>
-      </h1>
+      </h2>
       <p>
         Alembic is a Design System built with
         <strong class="highlight">Modern CSS</strong> based on
         <strong class="highlight">Progressive Enhancement</strong> to deliver
         <strong class="highlight">accessible</strong> experiences on the web. It
-        is meant to work with the browser, not fight it, embracing HTML and CSS
-        & minimising JavaScript.
+        works with the browser, embracing HTML and CSS & minimising JavaScript.
+      </p>
+      <p>
+        Made at and for Open Lab, distilling knowledge from past deployments.
+        <strong class="highlight">Not made by silicon valley</strong>,
+        instead tailored for the research we do.
       </p>
       <p>
         Alembic is a living project and a work in progress. Inspired by
@@ -41,15 +45,15 @@ title: 🏠 Home
       </p>
     </section>
     <section class="homeSection flow">
-      <h1>
+      <h2>
         <icon-layout> {{ icon('download') }} Install </icon-layout>
-      </h1>
+      </h2>
       <p> Add alembic to your project, depending on your setup. </p>
       <ul>
-        <li> {{ link('Static Site Generators', '/install/ssg') }} </li>
-        <li> {{ link('Single Page Apps', '/install/spa') }} </li>
+        <li> {{ link('Static Site Generators', '/install/ssg' | url) }} </li>
+        <li> {{ link('Single Page Apps', '/install/spa' | url) }} </li>
         <li>
-          {{ link('Service-Side Rendering', '/install/ssr') }}
+          {{ link('Service-Side Rendering', '/install/ssr' | url) }}
           <em>(experimental)</em>
         </li>
       </ul>
@@ -58,12 +62,12 @@ title: 🏠 Home
       {% include 'quickstart.njk' %}
     </section>
     <section class="homeSection flow">
-      <h1>
+      <h2>
         <icon-layout> {{ icon('layouts') }} Layouts </icon-layout>
-      </h1>
+      </h2>
       <p>
         Building blocks for composing complex interfaces together with reusable
-        components. {{ link('Layouts', '/layouts') }}
+        components. {{ link('Layouts', '/layouts' | url) }}
       </p>
 
       <reel-layout
@@ -86,33 +90,50 @@ title: 🏠 Home
       </reel-layout>
     </section>
     <section class="homeSection flow">
-      <h1>
+      <h2>
         <icon-layout> {{ icon('forms') }} Forms </icon-layout>
-      </h1>
+      </h2>
       <p>
         HTML patterns for creating simple accessible web forms. {{ link('Forms',
-        '/forms') }}
+        '/forms' | url) }}
       </p>
     </section>
+    
     <section class="homeSection flow">
-      <h1>
-        <icon-layout> {{ icon('internal') }} Internal </icon-layout>
-      </h1>
+      <h2>
+        <icon-layout> {{ icon('internal') }} Showcase </icon-layout>
+      </h2>
+      <p>These projects use alembic!</p>
+      <ul>
+        <li>
+          {{ link('The Open Lab website', 'https://openlab.ncl.ac.uk/') }}
+        </li>
+        <li><strong>Coffee Club</strong></li>
+        <li>
+          {{ link('DataDiaries', 'https://datadiaries.uk/') }}
+        </li>
+      </ul>
+    </section>
+    
+    <section class="homeSection flow">
+      <h2>
+        <icon-layout> {{ icon('internal') }} Under the hood </icon-layout>
+      </h2>
       <p>Information for developing on Alembic itself.</p>
       <ul>
-        <li>{{ link('Structure', '/development/structure') }}</li>
-        <li>{{ link('Style Guide', '/development/style-guide') }}</li>
-        <li>{{ link('Doc tools', '/development/doc-tools') }}</li>
+        <li>{{ link('Structure', '/development/structure' | url) }}</li>
+        <li>{{ link('Style Guide', '/development/style-guide' | url) }}</li>
+        <li>{{ link('Doc tools', '/development/doc-tools' | url) }}</li>
       </ul>
     </section>
     <section class="homeSection flow">
-      <h1>
+      <h2>
         <icon-layout> {{ icon('question') }} Something else? </icon-layout>
-      </h1>
+      </h2>
       <p>
-        Got something that should be a part of alembic?
+        Got something that should be a part of Alembic?
         <br />
-        {{ link('Contribute', '/development/contribute') }}
+        {{ link('Contribute', '/development/contribute' | url) }}
       </p>
     </section>
 
