@@ -1,4 +1,5 @@
 const markdownIt = require('markdown-it')
+const markdownAnchor = require('markdown-it-anchor')
 
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 const { eleventyAlembic } = require('@openlab/alembic/11ty')
@@ -10,6 +11,7 @@ const site = require('./src/_data/site.json')
 const md = markdownIt({
   html: true,
 })
+md.use(markdownAnchor)
 md.disable('code')
 
 // TODO: add watch/rebuild for src in development mode?

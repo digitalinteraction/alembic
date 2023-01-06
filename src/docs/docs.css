@@ -86,6 +86,10 @@ a {
     color: hsl(238, 100%, 71%);
   }
 }
+hr {
+  --flow-space: var(--s3);
+  margin-block: var(--s3);
+}
 
 /*
   Docs layout
