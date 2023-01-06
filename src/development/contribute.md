@@ -1,8 +1,8 @@
 ---
 layout: markdown.njk
-title: Structure
+title: Contribute
 tags:
   - development
 ---
 
-Structure...
+Style guide...
