@@ -1,12 +1,10 @@
 ---
-layout: docs-layout.njk
+layout: markdown.njk
 title: Structure
 tags:
   - development
 siblings:
   - development
 ---
-
-{% include 'siblings.njk' %}
 
 Structure...

@@ -1,7 +1,6 @@
-{# "links" must be set #}
-
 {% from 'macros.njk' import icon %}
 
+{% if links %}
 <grid-layout>
   {% for link in links %}
   <box-layout class="navCard">
@@ -17,3 +16,4 @@
   </box-layout>
   {% endfor %}
 </grid-layout>
+{% endif %}

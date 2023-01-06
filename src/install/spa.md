@@ -1,12 +1,10 @@
 ---
-layout: docs-layout.njk
+layout: markdown.njk
 title: Single Page Applications
 tags:
   - install
 siblings:
   - install
 ---
-
-{% include 'siblings.njk' %}
 
 Single Page Applications...

@@ -1,6 +1,8 @@
 ---
-layout: html.njk
+layout: base.njk
 ---
+
+<!-- TODO: can this be html.njk too? -->
 
 <div class="docsLayout">
   <sidebar-layout space="0" sideWidth="25ch" contentMin="66%">
@@ -8,9 +10,16 @@ layout: html.njk
       {% include 'site-nav.njk' %}
     </header>
     <main class="docsLayout-main">
-      <h2 class="docsTitle">{{ title }}</h2>
+      <h1>{{ title }}</h1>
+      
       <stack-layout space="var(--s3)">
-        {{ content | safe }}
+        
+        <div class="layoutInfo flow">
+          {{ content | safe }}
+        </div>
+        
+        {% include 'nav-cards.njk' %}
+        
       </stack-layout>
     </main>
   </sidebar-layout>

@@ -1,5 +1,5 @@
 ---
-layout: docs-layout.njk
+layout: index.njk
 title: Install
 links:
   - path: /install/ssg
@@ -13,8 +13,8 @@ links:
     subtitle: Insert subtitle here...
 ---
 
-<p>Follow along to install Alembic!</p>
+<!-- Maybe use html.njk to make the demo better? -->
 
-{% include 'nav-cards.njk' %}
+Follow along to install Alembic!
 
-<stack-layout> {% include 'quickstart.njk' %} </stack-layout>
+{% include 'quickstart.njk' %}

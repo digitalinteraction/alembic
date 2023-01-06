@@ -1,6 +1,11 @@
----
-layout: layouts-layout.njk
-title: Layouts
+---js
+{
+  layout: 'html.njk',
+  title: 'Layouts',
+  eleventyComputed: {
+    footerNav: (data) => data.layouts
+  }
+}
 ---
 
 <!--
@@ -219,28 +224,28 @@ title: Layouts
   </div>
   <component-def label="Sidebar / Vanilla">
     <sidebar-layout>
-      <doc-box pattern="b" width="300px"></doc-box>
+      <doc-box height="200px" pattern="b" width="300px"></doc-box>
       <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
 
   <component-def label="Sidebar / No stretch">
     <sidebar-layout noStretch>
-      <doc-box pattern="b" width="300px" height="100px"></doc-box>
+      <doc-box height="100px" width="300px" pattern="b"></doc-box>
       <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
 
   <component-def label="Sidebar / Gapless">
     <sidebar-layout space="0">
-      <doc-box pattern="b" width="300px"></doc-box>
+      <doc-box height="200px" pattern="b" width="300px"></doc-box>
       <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
 
   <component-def label="Sidebar / Side width">
     <sidebar-layout sideWidth="20ch">
-      <doc-box pattern="b"></doc-box>
+      <doc-box height="200px" pattern="b"></doc-box>
       <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>

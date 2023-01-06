@@ -1,5 +1,5 @@
 ---
-layout: docs-layout.njk
+layout: index.njk
 title: Development
 links:
   - path: /development/structure
@@ -13,6 +13,6 @@ links:
     subtitle: Custom elements and patterns to create documentation
 ---
 
-<p>Information about developing on Alembic itself</p>
+Information about developing on Alembic itself
 
-{% include 'nav-cards.njk' %}
+<!-- ... -->

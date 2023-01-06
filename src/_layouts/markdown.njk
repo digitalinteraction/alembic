@@ -1,0 +1,26 @@
+---
+layout: base.njk
+---
+
+<div class="docsLayout">
+  <sidebar-layout space="0" sideWidth="25ch" contentMin="66%">
+    <header class="docsLayout-header">
+      {% include 'site-nav.njk' %}
+    </header>
+    <div>
+      <main class="docsLayout-main">
+        <h1>{{ title }}</h1>
+        
+        <stack-layout space="var(--s1)">
+          {% include 'siblings.njk' %}
+          
+          <article class="layoutInfo flow">
+            {{ content | safe }}
+          </article>
+        </stack-layout>
+      </main>
+      
+      {% include 'footer-nav.njk' %}
+    </div>
+  </sidebar-layout>
+</div>

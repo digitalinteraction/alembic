@@ -104,6 +104,9 @@ a {
   position: relative;
   min-height: 100vh;
 }
+.docsLayout-main > h1 {
+  margin-bottom: var(--s1);
+}
 .docsLayout-footer {
   padding: var(--s-1);
   background: var(--doc-background);
@@ -173,7 +176,6 @@ a {
 */
 .docsTitle {
   font-size: 2.5rem;
-  margin: 0 0 var(--s0);
 }
 
 /*
@@ -370,6 +372,7 @@ h3 {
 }
 
 .quickstart {
+  max-width: var(--doc-measure);
   border: var(--s-5) solid var(--doc-foreground);
   padding: var(--s-1);
   border-radius: var(--s-2);

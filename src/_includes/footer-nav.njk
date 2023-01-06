@@ -1,0 +1,18 @@
+{% if footerNav %}
+<footer class="docsLayout-footer">
+  <reel-layout class="layoutReel">
+    {% for item in footerNav %}
+    {% set page = collections[item.tag][0] %}
+    <a href="#{{ item.id }}" class="layoutReel-item">
+      <img
+        width="96"
+        height="96"
+        src="{{ page.data.tile | url }}"
+        alt="{{ item.name }}"
+      />
+      <p>{{item.name}}</p>
+    </a>
+    {% endfor %}
+  </reel-layout>
+</footer>
+{% endif %}

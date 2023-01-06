@@ -1,12 +1,10 @@
 ---
-layout: docs-layout.njk
+layout: markdown.njk
 title: Style guide
 tags:
   - development
 siblings:
   - development
 ---
-
-{% include 'siblings.njk' %}
 
 Style guide...

@@ -1,12 +1,10 @@
 ---
-layout: docs-layout.njk
+layout: markdown.njk
 title: Server-Side Rendering
 tags:
   - install
 siblings:
   - install
 ---
-
-{% include 'siblings.njk' %}
 
 Server-Side Rendering...

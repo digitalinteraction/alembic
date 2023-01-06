@@ -1,5 +1,7 @@
+
 {% from 'macros.njk' import icon %}
 
+{% if siblings %}
 <nav>
   <ul>
     {% for tag in siblings %}
@@ -20,3 +22,4 @@
     {% endfor %}
   </ul>
 </nav>
+{% endif %}
