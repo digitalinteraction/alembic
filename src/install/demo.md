@@ -1,6 +1,6 @@
 ---
 layout: html.njk
-title: Demo
+title: Quick & dirty
 tags:
   - install
 ---

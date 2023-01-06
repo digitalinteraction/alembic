@@ -3,17 +3,17 @@ layout: index.njk
 title: Install
 links:
   - path: /install/demo
-    title: Quickstart
-    subtitle: Insert subtitle here...
+    title: Quick & dirty
+    subtitle: Get started and hack away, good for prototypes and one-offs.
   - path: /install/ssg
     title: Static Site Generators
-    subtitle: Insert subtitle here...
+    subtitle: Hook up to SSGs to compile HTML & CSS
   - path: /install/spa
     title: Single Page Apps
-    subtitle: Insert subtitle here...
+    subtitle: Link up with SPAs for JavaScript-based apps
   - path: /install/ssr
     title: Server-Side Rendered
-    subtitle: Insert subtitle here...
+    subtitle: (Experimental) Use an SSR framework to compile on-the-fly
 ---
 
 <!-- Maybe use html.njk to make the demo better? -->
