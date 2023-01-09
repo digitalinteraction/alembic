@@ -1,3 +1,8 @@
+/* @import 'prism-themes/themes/prism-one-light.css'; */
+
+/* esbuild doesn't support conditional imports */
+/* @import 'prism-themes/themes/prism-dracula.css' (prefers-color-scheme: dark); */
+
 /* 
   z-index:
   - 1 - doc-section::part(title)
@@ -164,11 +169,11 @@ hr {
   border: var(--border-thin) solid rebeccapurple;
   border-image: linear-gradient(
     to bottom right,
-    hsl(281, 100%, 50%) 0%,
-    hsl(211, 100%, 50%) 25%,
-    hsl(143, 81%, 46%) 50%,
-    hsl(37, 91%, 45%) 75%,
-    hsl(337, 100%, 50%) 100%
+    hsl(281, 100%, 75%) 0%,
+    hsl(211, 100%, 75%) 25%,
+    hsl(143, 81%, 75%) 50%,
+    hsl(37, 91%, 75%) 75%,
+    hsl(337, 100%, 75%) 100%
   );
   border-image-slice: 1;
   padding: var(--s-3);
@@ -426,4 +431,13 @@ strong.highlight {
   padding-inline-start: 2em;
 }
 .siblings ul li {
+}
+
+.eleventyError {
+  font-size: 2em;
+  color: red;
+  padding: 1rem;
+  border: 0.1em solid red;
+  background: white;
+  line-height: 1;
 }

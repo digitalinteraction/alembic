@@ -36,6 +36,10 @@ module.exports = function (eleventyConfig) {
   })
 
   eleventyConfig.addShortcode('pkgVersion', () => pkg.version)
+  eleventyConfig.addPairedShortcode(
+    'error',
+    (content) => `<p class="eleventyError">${content}</p>`
+  )
 
   eleventyConfig.addWatchTarget('./src/**/*.css')
   eleventyConfig.addWatchTarget('./src/**/*.ts')

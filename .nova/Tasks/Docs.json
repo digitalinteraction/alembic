@@ -28,6 +28,7 @@
     }
   },
   "environment" : {
+    "DEBUG" : "alembic*",
     "NODE_ENV" : "development"
   }
 }

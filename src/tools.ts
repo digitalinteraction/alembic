@@ -11,6 +11,21 @@ export interface ProcessHtmlOptions {
   extraScripts?: string[]
 }
 
+/**
+  **processHtml** takes a HTML string, looks through it for Alembic usage and modifies the HTML to generate custom element styles (e.g. for the layouts).
+  
+  You can optionally provide `options` to inject styles or scripts into the inputHtml too.
+  This is useful to automatically add the Alembic base styles / scripts from `getBaseStyles` and `getBaseScripts`, your process could write these files somewhere then make sure they are inserted into the HTML here.
+  
+  ```js
+  const options = {
+   extraStyles: [`<link rel="stylesheet" href="/alembic/style.css">`],
+   extraScripts: [`<script type="module" src="/alembic/script.js"></script>`],
+  }
+  ```
+  
+  You control where the styles and scripts are injected using a special HTML comments `<!-- @openlab/alembic inject-css -->` and `<!-- @openlab/alembic inject-js -->`. You opt in to those features by adding the comment to your HTML.
+ */
 export function processHtml(
   inputHtml: string,
   options: ProcessHtmlOptions = {}
@@ -44,6 +59,9 @@ export function processHtml(
   return outputHtml
 }
 
+/**
+ **getStyles** takes a HTML string, looks through it for Alembic usage and returns the styles to satisfy it. This is useful for SSR when you have something that has already generated style ids on custom elements and need to get the styles for a whole document in one go.
+ */
 export function getStyles(inputHtml: string): Map<string, unknown> {
   const styles = new AlembicStyleSheet()
 
@@ -54,13 +72,29 @@ export function getStyles(inputHtml: string): Map<string, unknown> {
   return styles.getStyles()
 }
 
-/** This is dynamic so the custom embed: protocol doesn't break unit tests... */
+// This is dynamic so the custom embed: protocol doesn't break unit tests...
+/**
+  Get the base styles for non-dynamic Alembic.
+  Useful for creating a stylesheet during SSG to be linked to from a HTML document.
+  
+  ```ts
+  const sourcecode = await getBaseStyles()
+  ```
+*/
 export async function getBaseStyles(): Promise<string> {
   const css = await import('embed:./everything.css')
   return css.default
 }
 
-/** This is dynamic so the custom embed: protocol doesn't break unit tests... */
+// This is dynamic so the custom embed: protocol doesn't break unit tests...
+/**
+  Get the scripts as a string to run Alembic in-browser.
+  Useful for creating a script during SSG to be linked to from a HTML document.
+  
+  ```ts
+  const sourcecode = await getBaseScripts()
+  ```
+*/
 export async function getBaseScripts(): Promise<string> {
   const js = await import('embed:./everything.js')
   return js.default
@@ -68,6 +102,7 @@ export async function getBaseScripts(): Promise<string> {
 
 // Internal
 
+/** @internal */
 export function* _iterateElements<T>(html: string, elements: Map<string, T>) {
   for (const [name, element] of elements) {
     const regex = _elementRegex(name)
@@ -79,14 +114,17 @@ export function* _iterateElements<T>(html: string, elements: Map<string, T>) {
   }
 }
 
+/** @internal */
 export function _createStyle(id: string, css: string) {
   return `<style id="${id}">${css}</style>`
 }
 
+/** @internal */
 export function _recreateElement(name: string, attrs: string, id: string) {
   return `<${name} ${attrs} data-i="${id}">`
 }
 
+/** @internal */
 export function _parseHtmlAttributes(attrs: string) {
   const props: Record<string, string> = {}
   for (const attr of attrs.matchAll(/(\w[\w-]+)(?:="?([^"]*)"?)?/g)) {
@@ -95,10 +133,12 @@ export function _parseHtmlAttributes(attrs: string) {
   return props
 }
 
+/** @internal */
 export function _elementRegex(name: string) {
   return new RegExp(`<${name}[\\s\\n\\r]+?([\\w\\W]*?)>`, 'g')
 }
 
+/** @internal */
 export function _commentRegex(name: string) {
   return new RegExp(`<!--\\s+@openlab\/alembic\\s+${name}\\s+-->`)
 }

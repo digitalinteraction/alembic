@@ -1,8 +1,10 @@
 import esbuild from 'esbuild'
 import path from 'node:path'
+import createDebug from 'debug'
 
 const EMBED_NAMESPACE = 'alembic_embed'
 const EMBED_PREFIX = /^embed:/i
+const debug = createDebug('alembic:embed')
 
 /** @type {import("esbuild").Plugin} */
 export const alembicEmbed = {
@@ -10,7 +12,7 @@ export const alembicEmbed = {
   setup(build) {
     build.onResolve({ filter: EMBED_PREFIX }, (args) => {
       const target = args.path.replace(EMBED_PREFIX, '')
-      console.debug('[alembic_embed] embed:', target)
+      debug('embed:', target)
       return {
         path: target,
         namespace: EMBED_NAMESPACE,
