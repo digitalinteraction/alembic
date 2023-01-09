@@ -54,7 +54,7 @@ export class ReelLayout extends getHTMLElement() {
         margin-inline-start: ${space};
       }
       [data-i="${id}"].overflowing {
-        ${!noBar ? `padding-bottom: ${space}` : ''}
+        ${!noBar ? `padding-block-end: ${space}` : ''}
       }
       ${noBar ? barRule : ''}
     `

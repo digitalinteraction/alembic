@@ -112,7 +112,7 @@ hr {
   min-height: 100vh;
 }
 .docsLayout-main > h1 {
-  margin-bottom: var(--s1);
+  margin-block-end: var(--s1);
 }
 .docsLayout-footer {
   padding: var(--s-1);
@@ -149,7 +149,7 @@ hr {
   font-size: 1.75rem;
   color: var(--doc-foreground);
   text-decoration: none;
-  margin-bottom: var(--s2);
+  margin-block-end: var(--s2);
 }
 .docsNav-brand:hover {
   text-decoration: underline;
@@ -309,7 +309,7 @@ doc-section {
 
 /* Layout tiles */
 .layoutReel {
-  padding-bottom: 0;
+  padding-block-end: 0;
 }
 .layoutReel > a {
   text-decoration: none;
@@ -346,7 +346,7 @@ doc-section {
   font-family: var(--doc-mono);
   text-align: center;
   opacity: 0.7;
-  margin-bottom: var(--s-1);
+  margin-block-end: var(--s-1);
 }
 .homeFooter a {
   color: inherit;
