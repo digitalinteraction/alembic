@@ -64,8 +64,9 @@ await esbuild.build({
   platform: 'browser',
   outdir: fileURLToPath(places.dist),
   entryPoints: {
-    everything: resolveToPath('src/everything.js'),
+    everything: resolveToPath('src/everything.css'),
     'docs/docs': resolveToPath('src/docs/docs.css'),
+    reset: resolveToPath('src/lib/reset.css'),
   },
 })
 
