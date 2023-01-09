@@ -12,10 +12,10 @@ export interface ProcessHtmlOptions {
 }
 
 /**
-  **processHtml** takes a HTML string, looks through it for Alembic usage and modifies the HTML to generate custom element styles (e.g. for the layouts).
+  **processHtml** takes a HTML string, looks through it for Alembic usage and modifies the HTML to include custom element styles (e.g. for the layouts).
   
-  You can optionally provide `options` to inject styles or scripts into the inputHtml too.
-  This is useful to automatically add the Alembic base styles / scripts from `getBaseStyles` and `getBaseScripts`, your process could write these files somewhere then make sure they are inserted into the HTML here.
+  You can optionally provide `options` to inject extra HTML into the inputHtml too at either the script or style location.
+  This is useful to automatically add the Alembic base styles / scripts from `getBaseStyles` and `getBaseScripts`. Your build process could write these files somewhere then make sure they are linked to from the HTML here.
   
   ```js
   const options = {
@@ -72,7 +72,6 @@ export function getStyles(inputHtml: string): Map<string, unknown> {
   return styles.getStyles()
 }
 
-// This is dynamic so the custom embed: protocol doesn't break unit tests...
 /**
   Get the base styles for non-dynamic Alembic.
   Useful for creating a stylesheet during SSG to be linked to from a HTML document.
@@ -82,11 +81,11 @@ export function getStyles(inputHtml: string): Map<string, unknown> {
   ```
 */
 export async function getBaseStyles(): Promise<string> {
+  // This is dynamic so the custom embed: protocol doesn't break unit tests...
   const css = await import('embed:./everything.css')
   return css.default
 }
 
-// This is dynamic so the custom embed: protocol doesn't break unit tests...
 /**
   Get the scripts as a string to run Alembic in-browser.
   Useful for creating a script during SSG to be linked to from a HTML document.
@@ -96,6 +95,7 @@ export async function getBaseStyles(): Promise<string> {
   ```
 */
 export async function getBaseScripts(): Promise<string> {
+  // This is dynamic so the custom embed: protocol doesn't break unit tests...
   const js = await import('embed:./everything.js')
   return js.default
 }

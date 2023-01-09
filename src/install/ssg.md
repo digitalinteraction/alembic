@@ -15,16 +15,10 @@ There are specific bits of the library for achieving this and there is also an [
 - [How it works](#how-it-works)
 - [Eleventy plugin](#eleventy-plugin)
 - [DIY](#diy)
-- [Configuration](#configuration)
 
 ---
 
 {% include 'install.njk' %}
-
-## How it works
-
-- TODO: How SSG process is meant to work?
-- TODO: How Alembic works, maybe an include?
 
 ## Eleventy plugin
 
@@ -42,8 +36,15 @@ module.exports = function (eleventyConfig) {
 }
 ```
 
-- TODO: notes on html comments, scripts and styles
-- TODO: more about what it does under-the-hood.
+The plugin does two things. First it adds a [eleventy.after event](https://www.11ty.dev/docs/events/#eleventy.after) which creates `alembic/style.css` and `alembic/script.js` in your site output folder.
+
+Second it adds a [transform](https://www.11ty.dev/docs/config/#transforms) for any HTML file to generate any custom element styles and insert them back into the document. You need to add one of both of these comments to you HTML template/layout for this to take effect. The plugin will replace the comments with the generated styles/scripts.
+
+`<!-- @openlab/alembic inject-css -->`
+tells the plugin where to put styles. It will put generated custom element styles and a link to the `alembic/style.css` mentioned above where this comment is.
+
+`<!-- @openlab/alembic inject-js -->`
+tells the plugin where to put scripts. It will link to the `alembic/script.js` mentioned above here, it's only needed if you want dynamic styles on your pages. This is often useful for development but might not be needed for production builds.
 
 ---
 
@@ -51,7 +52,7 @@ module.exports = function (eleventyConfig) {
 
 Alembic provides the tools to hook it up to a static site generator.
 
-The methods you'll be interested in are: `processHtml`, `getStyles`, `getBaseStyles` and `getBaseScripts` which you can import from the "tools" script:
+The methods you'll be interested in are: `processHtml`, `getStyles`, `getBaseStyles` and `getBaseScripts` which you can import from the "tools" script. These are the same tools the Eleventy plugin use.
 
 ```ts
 import {
@@ -69,7 +70,3 @@ import {
 {{ apiDoc(api, 'tools.ts', 'getBaseStyles') }}
 
 {{ apiDoc(api, 'tools.ts', 'getBaseScripts') }}
-
-## Configuration
-
-TODO: For both Eleventy and DIY, you can configure ...
