@@ -9,7 +9,7 @@ spacing: var(--s3)
 <!--
   About
 -->
-<div class="layoutInfo">
+<div class="markdownCard">
   <p>
     This page contains information about the custom elements and CSS classes
     available to document alembic. Warning: it gets a bit recursive.
@@ -20,7 +20,7 @@ spacing: var(--s3)
   ComponentDef
 -->
 <doc-section label="Component Def">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     <p>
       <strong>ComponentDef</strong> is for visualising a UI component and
       providing example source code at the same time.
@@ -55,7 +55,7 @@ spacing: var(--s3)
   DocBox
 -->
 <doc-section label="Doc Box">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     <p>
       <strong>DocBox</strong> is a custom element to show placeholder content to
       demonstrate layouts and other components. Depending on whether
@@ -116,7 +116,7 @@ spacing: var(--s3)
   DocResizer
 -->
 <doc-section label="Doc Resizer">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     <p>
       <strong>DocResizer</strong> provides a control for stretching or
       compressing its children to test their responsiveness. It only shows on
@@ -138,17 +138,17 @@ spacing: var(--s3)
   DocSection
 -->
 <doc-section label="Doc Section">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     <p>
       <strong>DocSection</strong> is a grouping of
-      <code>component-def</code> elements with a <code>.layoutInfo</code> at the
+      <code>component-def</code> elements with a <code>.markdownCard</code> at the
       top to add extra details. Just like this section you're reading now. The
       <code>label</code> is also to generate an ID for the persistent
       <code>details-extra</code> element, so it stays open or closed over pages
       refreshes.
     </p>
     <p>
-      <code>.layoutInfo</code> should probably be renamed to something more
+      <code>.markdownCard</code> should probably be renamed to something more
       agnostic.
     </p>
     <table>
@@ -176,7 +176,7 @@ spacing: var(--s3)
   </div>
   <component-def>
     <doc-section label="DocSection / vanilla">
-      <div class="layoutInfo">
+      <div class="markdownCard">
         Here is some information about this component. It's another recursive
         one.
       </div>
@@ -191,7 +191,7 @@ spacing: var(--s3)
   DocText
 -->
 <doc-section label="Doc Text">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     <p>
       <strong>DocText</strong> generates dummy text to fill out a parent
       element.
@@ -223,7 +223,7 @@ spacing: var(--s3)
   Misc
 -->
 <doc-section label="Misc" prefix="docs-">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     <p> Other CSS classes available: </p>
     <ul>
       <li>
@@ -231,12 +231,8 @@ spacing: var(--s3)
         <code>h2</code>.
       </li>
       <li>
-        <code>.layoutInfo</code> — The page-like section for the top of a
+        <code>.markdownCard</code> — The page-like section for the top of a
         <code>doc-section</code>.
-      </li>
-      <li>
-        <code>.markdownPage</code> — Similar to <code>layoutInfo</code>, but for
-        WYSIWYG-type content, e.g. HTML from markdown.
       </li>
       <li>
         <code>.showPadding</code> — A hack to visualise the padding on an

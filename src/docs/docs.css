@@ -56,16 +56,14 @@ body {
 }
 
 /* TODO: find a way to refactor these two */
-.layoutInfo,
-.markdownPage {
+.markdownCard {
   max-width: calc(var(--doc-measure) + calc(2 * var(--s1)));
   background-color: #ffffff;
   padding: var(--s1);
   border-radius: var(--s-3);
 }
 @media (prefers-color-scheme: dark) {
-  .markdownPage,
-  .layoutInfo {
+  .markdownCard {
     background-color: hsl(215, 3%, 13%);
   }
 }
@@ -169,11 +167,11 @@ hr {
   border: var(--border-thin) solid rebeccapurple;
   border-image: linear-gradient(
     to bottom right,
-    hsl(281, 100%, 75%) 0%,
-    hsl(211, 100%, 75%) 25%,
-    hsl(143, 81%, 75%) 50%,
-    hsl(37, 91%, 75%) 75%,
-    hsl(337, 100%, 75%) 100%
+    hsl(281, 100%, 65%) 0%,
+    hsl(211, 100%, 65%) 25%,
+    hsl(143, 81%, 65%) 50%,
+    hsl(37, 91%, 65%) 75%,
+    hsl(337, 100%, 65%) 100%
   );
   border-image-slice: 1;
   padding: var(--s-3);
@@ -190,17 +188,17 @@ hr {
 /*
   Layout info block
 */
-.layoutInfo {
+.markdownCard {
   max-width: var(--doc-measure);
   font-size: 1.1em;
 
   /* TODO: work out how to scroll the table itself */
   overflow-x: auto;
 }
-.layoutInfo > * + * {
-  margin-block-start: var(--s0);
+.markdownCard > * + * {
+  margin-block-start: var(--flow-space, 1em);
 }
-.layoutInfo table {
+.markdownCard table {
   display: block;
   font-size: 1rem;
   border-spacing: 0;
@@ -210,16 +208,16 @@ hr {
   max-width: 100%;
   overflow: auto;
 }
-.layoutInfo table th {
+.markdownCard table th {
   border-bottom: var(--border-thin) solid #ccc;
 }
-.layoutInfo table th,
-.layoutInfo table td {
+.markdownCard table th,
+.markdownCard table td {
   padding: var(--s-2) var(--s-1);
   text-align: inherit;
   word-break: keep-all;
 }
-.layoutInfo td:nth-child(1) {
+.markdownCard td:nth-child(1) {
   text-decoration: underline;
   text-decoration-style: dashed;
   text-decoration-color: #aaa;
@@ -228,15 +226,15 @@ hr {
   -webkit-user-select: all;
   user-select: all;
 }
-.layoutInfo table td:last-child {
+.markdownCard table td:last-child {
   min-width: 300px;
 }
 @media (prefers-color-scheme: dark) {
-  .layoutInfo td:nth-child(1) {
+  .markdownCard td:nth-child(1) {
     text-decoration-color: #ccc;
   }
 }
-.layoutInfo table td:nth-child(3) {
+.markdownCard table td:nth-child(3) {
   font-family: var(--doc-mono);
 }
 
@@ -303,17 +301,6 @@ doc-section {
   outline: 2px dashed red;
 }
 
-/** Markdown page */
-.markdownPage pre {
-  margin-block-end: 0;
-}
-.markdownPage-heading {
-  font-size: 1.5em;
-  font-family: var(--doc-family);
-  cursor: pointer;
-  font-weight: bold;
-}
-
 /* Component def */
 
 /* Doc resizer */
@@ -368,6 +355,9 @@ doc-section {
 .homeSection {
   font-size: 1.3rem;
 }
+.homeSection > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
 
 h1,
 h2,
@@ -377,7 +367,7 @@ h3 {
 }
 
 .flow > * + * {
-  margin-top: var(--flow-space, 1em);
+  margin-block-start: var(--flow-space, 1em);
 }
 
 .quickstart {
