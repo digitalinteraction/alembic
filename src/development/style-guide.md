@@ -1,9 +1,9 @@
 ---
 layout: markdown.njk
 title: Style guide
+strapline: Conventions and patterns used for development
 tags:
   - development
-strapline: Conventions and patterns used for development
 ---
 
 Style guide...

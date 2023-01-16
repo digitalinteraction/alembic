@@ -2,13 +2,6 @@
   RESET - https://github.com/hankchizljaw/modern-css-reset/blob/master/src/reset.css
 */
 
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-}
-
 /* Box sizing rules */
 *,
 *::before,
@@ -30,6 +23,30 @@ dd {
   margin: 0;
 }
 
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Add smooth scrolling when the body is foccused (ie not from cmd+f) */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Make the body fill the viewport vertically and set a default line-height */
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  /* text-rendering: optimizeSpeed; */
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
 /* Make images easier to work with */
 img,
 picture {
@@ -45,10 +62,17 @@ select {
   font: inherit;
 }
 
-/* Remove list styles when the role is set, suggesting default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
