@@ -1,6 +1,6 @@
 {
   "name": "@openlab/alembic",
-  "version": "0.2.4",
+  "version": "0.3.0-beta0",
   "type": "module",
   "publishConfig": {
     "access": "public"
