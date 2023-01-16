@@ -50,13 +50,11 @@ title: 🏠 Home
       </h2>
       <p> Add alembic to your project, depending on your setup. </p>
       <ul>
-        <li> {{ link('Static Site Generators', '/install/ssg' | url) }} </li>
-        <li> {{ link('Single Page Apps', '/install/spa' | url) }} </li>
-        <li>
-          {{ link('Service-Side Rendering', '/install/ssr' | url) }}
-          <em>(experimental)</em>
-        </li>
+        {% for target in collections.all | getPages(['install']) %}
+        <li>{{ link(target.data.title, target.url) }}</li>
+        {% endfor %}
       </ul>
+
       <br />
 
       {% include 'quickstart.njk' %}
@@ -121,9 +119,9 @@ title: 🏠 Home
       </h2>
       <p>Information for developing on Alembic itself.</p>
       <ul>
-        <li>{{ link('Structure', '/development/structure' | url) }}</li>
-        <li>{{ link('Style Guide', '/development/style-guide' | url) }}</li>
-        <li>{{ link('Doc tools', '/development/doc-tools' | url) }}</li>
+        {% for target in collections.all | getPages(['development']) %}
+        <li>{{ link(target.data.title, target.url) }}</li>
+        {% endfor %}
       </ul>
     </section>
     <section class="homeSection">
