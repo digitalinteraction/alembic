@@ -22,7 +22,7 @@ There are specific bits of the library for achieving this and there is also an [
 
 ## Eleventy plugin
 
-If you're using [Eleventy](https://www.11ty.dev/), it's super easy to install!
+If you're using [Eleventy 1.x](https://www.11ty.dev/), it's super easy to install!
 
 Insert this into your existing **.eleventy.js**:
 
