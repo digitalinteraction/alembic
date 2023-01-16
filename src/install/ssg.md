@@ -1,6 +1,7 @@
 ---
 layout: markdown.njk
 title: Static Site Generators
+strapline: Hook up to SSGs to compile HTML & CSS
 tags:
   - install
 ---
@@ -12,7 +13,6 @@ There are specific bits of the library for achieving this and there is also an [
 
 ## Contents
 
-- [How it works](#how-it-works)
 - [Eleventy plugin](#eleventy-plugin)
 - [DIY](#diy)
 

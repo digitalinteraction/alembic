@@ -431,3 +431,13 @@ strong.highlight {
   background: white;
   line-height: 1;
 }
+
+blockquote {
+  padding: 1em;
+  border: var(--s-4) solid var(--color-foreground);
+  border-left-width: var(--s-1);
+}
+
+pre {
+  margin: 0;
+}

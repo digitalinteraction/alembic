@@ -1,8 +1,6 @@
 const path = require('path')
-const { Node, Project } = require('ts-morph')
+const { Project } = require('ts-morph')
 
-const markdownIt = require('markdown-it')
-const markdownAnchor = require('markdown-it-anchor')
 const debug = require('debug')('alembic:api')
 
 function simplify(file) {
@@ -10,14 +8,6 @@ function simplify(file) {
 }
 
 function generate() {
-  // TODO: refactor this out when upgrading to eleventy@2
-  // TODO: share this with .eleventy.cjs?
-  const md = markdownIt({
-    html: true,
-  })
-  md.use(markdownAnchor)
-  md.disable('code')
-
   const entrypoints = ['src/module.ts', 'src/tools.ts']
 
   const project = new Project({
@@ -59,8 +49,6 @@ function generate() {
       }
     }
   }
-
-  // console.log(output)
 
   return output
 }

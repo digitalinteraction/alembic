@@ -42,6 +42,7 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
-    "markdown-it-anchor": "^8.6.6"
+    "markdown-it-anchor": "^8.6.6",
+    "slugify": "^1.6.5"
   }
 }
