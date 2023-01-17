@@ -1,5 +1,5 @@
 /*
-  General
+  Globals
  */
 fieldset > :not(legend) + *,
 form > * + * {
@@ -7,10 +7,10 @@ form > * + * {
 }
 .field,
 .checkboxGroup,
-.checkbox {
-  max-width: var(--gestalt);
+.checkbox,
+fieldset {
+  max-width: var(--measure);
 }
-
 :is(input, select, textarea, button):focus {
   outline: var(--s-4) solid var(--focus);
   outline-offset: var(--border-thin);
@@ -19,25 +19,26 @@ form > * + * {
 /*
   Field
  */
+.field {
+  display: block;
+}
 .field label {
-  margin-block-end: var(--s-4);
   display: block;
   line-height: 1.25;
 }
 .field-label {
-  font-weight: 600;
-  display: block;
-}
-.field-hint {
-  font-weight: 400;
   display: block;
   margin-block-end: var(--s-4);
-  color: var(--color-darkish);
+}
+.field-hint {
+  display: block;
+  margin-block-end: var(--s-4);
   font-size: 0.9em;
 }
 .field input,
 .field select,
 .field textarea {
+  display: block;
   background-color: transparent;
   border: var(--border-thin) solid var(--fillable);
   margin: 0;
@@ -107,17 +108,8 @@ fieldset legend {
   Messages
  */
 .formMessage {
-  border: var(--border-thick) solid;
+  border: var(--border-thin) solid;
   padding: var(--s-1);
-}
-.formMessage[data-accent='info'] {
-  border-color: var(--color-info);
-}
-.formMessage[data-accent='error'] {
-  border-color: var(--color-error);
-}
-.formMessage[data-accent='success'] {
-  border-color: var(--color-success);
 }
 
 /**

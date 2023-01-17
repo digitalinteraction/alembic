@@ -23,16 +23,8 @@
   --measure: 60ch;
 
   /* WIP axioms */
-  --fillable: darkblue; /* A colour to indicate something a user should fill in */
-  --focus: coral; /* A colour to bring attention to what the user is currently doing */
-  --gestalt: 40ch;
-
-  /* WIP forms */
-  --color-darkish: #888;
-  --border-thick: 5px;
-  --color-info: royalblue;
-  --color-error: tomato;
-  --color-success: yellowgreen;
+  --fillable: darkslateblue; /* A colour to indicate something a user should fill in */
+  --focus: coral;
 }
 
 @media (prefers-color-scheme: dark) {

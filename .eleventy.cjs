@@ -55,8 +55,8 @@ module.exports = function (eleventyConfig) {
     (content) => `<p class="eleventyError">${content}</p>`
   )
 
-  eleventyConfig.addWatchTarget('./src/**/*.css')
-  eleventyConfig.addWatchTarget('./src/**/*.ts')
+  // eleventyConfig.addWatchTarget('./src/**/*.css')
+  // eleventyConfig.addWatchTarget('./src/**/*.ts')
 
   return {
     markdownTemplateEngine: 'njk',

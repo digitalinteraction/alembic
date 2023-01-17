@@ -85,6 +85,72 @@ title: Forms
       <input type="range" min="0" max="100" id="trust" name="trust" />
     </div>
   </component-def>
+  
+  <component-def label="Field / Form">
+    <form>
+      <label for="fullName" class="field">
+        <span class="field-label">Full name</span>
+        <input type="text" id="fullName" name="fullName" />
+      </label>
+      
+      <label for="email" class="field">
+        <span class="field-label">Email address</span>
+        <span class="field-hint">e.g. geoff@example.com</span>
+        <input type="text" id="email" name="email" />
+      </label>
+      
+      <label for="bio" class="field">
+        <span class="field-label">Bio</span>
+        <span class="field-hint">Write a few sentences about yourself</span>
+        <textarea id="bio" rows="3" name="bio"> </textarea>
+      </label>
+      
+      
+      <label for="favVeg" class="field">
+        <span class="field-label">Favourite vegetable</span>
+        <select id="favVeg" name="favVeg">
+          <option disabled selected>(Please select)</option>
+          <option value="carrots">Carrots</option>
+          <option value="broccoli">Broccoli</option>
+          <option value="peas">Peas</option>
+        </select>
+      </label>
+      
+      <fieldset>
+        <legend>Work</legend>
+        
+        <label for="work" class="field">
+          <span class="field-label">Job</span>
+          <input type="text" id="work" name="work" />
+        </label>
+        
+        <label for="workAge" class="field">
+          <span class="field-label">Duration</span>
+          <input type="text" id="workAge" name="workAge" />
+        </label>
+        
+      </fieldset>
+      
+      <label for="phoneBattery" class="field">
+        <span class="field-label">Phone battery</span>
+        <span class="rangeHints">
+          <span>Empty</span>
+          <span>Full</span>
+        </span>
+        <input type="range" min="0" max="100" id="phoneBattery" />
+      </label>
+      
+      
+      
+      <label class="checkbox" for="consent">
+        <input type="checkbox" id="consent" name="consent" required="" />
+        <span> I agree to the terms and conditions </span>
+      </label>
+      
+      <input type="submit" name="Submit">
+      <button type="cancel">Cancel</button>
+    </form>
+  </component-def>
 </doc-section>
 
 <doc-section label="Checkbox">
@@ -97,8 +163,8 @@ title: Forms
   </div>
 
   <component-def label="Checkbox / single">
-    <label class="checkbox" for="consent">
-      <input type="checkbox" id="consent" name="consent" required="" />
+    <label class="checkbox" for="moreConsent">
+      <input type="checkbox" id="moreConsent" name="moreConsent" required="" />
       <span> I agree </span>
     </label>
   </component-def>
@@ -146,8 +212,8 @@ title: Forms
       <strong>FormMessage</strong> is for displaying good/bad/information text
       to users, usually in response to a form submission.
     </p>
-    <p>They style is bare by default so it can more easily be overridden.</p>
-    <p>Note the use of <code>data-accent=X</code>.</p>
+    <p>The style is bare by default so it can more easily be overridden. Note the use of <code>data-accent=X</code>.</p>
+    <p><strong>🚧 This is under review</strong></p>
   </div>
 
   <component-def label="FormMessage / info">
@@ -190,25 +256,25 @@ title: Forms
       <legend>Edit profile</legend>
 
       <div class="field">
-        <label for="fullName">
+        <label for="editFullName">
           <span class="field-label">Full name</span>
         </label>
-        <input type="text" id="fullName" name="fullName" />
+        <input type="text" id="editFullName" name="fullName" />
       </div>
 
       <div class="field">
-        <label for="email">
+        <label for="editEmail">
           <span class="field-label">Email address</span>
         </label>
-        <input type="email" id="email" name="email" />
+        <input type="email" id="editEmail" name="email" />
       </div>
 
       <div class="field">
-        <label for="twitterHandle">
+        <label for="editTwitterHandle">
           <span class="field-label">Twitter Handle</span>
           <span class="field-hint">e.g. @Example</span>
         </label>
-        <input type="text" id="twitterHandle" name="twitterHandle" />
+        <input type="text" id="editTwitterHandle" name="twitterHandle" />
       </div>
     </fieldset>
   </component-def>
