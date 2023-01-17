@@ -1,0 +1,24 @@
+
+{% from 'macros.njk' import icon %}
+
+{% if siblings %}
+<nav class="siblings" aria-labelledby="siblings">
+  <p id="siblings">Pages</p>
+  <ul>
+    {% for target in collections.all | getPages(siblings) %}
+    <li>
+      {% if target.url | isCurrentPage(page.url) %}
+      <strong>{{ target.data.title }}</strong>
+      {% else %}
+      <a href="{{ target.url }}" >
+        <icon-layout>
+          {{ target.data.title }}
+          {{ icon('right') }}
+        </icon-layout>
+      </a>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</nav>
+{% endif %}

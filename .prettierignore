@@ -5,3 +5,4 @@
 .nova
 dist
 svg
+*.html

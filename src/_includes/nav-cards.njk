@@ -1,0 +1,19 @@
+{% from 'macros.njk' import icon %}
+
+{% if links %}
+<grid-layout>
+  {% for link in collections.all | getPages(links) %}
+  <box-layout class="navCard">
+    <a href="{{ link.url }}">
+      <h2>
+        <icon-layout>
+          {{ link.data.title }}
+          {{ icon('right') }}
+        </icon-layout>
+      </h2>
+      <p> {{ link.data.strapline }} </p>
+    </a>
+  </box-layout>
+  {% endfor %}
+</grid-layout>
+{% endif %}

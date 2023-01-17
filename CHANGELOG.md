@@ -2,6 +2,26 @@
 
 Notable changes to Alembic are documented here
 
+## 0.3.0
+
+JavaScript has been converted to TypeScript
+
+**added**
+
+- **layouts:** `layoutCustomElements`
+- **layouts:** `{Name}LayoutAttributes` interface for each layout's attribute signature
+
+**changed**
+
+- ?
+
+**removed**
+
+- **layouts:** `layoutMap` → use new `layoutCustomElements`
+- **layouts:** `layoutCustomElementNames` → use new `layoutCustomElements`
+- **lib:** `fake-dom-env.js` → not needed any more
+- drop CommonJs support
+
 ## 0.2.5
 
 **tweaks**

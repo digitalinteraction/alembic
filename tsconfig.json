@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es2020",
+    "moduleResolution": "Node16",
+    "esModuleInterop": true,
+    "module": "ES2020",
+
+    "sourceMap": true,
+    "declaration": true,
+    "newLine": "lf",
+    "stripInternal": true,
+    "pretty": true,
+    "emitDeclarationOnly": true,
+
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmitOnError": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "ts-node": {
+    "transpileOnly": true
+  },
+  "include": ["src", "bin"]
+}

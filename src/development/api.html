@@ -1,0 +1,32 @@
+---
+layout: html.njk
+title: API
+strapline: What to expect from the API
+spacing: var(--s3)
+tags:
+  - development
+---
+
+<style>
+  h3 { 
+    --flow-space: var(--s4);
+  }
+</style>
+
+{% for entrypoint, items in api %}
+
+<div class="markdownCard">
+  <h2 id="{{ entrypoint | slugify }}">{{ entrypoint }}</h2>
+  
+  {% for name, item in items  %}
+  {% if item.content %}
+  
+  <h3 id="{{ name | slugify }}"><code>{{ name }}</code></h3>
+  
+  {{ item.content | md | safe }}
+  
+  {% endif %}
+  {% endfor %}
+</div>
+
+{% endfor %}

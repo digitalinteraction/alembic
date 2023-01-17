@@ -1,6 +1,6 @@
 {
   "name": "@openlab/alembic",
-  "version": "0.2.4",
+  "version": "0.3.0-beta1",
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -8,7 +8,7 @@
   "files": [
     "dist/*"
   ],
-  "main": "dist/module.cjs",
+  "main": "dist/module.js",
   "module": "dist/module.js",
   "types": "dist/module.d.ts",
   "exports": {
@@ -23,12 +23,9 @@
       "default": "./dist/*"
     }
   },
-  "sideEffects": [
-    "./src/lib/fake-dom-env.js"
-  ],
   "scripts": {
-    "build": "bin/build.sh",
-    "test": "mocha --recursive"
+    "build": "./scripts/build-library.js && ./scripts/build-docs.sh",
+    "test": "mocha"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
@@ -36,9 +33,16 @@
     "@types/mocha": "^10.0.0",
     "@types/svgo": "^2.6.3",
     "dedent": "^0.7.0",
-    "esbuild": "^0.15.13",
+    "esbuild": "^0.16.11",
     "mocha": "^10.0.0",
+    "prism-themes": "^1.9.0",
     "svgo": "^2.8.0",
-    "typescript": "^4.7.3"
+    "ts-morph": "^17.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "markdown-it-anchor": "^8.6.6",
+    "slugify": "^1.6.5"
   }
 }

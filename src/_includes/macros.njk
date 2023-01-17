@@ -1,0 +1,24 @@
+{%- macro icon(icon) %}
+<svg><use href="{{ '/assets/icons.svg#' + icon | url }}"></use></svg>
+{%- endmacro %}
+
+{%- macro link(text, href) %}
+<a href="{{ href }}">
+<icon-layout>{{ text }} {{ icon('right') }}</icon-layout></a>
+{%- endmacro %}
+
+{%- macro apiDoc(api, entrypoint, name) %}
+{% set item = api[entrypoint][name] %}
+{% if item %}
+### `{{ item.name }}`
+
+{{ item.content | safe }}
+
+{% else %}
+
+{% error %}
+Api doc not found: "{{ entrypoint }}" "{{ name }}"
+{% enderror %}
+
+{% endif %}
+{%- endmacro %}

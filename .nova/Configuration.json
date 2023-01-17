@@ -1,6 +1,12 @@
 {
+  "index.ignored_file_patterns" : [
+    "dist\/*"
+  ],
   "workspace.color" : 2,
   "workspace.name" : "alembic",
   "workspace.preview_append_paths" : false,
-  "workspace.preview_root" : "dist"
+  "workspace.preview_root" : "dist",
+  "workspace.preview_server_allow_external" : true,
+  "workspace.preview_type" : "custom",
+  "workspace.preview_url" : "http:\/\/localhost:8080"
 }

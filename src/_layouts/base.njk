@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>⚗️ Alembic | {{ title }}</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="{{ '/docs/docs.css' | url }} " />
+    <!-- @openlab/alembic inject-css -->
+  </head>
+  <body>
+    {{ content | safe }}
+    <script type="module" src="{{ '/docs/docs.js' | url }}"></script>
+  </body>
+</html>

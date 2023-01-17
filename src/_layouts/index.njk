@@ -1,0 +1,26 @@
+---
+layout: base.njk
+---
+
+<!-- TODO: can this be html.njk too? -->
+
+<div class="docsLayout">
+  <sidebar-layout space="0" sideWidth="30ch" contentMin="66%">
+    <header class="docsLayout-header">
+      {% include 'site-nav.njk' %}
+    </header>
+    <main class="docsLayout-main">
+      <h1>{{ title }}</h1>
+      
+      <stack-layout space="var(--s3)">
+        
+        <div class="markdownCard">
+          {{ content | safe }}
+        </div>
+        
+        {% include 'nav-cards.njk' %}
+        
+      </stack-layout>
+    </main>
+  </sidebar-layout>
+</div>

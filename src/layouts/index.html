@@ -1,95 +1,61 @@
----
-layout: docs-layout.njk
-title: 📐 Layout
-tiles:
-  - id: stack
-    tag: stackLayout
-    alt: Stack
-  - id: box
-    tag: boxLayout
-    alt: Box
-  - id: center
-    tag: centerLayout
-    alt: Center
-  - id: cluster
-    tag: clusterLayout
-    alt: Cluster
-  - id: sidebar
-    tag: sidebarLayout
-    alt: Sidebar
-  - id: switcher
-    tag: switcherLayout
-    alt: Switcher
-  - id: cover
-    tag: coverLayout
-    alt: Cover
-  - id: grid
-    tag: gridLayout
-    alt: Grid
-  - id: frame
-    tag: frameLayout
-    alt: Frame
-  - id: reel
-    tag: reelLayout
-    alt: Reel
-  - id: imposter
-    tag: imposterLayout
-    alt: Imposter
-  - id: icon
-    tag: iconLayout
-    alt: Icon
+---js
+{
+  layout: 'html.njk',
+  title: 'Layouts',
+  eleventyComputed: {
+    footerNav: (data) => data.layouts
+  }
+}
 ---
 
 <!--
   About
 -->
-<doc-section label="About" prefix="layouts-">
-  <div class="layoutInfo">
-    <p>
-      Layouts are
-      <a
-        href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements"
-        >custom elements</a
-      >
-      that's only responsibility is to responsively position and arrange its
-      child elements. These elements can be reused and nested as much as you
-      like to compose pages together.
-    </p>
-    <p>
-      They share a common set of css variables that need to be set on your
-      <code>:root</code> element, see a
-      <a href="{{ '/' | url }}">specific version</a> for more info.
-    </p>
-    <p>
-      Scale variables. These are created using a modular scale (<a
-        href="https://every-layout.dev/rudiments/modular-scale/"
-        >more info</a
-      >) to work nicely with a font size of 1rem and line-height of 1.5. Think
-      of them as starting at -5 going though 0 and up to 5. They form a curve of
-      values which creates pleasing spacing.
-      <strong>These are provided by Alembic.</strong>
-    </p>
-    <ul>
-      <li><code>--s-5</code> — Smallest value</li>
-      <li><code>--s-4</code></li>
-      <li><code>--s-3</code></li>
-      <li><code>--s-2</code></li>
-      <li><code>--s-1</code></li>
-      <li><code>--s0</code></li>
-      <li><code>--s1</code> — Common default scale</li>
-      <li><code>--s2</code></li>
-      <li><code>--s3</code></li>
-      <li><code>--s4</code></li>
-      <li><code>--s5</code> — Largest largest</li>
-    </ul>
-  </div>
-</doc-section>
+<div class="markdownCard">
+  <p>
+    Layouts are
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements"
+      >custom elements</a
+    >
+    that's only responsibility is to responsively position and arrange its child
+    elements. These elements can be reused and nested as much as you like to
+    compose pages together.
+  </p>
+  <p>
+    They share a common set of css variables that need to be set on your
+    <code>:root</code> element, see a
+    <a href="{{ '/' | url }}">specific version</a> for more info.
+  </p>
+  <p>
+    Scale variables. These are created using a modular scale (<a
+      href="https://every-layout.dev/rudiments/modular-scale/"
+      >more info</a
+    >) to work nicely with a font size of 1rem and line-height of 1.5. Think of
+    them as starting at -5 going though 0 and up to 5. They form a curve of
+    values which creates pleasing spacing.
+    <strong>These are provided by Alembic.</strong>
+  </p>
+  <ul>
+    <li><code>--s-5</code> — Smallest value</li>
+    <li><code>--s-4</code></li>
+    <li><code>--s-3</code></li>
+    <li><code>--s-2</code></li>
+    <li><code>--s-1</code></li>
+    <li><code>--s0</code></li>
+    <li><code>--s1</code> — Common default scale</li>
+    <li><code>--s2</code></li>
+    <li><code>--s3</code></li>
+    <li><code>--s4</code></li>
+    <li><code>--s5</code> — Largest largest</li>
+  </ul>
+</div>
 
 <!--
   Stack
  -->
 <doc-section label="Stack">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     {{ collections.stackLayout[0].templateContent | safe }}
   </div>
   <component-def label="Stack / Vanilla">
@@ -111,8 +77,8 @@ tiles:
   <component-def label="Stack / Gapless">
     <stack-layout space="0">
       <doc-box height="50px"></doc-box>
-      <doc-box height="50px" accent="coral"></doc-box>
-      <doc-box height="50px" accent="royalblue"></doc-box>
+      <doc-box height="50px" pattern="b"></doc-box>
+      <doc-box height="50px" pattern="c"></doc-box>
     </stack-layout>
   </component-def>
 
@@ -124,9 +90,9 @@ tiles:
         <doc-box height="50px"></doc-box>
       </stack-layout>
       <stack-layout space="var(--s-1)">
-        <doc-box height="50px" accent="royalblue"></doc-box>
-        <doc-box height="50px" accent="royalblue"></doc-box>
-        <doc-box height="50px" accent="royalblue"></doc-box>
+        <doc-box height="50px" pattern="c"></doc-box>
+        <doc-box height="50px" pattern="c"></doc-box>
+        <doc-box height="50px" pattern="c"></doc-box>
       </stack-layout>
       <stack-layout space="var(--s-1)">
         <doc-box height="50px"></doc-box>
@@ -141,7 +107,7 @@ tiles:
   Box
  -->
 <doc-section label="Box">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     {{ collections.boxLayout[0].templateContent | safe }}
   </div>
   <component-def label="Box / Vanilla">
@@ -178,7 +144,7 @@ tiles:
   Center
  -->
 <doc-section label="Center">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     {{ collections.centerLayout[0].templateContent | safe }}
   </div>
   <component-def label="Center / Vanilla">
@@ -204,7 +170,7 @@ tiles:
   Cluster
  -->
 <doc-section label="Cluster">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     {{ collections.clusterLayout[0].templateContent | safe }}
   </div>
   <component-def label="Cluster / Vanilla">
@@ -227,8 +193,8 @@ tiles:
   <component-def label="Cluster / Flush">
     <cluster-layout space="0">
       <doc-box width="200px" height="50px"> </doc-box>
-      <doc-box width="200px" height="50px" accent="royalblue"> </doc-box>
-      <doc-box width="200px" height="50px" accent="coral"> </doc-box>
+      <doc-box width="200px" height="50px" pattern="c"> </doc-box>
+      <doc-box width="200px" height="50px" pattern="b"> </doc-box>
     </cluster-layout>
   </component-def>
 
@@ -253,63 +219,33 @@ tiles:
   Sidebar
  -->
 <doc-section label="Sidebar">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     {{ collections.sidebarLayout[0].templateContent | safe }}
   </div>
   <component-def label="Sidebar / Vanilla">
     <sidebar-layout>
-      <doc-box accent="royalblue">
-        <ul>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-        </ul>
-      </doc-box>
+      <doc-box height="200px" pattern="b" width="300px"></doc-box>
       <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
 
   <component-def label="Sidebar / No stretch">
     <sidebar-layout noStretch>
-      <doc-box accent="royalblue">
-        <p><doc-text words="3,5"></doc-text></p>
-        <p><doc-text words="3,5"></doc-text></p>
-        <p><doc-text words="3,5"></doc-text></p>
-        <p><doc-text words="3,5"></doc-text></p>
-        <p><doc-text words="3,5"></doc-text></p>
-      </doc-box>
+      <doc-box height="100px" width="300px" pattern="b"></doc-box>
       <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
 
   <component-def label="Sidebar / Gapless">
     <sidebar-layout space="0">
-      <doc-box accent="royalblue">
-        <ul>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-        </ul>
-      </doc-box>
+      <doc-box height="200px" pattern="b" width="300px"></doc-box>
       <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
 
   <component-def label="Sidebar / Side width">
     <sidebar-layout sideWidth="20ch">
-      <doc-box accent="royalblue">
-        <ul>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-          <li><doc-text words="3,5"></doc-text></li>
-        </ul>
-      </doc-box>
+      <doc-box height="200px" pattern="b"></doc-box>
       <doc-box height="300px"></doc-box>
     </sidebar-layout>
   </component-def>
@@ -319,7 +255,7 @@ tiles:
   Switcher
  -->
 <doc-section label="Switcher">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     {{ collections.switcherLayout[0].templateContent | safe }}
   </div>
   <component-def label="Switcher / Vanilla">
@@ -345,7 +281,7 @@ tiles:
   Cover
  -->
 <doc-section label="Cover">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     {{ collections.coverLayout[0].templateContent | safe }}
   </div>
   <component-def label="Cover / Vanilla">
@@ -367,14 +303,14 @@ tiles:
   <component-def label="Cover / Custom center">
     <cover-layout centered=".center" minHeight="400px" noPad>
       <doc-box height="50px"></doc-box>
-      <doc-box class="center" height="100px" accent="royalblue"></doc-box>
+      <doc-box class="center" height="150px" pattern="b"></doc-box>
       <doc-box height="50px"></doc-box>
     </cover-layout>
   </component-def>
 
   <component-def label="Cover / Single">
     <cover-layout centered=".center" minHeight="400px" noPad>
-      <doc-box class="center" height="200px" accent="royalblue"></doc-box>
+      <doc-box class="center" height="200px" pattern="b"></doc-box>
     </cover-layout>
   </component-def>
 </doc-section>
@@ -383,7 +319,7 @@ tiles:
   Grid
  -->
 <doc-section label="Grid">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     {{ collections.gridLayout[0].templateContent | safe }}
   </div>
   <component-def label="Grid / Vanilla">
@@ -413,7 +349,7 @@ tiles:
   Frame
  -->
 <doc-section label="Frame">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     {{ collections.frameLayout[0].templateContent | safe }}
   </div>
   <component-def label="Frame / Vanilla">
@@ -439,7 +375,7 @@ tiles:
   Reel
  -->
 <doc-section label="Reel">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     {{ collections.reelLayout[0].templateContent | safe }}
   </div>
 
@@ -474,14 +410,14 @@ tiles:
   <component-def label="Reel / Gapless">
     <reel-layout space="0">
       <doc-box height="50px" width="200px"></doc-box>
-      <doc-box height="50px" width="300px" accent="royalblue"></doc-box>
-      <doc-box height="50px" width="150px" accent="coral"></doc-box>
-      <doc-box height="50px" width="400px"></doc-box>
-      <doc-box height="50px" width="200px" accent="royalblue"></doc-box>
-      <doc-box height="50px" width="100px" accent="coral"></doc-box>
-      <doc-box height="50px" width="100px"></doc-box>
-      <doc-box height="50px" width="300px" accent="royalblue"></doc-box>
-      <doc-box height="50px" width="200px" accent="coral"></doc-box>
+      <doc-box height="50px" width="200px" pattern="b"></doc-box>
+      <doc-box height="50px" width="200px" pattern="c"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
+      <doc-box height="50px" width="200px" pattern="b"></doc-box>
+      <doc-box height="50px" width="200px" pattern="c"></doc-box>
+      <doc-box height="50px" width="200px"></doc-box>
+      <doc-box height="50px" width="200px" pattern="b"></doc-box>
+      <doc-box height="50px" width="200px" pattern="c"></doc-box>
     </reel-layout>
   </component-def>
 
@@ -490,7 +426,7 @@ tiles:
       <doc-box height="50px" width="200px"></doc-box>
       <doc-box height="50px" width="300px"></doc-box>
       <doc-box height="50px" width="150px"></doc-box>
-      <doc-box height="50px" width="400px"></doc-box>
+      <doc-box height="50px" width="350px"></doc-box>
       <doc-box height="50px" width="100px"></doc-box>
       <doc-box height="50px" width="200px"></doc-box>
       <doc-box height="50px" width="100px"></doc-box>
@@ -520,16 +456,16 @@ tiles:
   Imposter
  -->
 <doc-section label="Imposter">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     {{ collections.imposterLayout[0].templateContent | safe }}
   </div>
 
   <component-def label="Imposter / Vanilla">
     <div style="position: relative">
-      <doc-text words="500"></doc-text>
+      <doc-box height="400px" pattern="c"></doc-box>
       <imposter-layout>
         <box-layout invert>
-          <doc-text words="500"></doc-text>
+          <doc-text words="400"></doc-text>
         </box-layout>
       </imposter-layout>
     </div>
@@ -537,10 +473,10 @@ tiles:
 
   <component-def label="Imposter / Margin">
     <div style="position: relative">
-      <doc-text words="500"></doc-text>
+      <doc-box height="400px" pattern="c"></doc-box>
       <imposter-layout margin="1rem">
         <box-layout invert>
-          <doc-text words="500"></doc-text>
+          <doc-text words="400"></doc-text>
         </box-layout>
       </imposter-layout>
     </div>
@@ -548,10 +484,10 @@ tiles:
 
   <component-def label="Imposter / Sized">
     <div style="position: relative">
-      <doc-text words="500"></doc-text>
+      <doc-box height="400px" pattern="c"></doc-box>
       <imposter-layout margin="1rem" style="width: var(--measure)">
         <box-layout invert>
-          <doc-text words="500"></doc-text>
+          <doc-text words="400"></doc-text>
         </box-layout>
       </imposter-layout>
     </div>
@@ -562,7 +498,7 @@ tiles:
   Icon
  -->
 <doc-section label="Icon">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     {{ collections.iconLayout[0].templateContent | safe }}
   </div>
 
@@ -624,17 +560,3 @@ tiles:
     </icon-layout>
   </component-def>
 </doc-section>
-
-<reel-layout class="layoutNav">
-  {% for item in tiles %}
-  <a href="#{{ item.id }}" class="layoutNav-item">
-    <img
-      width="96"
-      height="96"
-      src="{{ collections[item.tag][0].data.tile | url }}"
-      alt="{{ item.alt }}"
-    />
-    <p>{{item.alt}}</p>
-  </a>
-  {% endfor %}
-</reel-layout>

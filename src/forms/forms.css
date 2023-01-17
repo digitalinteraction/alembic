@@ -1,16 +1,16 @@
 /*
-  General
+  Globals
  */
 fieldset > :not(legend) + *,
 form > * + * {
-  margin-top: var(--s0);
+  margin-block-start: var(--s0);
 }
 .field,
 .checkboxGroup,
-.checkbox {
-  max-width: var(--gestalt);
+.checkbox,
+fieldset {
+  max-width: var(--measure);
 }
-
 :is(input, select, textarea, button):focus {
   outline: var(--s-4) solid var(--focus);
   outline-offset: var(--border-thin);
@@ -19,29 +19,28 @@ form > * + * {
 /*
   Field
  */
+.field,
 .field label {
-  margin-bottom: var(--s-4);
   display: block;
   line-height: 1.25;
 }
 .field-label {
-  font-weight: 600;
   display: block;
+  margin-block-end: var(--s-4);
 }
 .field-hint {
-  font-weight: 400;
   display: block;
-  margin-bottom: var(--s-4);
-  color: var(--color-darkish);
+  margin-block-end: var(--s-4);
   font-size: 0.9em;
 }
 .field input,
 .field select,
 .field textarea {
+  display: block;
   background-color: transparent;
   border: var(--border-thin) solid var(--fillable);
   margin: 0;
-  padding: var(--s-2);
+  padding: var(--s-3);
   width: 100%;
 }
 .field input[type='checkbox'] {
@@ -62,14 +61,12 @@ fieldset {
   border: var(--border-thin) solid var(--fillable);
   padding: var(--s-1);
 }
-fieldset legend {
-  font-size: var(--s1);
-  font-weight: 600;
-}
 .fieldset-hint {
-  font-weight: 400;
   display: block;
   font-size: 0.9em;
+  margin-block-start: calc(-1 * var(--s-1));
+}
+legend + .fieldset-hint {
   margin-block-start: calc(-1 * var(--s-1));
 }
 
@@ -79,7 +76,6 @@ fieldset legend {
 .checkboxGroup {
 }
 .checkboxGroup-label {
-  font-weight: 600;
   display: block;
 }
 
@@ -107,17 +103,8 @@ fieldset legend {
   Messages
  */
 .formMessage {
-  border: var(--border-thick) solid;
+  border: var(--border-thin) solid;
   padding: var(--s-1);
-}
-.formMessage[data-accent='info'] {
-  border-color: var(--color-info);
-}
-.formMessage[data-accent='error'] {
-  border-color: var(--color-error);
-}
-.formMessage[data-accent='success'] {
-  border-color: var(--color-success);
 }
 
 /**
@@ -128,5 +115,5 @@ fieldset legend {
   justify-content: space-between;
   font-size: 0.9em;
   font-style: italic;
-  margin-top: var(--s-5);
+  margin-block-start: var(--s-5);
 }

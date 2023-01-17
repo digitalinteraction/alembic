@@ -1,29 +1,27 @@
 ---
-layout: docs-layout.njk
-title: 📋 Forms
+layout: html.njk
+title: Forms
 ---
 
 <!-- ... -->
-<doc-section label="About" prefix="forms-">
-  <div class="layoutInfo">
-    <p>
-      Forms provide patterns for creating HTML forms that are easy to use and
-      accessible for as many as possible.
-    </p>
-    <p> TODO: </p>
-    <ul>
-      <li> work on guidelines for microcopy </li>
-      <li> work on colour system </li>
-      <li> think about form actions and buttons </li>
-      <li>
-        refactor <code>fieldset</code> when a typography system is in place
-      </li>
-    </ul>
-  </div>
-</doc-section>
+<div class="markdownCard">
+  <p>
+    Forms provide patterns for creating HTML forms that are easy to use and
+    accessible for as many as possible.
+  </p>
+  <p> TODO: </p>
+  <ul>
+    <li> work on guidelines for microcopy </li>
+    <li> work on colour system </li>
+    <li> think about form actions and buttons </li>
+    <li>
+      refactor <code>fieldset</code> when a typography system is in place
+    </li>
+  </ul>
+</div>
 
 <doc-section label="Field">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     <p>
       <strong>Field</strong> is the bread and butter of a form, so it is
       important to get right. It <strong>Must</strong> have a label to prompt
@@ -87,10 +85,76 @@ title: 📋 Forms
       <input type="range" min="0" max="100" id="trust" name="trust" />
     </div>
   </component-def>
+  
+  <component-def label="Field / Form">
+    <form>
+      <label for="fullName" class="field">
+        <span class="field-label">Full name</span>
+        <input type="text" id="fullName" name="fullName" />
+      </label>
+      
+      <label for="email" class="field">
+        <span class="field-label">Email address</span>
+        <span class="field-hint">e.g. geoff@example.com</span>
+        <input type="text" id="email" name="email" />
+      </label>
+      
+      <label for="bio" class="field">
+        <span class="field-label">Bio</span>
+        <span class="field-hint">Write a few sentences about yourself</span>
+        <textarea id="bio" rows="3" name="bio"> </textarea>
+      </label>
+      
+      
+      <label for="favVeg" class="field">
+        <span class="field-label">Favourite vegetable</span>
+        <select id="favVeg" name="favVeg">
+          <option disabled selected>(Please select)</option>
+          <option value="carrots">Carrots</option>
+          <option value="broccoli">Broccoli</option>
+          <option value="peas">Peas</option>
+        </select>
+      </label>
+      
+      <fieldset>
+        <legend>Work</legend>
+        
+        <label for="work" class="field">
+          <span class="field-label">Job</span>
+          <input type="text" id="work" name="work" />
+        </label>
+        
+        <label for="workAge" class="field">
+          <span class="field-label">Duration</span>
+          <input type="text" id="workAge" name="workAge" />
+        </label>
+        
+      </fieldset>
+      
+      <label for="phoneBattery" class="field">
+        <span class="field-label">Phone battery</span>
+        <span class="rangeHints">
+          <span>Empty</span>
+          <span>Full</span>
+        </span>
+        <input type="range" min="0" max="100" id="phoneBattery" />
+      </label>
+      
+      
+      
+      <label class="checkbox" for="consent">
+        <input type="checkbox" id="consent" name="consent" required="" />
+        <span> I agree to the terms and conditions </span>
+      </label>
+      
+      <input type="submit" name="Submit">
+      <button type="cancel">Cancel</button>
+    </form>
+  </component-def>
 </doc-section>
 
 <doc-section label="Checkbox">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     <p>
       <strong>Checkbox</strong> give users a binary option, yes or no, agree or
       disagree. You can also group them together into a
@@ -99,8 +163,8 @@ title: 📋 Forms
   </div>
 
   <component-def label="Checkbox / single">
-    <label class="checkbox" for="consent">
-      <input type="checkbox" id="consent" name="consent" required="" />
+    <label class="checkbox" for="moreConsent">
+      <input type="checkbox" id="moreConsent" name="moreConsent" required="" />
       <span> I agree </span>
     </label>
   </component-def>
@@ -143,13 +207,13 @@ title: 📋 Forms
 </doc-section>
 
 <doc-section label="FormMessage">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     <p>
       <strong>FormMessage</strong> is for displaying good/bad/information text
       to users, usually in response to a form submission.
     </p>
-    <p>They style is bare by default so it can more easily be overridden.</p>
-    <p>Note the use of <code>data-accent=X</code>.</p>
+    <p>The style is bare by default so it can more easily be overridden. Note the use of <code>data-accent=X</code>.</p>
+    <p><strong>🚧 This is under review</strong></p>
   </div>
 
   <component-def label="FormMessage / info">
@@ -172,7 +236,7 @@ title: 📋 Forms
 </doc-section>
 
 <doc-section label="FieldSet">
-  <div class="layoutInfo">
+  <div class="markdownCard">
     <p>
       <strong>FieldSet</strong> should be used to group related fields together.
       Like a section of a form or a component of a larger entity. It should have
@@ -190,27 +254,29 @@ title: 📋 Forms
   <component-def label="FieldSet / vanilla">
     <fieldset>
       <legend>Edit profile</legend>
+      
+      <p class="fieldset-hint">This is a helpful bit of text</p>
 
       <div class="field">
-        <label for="fullName">
+        <label for="editFullName">
           <span class="field-label">Full name</span>
         </label>
-        <input type="text" id="fullName" name="fullName" />
+        <input type="text" id="editFullName" name="fullName" />
       </div>
 
       <div class="field">
-        <label for="email">
+        <label for="editEmail">
           <span class="field-label">Email address</span>
         </label>
-        <input type="email" id="email" name="email" />
+        <input type="email" id="editEmail" name="email" />
       </div>
 
       <div class="field">
-        <label for="twitterHandle">
+        <label for="editTwitterHandle">
           <span class="field-label">Twitter Handle</span>
           <span class="field-hint">e.g. @Example</span>
         </label>
-        <input type="text" id="twitterHandle" name="twitterHandle" />
+        <input type="text" id="editTwitterHandle" name="twitterHandle" />
       </div>
     </fieldset>
   </component-def>

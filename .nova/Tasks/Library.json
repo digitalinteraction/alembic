@@ -1,0 +1,11 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "path" : "scripts\/build-library.js"
+    }
+  },
+  "environment" : {
+    "NODE_ENV" : "development"
+  }
+}

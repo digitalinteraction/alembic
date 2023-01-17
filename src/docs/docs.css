@@ -1,7 +1,13 @@
-@import '../lib/reset.css';
-@import '../lib/globals.css';
-@import '../layouts/layouts.css';
-@import '../forms/forms.css';
+/* @import 'prism-themes/themes/prism-one-light.css'; */
+
+/* esbuild doesn't support conditional imports */
+/* @import 'prism-themes/themes/prism-dracula.css' (prefers-color-scheme: dark); */
+
+/* 
+  z-index:
+  - 1 - doc-section::part(title)
+  - 2 - .layoutReel
+*/
 
 :root {
   --doc-family: Inter, system-ui, sans-serif;
@@ -17,16 +23,8 @@
   --measure: 60ch;
 
   /* WIP axioms */
-  --fillable: darkblue; /* A colour to indicate something a user should fill in */
-  --focus: coral; /* A colour to bring attention to what the user is currently doing */
-  --gestalt: 40ch;
-
-  /* WIP forms */
-  --color-darkish: #888;
-  --border-thick: 5px;
-  --color-info: royalblue;
-  --color-error: tomato;
-  --color-success: yellowgreen;
+  --fillable: darkslateblue; /* A colour to indicate something a user should fill in */
+  --focus: coral;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -43,17 +41,21 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--color-foreground);
+  background-color: var(--doc-background);
+}
+
 /* TODO: find a way to refactor these two */
-.layoutInfo,
-.markdownPage {
+.markdownCard {
   max-width: calc(var(--doc-measure) + calc(2 * var(--s1)));
   background-color: #ffffff;
   padding: var(--s1);
   border-radius: var(--s-3);
 }
 @media (prefers-color-scheme: dark) {
-  .markdownPage,
-  .layoutInfo {
+  .markdownCard {
     background-color: hsl(215, 3%, 13%);
   }
 }
@@ -79,6 +81,10 @@ a {
     color: hsl(238, 100%, 71%);
   }
 }
+hr {
+  --flow-space: var(--s3);
+  margin-block: var(--s3);
+}
 
 /*
   Docs layout
@@ -97,10 +103,24 @@ a {
   position: relative;
   min-height: 100vh;
 }
+.docsLayout-main > h1 {
+  margin-block-end: var(--s1);
+}
+.docsLayout-footer {
+  padding: var(--s-1);
+  background: var(--doc-background);
+  position: sticky;
+  bottom: 0;
+  border-top: var(--border-thin) solid var(--doc-foreground);
+  z-index: 2;
+}
 @media (min-width: 1024px) {
   .docsLayout-header,
   .docsLayout-main {
     padding-inline: var(--s2);
+  }
+  .docsLayout-footer {
+    padding: var(--s0);
   }
 }
 
@@ -108,6 +128,8 @@ a {
   Navigation
 */
 .docsNav {
+  position: sticky;
+  top: var(--s0);
 }
 .docsNav ul > * {
   margin-block-start: var(--s-1);
@@ -119,8 +141,9 @@ a {
   font-size: 1.75rem;
   color: var(--doc-foreground);
   text-decoration: none;
+  margin-block-end: var(--s2);
 }
-.docsNav-brand a:hover {
+.docsNav-brand:hover {
   text-decoration: underline;
 }
 .docsNav-item {
@@ -128,15 +151,19 @@ a {
   font-size: 1.25rem;
   color: var(--doc-foreground);
 }
+.docsNav-item > cluster-layout {
+  display: inline-flex;
+  width: 100%;
+}
 .docsNav-item[aria-current] {
   border: var(--border-thin) solid rebeccapurple;
   border-image: linear-gradient(
     to bottom right,
-    hsl(281, 100%, 50%) 0%,
-    hsl(211, 100%, 50%) 25%,
-    hsl(143, 81%, 46%) 50%,
-    hsl(37, 91%, 45%) 75%,
-    hsl(337, 100%, 50%) 100%
+    hsl(281, 100%, 65%) 0%,
+    hsl(211, 100%, 65%) 25%,
+    hsl(143, 81%, 65%) 50%,
+    hsl(37, 91%, 65%) 75%,
+    hsl(337, 100%, 65%) 100%
   );
   border-image-slice: 1;
   padding: var(--s-3);
@@ -148,23 +175,22 @@ a {
 */
 .docsTitle {
   font-size: 2.5rem;
-  margin: 0 0 var(--s0);
 }
 
 /*
   Layout info block
 */
-.layoutInfo {
+.markdownCard {
   max-width: var(--doc-measure);
   font-size: 1.1em;
 
   /* TODO: work out how to scroll the table itself */
   overflow-x: auto;
 }
-.layoutInfo > * + * {
-  margin-block-start: var(--s0);
+.markdownCard > * + * {
+  margin-block-start: var(--flow-space, 1em);
 }
-.layoutInfo table {
+.markdownCard table {
   display: block;
   font-size: 1rem;
   border-spacing: 0;
@@ -174,16 +200,16 @@ a {
   max-width: 100%;
   overflow: auto;
 }
-.layoutInfo table th {
+.markdownCard table th {
   border-bottom: var(--border-thin) solid #ccc;
 }
-.layoutInfo table th,
-.layoutInfo table td {
+.markdownCard table th,
+.markdownCard table td {
   padding: var(--s-2) var(--s-1);
   text-align: inherit;
   word-break: keep-all;
 }
-.layoutInfo td:nth-child(1) {
+.markdownCard td:nth-child(1) {
   text-decoration: underline;
   text-decoration-style: dashed;
   text-decoration-color: #aaa;
@@ -192,12 +218,15 @@ a {
   -webkit-user-select: all;
   user-select: all;
 }
+.markdownCard table td:last-child {
+  min-width: 300px;
+}
 @media (prefers-color-scheme: dark) {
-  .layoutInfo td:nth-child(1) {
+  .markdownCard td:nth-child(1) {
     text-decoration-color: #ccc;
   }
 }
-.layoutInfo table td:nth-child(3) {
+.markdownCard table td:nth-child(3) {
   font-family: var(--doc-mono);
 }
 
@@ -264,17 +293,6 @@ doc-section {
   outline: 2px dashed red;
 }
 
-/** Markdown page */
-.markdownPage pre {
-  margin-block-end: 0;
-}
-.markdownPage-heading {
-  font-size: 1.5em;
-  font-family: var(--doc-family);
-  cursor: pointer;
-  font-weight: bold;
-}
-
 /* Component def */
 
 /* Doc resizer */
@@ -282,24 +300,136 @@ doc-section {
 /* Doc section */
 
 /* Layout tiles */
-.layoutNav {
-  position: sticky;
-  bottom: 0;
-  background: var(--doc-background);
-  margin-inline: calc(-1 * var(--s2));
-  padding: var(--s1);
-  border-top: var(--border-thin) solid var(--doc-foreground);
+.layoutReel {
+  padding-block-end: 0;
 }
-.layoutNav-item {
+.layoutReel > a {
   text-decoration: none;
 }
-.layoutNav-item > p {
+.layoutReel-item > p {
   text-decoration: none;
   text-align: center;
   color: var(--doc-foreground);
 }
+.layoutReel img {
+  width: 64px;
+  height: 64px;
+}
 @media (prefers-color-scheme: dark) {
-  .layoutNav-item > img {
+  .layoutReel-item > img {
     filter: invert(100%);
   }
+}
+@media (min-width: 1024px) {
+  .layoutReel img {
+    width: 96px;
+    height: 96px;
+  }
+}
+
+.homeHero {
+  text-align: center;
+  font-size: 1.25rem;
+}
+.homeHero h1 {
+  font-size: 4rem;
+}
+.homeFooter {
+  font-family: var(--doc-mono);
+  text-align: center;
+  opacity: 0.7;
+  margin-block-end: var(--s-1);
+}
+.homeFooter a {
+  color: inherit;
+  font-weight: bold;
+}
+.homeSection {
+  font-size: 1.3rem;
+}
+.homeSection > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+h1,
+h2,
+h3 {
+  margin: unset;
+  line-height: 1.2;
+}
+
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+.quickstart {
+  max-width: var(--doc-measure);
+  border: var(--s-5) solid var(--doc-foreground);
+  padding: var(--s-1);
+  border-radius: var(--s-2);
+}
+.quickstart pre {
+  font-size: 0.9rem;
+  user-select: all;
+  word-break: break-all;
+  white-space: pre-wrap;
+
+  padding: var(--s-1);
+  border-radius: var(--s-2);
+
+  color: var(--doc-background);
+  background-color: var(--doc-foreground);
+  font-family: var(--doc-mono);
+}
+
+strong.highlight {
+  background-color: #ccc;
+  padding-inline: 0.2em;
+}
+@media (prefers-color-scheme: dark) {
+  strong.highlight {
+    background-color: #333;
+  }
+}
+
+.navCard {
+  border-radius: var(--s0);
+}
+.navCard a {
+  text-decoration: none;
+}
+.navCard a:hover :is(h1, h2, h3, h4) {
+  text-decoration: underline;
+}
+
+.siblings {
+}
+.siblings p {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.siblings ul {
+  margin-block: var(--s-3) 0;
+  padding-inline-start: 2em;
+}
+.siblings ul li {
+}
+
+.eleventyError {
+  font-size: 2em;
+  color: red;
+  padding: 1rem;
+  border: 0.1em solid red;
+  background: white;
+  line-height: 1;
+}
+
+blockquote {
+  padding: 1em;
+  border: var(--s-4) solid var(--color-foreground);
+  border-left-width: var(--s-1);
+}
+
+pre {
+  margin: 0;
 }

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "stack",
+    "tag": "stackLayout",
+    "name": "Stack"
+  },
+  {
+    "id": "box",
+    "tag": "boxLayout",
+    "name": "Box"
+  },
+  {
+    "id": "center",
+    "tag": "centerLayout",
+    "name": "Center"
+  },
+  {
+    "id": "cluster",
+    "tag": "clusterLayout",
+    "name": "Cluster"
+  },
+  {
+    "id": "sidebar",
+    "tag": "sidebarLayout",
+    "name": "Sidebar"
+  },
+  {
+    "id": "switcher",
+    "tag": "switcherLayout",
+    "name": "Switcher"
+  },
+  {
+    "id": "cover",
+    "tag": "coverLayout",
+    "name": "Cover"
+  },
+  {
+    "id": "grid",
+    "tag": "gridLayout",
+    "name": "Grid"
+  },
+  {
+    "id": "frame",
+    "tag": "frameLayout",
+    "name": "Frame"
+  },
+  {
+    "id": "reel",
+    "tag": "reelLayout",
+    "name": "Reel"
+  },
+  {
+    "id": "imposter",
+    "tag": "imposterLayout",
+    "name": "Imposter"
+  },
+  {
+    "id": "icon",
+    "tag": "iconLayout",
+    "name": "Icon"
+  }
+]

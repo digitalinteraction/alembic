@@ -1,4 +1,3 @@
-import '@openlab/alembic/fake-dom-env.js'
 import { injectLayoutStyles } from '@openlab/alembic'
 import fs from 'fs/promises'
 
