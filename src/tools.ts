@@ -128,7 +128,7 @@ export function _recreateElement(name: string, attrs: string, id: string) {
 export function _parseHtmlAttributes(attrs: string) {
   const props: Record<string, string> = {}
   for (const attr of attrs.matchAll(/(\w[\w-]+)(?:="?([^"]*)"?)?/g)) {
-    props[attr[1]] = attr[2] ?? ''
+    props[attr[1]] = attr[2] ?? true
   }
   return props
 }

@@ -57,7 +57,7 @@ describe('_parseHtmlAttributes', () => {
   it('should parse no-value properties', () => {
     const result = _parseHtmlAttributes('noBar')
     assert.deepEqual(result, {
-      noBar: '',
+      noBar: true,
     })
   })
   it('should parse kebab-case properties', () => {
