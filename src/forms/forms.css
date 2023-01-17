@@ -19,9 +19,7 @@ fieldset {
 /*
   Field
  */
-.field {
-  display: block;
-}
+.field,
 .field label {
   display: block;
   line-height: 1.25;
@@ -63,14 +61,12 @@ fieldset {
   border: var(--border-thin) solid var(--fillable);
   padding: var(--s-1);
 }
-fieldset legend {
-  font-size: var(--s1);
-  font-weight: 600;
-}
 .fieldset-hint {
-  font-weight: 400;
   display: block;
   font-size: 0.9em;
+  margin-block-start: calc(-1 * var(--s-1));
+}
+legend + .fieldset-hint {
   margin-block-start: calc(-1 * var(--s-1));
 }
 
@@ -80,7 +76,6 @@ fieldset legend {
 .checkboxGroup {
 }
 .checkboxGroup-label {
-  font-weight: 600;
   display: block;
 }
 
