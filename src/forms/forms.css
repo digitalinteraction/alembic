@@ -40,7 +40,7 @@ fieldset {
   background-color: transparent;
   border: var(--border-thin) solid var(--fillable);
   margin: 0;
-  padding: var(--s-2);
+  padding: var(--s-3);
   width: 100%;
 }
 .field input[type='checkbox'] {
