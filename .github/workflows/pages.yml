@@ -31,12 +31,12 @@ jobs:
       - run: npm ci
 
       - name: Build library
-        run: ./build-library.js
+        run: ./scripts/build-library.js
         env:
           NODE_ENV: production
 
       - name: Build documentation site
-        run: ./build-docs.sh
+        run: ./scripts/build-docs.sh
         env:
           NODE_ENV: production
 
