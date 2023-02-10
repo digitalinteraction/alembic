@@ -85,6 +85,11 @@ hr {
   --flow-space: var(--s3);
   margin-block: var(--s3);
 }
+ul[role='list'],
+ol[role='list'] {
+  margin: 0;
+  padding: 0;
+}
 
 /*
   Docs layout
@@ -95,8 +100,8 @@ hr {
   font-family: var(--doc-family);
 }
 .docsLayout-header {
-  padding: var(--s0) var(--s0) var(--s3);
-  border-right: var(--border-thin) solid var(--doc-foreground);
+  padding: var(--s0);
+  outline: var(--border-thin) solid var(--doc-foreground);
 }
 .docsLayout-main {
   padding: var(--s0) var(--s0) var(--s5);
@@ -107,7 +112,8 @@ hr {
   margin-block-end: var(--s1);
 }
 .docsLayout-footer {
-  padding: var(--s-1);
+  margin-inline: var(--border-thin);
+  padding: var(--s-2);
   background: var(--doc-background);
   position: sticky;
   bottom: 0;

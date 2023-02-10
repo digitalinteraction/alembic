@@ -3,7 +3,7 @@
 
 {% if siblings %}
 <nav class="siblings" aria-labelledby="siblings">
-  <p id="siblings">Pages</p>
+  <p id="siblings">{{ siblingTitle or 'Pages' }}</p>
   <ul>
     {% for target in collections.all | getPages(siblings) %}
     <li>

@@ -1,6 +1,6 @@
 ---
 layout: html.njk
-title: Quick & dirty
+title: Vanilla
 strapline: Get started and hack away, good for prototypes and one-offs.
 tags:
   - install

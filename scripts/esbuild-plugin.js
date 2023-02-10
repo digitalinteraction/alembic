@@ -29,6 +29,7 @@ export const alembicEmbed = {
         write: false,
         entryPoints: [path.join(args.pluginData.resolveDir, args.path)],
         minify: true,
+        format: 'esm',
       })
 
       const { text } = result.outputFiles[0]

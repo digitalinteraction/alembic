@@ -10,8 +10,22 @@ interface EleventyEventArgs {
   }
 }
 
+interface EleventyIsh {
+  outputPath?: string
+  page?: {
+    outputPath?: string
+  }
+}
+
 export interface EleventyConfig {
-  addTransform(name: string, callback: (content: string) => unknown): void
+  addTransform(
+    name: string,
+    callback: (
+      this: EleventyIsh,
+      content: string,
+      outputFile: string
+    ) => unknown
+  ): void
   on(
     eventName: 'eleventy.after',
     callback: (args: EleventyEventArgs) => unknown
@@ -19,16 +33,31 @@ export interface EleventyConfig {
   dir: Partial<Record<string, string>>
 }
 
-// export interface AlembicEleventyOptions {}
+export interface AlembicEleventyOptions {
+  skipBaseStyles?: boolean
+  skipBaseScripts?: boolean
+}
 
-export function eleventyAlembic(eleventyConfig: EleventyConfig) {
+export function eleventyAlembic(
+  eleventyConfig: EleventyConfig,
+  options: AlembicEleventyOptions = {}
+) {
   // TODO: resolve based on PATH_PREFIX?
-  const options = {
+  const processOptions = {
     extraStyles: [`<link rel="stylesheet" href="/alembic/style.css">`],
     extraScripts: [`<script type="module" src="/alembic/script.js"></script>`],
   }
 
-  eleventyConfig.addTransform('html', (html) => processHtml(html, options))
+  if (options?.skipBaseStyles) processOptions.extraStyles = []
+  if (options?.skipBaseScripts) processOptions.extraScripts = []
+
+  // https://www.11ty.dev/docs/config/#transforms
+  eleventyConfig.addTransform('html', function (content) {
+    const outputPath = this.page?.outputPath ?? this.outputPath
+    return outputPath && outputPath.endsWith('.html')
+      ? processHtml(content, processOptions)
+      : content
+  })
 
   eleventyConfig.on('eleventy.after', async ({ dir }) => {
     const outdir = dir ? dir.output : eleventyConfig.dir.output
