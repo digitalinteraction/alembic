@@ -46,6 +46,22 @@ tells the plugin where to put styles. It will put generated custom element style
 `<!-- @openlab/alembic inject-js -->`
 tells the plugin where to put scripts. It will link to the `alembic/script.js` mentioned above here, it's only needed if you want dynamic styles on your pages. This is often useful for development but might not be needed for production builds.
 
+For example:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    ...
+    <!-- @openlab/alembic inject-css -->
+  </head>
+  <body>
+    ...
+    <!-- @openlab/alembic inject-js -->
+  </body>
+</html>
+```
+
 ---
 
 ## DIY
