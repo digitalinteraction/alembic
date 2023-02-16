@@ -12,6 +12,10 @@ import { ImposterLayout } from './imposter/imposter.js'
 import { IconLayout } from './icon/icon.js'
 import { AlembicHTMLElement } from '../lib/lib.js'
 
+/**
+  A map of Custom Element layouts,
+  where the key is the element name and the value is the HTMLElement subclass
+*/
 export const layoutCustomElements = new Map<string, AlembicHTMLElement>([
   ['box-layout', BoxLayout],
   ['stack-layout', StackLayout],
