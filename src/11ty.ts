@@ -60,7 +60,7 @@ export function eleventyAlembic(
   })
 
   eleventyConfig.on('eleventy.after', async ({ dir }) => {
-    const outdir = dir ? dir.output : eleventyConfig.dir.output
+    const outdir = (dir ? dir.output : eleventyConfig.dir.output) ?? '_site'
 
     if (!outdir) {
       console.warn('[alembic-11ty] Cannot write base files')
