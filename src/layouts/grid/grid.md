@@ -4,14 +4,10 @@ tags: gridLayout
 tile: /assets/tiles/grid.svg
 ---
 
-**GridLayout** creates a responsive CSS Grid where each element has the same `min`(imum) width.
-Element start at the minimum width and grow proportionally until there is space for another element,
-at which point the element moves up and it restarts.
-If there are no more elements to bring up into a row, a "ghost" element is added and it resets again.
-
-GridLayout is suited for lists of same-sized content that are to be displayed at roughly the same size.
-For example, a set of cards showing people on a website.
-It avoids the last-row stretching of some Flexbox implementations.
+**GridLayout** creates a responsive grid of same-sized elements.
+Elements will grow horizontally until another element will fit on the same row.
+"Ghost" elements are added on the last row to ensure the last cells aren't stretched.
+Useful for pages like grids of people or projects.
 
 | Attribute | Type       | Default   | Info                                   |
 | --------- | ---------- | --------- | -------------------------------------- |

@@ -4,11 +4,9 @@ tags: centerLayout
 tile: /assets/tiles/center.svg
 ---
 
-**CenterLayout** ensures an element is centered horizontally in its parent.
-It makes sure the element is at most `max` width by adding spacing at either side.
-Add `gutters` too to apply a padding outside of the `max` width.
-Use the `intrinsic` prop to use the actual width of the laid-out element,
-while it is less than `max`
+**CenterLayout** ensures an element is centered horizontally with a minimum width.
+It can have `gutters` to apply a padding outside of the element so it's children can pop out, like images in a blog post.
+If it is `intrinsic`, the element will be its own width, while it is less than `max`.
 
 | Attribute | Type       | Default        | Info                                                                           |
 | --------- | ---------- | -------------- | ------------------------------------------------------------------------------ |

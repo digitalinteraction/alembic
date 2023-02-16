@@ -5,11 +5,11 @@ tile: /assets/tiles/switcher.svg
 ---
 
 **SwitcherLayout** dynamically displays a set of columns horizontally if there is enough space or stacks them vertically if not.
-It is based on a `threshold` which all elements' widths added up must be less than for them to be laid out horizontally.
+It is based on a `threshold` and `limit`. All elements' widths added up must be less than the threshold to be laid out horizontally.
 
 There is also a `limit` prop that says how many elements are allowed to display horizontally,
-if exceeded all elements will always be displayed vertically.
-If filled dynamically, this limit should be taken into consideration,
+which is a limitation of the CSS required to create this layout.
+If filled dynamically, this `limit` should be taken into consideration,
 e.g. stop adding items after it has been reached.
 
 | Attribute | Type       | Default        | Info                                                                |

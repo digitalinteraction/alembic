@@ -6,9 +6,8 @@ tile: /assets/tiles/imposter.svg
 
 **ImposterLayout** positions an element over other elements.
 The positioned element is vertically and horizontally centered in it's nearest positioned parent and will not exceed it's height or width, unless `breakout` is set.
-You can fix it to the viewport instead with `fixed`.
-The width of the element is 50% of the positioned parent unless overridden in CSS,
-it is setup to not exceed 100% of the parent's height or width.
+By default, the width of the element is 50% of the positioned parent and
+it will not exceed 100% of it.
 
 | Attribute | Type       | Default | Info                                                                                              |
 | --------- | ---------- | ------- | ------------------------------------------------------------------------------------------------- |
