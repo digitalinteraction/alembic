@@ -8,3 +8,21 @@ Then install Alembic with NPM:
 ```sh
 npm install --save-dev @openlab/alembic
 ```
+
+These CSS variables need to be set to use Alembic:
+
+```css
+:root {
+  /* A colour for the foremost thing, like the text in a box */
+  --color-foreground: black;
+  
+  /* A colour for the backmost thing, like the background of a box */
+  --color-background: white;
+  
+  /* The thickness of a border, like a box. Perhaps use a modular scale variable */
+  --border-thin: 0.2rem;
+  
+  /* The maximum width of text on the body of a page, to make it more readable */
+  --measure: 60ch;
+}
+```
