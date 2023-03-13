@@ -41,6 +41,9 @@ module.exports = function (eleventyConfig) {
     // TODO: this seems to have 11ty's syntax added already
     return md.render(content)
   })
+  eleventyConfig.addFilter('json', (content) =>
+    JSON.stringify(content, null, 2)
+  )
   eleventyConfig.addFilter('getPages', (collection, tags = []) => {
     const set = new Set(tags)
     return collection

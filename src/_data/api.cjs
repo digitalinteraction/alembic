@@ -23,29 +23,33 @@ function generate() {
     output[entryName] = {}
     debug(entryName)
 
-    for (const stmt of entry.getExportSymbols()) {
-      if (stmt.getJsDocTags().some((t) => t.getName() === 'internal')) {
-        debug('skip: ' + stmt.getEscapedName())
+    for (let symbol of entry.getExportSymbols()) {
+      if (symbol.getJsDocTags().some((t) => t.getName() === 'internal')) {
+        debug('skip: ' + symbol.getEscapedName())
         continue
       }
 
-      debug(stmt.getEscapedName())
+      debug('%o alias=%o', symbol.getEscapedName(), symbol.isAlias())
+
+      if (symbol.isAlias()) symbol = symbol.getAliasedSymbolOrThrow()
 
       let markdown = []
 
       // Compose all doc comments together
-      for (const declaration of stmt.getDeclarations()) {
+      for (const declaration of symbol.getDeclarations()) {
         for (const range of declaration.getLeadingCommentRanges()) {
           const match = /\/\*\*([\s\S]+)\*\//.exec(range.getText())
           if (!match) continue
-          markdown.push(match[1])
+          markdown.push(match[1].replaceAll(/^[ \t]*?@.*$/gm, ''))
         }
       }
 
-      output[entryName][stmt.getEscapedName()] = {
+      output[entryName][symbol.getEscapedName()] = {
         entryPoint: entryName,
-        name: stmt.getEscapedName(),
+        name: symbol.getEscapedName(),
         content: markdown.join('\n\n'),
+        tags: symbol.getJsDocTags(),
+        prints,
       }
     }
   }
