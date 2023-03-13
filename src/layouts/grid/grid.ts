@@ -11,10 +11,8 @@ export interface GridLayoutAttributes {
 }
 
 /**
- * GridLayout creates a responsive grid using CSS Grid
- *
- * @property {string} min=250px A CSS `length` for the x in `minmax(min(x, 100%), 1fr)`
- * @property {string} space=var(--s1) The space between grid cells
+  GridLayout creates a responsive grid using CSS Grid.
+  [Documentation →](https://alembic.openlab.dev/layouts/#grid)
  */
 export class GridLayout extends getHTMLElement() {
   static get observedAttributes() {

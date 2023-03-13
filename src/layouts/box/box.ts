@@ -13,11 +13,8 @@ export interface BoxLayoutAttributes {
 }
 
 /**
- * BoxLayout is a custom element for generic containers of things
- *
- * @property {string} padding=var(--s1) A CSS `padding` value
- * @property {string} borderWidth=var(--border-thin) A CSS `border-width` value
- * @property {boolean} invert=false Whether to flip fore/background colours
+  BoxLayout is a custom element for generic containers of things.
+  [Documentation →](https://alembic.openlab.dev/layouts/#box)
  */
 export class BoxLayout extends getHTMLElement() {
   static get observedAttributes() {

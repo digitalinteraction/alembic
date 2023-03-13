@@ -11,10 +11,8 @@ export interface IconLayoutAttributes {
 }
 
 /**
- * IconLayout lays out icons inline nicely
- *
- * @property {string} space=null The space between the text and the icon. If null, the natural word spacing is preserved.
- * @property {string} label=null Turns the element into an image for assistive technologies and sets aria-label to the value.
+  IconLayout lays out icons inline nicely.
+  [Documentation →](https://alembic.openlab.dev/layouts/#icon)
  */
 export class IconLayout extends getHTMLElement() {
   static get observedAttributes() {

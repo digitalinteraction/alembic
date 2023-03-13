@@ -13,7 +13,8 @@ export interface DocBoxAttributes {
 }
 
 /**
- * `DocBox` is a coloured box to represent content while demonstrating a layout
+ `DocBox` is a coloured box to represent content while demonstrating a layout
+ [Documentation →](https://alembic.openlab.dev/development/doc-tools/#doc-box)
  */
 export class DocBox extends HTMLElement {
   static get observedAttributes() {
@@ -45,13 +46,13 @@ export class DocBox extends HTMLElement {
     this.dataset.i = `DocBox-${this.width}${this.height}${this.pattern}`
 
     const rules = [
-      `display: ${this.width !== null ? 'inline-block' : 'block'}`,
+      `display: ${this.width !== undefined ? 'inline-block' : 'block'}`,
       `color: var(--doc-background)`,
       `color: color-contrast(white vs black, var(--doc-foreground))`,
     ]
 
-    if (this.height !== null) rules.push(`height: ${this.height}`)
-    if (this.width !== null) rules.push(`width: 100%; max-width: ${this.width}`)
+    if (this.height !== undefined) rules.push(`min-height: ${this.height}`)
+    if (this.width !== undefined) rules.push(`min-width: ${this.width}`)
 
     switch (this.pattern) {
       case 'b':

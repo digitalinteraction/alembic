@@ -9,9 +9,8 @@ export interface StackLayoutAttributes {
 }
 
 /**
- * StackLayout adds whitespace (margin) between flow (block) elements along a vertical axis
- *
- * @property {string} space=var(--s1) A CSS `margin` value
+  StackLayout adds whitespace (margin) between flow (block) elements along a vertical axis.
+  [Documentation →](https://alembic.openlab.dev/layouts/#stack)
  */
 export class StackLayout extends getHTMLElement() {
   static get observedAttributes() {

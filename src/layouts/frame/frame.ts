@@ -11,9 +11,8 @@ export interface FrameLayoutAttributes {
 }
 
 /**
- * FrameLayout displays an element with an aspect ratio
- *
- * @property {string} ratio=16:9 The element's aspect ratio
+  FrameLayout displays an element with an aspect ratio.
+  [Documentation →](https://alembic.openlab.dev/layouts/#frame)
  */
 export class FrameLayout extends getHTMLElement() {
   static get observedAttributes() {

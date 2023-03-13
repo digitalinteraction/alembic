@@ -13,11 +13,9 @@ export interface CenterLayoutAttributes {
 }
 
 /**
- * CenterLayout ensures a block-level element is horizontally centered with a max-width value representing the typographic measure
- *
- * @property {string} max=var(--measure) A CSS `max-width` value
- * @property {string} gutters=null A CSS `length` value representing the minimum space on either side of the content
- * @property {boolean} intrinsic=false Center child elements based on their content width
+  CenterLayout ensures a block-level element is horizontally centered
+  with a max-width value representing the typographic measure.
+  [Documentation →](https://alembic.openlab.dev/layouts/#center)
  */
 export class CenterLayout extends getHTMLElement() {
   static get observedAttributes() {

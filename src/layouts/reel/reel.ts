@@ -15,12 +15,8 @@ export interface ReelLayoutAttributes {
 }
 
 /**
- * ReelLayout places elements horizontally and facilitates scrolling overflow
- *
- * @property {string} itemWidth=auto The width of each element
- * @property {string} space=var(--s0) The space between each element
- * @property {string} height=auto The height of the ReelLayout itself
- * @property {boolean} noBar=false Whether to hide the scrollbar
+  ReelLayout places elements horizontally and facilitates scrolling overflow.
+  [Documentation →](https://alembic.openlab.dev/layouts/#reel)
  */
 export class ReelLayout extends getHTMLElement() {
   static get observedAttributes() {

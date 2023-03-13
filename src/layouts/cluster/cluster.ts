@@ -13,13 +13,10 @@ export interface ClusterLayoutAttributes {
 }
 
 /**
- * ClusterLayout groups items together with control for the margin between them
- *
- * NOTE — if flex-gap isn't supported, items will appear flush
- *
- * @property {string} justify=flex-start A CSS `justify-content` value
- * @property {string} align=flex-start A CSS `align-items` value
- * @property {string} space=var(--s1) A CSS `gap` value. The minimum space between the clustered child elements.
+  ClusterLayout groups items together with control for the margin between them.
+  [Documentation →](https://alembic.openlab.dev/layouts/#cluster)
+  
+  > NOTE — if flex-gap isn't supported, items will appear flush
  */
 export class ClusterLayout extends getHTMLElement() {
   static get observedAttributes() {

@@ -15,13 +15,9 @@ export interface CoverLayoutAttributes {
 }
 
 /**
- * CoverLayout covers a block-layout element vertically with a centered principle element
- * and accessory elements at the top or bottom
- *
- * @property {string} centered=h1 A CSS `selector` e.g. an element/class for the principle element
- * @property {string} space=var(--s1) The minimum space between all child elements
- * @property {string} minHeight=100vh The minimum block-size (height) for the entire layout
- * @property {boolean} noPad=false Whether the spacing should also pad the inside of the layout
+  CoverLayout covers a block-layout element vertically with a centered principle element
+  and accessory elements at the top or bottom.
+  [Documentation →](https://alembic.openlab.dev/layouts/#cover)
  */
 export class CoverLayout extends getHTMLElement() {
   static get observedAttributes() {

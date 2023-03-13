@@ -13,11 +13,8 @@ export interface SwitcherLayoutAttributes {
 }
 
 /**
- * SwitcherLayout places elements horizontally if there is space, or vertically if not
- *
- * @property {string} threshold=var(--measure) A CSS `width` for the 'container breakpoint'
- * @property {string} space=var(--s1) A CSS `margin` for the gap between elements
- * @property {integer} limit=4 The maximum number of elements allowed to display horizontally
+  SwitcherLayout places elements horizontally if there is space, or vertically if not.
+  [Documentation →](https://alembic.openlab.dev/layouts/#switcher)
  */
 export class SwitcherLayout extends getHTMLElement() {
   static get observedAttributes() {

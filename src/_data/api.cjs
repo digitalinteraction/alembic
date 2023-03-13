@@ -49,7 +49,6 @@ function generate() {
         name: symbol.getEscapedName(),
         content: markdown.join('\n\n'),
         tags: symbol.getJsDocTags(),
-        prints,
       }
     }
   }

@@ -17,13 +17,8 @@ export interface SidebarLayoutAttributes {
 }
 
 /**
- * SidebarLayout places two elements side-by-side. If space permits it, the sidebar has a set width and the content fills up the rest of the space. If there is not enough space, the elements collapse into a single column, taking up all of the horizontal space.
- *
- * @property {string} side=left Which side to put the sidebar on, only "right" or "left" are allowed.
- * @property {string} sideWidth=null A CSS `length`, for the sidebar's width. If `null` use the intrinsic content width.
- * @property {string} contentMin=50% A CSS `percentage`, representing the minimum horizontal width of the content element.
- * @property {string} space=var(--s1) A CSS `gap` of space between the sidebar and content.
- * @property {boolean} noStretch=false Keep the sidebar and content their natural height
+  SidebarLayout places two elements side-by-side. If space permits it, the sidebar has a set width and the content fills up the rest of the space. If there is not enough space, the elements collapse into a single column, taking up all of the horizontal space..
+  [Documentation →](https://alembic.openlab.dev/layouts/#sidebar)
  */
 export class SidebarLayout extends getHTMLElement() {
   static get observedAttributes() {

@@ -13,11 +13,8 @@ export interface ImposterLayoutAttributes {
 }
 
 /**
- * ImposterLayout positions an element over any other element
- *
- * @property {boolean} breakout=false ...
- * @property {string} margin=0 The minimum space between the element and it's positioning container (when `breakout` isn't used)
- * @property {boolean} fixed=false Whether to fix the element to the viewport instead
+  ImposterLayout positions an element over any other element.
+  [Documentation →](https://alembic.openlab.dev/layouts/#imposter)
  */
 export class ImposterLayout extends getHTMLElement() {
   static get observedAttributes() {
