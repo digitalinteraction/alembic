@@ -30,7 +30,8 @@ title: Forms
       advised, an empty-box is more enticing to fill in.
     </p>
     <p>
-      Every field should have a unique id and the label should point to that id
+      A field should be <code>&lt;label&gt;</code> element with <code>class="field"></code> and the input element nested inside of it.
+      If you can't use a <code>label</code>, fields <strong>must</strong> have a unique id and the label that points to it
       using the <code>for</code> attribute.
     </p>
     <p>
@@ -42,48 +43,40 @@ title: Forms
   </div>
 
   <component-def label="Field / text">
-    <div class="field">
-      <label for="whatHappened">
-        <span class="field-label">What happened?</span>
-        <span class="field-hint">Describe the events in order</span>
-        <input type="text" id="whatHappened" name="whatHappened" />
-      </label>
-    </div>
+    <label class="field" for="whatHappened">
+      <span class="field-label">What happened?</span>
+      <span class="field-hint">Describe the events in order</span>
+      <input type="text" id="whatHappened" name="whatHappened" />
+    </label>
   </component-def>
 
   <component-def label="Field / textarea">
-    <div class="field">
-      <label for="nextAction">
-        <span class="field-label">What did you do next?</span>
-      </label>
+    <label class="field" for="nextAction">
+      <span class="field-label">What did you do next?</span>
       <textarea id="nextAction" rows="3" name="nextAction"> </textarea>
-    </div>
+    </label>
   </component-def>
 
   <component-def label="Field / select">
-    <div class="field">
-      <label for="favFruit">
-        <span class="field-label">Favourite fruit</span>
-      </label>
+    <label class="field" for="favFruit">
+      <span class="field-label">Favourite fruit</span>
       <select id="favFruit" name="favFruit">
         <option value="apple">Apple</option>
         <option value="banana">Banana</option>
         <option value="cherry">Cherry</option>
       </select>
-    </div>
+    </label>
   </component-def>
 
   <component-def label="Field / range">
-    <div class="field">
-      <label for="trust">
-        <span class="field-label">How trustworthy is this story?</span>
-        <span class="rangeHints">
-          <span>Not at all</span>
-          <span>Very</span>
-        </span>
-      </label>
+    <label class="field" for="trust">
+      <span class="field-label">How trustworthy is this story?</span>
+      <span class="rangeHints">
+        <span>Not at all</span>
+        <span>Very</span>
+      </span>
       <input type="range" min="0" max="100" id="trust" name="trust" />
-    </div>
+    </label>
   </component-def>
   
   <component-def label="Field / Form">
