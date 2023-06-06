@@ -13,7 +13,9 @@ const site = require('./src/_data/site.json')
 const md = markdownIt({
   html: true,
 })
-md.use(markdownAnchor, { slugify })
+md.use(markdownAnchor, {
+  slugify: (str) => slugify(str, { lower: true, strict: true }),
+})
 md.disable('code')
 
 // TODO: add watch/rebuild for src in development mode?
