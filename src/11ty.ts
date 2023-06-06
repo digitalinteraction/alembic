@@ -1,6 +1,11 @@
 import fs from 'fs/promises'
 import path from 'path'
-import { getBaseScripts, getBaseStyles, processHtml } from './tools.js'
+import {
+  getBaseScripts,
+  getBaseStyles,
+  getLabcoatStyles,
+  processHtml,
+} from './tools.js'
 
 // https://www.11ty.dev/docs/events/#event-arguments
 interface EleventyEventArgs {
@@ -33,9 +38,11 @@ export interface EleventyConfig {
   dir: Partial<Record<string, string>>
 }
 
+/** Options to configure eleventyAlembic */
 export interface AlembicEleventyOptions {
   skipBaseStyles?: boolean
   skipBaseScripts?: boolean
+  useLabcoat?: boolean
 }
 
 export function eleventyAlembic(
@@ -70,7 +77,7 @@ export function eleventyAlembic(
     await fs.mkdir(path.join(outdir, 'alembic'), { recursive: true })
     await fs.writeFile(
       path.join(outdir, 'alembic/style.css'),
-      await getBaseStyles()
+      options.useLabcoat ? await getLabcoatStyles() : await getBaseStyles()
     )
     await fs.writeFile(
       path.join(outdir, 'alembic/script.js'),

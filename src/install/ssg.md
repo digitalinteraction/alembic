@@ -62,6 +62,22 @@ For example:
 </html>
 ```
 
+### Eleventy options
+
+You can pass these options to `eleventyAlembic` to configure how it works:
+
+- `skipBaseStyles=false` Don't generate or insert the CSS styles
+- `skipBaseScripts=false` Don't generate or insert the scripts
+- `useLabcoat=false` (**Unstable**) Use [labcoat]({{ '/labcoat/' | url }}) instead of the base styles
+
+and you use them like this:
+
+```js
+eleventyConfig.addPlugin(eleventyAlembic, {
+  skipBaseStyles: true,
+})
+```
+
 ---
 
 ## DIY

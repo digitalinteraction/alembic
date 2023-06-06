@@ -87,6 +87,20 @@ export async function getBaseStyles(): Promise<string> {
 }
 
 /**
+  Get the labcoat styles along with the base styles for non-dynamic Alembic.
+  Useful for creating a stylesheet during SSG to be linked to from a HTML document.
+  
+  ```ts
+  const sourcecode = await getLabcoatStyles()
+  ```
+*/
+export async function getLabcoatStyles(): Promise<string> {
+  // This is dynamic so the custom embed: protocol doesn't break unit tests...
+  const css = await import('embed:./labcoat/labcoat.css')
+  return css.default
+}
+
+/**
   Get the scripts as a string to run Alembic in-browser.
   Useful for creating a script during SSG to be linked to from a HTML document.
   
