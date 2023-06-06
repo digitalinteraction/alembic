@@ -1,16 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <symbol id="add" viewBox="0 0 64 64" fill="currentColor"><path d="M32.5 0c2.8589 0 5.2083 2.2396 5.4748 5.1032L38 5.6471v52.7058C38 61.4717 35.5376 64 32.5 64c-2.8589 0-5.2083-2.2396-5.4748-5.1032L27 58.3529V5.6471C27 2.5283 29.4624 0 32.5 0Z"/><path d="M58.353 27C61.4716 27 64 29.4624 64 32.5c0 2.8589-2.2396 5.2083-5.1032 5.4748L58.3529 38H5.6471C2.5283 38 0 35.5376 0 32.5c0-2.8589 2.2396-5.2083 5.1032-5.4748L5.6471 27h52.7058Z"/></symbol>
-  <symbol id="cross" viewBox="0 0 64 64" fill="currentColor"><path d="m10.4394 1.4352.486.4393L32 22.949 53.0745 1.8745c2.4994-2.4993 6.5516-2.4993 9.051 0 2.3431 2.3432 2.4896 6.0512.4393 8.565l-.4393.486L41.051 32l21.0745 21.0745c2.4993 2.4994 2.4993 6.5516 0 9.051-2.3432 2.3431-6.0512 2.4896-8.565.4393l-.486-.4393L32 41.051 10.9255 62.1255c-2.4994 2.4993-6.5516 2.4993-9.051 0-2.3431-2.3432-2.4896-6.0512-.4393-8.565l.4393-.486L22.949 32 1.8745 10.9255c-2.4993-2.4994-2.4993-6.5516 0-9.051 2.3432-2.3431 6.0512-2.4896 8.565-.4393Z"/></symbol>
-  <symbol id="down" viewBox="0 0 64 64" fill="currentColor"><path d="M32 0c2.9353 0 5.3476 2.2396 5.6212 5.1032l.0259.5439v39.0738l16.7128-16.714c2.2053-2.2053 5.7808-2.2053 7.9861 0 2.0675 2.0675 2.1967 5.3393.3877 7.5573l-.3877.4289-26.353 26.353c-2.0674 2.0674-5.3392 2.1966-7.5572.3876l-.4289-.3877L1.654 35.993c-2.2052-2.2052-2.2052-5.7808 0-7.986 2.0676-2.0676 5.3393-2.1968 7.5573-.3877l.429.3876 16.7127 16.714V5.6471C26.353 2.5283 28.8812 0 32 0Z"/></symbol>
-  <symbol id="left" viewBox="0 0 64 64" fill="currentColor"><path d="M35.993 1.654c2.0676 2.0675 2.1968 5.3392.3877 7.5572l-.3876.429-16.714 16.7127h39.0738C61.4717 26.353 64 28.8812 64 32c0 2.9353-2.2396 5.3476-5.1032 5.6212l-.5439.0259H19.2791l16.714 16.7128c2.0675 2.0674 2.1967 5.3392.3876 7.5572l-.3876.429c-2.0675 2.0674-5.3393 2.1966-7.5573.3876l-.4289-.3877L1.654 35.993c-2.0674-2.0674-2.1966-5.3392-.3876-7.5572l.3877-.4289L28.007 1.654c2.2052-2.2052 5.7808-2.2052 7.986 0Z"/></symbol>
-  <symbol id="menu" viewBox="0 0 64 64" fill="currentColor"><path d="M59.4286 28C61.9533 28 64 30.0147 64 32.5c0 2.339-1.813 4.2613-4.1312 4.4794L59.4286 37H4.5714C2.0467 37 0 34.9853 0 32.5c0-2.339 1.813-4.2613 4.1312-4.4794L4.5714 28h54.8572Zm0-18C61.9533 10 64 12.0147 64 14.5c0 2.339-1.813 4.2613-4.1312 4.4794L59.4286 19H4.5714C2.0467 19 0 16.9853 0 14.5c0-2.339 1.813-4.2613 4.1312-4.4794L4.5714 10h54.8572Zm0 36C61.9533 46 64 48.0147 64 50.5c0 2.339-1.813 4.2613-4.1312 4.4794L59.4286 55H4.5714C2.0467 55 0 52.9853 0 50.5c0-2.339 1.813-4.2613 4.1312-4.4794L4.5714 46h54.8572Z"/></symbol>
-  <symbol id="minus" viewBox="0 0 64 64" fill="currentColor"><path d="M58.353 27C61.4716 27 64 29.4624 64 32.5c0 2.8589-2.2396 5.2083-5.1032 5.4748L58.3529 38H5.6471C2.5283 38 0 35.5376 0 32.5c0-2.8589 2.2396-5.2083 5.1032-5.4748L5.6471 27h52.7058Z"/></symbol>
-  <symbol id="right" viewBox="0 0 64 64" fill="currentColor"><path d="m35.5642 1.2663.4289.3877 26.353 26.353c2.0674 2.0674 2.1966 5.3392.3876 7.5572l-.3877.4289-26.353 26.353c-2.2052 2.2052-5.7808 2.2052-7.986 0-2.0676-2.0676-2.1968-5.3393-.3877-7.5573l.3876-.429 16.714-16.7127H5.6471C2.5283 37.647 0 35.1188 0 32c0-2.9353 2.2396-5.3476 5.1032-5.6212l.5439-.0259h39.0738L28.007 9.6401c-2.0675-2.0674-2.1967-5.3392-.3876-7.5572l.3876-.429c1.9297-1.9296 4.9084-2.1708 7.1003-.7235l.457.336Z"/></symbol>
-  <symbol id="up" viewBox="0 0 64 64" fill="currentColor"><path d="m35.5642 1.2663.4289.3877 26.353 26.353c2.2052 2.2052 2.2052 5.7808 0 7.986-2.0676 2.0676-5.3393 2.1968-7.5573.3877l-.429-.3876-16.7127-16.714v39.0738C37.647 61.4717 35.1188 64 32 64c-2.9353 0-5.3476-2.2396-5.6212-5.1032l-.0259-.5439V19.2791L9.6401 35.993c-2.0674 2.0675-5.3392 2.1967-7.5572.3876l-.429-.3876c-2.0674-2.0675-2.1966-5.3393-.3876-7.5573l.3877-.4289L28.007 1.654c1.9296-1.9296 4.9083-2.1708 7.1002-.7235l.457.336Z"/></symbol>
-  <symbol id="download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="bevel"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"/></symbol>
-  <symbol id="internal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="bevel"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></symbol>
-  <symbol id="layouts" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="bevel"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
-  <symbol id="forms" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="bevel"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 3v5h5M16 13H8M16 17H8M10 9H8"/></symbol>
-  <symbol id="question" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="bevel"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></symbol>
-  <symbol id="info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="bevel"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></symbol>
+<symbol id="check" viewBox="0 0 64 64">
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<polygon fill="currentColor" fill-rule="nonzero" points="56.4853489 7.5 64 15.0614617 60.2426744 18.8421925 22.8179942 56.5 19.0606686 52.7192692 3.75732557 37.320598 0 33.5398671 7.51465114 25.9784054 11.2719767 29.7591363 22.8179942 41.3777908 52.7280233 11.2807308"></polygon>
+</g>
+</symbol>
+<symbol id="add" viewBox="0 0 64 64">
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<rect fill="currentColor" x="26" y="0" width="12" height="64"></rect>
+<rect fill="currentColor" transform="translate(32, 32) rotate(90) translate(-32, -32)" x="26" y="0" width="12" height="64"></rect>
+</g>
+</symbol>
+<symbol id="cross" viewBox="0 0 64 64">
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<rect fill="currentColor" transform="translate(32, 32) rotate(45) translate(-32, -32)" x="26" y="-7" width="12" height="78"></rect>
+<rect fill="currentColor" transform="translate(32, 32) rotate(135) translate(-32, -32)" x="26" y="-7" width="12" height="78"></rect>
+</g>
+</symbol>
+<symbol id="up" viewBox="0 0 64 64">
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<polygon fill="currentColor" fill-rule="nonzero" points="32 1 35.6412358 4.64123582 60.3587642 29.3587642 64 33 56.7175284 40.2824716 37.1491555 20.713411 37.1494851 62.8670134 26.8505149 62.8670134 26.8498558 20.713411 10.9237075 36.6412358 7.28247163 40.2824716 0 33"></polygon>
+</g>
+</symbol>
+<symbol id="down" viewBox="0 0 64 64">
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<polygon fill="currentColor" fill-rule="nonzero" transform="translate(32, 31.9335) rotate(180) translate(-32, -31.9335)" points="32 1 35.6412358 4.64123582 60.3587642 29.3587642 64 33 56.7175284 40.2824716 37.1491555 20.713411 37.1494851 62.8670134 26.8505149 62.8670134 26.8498558 20.713411 10.9237075 36.6412358 7.28247163 40.2824716 7.10542736e-15 33"></polygon>
+</g>
+</symbol>
+<symbol id="minus" viewBox="0 0 64 64">
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<rect fill="currentColor" fill-rule="nonzero" x="0" y="26" width="64" height="12"></rect>
+</g>
+</symbol>
+<symbol id="right" viewBox="0 0 64 64">
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<polygon fill="currentColor" fill-rule="nonzero" transform="translate(32, 31.9335) rotate(90) translate(-32, -31.9335)" points="32 1 35.6412358 4.64123582 60.3587642 29.3587642 64 33 56.7175284 40.2824716 37.1491555 20.713411 37.1494851 62.8670134 26.8505149 62.8670134 26.8498558 20.713411 10.9237075 36.6412358 7.28247163 40.2824716 0 33"></polygon>
+</g>
+</symbol>
+<symbol id="left" viewBox="0 0 64 64">
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<polygon fill="currentColor" fill-rule="nonzero" transform="translate(32, 31.9335) rotate(270) translate(-32, -31.9335)" points="32 1 35.6412358 4.64123582 60.3587642 29.3587642 64 33 56.7175284 40.2824716 37.1491555 20.713411 37.1494851 62.8670134 26.8505149 62.8670134 26.8498558 20.713411 10.9237075 36.6412358 7.28247163 40.2824716 0 33"></polygon>
+</g>
+</symbol>
+<symbol id="menu" viewBox="0 0 64 64">
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+<rect fill="currentColor" x="0" y="10" width="64" height="9"></rect>
+<rect fill="currentColor" x="0" y="28" width="64" height="9"></rect>
+<rect fill="currentColor" x="0" y="46" width="64" height="9"></rect>
+</g>
+</symbol>
 </svg>

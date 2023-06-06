@@ -65,6 +65,7 @@ await esbuild.build({
   outdir: fileURLToPath(places.dist),
   entryPoints: {
     everything: resolveToPath('src/everything.css'),
+    labcoat: resolveToPath('src/labcoat/labcoat.css'),
     'docs/docs': resolveToPath('src/docs/docs.css'),
     reset: resolveToPath('src/lib/reset.css'),
   },

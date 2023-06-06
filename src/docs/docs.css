@@ -266,6 +266,15 @@ code .token.property {
 code .token.selector {
   color: var(--prism-selector, #11632a);
 }
+code .tag {
+  color: var(--prism-tag, #116329);
+}
+code .token.attr-name {
+  color: var(--prism-attr-name, #0550ae);
+}
+code .token.attr-value {
+  color: var(--prism-attr-value, #0a3069);
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --prism-foreground: hsl(210, 13%, 88%);
@@ -276,6 +285,9 @@ code .token.selector {
     --prism-comment: #768390;
     --prism-property: #6cb6ff;
     --prism-selector: #8ddb8c;
+    --prism-tag: #8ddb8c;
+    --prism-attr-name: #6cb6ff;
+    --prism-attr-value: #96d0ff;
   }
 }
 
