@@ -40,8 +40,6 @@ main {
   padding: var(--s0);
 }
 header:not([class]) {
-  font-family: var(--font-mono);
-  font-weight: bold;
   font-size: 1.2em;
   padding: 1rem;
 }
@@ -58,7 +56,6 @@ footer:not([class]) a {
 code {
   font-family: var(--font-mono);
   padding: 0 0.2em;
-  border: var(--border-thin) solid var(--border);
   border-radius: 4px;
   background-color: var(--highlight);
   display: inline-block;
