@@ -1,4 +1,9 @@
-import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
+import {
+  addGlobalStyle,
+  getAttributes,
+  getHTMLElement,
+  trimCss,
+} from '../../lib/lib.js'
 
 const defaultAttributes = {
   padding: 'var(--s1)',
@@ -6,7 +11,7 @@ const defaultAttributes = {
   invert: false,
 }
 
-export interface BoxLayoutAttributes {
+export type BoxLayoutAttributes = {
   padding?: string
   borderWidth?: string
   invert?: boolean
@@ -24,7 +29,10 @@ export class BoxLayout extends getHTMLElement() {
     customElements.define('box-layout', BoxLayout)
   }
   static getStyles(attrs: BoxLayoutAttributes) {
-    const { padding, borderWidth, invert } = { ...defaultAttributes, ...attrs }
+    const { padding, borderWidth, invert } = getAttributes(
+      defaultAttributes,
+      attrs
+    )
     const id = `BoxLayout-${padding}${borderWidth}${invert}`
     const invertRule = invert
       ? `color: var(--color-background); background-color: var(--color-foreground);`

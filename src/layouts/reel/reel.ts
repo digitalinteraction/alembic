@@ -1,4 +1,9 @@
-import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
+import {
+  addGlobalStyle,
+  getAttributes,
+  getHTMLElement,
+  trimCss,
+} from '../../lib/lib.js'
 
 const defaultAttributes = {
   itemWidth: 'auto',
@@ -7,7 +12,7 @@ const defaultAttributes = {
   noBar: false,
 }
 
-export interface ReelLayoutAttributes {
+export type ReelLayoutAttributes = {
   itemWidth?: string
   height?: string
   space?: string
@@ -26,10 +31,10 @@ export class ReelLayout extends getHTMLElement() {
     customElements.define('reel-layout', ReelLayout)
   }
   static getStyles(attrs: ReelLayoutAttributes) {
-    const { itemWidth, height, space, noBar } = {
-      ...defaultAttributes,
-      ...attrs,
-    }
+    const { itemWidth, height, space, noBar } = getAttributes(
+      defaultAttributes,
+      attrs
+    )
     const id = `ReelLayout-${itemWidth}${height}${space}${noBar}`
     const barRule = `
       [data-i="${id}"] {

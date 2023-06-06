@@ -1,4 +1,9 @@
-import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
+import {
+  addGlobalStyle,
+  getAttributes,
+  getHTMLElement,
+  trimCss,
+} from '../../lib/lib.js'
 
 const defaultAttributes = {
   breakout: false,
@@ -6,7 +11,7 @@ const defaultAttributes = {
   margin: '0px',
 }
 
-export interface ImposterLayoutAttributes {
+export type ImposterLayoutAttributes = {
   breakout?: boolean
   fixed?: boolean
   margin?: string
@@ -24,7 +29,7 @@ export class ImposterLayout extends getHTMLElement() {
     customElements.define('imposter-layout', ImposterLayout)
   }
   static getStyles(attrs: ImposterLayoutAttributes) {
-    const { breakout, fixed, margin } = { ...defaultAttributes, ...attrs }
+    const { breakout, fixed, margin } = getAttributes(defaultAttributes, attrs)
     const id = `ImposterLayout-${breakout}${fixed}${margin}`
 
     const normalisedMargin = margin === '0' ? '0px' : margin

@@ -1,4 +1,9 @@
-import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
+import {
+  addGlobalStyle,
+  getAttributes,
+  getHTMLElement,
+  trimCss,
+} from '../../lib/lib.js'
 
 const defaultAttributes = {
   side: 'left',
@@ -8,7 +13,7 @@ const defaultAttributes = {
   noStretch: false,
 }
 
-export interface SidebarLayoutAttributes {
+export type SidebarLayoutAttributes = {
   side?: string
   sideWidth?: string
   contentMin?: string
@@ -28,10 +33,10 @@ export class SidebarLayout extends getHTMLElement() {
     customElements.define('sidebar-layout', SidebarLayout)
   }
   static getStyles(attrs: SidebarLayoutAttributes) {
-    const { side, sideWidth, contentMin, space, noStretch } = {
-      ...defaultAttributes,
-      ...attrs,
-    }
+    const { side, sideWidth, contentMin, space, noStretch } = getAttributes(
+      defaultAttributes,
+      attrs
+    )
     const id = `SidebarLayout-${side}${sideWidth}${contentMin}${space}${noStretch}`
     const sideSelector = side !== 'left' ? `:first-child` : `:last-child`
     const css = trimCss`

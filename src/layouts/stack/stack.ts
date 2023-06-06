@@ -1,10 +1,15 @@
-import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
+import {
+  addGlobalStyle,
+  getAttributes,
+  getHTMLElement,
+  trimCss,
+} from '../../lib/lib.js'
 
 const defaultAttributes = {
   space: 'var(--s1)',
 }
 
-export interface StackLayoutAttributes {
+export type StackLayoutAttributes = {
   space?: string
 }
 
@@ -20,7 +25,7 @@ export class StackLayout extends getHTMLElement() {
     customElements.define('stack-layout', StackLayout)
   }
   static getStyles(attrs: StackLayoutAttributes) {
-    const { space } = { ...defaultAttributes, ...attrs }
+    const { space } = getAttributes(defaultAttributes, attrs)
     const id = `StackLayout-${space}`
     const css = trimCss`
       [data-i="${id}"] > * + * {

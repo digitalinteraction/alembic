@@ -1,11 +1,16 @@
-import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
+import {
+  addGlobalStyle,
+  getAttributes,
+  getHTMLElement,
+  trimCss,
+} from '../../lib/lib.js'
 
 const defaultAttributes = {
   space: undefined,
   label: undefined,
 }
 
-export interface IconLayoutAttributes {
+export type IconLayoutAttributes = {
   space?: string
   label?: string
 }
@@ -23,7 +28,7 @@ export class IconLayout extends getHTMLElement() {
   }
   static getStyles(attrs: IconLayoutAttributes) {
     // `label` isn't used because it doesn't effect styles
-    const { space } = { ...defaultAttributes, ...attrs }
+    const { space } = getAttributes(defaultAttributes, attrs)
     const id = `IconLayout-${space}`
 
     const spaceRule = trimCss`

@@ -1,4 +1,9 @@
-import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
+import {
+  addGlobalStyle,
+  getAttributes,
+  getHTMLElement,
+  trimCss,
+} from '../../lib/lib.js'
 
 const defaultAttributes = {
   max: 'var(--measure)',
@@ -6,7 +11,7 @@ const defaultAttributes = {
   intrinsic: false,
 }
 
-export interface CenterLayoutAttributes {
+export type CenterLayoutAttributes = {
   max?: string
   gutters?: string
   intrinsic?: boolean
@@ -26,7 +31,7 @@ export class CenterLayout extends getHTMLElement() {
     customElements.define('center-layout', CenterLayout)
   }
   static getStyles(attrs: CenterLayoutAttributes) {
-    const { max, gutters, intrinsic } = { ...defaultAttributes, ...attrs }
+    const { max, gutters, intrinsic } = getAttributes(defaultAttributes, attrs)
     const id = `CenterLayout-${max}${gutters}${intrinsic}`
 
     const guttersRule = `padding-inline: ${gutters};`

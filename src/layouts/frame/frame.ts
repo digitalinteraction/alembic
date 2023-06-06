@@ -1,4 +1,9 @@
-import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
+import {
+  addGlobalStyle,
+  getAttributes,
+  getHTMLElement,
+  trimCss,
+} from '../../lib/lib.js'
 
 const ratioRegex = () => /^(\d+):(\d+)$/
 
@@ -6,7 +11,7 @@ const defaultAttributes = {
   ratio: '16:9',
 }
 
-export interface FrameLayoutAttributes {
+export type FrameLayoutAttributes = {
   ratio?: string
 }
 
@@ -22,7 +27,7 @@ export class FrameLayout extends getHTMLElement() {
     customElements.define('frame-layout', FrameLayout)
   }
   static getStyles(attrs: FrameLayoutAttributes) {
-    const { ratio } = { ...defaultAttributes, ...attrs }
+    const { ratio } = getAttributes(defaultAttributes, attrs)
 
     const parsedRatio = ratioRegex().exec(ratio)
     if (!parsedRatio) throw new Error(`Invalid ratio '${ratio}'`)

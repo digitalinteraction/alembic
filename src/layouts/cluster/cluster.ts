@@ -1,4 +1,9 @@
-import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
+import {
+  addGlobalStyle,
+  getAttributes,
+  getHTMLElement,
+  trimCss,
+} from '../../lib/lib.js'
 
 const defaultAttributes = {
   justify: 'flex-start',
@@ -6,7 +11,7 @@ const defaultAttributes = {
   space: 'var(--s1)',
 }
 
-export interface ClusterLayoutAttributes {
+export type ClusterLayoutAttributes = {
   justify?: string
   align?: string
   space?: string
@@ -26,7 +31,7 @@ export class ClusterLayout extends getHTMLElement() {
     customElements.define('cluster-layout', ClusterLayout)
   }
   static getStyles(attrs: ClusterLayoutAttributes) {
-    const { justify, align, space } = { ...defaultAttributes, ...attrs }
+    const { justify, align, space } = getAttributes(defaultAttributes, attrs)
     const id = `ClusterLayout-${justify}${align}${space}`
     const css = trimCss`
       [data-i="${id}"] {

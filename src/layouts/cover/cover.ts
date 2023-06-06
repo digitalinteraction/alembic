@@ -1,4 +1,9 @@
-import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
+import {
+  addGlobalStyle,
+  getAttributes,
+  getHTMLElement,
+  trimCss,
+} from '../../lib/lib.js'
 
 const defaultAttributes = {
   centered: 'h1',
@@ -7,7 +12,7 @@ const defaultAttributes = {
   noPad: false,
 }
 
-export interface CoverLayoutAttributes {
+export type CoverLayoutAttributes = {
   centered?: string
   space?: string
   minHeight?: string
@@ -27,10 +32,10 @@ export class CoverLayout extends getHTMLElement() {
     customElements.define('cover-layout', CoverLayout)
   }
   static getStyles(attrs: CoverLayoutAttributes) {
-    const { centered, space, minHeight, noPad } = {
-      ...defaultAttributes,
-      ...attrs,
-    }
+    const { centered, space, minHeight, noPad } = getAttributes(
+      defaultAttributes,
+      attrs
+    )
     const id = `CoverLayout-${centered}${space}${minHeight}${noPad}`
     const css = trimCss`
       [data-i="${id}"] {

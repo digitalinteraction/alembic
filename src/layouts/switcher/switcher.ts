@@ -1,4 +1,9 @@
-import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
+import {
+  addGlobalStyle,
+  getAttributes,
+  getHTMLElement,
+  trimCss,
+} from '../../lib/lib.js'
 
 const defaultAttributes = {
   threshold: 'var(--measure)',
@@ -6,7 +11,7 @@ const defaultAttributes = {
   limit: '4',
 }
 
-export interface SwitcherLayoutAttributes {
+export type SwitcherLayoutAttributes = {
   threshold?: string
   space?: string
   limit?: string
@@ -24,7 +29,7 @@ export class SwitcherLayout extends getHTMLElement() {
     customElements.define('switcher-layout', SwitcherLayout)
   }
   static getStyles(attrs: SwitcherLayoutAttributes) {
-    const { threshold, space, limit } = { ...defaultAttributes, ...attrs }
+    const { threshold, space, limit } = getAttributes(defaultAttributes, attrs)
     const id = `SwitcherLayout-${threshold}${space}${limit}`
     const nPlus1 = parseInt(limit) + 1
     const css = trimCss`

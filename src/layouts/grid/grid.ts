@@ -1,11 +1,16 @@
-import { addGlobalStyle, getHTMLElement, trimCss } from '../../lib/lib.js'
+import {
+  addGlobalStyle,
+  getAttributes,
+  getHTMLElement,
+  trimCss,
+} from '../../lib/lib.js'
 
 const defaultAttributes = {
   min: '250px',
   space: 'var(--s1)',
 }
 
-export interface GridLayoutAttributes {
+export type GridLayoutAttributes = {
   min?: string
   space?: string
 }
@@ -22,7 +27,7 @@ export class GridLayout extends getHTMLElement() {
     customElements.define('grid-layout', GridLayout)
   }
   static getStyles(attrs: GridLayoutAttributes) {
-    const { min, space } = { ...defaultAttributes, ...attrs }
+    const { min, space } = getAttributes(defaultAttributes, attrs)
     const id = `GridLayout-${min}${space}`
     const css = trimCss`
       [data-i="${id}"] {
