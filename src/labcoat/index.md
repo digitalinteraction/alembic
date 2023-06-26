@@ -22,7 +22,7 @@ Quickly add basic styles to HTML to get a responsive & pretty page.
   <body>
     <header>Peculiar Page</header>
     <main>
-      <center-layout data-i="CenterLayout-var(--measure)undefinedfalse">
+      <center-layout>
         <article class="flow">
           <h1>Hello, World!</h1>
           <p>
@@ -44,19 +44,23 @@ Quickly add basic styles to HTML to get a responsive & pretty page.
 
 ## Features
 
-- A full height `<body>` tag
-- Styled `<header>` at the top when no class is applied to it
-- Styled `<footer>` at the bottom when no class is applied to it
+- A [HTML reset]({{ '/development/reset-css' | url }})
 - Setup with all [Layout elements]({{ '/layouts/' | url }})
-- Light + dark theme
-- Styled `<blockquote>` elements
-- Styled `<blockquote>` elements
-- Use a `.flow` class to make HTML content flow nicely down the page
+- Basic [form styles]({{ '/forms' | url }}) are available too
+- A full height `<body>` tag
+- A custom `<header>` at the top when no class is applied to it
+- A custom `<footer>` at the bottom when no class is applied to it
+- Light + dark themes based on user preference
+- Styled HTML elements (see below)
+- A `.flow` class to make HTML content flow nicely down the page
+- Hide anything with `aria-hidden="true"`
 
 ## Styled elements
 
+- `<a>`
 - `<blockquote>`
-- `<details>`
 - `<code>`
-- `<pre>`
+- `<details>`
 - `<h1> ... </h6>`
+- `<pre>`
+- `<table>`

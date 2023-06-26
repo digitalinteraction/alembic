@@ -8,13 +8,16 @@
   --border-thin: var(--s-5);
   --border-thick: var(--s-2);
 
+  --anchor: hsl(238, 90%, 56%);
   --color: #242729;
   --background: white;
   --border: #bebebe;
   --highlight: #eee;
+  --focus: coral;
 }
 @media (prefers-color-scheme: dark) {
   :root {
+    --anchor: hsl(238, 100%, 71%);
     --color: #dddddd;
     --background: #242729;
     --border: #666666;
@@ -39,19 +42,22 @@ main {
   flex: 1;
   padding: var(--s0);
 }
-header:not([class]) {
+body > header:not([class]) {
   font-size: 1.2em;
   padding: 1rem;
 }
-footer:not([class]) {
+body > footer:not([class]) {
   text-align: center;
   font-style: italic;
   opacity: 0.8;
   padding: 1em;
 }
-footer:not([class]) a {
+body > footer:not([class]) a {
   font-weight: bold;
   color: currentcolor;
+}
+a {
+  color: var(--anchor);
 }
 code {
   font-family: var(--font-mono);
@@ -99,4 +105,44 @@ blockquote {
 }
 details > summary {
   cursor: pointer;
+}
+details > :not(summary) {
+  padding: 0.5em 1em;
+}
+ol,
+ul {
+  margin-block: 0;
+  margin-inline-start: 1em;
+}
+a:focus,
+button:focus,
+select:focus,
+textarea:focus,
+input:focus,
+summary:focus {
+  outline: var(--s-3) solid var(--focus);
+  outline-offset: var(--s-3);
+}
+[aria-hidden],
+[aria-hidden='true'] {
+  display: none !important;
+}
+table:not([class]) {
+  display: block;
+  font-size: 1rem;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
+}
+table:not([class]) th {
+  border-bottom: var(--border-thin) solid var(--border);
+}
+table:not([class]) th,
+table:not([class]) td {
+  padding: var(--s-2) var(--s-1);
+  text-align: inherit;
+  word-break: keep-all;
 }
