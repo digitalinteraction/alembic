@@ -2,6 +2,10 @@
 
 Notable changes to Alembic are documented here
 
+## 0.3.2
+
+Labcoat improvements and website updates.
+
 ## 0.3.1
 
 Adds new **unstable** labcoat, a set of generic styles to make basic HTML pages look good.
