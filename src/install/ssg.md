@@ -38,6 +38,8 @@ module.exports = function (eleventyConfig) {
 
 The plugin does two things. First it adds a [eleventy.after event](https://www.11ty.dev/docs/events/#eleventy.after) which creates `alembic/style.css` and `alembic/script.js` in your site output folder.
 
+> This only works for sites that are at the top-level of a domain, not ones in a subdirectory. Comment on [#50](https://github.com/digitalinteraction/alembic/issues/50) if interested in subdirectories.
+
 Second it adds a [transform](https://www.11ty.dev/docs/config/#transforms) for any HTML file to generate any custom element styles and insert them back into the document. You need to add one of both of these comments to you HTML template/layout for this to take effect. The plugin will replace the comments with the generated styles/scripts.
 
 `<!-- @openlab/alembic inject-css -->`
