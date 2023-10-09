@@ -9,6 +9,14 @@
   box-sizing: border-box;
 }
 
+/* Prevent font size inflation */
+/* https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/ */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
 /* Remove default margin */
 body,
 h1,
@@ -23,28 +31,40 @@ dd {
   margin: 0;
 }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+/* Remove list styles on elements with the role, which implies they will be styled elsewhere to not look like lists */
+/* https://bugs.webkit.org/show_bug.cgi?id=170179 */
 ul[role='list'],
 ol[role='list'] {
   list-style: none;
 }
 
-/* Add smooth scrolling when the body is foccused (ie not from cmd+f) */
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
 /* Make the body fill the viewport vertically and set a default line-height */
 body {
   min-height: 100vh;
-  min-height: 100dvh;
-  /* text-rendering: optimizeSpeed; */
+  min-height: 100svh;
   line-height: 1.5;
+}
+
+/* Have shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
 }
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em
 }
 
 /* Make images easier to work with */
@@ -54,7 +74,7 @@ picture {
   display: block;
 }
 
-/* Inherit fonts for inputs and buttons */
+/* Inherit fonts for interactive elements */
 input,
 button,
 textarea,
@@ -62,17 +82,7 @@ select {
   font: inherit;
 }
 
-/* Remove all animations and transitions for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
 }
