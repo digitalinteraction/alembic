@@ -68,6 +68,7 @@ code {
   word-break: break-all;
 }
 pre {
+  font-size: 1em;
   max-width: 100%;
   width: 100%;
   overflow-x: auto;
