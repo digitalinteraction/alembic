@@ -18,10 +18,14 @@ export interface ProcessHtmlOptions {
   This is useful to automatically add the Alembic base styles / scripts from `getBaseStyles` and `getBaseScripts`. Your build process could write these files somewhere then make sure they are linked to from the HTML here.
   
   ```js
+  import { processHtml } from '@openlab/alembic'
+
   const options = {
-   extraStyles: [`<link rel="stylesheet" href="/alembic/style.css">`],
-   extraScripts: [`<script type="module" src="/alembic/script.js"></script>`],
+    extraStyles: [`<link rel="stylesheet" href="/alembic/style.css">`],
+    extraScripts: [`<script type="module" src="/alembic/script.js"></script>`],
   }
+
+  processHtml('<html>...', options)
   ```
   
   You control where the styles and scripts are injected using a special HTML comments `<!-- @openlab/alembic inject-css -->` and `<!-- @openlab/alembic inject-js -->`. You opt in to those features by adding the comment to your HTML.
@@ -60,7 +64,13 @@ export function processHtml(
 }
 
 /**
- **getStyles** takes a HTML string, looks through it for Alembic usage and returns the styles to satisfy it. This is useful for SSR when you have something that has already generated style ids on custom elements and need to get the styles for a whole document in one go.
+  **getStyles** takes a HTML string, looks through it for Alembic usage and returns the styles to satisfy it. This is useful for SSR when you have something that has already generated style ids on custom elements and need to get the styles for a whole document in one go.
+
+  ```js
+  import { getStyles } from '@openlab/alembic'
+
+  getStyles('<html>...') // Map<string, string>
+  ```
  */
 export function getStyles(inputHtml: string): Map<string, unknown> {
   const styles = new AlembicStyleSheet()
