@@ -1,5 +1,5 @@
 const path = require('path')
-const { Project } = require('ts-morph')
+const { Project, SyntaxKind } = require('ts-morph')
 
 const debug = require('debug')('alembic:api')
 
@@ -36,7 +36,13 @@ function generate() {
       let markdown = []
 
       // Compose all doc comments together
-      for (const declaration of symbol.getDeclarations()) {
+      for (let declaration of symbol.getDeclarations()) {
+        // https://github.com/dsherret/ts-morph/issues/901
+        if (declaration.getKind() === SyntaxKind.VariableDeclaration) {
+          declaration = declaration.getVariableStatementOrThrow()
+        }
+
+        // TODO: should this use `Node.isJSDocable(decl)` + `node#getJsDocs()` ?
         for (const range of declaration.getLeadingCommentRanges()) {
           const match = /\/\*\*([\s\S]+)\*\//.exec(range.getText())
           if (!match) continue
