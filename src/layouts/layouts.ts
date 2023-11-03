@@ -15,6 +15,11 @@ import { AlembicHTMLElement } from '../lib/lib.js'
 /**
   A map of Custom Element layouts,
   where the key is the element name and the value is the HTMLElement subclass
+
+
+  ```js
+  import { layoutCustomElements } from '@openlab/alembic'
+  ```
 */
 export const layoutCustomElements = new Map<string, AlembicHTMLElement>([
   ['box-layout', BoxLayout],

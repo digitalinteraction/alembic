@@ -1,5 +1,5 @@
 /**
-  @experimental
+  > **unstable** use at your own risk
   
   A Map of custom shortcodes and their resolved values.
   These are used when parsing custom element attributes to map what is passed to a longer value.
@@ -66,6 +66,8 @@ export function getAttributes<
 }
 
 /**
+  > **unstable** use at your own risk  
+
   `getAttribute` returns the resolved attribute value given an input value based on whatever the state of `attributeShortcodes` is at the time of calling it.
   If a replacement is not found, the input value is returned instead.
 
