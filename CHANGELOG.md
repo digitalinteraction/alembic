@@ -2,6 +2,10 @@
 
 Notable changes to Alembic are documented here
 
+## 0.3.3
+
+Improve labcoat `pre` styles and work on documentation.
+
 ## 0.3.2
 
 Labcoat improvements and website updates.

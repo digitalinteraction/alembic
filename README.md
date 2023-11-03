@@ -30,14 +30,14 @@ This library is used by several Open Lab projects:
 
 **What**
 
-* A library of components and patterns
-* A documentation site to describe the design system
+- A library of components and patterns
+- A documentation site to describe the design system
 
 **To explore**
 
-* More accessibility concerns
-* Document the reason behind decisions / solutions
-* Think about adaptability, evolution and collaboration
+- More accessibility concerns
+- Document the reason behind decisions / solutions
+- Think about adaptability, evolution and collaboration
 
 ## Coding conventions
 

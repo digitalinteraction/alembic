@@ -1,3 +1,17 @@
+/**
+  @experimental
+  
+  A Map of custom shortcodes and their resolved values.
+  These are used when parsing custom element attributes to map what is passed to a longer value.
+  The values are currently a work in progress and may change at any time.
+
+  ```js
+  import { attributeShortcodes } from '@openlab/alembic'
+
+  attributeShortcodes.get('s-5') // 'var(--s-5)'
+  attributeShortcodes.get('s0') // 'var(--s0)'
+  ```
+ */
 export const attributeShortcodes = new Map(
   Object.entries({
     's-5': 'var(--s-5)',
@@ -5,6 +19,11 @@ export const attributeShortcodes = new Map(
     's-3': 'var(--s-3)',
     's-2': 'var(--s-2)',
     's-1': 'var(--s-1)',
+    // '-s5': 'var(--s-5)', // TODO: IDEA
+    // '-s4': 'var(--s-4)',
+    // '-s3': 'var(--s-3)',
+    // '-s2': 'var(--s-2)',
+    // '-s1': 'var(--s-1)',
     s0: 'var(--s0)',
     s1: 'var(--s1)',
     s2: 'var(--s2)',
@@ -25,6 +44,7 @@ export type MergedAttributes<
     : T[K]
 }
 
+/** @internal */
 export function getAttributes<
   T extends Record<string, unknown>,
   U extends Record<string, unknown>
@@ -45,6 +65,17 @@ export function getAttributes<
   }
 }
 
+/**
+  `getAttribute` returns the resolved attribute value given an input value based on whatever the state of `attributeShortcodes` is at the time of calling it.
+  If a replacement is not found, the input value is returned instead.
+
+  ```js
+  import { getAttribute } from '@openlab/alembic'
+
+  getAttribute('s-5') // 'var(--s-5)'
+  getAttribute('something-unknown') // 'something-unknown'
+  ```
+ */
 export function getAttribute(input: string) {
   return attributeShortcodes.get(input) ?? input
 }

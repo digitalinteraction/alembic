@@ -52,7 +52,7 @@ and then in your CSS file:
 @import '@openlab/alembic/everything.css';
 ```
 
-## Vite
+## Vite + vue
 
 When using Vite, you **also** need to tell it which elements from Alembic are custom elements, so it knows not to process these. Create or update your [Vite config](https://vitejs.dev/config/) to include:
 
@@ -79,7 +79,7 @@ export default defineConfig({
 
 ## Parcel
 
-When using Parcel, do the same as before but you'll need `npm:` prefixes in your imports in JavaScript:
+When using Parcel, do the same initial setup but you'll need `npm:` prefixes in your imports in JavaScript:
 
 ```js
 import 'npm:@openlab/alembic/everything.js'

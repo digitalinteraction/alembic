@@ -46,11 +46,12 @@ Quickly add basic styles to HTML to get a responsive & pretty page.
 
 - A [HTML reset]({{ '/development/reset-css' | url }})
 - Setup with all [Layout elements]({{ '/layouts/' | url }})
-- Basic [form styles]({{ '/forms' | url }}) are available too
+- [Form patterns]({{ '/forms' | url }}) are available too
 - A full height `<body>` tag
+- A `<main>` element that fills the full-height `<body>` when directly nested
 - A custom `<header>` at the top when no class is applied to it
 - A custom `<footer>` at the bottom when no class is applied to it
-- Light + dark themes based on user preference
+- Light + dark themes based on user's OS preference
 - Styled HTML elements (see below)
 - A `.flow` class to make HTML content flow nicely down the page
 - Hide anything with `aria-hidden="true"`
@@ -60,7 +61,7 @@ Quickly add basic styles to HTML to get a responsive & pretty page.
 - `<a>`
 - `<blockquote>`
 - `<code>`
-- `<details>`
+- `<details> + <summary>`
 - `<h1> ... </h6>`
 - `<pre>`
 - `<table>`

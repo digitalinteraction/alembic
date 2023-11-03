@@ -1,6 +1,24 @@
 /** 
-  Create a global stylesheet under an identifier so it is only added once.
+  Create a global stylesheet under an identifier so it is only added to the DOM once.
   If a style with the same id is requested again, it will not be added.
+
+  This appends styles to the `<head>` element with the HTML `id` set to the parameter of the same name.
+  The `style` is the raw CSS to be added.
+
+  ```js
+  import { addGlobalStyle } from '@openlab/alembic'
+
+  addGlobalStyle('element-abcdef', 'p { color: red; }')
+  ```
+
+  which will create:
+
+  ```html
+  <head>
+    <!-- ... -->
+    <style id="element-abcdef">p { color: red; }</style>
+  </head>
+  ```
  */
 export function addGlobalStyle(id: string, style: string) {
   if (document.getElementById(id)) return
@@ -14,6 +32,22 @@ export function addGlobalStyle(id: string, style: string) {
 
 /**
   Trim all the whitespace from a CSS template literal.
+
+  ```js
+  import { trimCss } from '@openlab/alembic'
+
+  const minified = trimCss(`
+    p {
+      color: red;
+    }
+  `)
+  ```
+
+  Which results in:
+
+  ```css
+  p { color: red; }
+  ```
  */
 export function trimCss(strings: TemplateStringsArray, ...args: unknown[]) {
   const parts = []
