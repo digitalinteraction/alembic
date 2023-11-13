@@ -65,3 +65,4 @@ Quickly add basic styles to HTML to get a responsive & pretty page.
 - `<h1> ... </h6>`
 - `<pre>`
 - `<table>`
+- `<dl> + <dt> + <dd>`
