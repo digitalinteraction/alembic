@@ -148,13 +148,13 @@ table:not([class]) td {
   text-align: inherit;
   word-break: keep-all;
 }
-dl dt {
+dl:not([class]) dt {
   font-weight: 600;
   font-style: italic;
 }
-dl dd {
+dl:not([class]) dd {
   margin-inline-start: 2ch;
 }
-dl > dd + dt {
+dl:not([class]) > dd + dt {
   margin-top: var(--s-1);
 }
