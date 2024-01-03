@@ -66,3 +66,7 @@ Quickly add basic styles to HTML to get a responsive & pretty page.
 - `<pre>`
 - `<table>`
 - `<dl> + <dt> + <dd>`
+- `<figure> + <figcaption>`
+
+> Any styled elements will be reset if you add a `class` to them,
+> to make the styles easy to override.

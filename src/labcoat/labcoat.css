@@ -158,3 +158,13 @@ dl:not([class]) dd {
 dl:not([class]) > dd + dt {
   margin-top: var(--s-1);
 }
+figure:not([class]) > *:not(figcaption) {
+  margin-inline: auto;
+}
+figure:not([class]) > * + * {
+  margin-block-start: var(--s-3);
+}
+figcaption:not([class]) {
+  text-align: center;
+  font-style: italic;
+}
