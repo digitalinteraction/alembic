@@ -9,6 +9,8 @@ The `side` element will be it's intrinsic size and the `content` element will gr
 The elements are stacked when the ratio falls below a certain percentage.
 By default if the `content` element is less that 50% of the whole width, the elements will be stacked vertically instead.
 
+> **note** — the side element should have a CSS width or max-width, otherwise use `sideWidth`
+
 | Attribute  | Type           | Default   | Info                                                                                             |
 | ---------- | -------------- | --------- | ------------------------------------------------------------------------------------------------ |
 | side       | left\|right    | left      | Whether to put the sidebar on the left or right (in left-to-right orientation)                   |
