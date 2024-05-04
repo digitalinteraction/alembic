@@ -38,7 +38,7 @@ body {
 .flow > * + * {
   margin-block-start: var(--flow, 1em);
 }
-main {
+body > main:not([class]) {
   flex: 1;
   padding: var(--s0);
 }
