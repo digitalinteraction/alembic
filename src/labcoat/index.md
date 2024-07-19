@@ -67,6 +67,21 @@ Quickly add basic styles to HTML to get a responsive & pretty page.
 - `<table>`
 - `<dl> + <dt> + <dd>`
 - `<figure> + <figcaption>`
+- `<blockquote>`
+
+## Customisation
+
+You can override these CSS variables to tweak labcoat a bit, anything more and you should not be using labcoat!
+
+- `--fillable` — A colour to signify a field is editable
+- `--font-main` — A font stack for most text
+- `--font-mono` — A font stack for monospace text
+- `--anchor` — The colour of links and anchors
+- `--color` — The colour of text
+- `--background` — The colour of the page background
+- `--border` — The colour to show borders
+- `--highlight` — The background to highlight an element, like a blockquote
+- `--focus` — The colour to signify the currently focussed item
 
 > Any styled elements will be reset if you add a `class` to them,
 > to make the styles easy to override.
