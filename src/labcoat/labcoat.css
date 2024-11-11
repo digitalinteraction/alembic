@@ -56,7 +56,7 @@ body > footer:not([class]) a {
   font-weight: bold;
   color: currentcolor;
 }
-a {
+a:not([class]) {
   color: var(--anchor);
 }
 pre,
