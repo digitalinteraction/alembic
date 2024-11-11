@@ -7,8 +7,14 @@ frame-layout {
 }
 
 frame-layout > img,
-frame-layout > video {
+frame-layout > video,
+frame-layout > picture > img {
   inline-size: 100%;
   block-size: 100%;
   object-fit: cover;
+}
+
+frame-layout > picture {
+  inline-size: 100%;
+  block-size: 100%;
 }
