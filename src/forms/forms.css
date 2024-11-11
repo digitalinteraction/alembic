@@ -36,6 +36,7 @@ fieldset {
 .field input,
 .field select,
 .field textarea {
+  color: currentColor;
   display: block;
   background-color: transparent;
   border: var(--border-thin) solid var(--fillable);
