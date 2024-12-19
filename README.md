@@ -19,6 +19,7 @@ This library is used by several Open Lab projects:
 - [datadiaries.uk](https://datadiaries.uk) - [repo](https://github.com/digitalinteraction/datadiaries-app)
 - [alembic.openlab.dev](https://alembic.openlab.dev) - (this repo)
 - [Coffee Club](https://github.com/digitalinteraction/beancounter)
+- [Open Lab Hub](https://hub.openlab.dev)
 
 ## Design
 
