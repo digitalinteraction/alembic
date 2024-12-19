@@ -20,6 +20,7 @@ This library is used by several Open Lab projects:
 - [alembic.openlab.dev](https://alembic.openlab.dev) - (this repo)
 - [Coffee Club](https://github.com/digitalinteraction/beancounter)
 - [Open Lab Hub](https://hub.openlab.dev)
+- [Nunjucks playground](https://nunjucks.r0b.io/)
 
 ## Design
 
