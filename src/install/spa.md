@@ -95,4 +95,4 @@ and in CSS:
 
 ## DIY
 
-See the [api docs]({{ '/development/api' | url }}) for the tools available to hook things up yourself.
+See the [api docs]({{ '/development/api/' | url }}) for the tools available to hook things up yourself.

@@ -44,9 +44,9 @@ Quickly add basic styles to HTML to get a responsive & pretty page.
 
 ## Features
 
-- A [HTML reset]({{ '/development/reset-css' | url }})
+- A [HTML reset]({{ '/development/reset-css/' | url }})
 - Setup with all [Layout elements]({{ '/layouts/' | url }})
-- [Form patterns]({{ '/forms' | url }}) are available too
+- [Form patterns]({{ '/forms/' | url }}) are available too
 - A full height `<body>` tag
 - A `<main>` element that fills the full-height `<body>` when directly nested
 - A custom `<header>` at the top when no class is applied to it
