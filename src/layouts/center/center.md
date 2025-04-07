@@ -14,4 +14,4 @@ If it is `intrinsic`, the element will be its own width, while it is less than `
 | gutters   | CSS length | 0              | How much horizontal empty space to add to either side of the laid-out element  |
 | intrinsic | boolean    | false          | Turn on to use the width of the laid-out element itself, rather than the `max` |
 
-- **GOTCHA** — a `center-layout` doesn't work inside a `stack-layout`, try putting an element between them. e.g. `stack-layout > section > center-layout`
+- **GOTCHA** — a `center-layout` doesn't work inside a `stack-layout`, try putting an element between them. e.g. `stack-layout > section > center-layout` or wrapping each `stack-layout` in a `center-layout`.
