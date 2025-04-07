@@ -8,7 +8,7 @@ import {
 } from './tools.js'
 
 import assert from 'node:assert/strict'
-import { describe, it } from 'mocha'
+import { describe, it } from 'node:test'
 
 const testElements = new Map<string, any>([
   ['cool-button', { getStyles: () => ({ id: 'style_a', css: 'css_a' }) }],

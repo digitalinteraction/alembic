@@ -23,5 +23,5 @@
   "ts-node": {
     "transpileOnly": true
   },
-  "include": ["src", "bin"]
+  "include": ["src", "bin", "src/lib/styles.test.ts", "src/tools.test.ts"]
 }

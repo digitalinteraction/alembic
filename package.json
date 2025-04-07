@@ -25,22 +25,21 @@
   },
   "scripts": {
     "build": "./scripts/build-library.js && ./scripts/build-docs.sh",
-    "test": "mocha"
+    "test": "tsx --test **/*.test.*"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
-    "@types/mocha": "^10.0.0",
     "@types/svgo": "^2.6.3",
-    "dedent": "^0.7.0",
-    "esbuild": "^0.16.11",
+    "dedent": "^1.5.3",
+    "esbuild": "^0.25.2",
     "markdown-it-anchor": "^8.6.6",
-    "mocha": "^10.0.0",
     "prism-themes": "^1.9.0",
     "slugify": "^1.6.6",
     "svgo": "^2.8.0",
     "ts-morph": "^17.0.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.4"
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
   }
 }
