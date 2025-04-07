@@ -18,10 +18,10 @@ const style = css`
     box-sizing: border-box;
   }
   :host::part(handle) {
-    width: 0.5rem;
+    width: 20px;
 
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 
     background: var(--doc-foreground);
     cursor: col-resize;
@@ -66,7 +66,10 @@ export class DocResizer extends HTMLElement {
     this.#handleElem = this.shadowRoot!.querySelector("[part='handle']")!
 
     this.#handleElem.onpointerdown = (event) => {
+      event.preventDefault()
+
       let current = event.screenX + this.#resized
+      console.debug('onpointermove', current)
 
       this.#handleElem.onpointermove = (event) => {
         console.debug('onpointermove')
