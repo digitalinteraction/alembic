@@ -42,6 +42,8 @@ Quickly add basic styles to HTML to get a responsive & pretty page.
 </html>
 ```
 
+### [View example →]({{ '/labcoat/example/' | url }})
+
 ## Features
 
 - A [HTML reset]({{ '/development/reset-css/' | url }})

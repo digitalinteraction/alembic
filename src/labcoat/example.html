@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Labcoat Example</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="{{ '/labcoat.css' | url }}" />
+    <link rel="stylesheet" href="https://fonts.openlab.dev/inter/inter.css" />
+  </head>
+  <body>
+    <header>Labcoat Example</header>
+    <main>
+      <center-layout>
+        <stack-layout space="s3">
+          <article class="flow">
+            <p>
+              <a href="{{ '/labcoat/' | url }}">
+                <icon-layout>
+                  <svg>
+                    <use href="{{ '/assets/icons.svg#left' | url }}"></use>
+                  </svg>
+                  Go back
+                </icon-layout>
+              </a>
+            </p>
+            <h1>Hello, there!</h1>
+            <p>
+              This is a page to demonstrate the different features of Alembic's Labcoat module. You can add it to any plain HTML file to make it prettier.
+            </p>
+            <blockquote>This is a blockquote</blockquote>
+            <details>
+              <summary>A detail / summary + pre</summary>
+            <pre>
+:root {
+  --measure: 40em;
+  --fillable: rgb(84, 0, 181);
+  --font-main: 'Inter var', Inter, system-ui, sans-serif;
+  --font-mono: 'SF Mono', ui-monospace, monospace;
+  --border-thin: var(--s-5);
+  --border-thick: var(--s-2);
+
+  --anchor: hsl(238, 90%, 56%);
+  --color: #242729;
+  --background: white;
+  --border: #bebebe;
+  --highlight: #eee;
+  --focus: coral;
+}</pre>
+            </details>
+            <p>or some <code>code tags</code></p>
+            <dl>
+              <dt>Name</dt>
+              <dd>Geoff Testington</dd>
+              <dt>Age</dt>
+              <dd>42</dd>
+            </dl>
+            <figure>
+              <frame-layout>
+                <img src="{{ '/assets/horizontal-image.svg' | url }}">
+              </frame-layout>
+              <figcaption>With some descriptive text</figcaption>
+            </figure>
+          </article>
+
+          <div class="flow">
+            <h2>Form</h2>
+
+            <form onsubmit="e => (e.preventDefaults(), console.log(e))">
+              <label for="name" class="field">
+                <span class="field-label">Full name</span>
+                <input type="text" id="name" name="name">
+              </label>
+
+              <label for="age" class="field">
+                <span class="field-label">Age</span>
+                <input type="number" id="age" name="age">
+              </label>
+
+              <fieldset>
+                <legend>Pet info</legend>
+
+                <label for="petName" class="field">
+                  <span class="field-label">Name</span>
+                  <input type="text" id="petName" name="petName">
+                </label>
+
+                <label for="petAge" class="field">
+                  <span class="field-label">Age</span>
+                  <input type="number" id="petAge" name="petAge">
+                </label>
+              </fieldset>
+
+              <cluster-layout space="s0">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+              </cluster-layout>
+            </form>
+          </div>
+
+          <div class="flow">
+            <h2>Table</h2>
+            <table>
+              <tr>
+                <th>latitude</th>
+                <th>longitude</th>
+                <th>altitude</th>
+                <th>timestamp</th>
+              </tr>
+              <tr>
+                <td>54.973613461835900</td>
+                <td>-1.6255138902847000</td>
+                <td>71.12778149492830</td>
+                <td>1744020243.46004</td>
+              </tr>
+              <tr>
+                <td>54.97370407489470</td>
+                <td>-1.6256065297680800</td>
+                <td>71.04651727646140</td>
+                <td>1744020269.8297000</td>
+              </tr>
+              <tr>
+                <td>54.973613461835900</td>
+                <td>-1.6255138902847000</td>
+                <td>71.12778149492830</td>
+                <td>1744020243.46004</td>
+              </tr>
+              <tr>
+                <td>54.97370407489470</td>
+                <td>-1.6256065297680800</td>
+                <td>71.04651727646140</td>
+                <td>1744020269.8297000</td>
+              </tr>
+            </table>
+          </div>
+        </stack-layout>
+      </center-layout>
+    </main>
+    <footer>Made with <a href="{{ '/labcoat/' | url }}">Alembic Labcoat</a></footer>
+    <script
+      type="module"
+      src="{{ '/everything.js' | url }}"
+      
+    ></script>
+  </body>
+</html>

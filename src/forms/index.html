@@ -141,7 +141,7 @@ title: Forms
       </label>
       
       <input type="submit" name="Submit">
-      <button type="cancel">Cancel</button>
+      <button type="reset">Cancel</button>
     </form>
   </component-def>
 </doc-section>
@@ -150,9 +150,10 @@ title: Forms
   <div class="markdownCard">
     <p>
       <strong>Checkbox</strong> give users a binary option, yes or no, agree or
-      disagree. You can also group them together into a
-      <strong>CheckboxGroup</strong>
+      disagree. You can also group them together into a group using a <code>field</code> class
+      or use a <code>cluster-layout</code> to make a group of checkboxes horizontally in-line.
     </p>
+    <p>Grouped checkboxes used to use <code>checkboxGroup</code>, this is still supported but depreacted in favour of using the <code>field</code>.</p>
   </div>
 
   <component-def label="Checkbox / single">
@@ -163,43 +164,77 @@ title: Forms
   </component-def>
 
   <component-def label="Checkbox / group">
-    <form submit="(e) => (e.preventDefaults(), console.log(e))">
-      <div class="checkboxGroup">
-        <p class="checkboxGroup-label">Pick your days</p>
-        <label class="checkbox" for="mon">
-          <input type="checkbox" id="mon" name="days" value="1" />
+    <div class="field">
+      <label class="field-label">Pick your days</label>
+      <label class="checkbox" for="mon">
+        <input type="checkbox" id="mon" name="days" value="1" />
+        <span>Monday</span>
+      </label>
+      <label class="checkbox" for="tue">
+        <input type="checkbox" id="tue" name="days" value="2" />
+        <span>Tuesday</span>
+      </label>
+      <label class="checkbox" for="wed">
+        <input type="checkbox" id="wed" name="days" value="3" />
+        <span>Wednesday</span>
+      </label>
+      <label class="checkbox" for="thur">
+        <input type="checkbox" id="thur" name="days" value="4" />
+        <span>Thursday</span>
+      </label>
+      <label class="checkbox" for="fri">
+        <input type="checkbox" id="fri" name="days" value="5" />
+        <span>Friday</span>
+      </label>
+      <label class="checkbox" for="sat">
+        <input type="checkbox" id="sat" name="days" value="6" />
+        <span>Saturday</span>
+      </label>
+      <label class="checkbox" for="sun">
+        <input type="checkbox" id="sun" name="days" value="0" />
+        <span>Sunday</span>
+      </label>
+    </div>
+  </component-def>
+  
+  <component-def label="Checkbox / cluster">
+    <div class="field">
+      <label class="field-label">Pick your days</label>
+      <cluster-layout space="0">
+        <label class="checkbox" for="mon1">
+          <input type="checkbox" id="mon1" name="days" value="1" />
           <span>Monday</span>
         </label>
-        <label class="checkbox" for="tue">
-          <input type="checkbox" id="tue" name="days" value="2" />
+        <label class="checkbox" for="tue1">
+          <input type="checkbox" id="tue1" name="days" value="2" />
           <span>Tuesday</span>
         </label>
-        <label class="checkbox" for="wed">
-          <input type="checkbox" id="wed" name="days" value="3" />
+        <label class="checkbox" for="wed1">
+          <input type="checkbox" id="wed1" name="days" value="3" />
           <span>Wednesday</span>
         </label>
-        <label class="checkbox" for="thur">
-          <input type="checkbox" id="thur" name="days" value="4" />
+        <label class="checkbox" for="thur1">
+          <input type="checkbox" id="thur1" name="days" value="4" />
           <span>Thursday</span>
         </label>
-        <label class="checkbox" for="fri">
-          <input type="checkbox" id="fri" name="days" value="5" />
+        <label class="checkbox" for="fri1">
+          <input type="checkbox" id="fri1" name="days" value="5" />
           <span>Friday</span>
         </label>
-        <label class="checkbox" for="sat">
-          <input type="checkbox" id="sat" name="days" value="6" />
+        <label class="checkbox" for="sat1">
+          <input type="checkbox" id="sat1" name="days" value="6" />
           <span>Saturday</span>
         </label>
-        <label class="checkbox" for="sun">
-          <input type="checkbox" id="sun" name="days" value="0" />
+        <label class="checkbox" for="sun1">
+          <input type="checkbox" id="sun1" name="days" value="0" />
           <span>Sunday</span>
         </label>
-      </div>
-    </form>
+      </cluster-layout>
+    </div>
   </component-def>
 </doc-section>
 
-<doc-section label="FormMessage">
+<!-- <doc-section label="FormMessage">
   <div class="markdownCard">
     <p>
       <strong>FormMessage</strong> is for displaying good/bad/information text
@@ -226,7 +261,7 @@ title: Forms
       <doc-text words="50"></doc-text>
     </div>
   </component-def>
-</doc-section>
+</doc-section> -->
 
 <doc-section label="FieldSet">
   <div class="markdownCard">

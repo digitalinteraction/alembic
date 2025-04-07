@@ -19,9 +19,11 @@ fieldset {
 /*
   Field
  */
-.field,
-.field label {
+.field {
   display: block;
+  line-height: 1.25;
+}
+.field label {
   line-height: 1.25;
 }
 .field-label {
@@ -83,7 +85,7 @@ legend + .fieldset-hint {
 /*
   Checkbox
  */
-.checkbox {
+label.checkbox {
   padding: 0.25em 0.5em;
   border: var(--border-thin) solid var(--fillable);
   display: flex;
@@ -91,10 +93,10 @@ legend + .fieldset-hint {
   justify-content: stretch;
   gap: var(--s-2);
 }
-.checkbox:not(:hover) {
+label.checkbox:not(:hover) {
   border-color: transparent;
 }
-.checkbox input {
+label.checkbox input {
   font-size: 1rem;
   margin: 0;
   flex-grow: 0;

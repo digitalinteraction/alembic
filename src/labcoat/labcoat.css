@@ -103,11 +103,19 @@ pre,
 blockquote {
   margin: 0;
 }
+details {
+  border: var(--s-5) dashed var(--border);
+  padding: var(--s0);
+  border-radius: var(--s-1);
+}
 details > summary {
   cursor: pointer;
+  font-weight: bold;
+  margin: calc(var(--s0) * -1);
+  padding: var(--s0);
 }
-details > :not(summary) {
-  padding: 0.5em 1em;
+details > summary + * {
+  margin-top: var(--s0);
 }
 ol,
 ul {
@@ -167,4 +175,13 @@ figure:not([class]) > * + * {
 figcaption:not([class]) {
   text-align: center;
   font-style: italic;
+}
+.field-label {
+  font-weight: 600;
+  font-style: italic;
+}
+legend {
+  font-style: italic;
+  font-size: 1.2em;
+  font-weight: 600;
 }
