@@ -3,29 +3,30 @@ name: website
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   publish:
     runs-on: ubuntu-latest
 
     permissions:
+      contents: read
       pages: write
       id-token: write
-      contents: read
+      actions: read
 
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v5
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
           cache: 'npm'
 
       - run: npm ci
@@ -41,10 +42,10 @@ jobs:
           NODE_ENV: production
 
       - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
