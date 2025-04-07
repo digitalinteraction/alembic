@@ -2,7 +2,7 @@
 
 :root {
   --measure: 40em;
-  --fillable: rgb(84, 0, 181);
+  --fillable: #2252e3;
   --font-main: 'Inter var', Inter, system-ui, sans-serif;
   --font-mono: 'SF Mono', ui-monospace, monospace;
   --border-thin: var(--s-5);
@@ -45,6 +45,10 @@ body > main:not([class]) {
 body > header:not([class]) {
   font-size: 1.2em;
   padding: 1rem;
+}
+body > header:not([class]) a {
+  color: currentColor;
+  font-weight: bold;
 }
 body > footer:not([class]) {
   text-align: center;
@@ -175,6 +179,7 @@ figure:not([class]) > * + * {
 figcaption:not([class]) {
   text-align: center;
   font-style: italic;
+  font-size: 0.9em;
 }
 .field-label {
   font-weight: 600;
@@ -184,4 +189,8 @@ legend {
   font-style: italic;
   font-size: 1.2em;
   font-weight: 600;
+}
+input[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
 }

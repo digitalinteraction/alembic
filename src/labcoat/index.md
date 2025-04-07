@@ -56,7 +56,10 @@ Quickly add basic styles to HTML to get a responsive & pretty page.
 - Light + dark themes based on user's OS preference
 - Styled HTML elements (see below)
 - A `.flow` class to make HTML content flow nicely down the page
-- Hide anything with `aria-hidden="true"`
+
+## Deprecations
+
+- Hide anything with `aria-hidden="true"` — this is still styled but not reccomended, I haven't found a nice way to remove this. [#61](https://github.com/digitalinteraction/alembic/issues/61)
 
 ## Styled elements
 

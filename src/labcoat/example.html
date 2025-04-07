@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.openlab.dev/inter/inter.css" />
   </head>
   <body>
-    <header>Labcoat Example</header>
+    <header><a href="#">Labcoat Example</a></header>
     <main>
       <center-layout>
         <stack-layout space="s3">
@@ -76,6 +76,22 @@
                 <input type="number" id="age" name="age">
               </label>
 
+              <div class="field">
+                <p class="field-label">Favourite biscuits</p>
+                <label for="bourbon" class="checkbox">
+                  <input type="checkbox" name="bourbon" id="bourbon">
+                  Chocolate Bourbons
+                </label>
+                <label for="custard" class="checkbox">
+                  <input type="checkbox" name="custard" id="custard">
+                  Custard Creams
+                </label>
+                <label for="digestive" class="checkbox">
+                  <input type="checkbox" name="digestive" id="digestive">
+                  Chocolate Digestives
+                </label>
+              </div>
+
               <fieldset>
                 <legend>Pet info</legend>
 
@@ -89,6 +105,16 @@
                   <input type="number" id="petAge" name="petAge">
                 </label>
               </fieldset>
+
+              <label for="unavailable" class="field">
+                <span class="field-label">Unavailable</span>
+                <input type="text" id="unavailable" name="unavailable" disabled>
+              </label>
+
+              <label for="consent" class="checkbox">
+                <input type="checkbox" name="consent" id="consent">
+                I consent to things
+              </label>
 
               <cluster-layout space="s0">
                 <button type="submit">Submit</button>
