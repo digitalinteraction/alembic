@@ -153,6 +153,7 @@ ol[role='list'] {
   text-decoration: underline;
 }
 .docsNav-item {
+  display: block;
   font-weight: 600;
   font-size: 1.25rem;
   color: var(--doc-foreground);
