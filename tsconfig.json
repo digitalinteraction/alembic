@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "target": "es2020",
-    "moduleResolution": "Node16",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "module": "ES2020",
 
@@ -19,9 +19,6 @@
     "noEmitOnError": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
-  },
-  "ts-node": {
-    "transpileOnly": true
   },
   "include": ["src", "bin", "src/lib/styles.test.ts", "src/tools.test.ts"]
 }

@@ -45,7 +45,7 @@ await fs.cp(resolve('src/assets'), resolve('dist/assets'), {
 })
 
 //
-// Run TypeScript lint
+// Run TypeScript lint + generate types
 //
 console.debug('Linting TypeScript & generating type definitions')
 await exec(`npx tsc`, {
@@ -103,6 +103,6 @@ await esbuild.build({
   },
   plugins: [alembicEmbed],
   entryPoints: {
-    '11ty': resolveToPath('src/11ty.ts'),
+    '11ty': resolveToPath('src/11ty.cts'),
   },
 })
