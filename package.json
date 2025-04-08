@@ -25,6 +25,7 @@
   },
   "scripts": {
     "build": "./scripts/build-library.js && ./scripts/build-docs.sh",
+    "start": "NOVA_TASK_NAME=run npm run build",
     "test": "tsx --test **/*.test.*"
   },
   "devDependencies": {

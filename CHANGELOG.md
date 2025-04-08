@@ -2,6 +2,43 @@
 
 Notable changes to Alembic are documented here
 
+## 0.4.0
+
+**features**
+
+- Style description lists in labcoat
+- Style figures and captions in labcoat
+- Style details & summary elements in labcoat
+- Add form syles to labcoat
+- Support `<video>`, `<picture>` & `<svg>` elements inside a FrameLayout
+- Add `justify` and `align` parameters to StackLayout
+- New shorthands for scales in layouts, e.g. `s5` or `s-3` rather than `var(--s0)`
+- `<input type="radio">` are now supported like checkboxes
+- Links in a labcoar heading are prettier
+
+**improvements**
+
+- Document labcoat CSS variables
+- Form inputs have their color reset to `currentColor`
+- Add various GOTCHAs and NOTEs to the documentation
+- Make the layout drag handles larger
+- Improve the cluster-layout demo
+- Add full Labcoat example page to show all features
+- The labcoat "fillable" is now a nice colour
+
+**fixes**
+
+- labcoat only styles `<main>` elements when they have no class
+- labcoat only styles `<a>` elements when they have no class
+- Fix 11ty type definitions
+
+**deprecations**
+
+These features still work but should not be used any more.
+
+- labcaot `aria-hidden=true` — This was a bad idea and somethings should be hidden from only screen-readers.
+- `checkboxGroup` — use a `div.field` and `p.field-label` instead, hopefully this simplifies things.
+
 ## 0.3.3
 
 Improve labcoat `pre` styles and work on documentation.

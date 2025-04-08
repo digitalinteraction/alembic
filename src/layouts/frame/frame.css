@@ -8,6 +8,7 @@ frame-layout {
 
 frame-layout > img,
 frame-layout > video,
+frame-layout > svg,
 frame-layout > picture > img {
   inline-size: 100%;
   block-size: 100%;
