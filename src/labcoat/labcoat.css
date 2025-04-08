@@ -107,18 +107,18 @@ pre,
 blockquote {
   margin: 0;
 }
-details {
+details:not([class]) {
   border: var(--s-5) dashed var(--border);
   padding: var(--s0);
   border-radius: var(--s-1);
 }
-details > summary {
+details:not([class]) > summary {
   cursor: pointer;
   font-weight: bold;
   margin: calc(var(--s0) * -1);
   padding: var(--s0);
 }
-details > summary + * {
+details:not([class]) > summary + * {
   margin-top: var(--s0);
 }
 ol,

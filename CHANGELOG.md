@@ -2,6 +2,12 @@
 
 Notable changes to Alembic are documented here
 
+## next
+
+**fixes**
+
+- labcoat: Only style details when they have no class
+
 ## 0.4.0
 
 **features**
