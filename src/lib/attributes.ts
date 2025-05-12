@@ -19,11 +19,6 @@ export const attributeShortcodes = new Map(
     's-3': 'var(--s-3)',
     's-2': 'var(--s-2)',
     's-1': 'var(--s-1)',
-    // '-s5': 'var(--s-5)', // TODO: IDEA
-    // '-s4': 'var(--s-4)',
-    // '-s3': 'var(--s-3)',
-    // '-s2': 'var(--s-2)',
-    // '-s1': 'var(--s-1)',
     s0: 'var(--s0)',
     s1: 'var(--s1)',
     s2: 'var(--s2)',

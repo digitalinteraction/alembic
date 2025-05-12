@@ -52,8 +52,6 @@ await exec(`npx tsc`, {
   cwd: resolve('.'),
 })
 
-// TODO: set CWD for esbuild?
-
 //
 // Build CSS
 //
