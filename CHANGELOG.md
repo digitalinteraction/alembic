@@ -7,6 +7,9 @@ Notable changes to Alembic are documented here
 **fixes**
 
 - labcoat: Only style details when they have no class
+- 11ty: add Eleventy version check
+- 11ty: support building into subdirectories with `pathPrefix`
+- 11ty: use new `eleventyConfig.directories`
 
 ## 0.4.0
 

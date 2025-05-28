@@ -9,7 +9,12 @@ import {
 
 // https://www.11ty.dev/docs/events/#event-arguments
 interface EleventyEventArgs {
+  /** @deprecated */
   dir: {
+    input: string
+    output: string
+  }
+  directories: {
     input: string
     output: string
   }
@@ -31,11 +36,19 @@ export interface EleventyConfig {
       outputFile: string
     ) => unknown
   ): void
+
   on(
     eventName: 'eleventy.after',
     callback: (args: EleventyEventArgs) => unknown
   ): void
+
+  versionCheck(version: string): void
+
   dir: Partial<Record<string, string>>
+
+  directories: Partial<Record<string, string>>
+
+  pathPrefix?: string
 }
 
 /** Options to configure eleventyAlembic */
@@ -45,29 +58,49 @@ export interface AlembicEleventyOptions {
   useLabcoat?: boolean
 }
 
+function getProcessOptions(
+  eleventyConfig: EleventyConfig,
+  pluginOptions: AlembicEleventyOptions
+) {
+  const prefix = eleventyConfig.pathPrefix ?? '/'
+
+  const processOptions = {
+    extraStyles: [`<link rel="stylesheet" href="${prefix}alembic/style.css">`],
+    extraScripts: [
+      `<script type="module" src="${prefix}alembic/script.js"></script>`,
+    ],
+  }
+
+  if (pluginOptions?.skipBaseStyles) processOptions.extraStyles = []
+  if (pluginOptions?.skipBaseScripts) processOptions.extraScripts = []
+
+  return processOptions
+}
+
 export function eleventyAlembic(
   eleventyConfig: EleventyConfig,
   options: AlembicEleventyOptions = {}
 ) {
-  // TODO: resolve based on PATH_PREFIX?
-  const processOptions = {
-    extraStyles: [`<link rel="stylesheet" href="/alembic/style.css">`],
-    extraScripts: [`<script type="module" src="/alembic/script.js"></script>`],
+  try {
+    eleventyConfig.versionCheck('>=2.0')
+  } catch (e) {
+    console.log(
+      `[@openlab/alembic] WARN Eleventy plugin compatibility: ${
+        (e as Error).message
+      }`
+    )
   }
-
-  if (options?.skipBaseStyles) processOptions.extraStyles = []
-  if (options?.skipBaseScripts) processOptions.extraScripts = []
 
   // https://www.11ty.dev/docs/config/#transforms
   eleventyConfig.addTransform('html', function (content) {
     const outputPath = this.page?.outputPath ?? this.outputPath
     return outputPath && outputPath.endsWith('.html')
-      ? processHtml(content, processOptions)
+      ? processHtml(content, getProcessOptions(eleventyConfig, options))
       : content
   })
 
-  eleventyConfig.on('eleventy.after', async ({ dir }) => {
-    const outdir = (dir ? dir.output : eleventyConfig.dir.output) ?? '_site'
+  eleventyConfig.on('eleventy.after', async ({ dir, directories }) => {
+    const outdir = directories?.output ?? dir?.output ?? '_site'
 
     if (!outdir) {
       console.warn('[alembic-11ty] Cannot write base files')
