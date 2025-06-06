@@ -7,4 +7,4 @@ then
   ARGS="$ARGS --serve"
 fi
 
-npx eleventy --config=.eleventy.cjs $ARGS
+npx eleventy $ARGS
