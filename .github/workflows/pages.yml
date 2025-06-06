@@ -37,7 +37,7 @@ jobs:
           NODE_ENV: production
 
       - name: Build documentation site
-        run: npx eleventy --pathprefix=/alembic/
+        run: npx eleventy # --pathprefix=/alembic/
         env:
           NODE_ENV: production
 
