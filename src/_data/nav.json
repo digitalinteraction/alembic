@@ -3,5 +3,6 @@
   { "url": "/layouts/", "name": "Layouts" },
   { "url": "/forms/", "name": "Forms" },
   { "url": "/labcoat/", "name": "Labcoat" },
-  { "url": "/development/", "name": "Development" }
+  { "url": "/development/", "name": "Development" },
+  { "url": "https://github.com/digitalinteraction/alembic", "name": "GitHub" }
 ]
