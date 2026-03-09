@@ -11,6 +11,10 @@ Notable changes to Alembic are documented here
 - 11ty: support building into subdirectories with `pathPrefix`
 - 11ty: use new `eleventyConfig.directories`
 
+**breaking**
+
+- 11ty: now built as ESM
+
 ## 0.4.0
 
 **features**

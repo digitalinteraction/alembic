@@ -21,13 +21,13 @@
   ```
  */
 export function addGlobalStyle(id: string, style: string) {
-  if (document.getElementById(id)) return
+  if (document.getElementById(id)) return;
 
-  const elem = document.createElement('style')
-  elem.id = id
-  elem.innerHTML = style
+  const elem = document.createElement("style");
+  elem.id = id;
+  elem.innerHTML = style;
 
-  document.head.appendChild(elem)
+  document.head.appendChild(elem);
 }
 
 /**
@@ -50,42 +50,42 @@ export function addGlobalStyle(id: string, style: string) {
   ```
  */
 export function trimCss(strings: TemplateStringsArray, ...args: unknown[]) {
-  const parts = []
+  const parts = [];
 
   for (let i = 0; i < strings.length; i++) {
-    parts.push(strings[i])
+    parts.push(strings[i]);
 
     if (i < args.length) {
-      parts.push(args[i])
+      parts.push(args[i]);
     }
   }
 
-  return parts.join('').replace(/\s\s+/g, ' ').trim()
+  return parts.join("").replace(/\s\s+/g, " ").trim();
 }
 
 // export interface AlembicStyleSheetOptions {}
 
 /** @experimental */
 export class AlembicStyleSheet {
-  #styles = new Map<string, string>()
+  #styles = new Map<string, string>();
 
   reset(): void {
-    this.#styles.clear()
+    this.#styles.clear();
   }
 
   getStyles(): Map<string, string> {
-    return new Map(this.#styles)
+    return new Map(this.#styles);
   }
 
   addStyle({ id, css }: { id: string; css: string }) {
-    if (this.#styles.has(id)) return id
-    this.#styles.set(id, css)
-    return id
+    if (this.#styles.has(id)) return id;
+    this.#styles.set(id, css);
+    return id;
   }
 
   *[Symbol.iterator]() {
     for (const [id, css] of this.#styles) {
-      yield [id, css]
+      yield [id, css];
     }
   }
 }

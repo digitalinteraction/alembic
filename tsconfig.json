@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "target": "es2020",
-    "moduleResolution": "bundler",
-    "esModuleInterop": true,
-    "module": "ES2020",
+    "target": "ESNext",
+    "moduleResolution": "Bundler",
+    "module": "Preserve",
 
     "sourceMap": true,
     "declaration": true,
@@ -13,6 +12,9 @@
     "pretty": true,
     "emitDeclarationOnly": true,
 
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
     "strict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
@@ -20,5 +22,5 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": ["src", "bin", "src/lib/styles.test.ts", "src/tools.test.ts"]
+  "include": ["source", "scripts"]
 }

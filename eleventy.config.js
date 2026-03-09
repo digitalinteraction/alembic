@@ -3,11 +3,11 @@ import markdownIt from "markdown-it";
 import markdownAnchor from "markdown-it-anchor";
 
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
-import { eleventyAlembic } from "@openlab/alembic/11ty.cjs";
+import { eleventyAlembic } from "@openlab/alembic/11ty.js";
 import slugify from "slugify";
 
 import pkg from "./package.json" with { type: "json" };
-import site from "./src/_data/site.json" with { type: "json" };
+import site from "./source/_data/site.json" with { type: "json" };
 
 // TODO: refactor this out when upgrading to eleventy@2
 const md = markdownIt({
@@ -60,8 +60,8 @@ export default function (eleventyConfig) {
     (content) => `<p class="eleventyError">${content}</p>`,
   );
 
-  // eleventyConfig.addWatchTarget('./src/**/*.css')
-  // eleventyConfig.addWatchTarget('./src/**/*.ts')
+  // eleventyConfig.addWatchTarget('./source/**/*.css')
+  // eleventyConfig.addWatchTarget('./source/**/*.ts')
 }
 
 export const config = {
@@ -69,7 +69,7 @@ export const config = {
   htmlTemplateEngine: "njk",
   templateFormats: ["html", "md"],
   dir: {
-    input: "src",
+    input: "source",
     output: "dist",
     layouts: "_layouts",
   },

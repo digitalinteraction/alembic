@@ -26,15 +26,17 @@
   "scripts": {
     "build": "./scripts/build-library.js && ./scripts/build-docs.sh",
     "start": "NOVA_TASK_NAME=run npm run build",
-    "test": "tsx --test **/*.test.*"
+    "test": "tsx --test **/*.test.*",
+    "format": "prettier -w **/*.{js,ts,css,md,json,yml}"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
+    "@types/node": "^22.19.15",
     "@types/svgo": "^2.6.3",
     "dedent": "^1.5.3",
-    "esbuild": "^0.25.2",
-    "markdown-it-anchor": "^8.6.6",
+    "esbuild": "^0.27.3",
+    "markdown-it-anchor": "^9.2.0",
     "prettier": "^3.5.3",
     "prism-themes": "^1.9.0",
     "slugify": "^1.6.6",
@@ -42,5 +44,8 @@
     "ts-morph": "^17.0.1",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3"
+  },
+  "prettier": {
+    "htmlWhitespaceSensitivity": "strict"
   }
 }

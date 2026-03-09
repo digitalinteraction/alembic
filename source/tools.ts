@@ -1,14 +1,14 @@
-import { layoutCustomElements } from './layouts/layouts.js'
-import { AlembicStyleSheet } from './lib/lib.js'
+import { layoutCustomElements } from "./layouts/layouts.js";
+import { AlembicStyleSheet } from "./lib/lib.js";
 
 // import everythingCss from 'embed:./everything.css'
 // import everythingJs from 'embed:./everything.js'
 
-const allElements = new Map([...layoutCustomElements])
+const allElements = new Map([...layoutCustomElements]);
 
 export interface ProcessHtmlOptions {
-  extraStyles?: string[]
-  extraScripts?: string[]
+  extraStyles?: string[];
+  extraScripts?: string[];
 }
 
 /**
@@ -32,35 +32,35 @@ export interface ProcessHtmlOptions {
  */
 export function processHtml(
   inputHtml: string,
-  options: ProcessHtmlOptions = {}
+  options: ProcessHtmlOptions = {},
 ): string {
-  const styles = new AlembicStyleSheet()
+  const styles = new AlembicStyleSheet();
 
-  let outputHtml = inputHtml
+  let outputHtml = inputHtml;
 
   for (const [elemName, element] of allElements) {
-    const regex = _elementRegex(elemName)
+    const regex = _elementRegex(elemName);
     outputHtml = outputHtml.replace(regex, (_match, attrText) => {
-      const attrs = _parseHtmlAttributes(attrText)
+      const attrs = _parseHtmlAttributes(attrText);
 
-      const id = styles.addStyle(element.getStyles(attrs))
+      const id = styles.addStyle(element.getStyles(attrs));
 
-      return _recreateElement(elemName, attrText, id)
-    })
+      return _recreateElement(elemName, attrText, id);
+    });
   }
 
   const allStyles = Array.from(styles)
     .map(([id, css]) => _createStyle(id, css))
     .concat(options.extraStyles ?? [])
-    .join('')
+    .join("");
 
-  const allScripts = (options.extraScripts ?? []).join('')
+  const allScripts = (options.extraScripts ?? []).join("");
 
   outputHtml = outputHtml
-    .replace(_commentRegex('inject-css'), allStyles)
-    .replace(_commentRegex('inject-js'), allScripts)
+    .replace(_commentRegex("inject-css"), allStyles)
+    .replace(_commentRegex("inject-js"), allScripts);
 
-  return outputHtml
+  return outputHtml;
 }
 
 /**
@@ -73,13 +73,13 @@ export function processHtml(
   ```
  */
 export function getStyles(inputHtml: string): Map<string, unknown> {
-  const styles = new AlembicStyleSheet()
+  const styles = new AlembicStyleSheet();
 
   for (let [match, element] of _iterateElements(inputHtml, allElements)) {
-    styles.addStyle(element.getStyles(_parseHtmlAttributes(match[1])))
+    styles.addStyle(element.getStyles(_parseHtmlAttributes(match[1])));
   }
 
-  return styles.getStyles()
+  return styles.getStyles();
 }
 
 /**
@@ -92,8 +92,8 @@ export function getStyles(inputHtml: string): Map<string, unknown> {
 */
 export async function getBaseStyles(): Promise<string> {
   // This is dynamic so the custom embed: protocol doesn't break unit tests...
-  const css = await import('embed:./everything.css')
-  return css.default
+  const css = await import("embed:./everything.css");
+  return css.default;
 }
 
 /**
@@ -106,8 +106,8 @@ export async function getBaseStyles(): Promise<string> {
 */
 export async function getLabcoatStyles(): Promise<string> {
   // This is dynamic so the custom embed: protocol doesn't break unit tests...
-  const css = await import('embed:./labcoat/labcoat.css')
-  return css.default
+  const css = await import("embed:./labcoat/labcoat.css");
+  return css.default;
 }
 
 /**
@@ -120,8 +120,8 @@ export async function getLabcoatStyles(): Promise<string> {
 */
 export async function getBaseScripts(): Promise<string> {
   // This is dynamic so the custom embed: protocol doesn't break unit tests...
-  const js = await import('embed:./everything.js')
-  return js.default
+  const js = await import("embed:./everything.js");
+  return js.default;
 }
 
 // Internal
@@ -129,40 +129,40 @@ export async function getBaseScripts(): Promise<string> {
 /** @internal */
 export function* _iterateElements<T>(html: string, elements: Map<string, T>) {
   for (const [name, element] of elements) {
-    const regex = _elementRegex(name)
-    let match: RegExpMatchArray | null = null
+    const regex = _elementRegex(name);
+    let match: RegExpMatchArray | null = null;
 
     while ((match = regex.exec(html))) {
-      yield [match, element] as const
+      yield [match, element] as const;
     }
   }
 }
 
 /** @internal */
 export function _createStyle(id: string, css: string) {
-  return `<style id="${id}">${css}</style>`
+  return `<style id="${id}">${css}</style>`;
 }
 
 /** @internal */
 export function _recreateElement(name: string, attrs: string, id: string) {
-  return `<${name} ${attrs} data-i="${id}">`
+  return `<${name} ${attrs} data-i="${id}">`;
 }
 
 /** @internal */
 export function _parseHtmlAttributes(attrs: string) {
-  const props: Record<string, string> = {}
+  const props: Record<string, string> = {};
   for (const attr of attrs.matchAll(/(\w[\w-]+)(?:="?([^"]*)"?)?/g)) {
-    props[attr[1]] = attr[2] ?? true
+    props[attr[1]] = attr[2] ?? true;
   }
-  return props
+  return props;
 }
 
 /** @internal */
 export function _elementRegex(name: string) {
-  return new RegExp(`<${name}[\\s\\n\\r]+?([\\w\\W]*?)>`, 'g')
+  return new RegExp(`<${name}[\\s\\n\\r]+?([\\w\\W]*?)>`, "g");
 }
 
 /** @internal */
 export function _commentRegex(name: string) {
-  return new RegExp(`<!--\\s+@openlab\/alembic\\s+${name}\\s+-->`)
+  return new RegExp(`<!--\\s+@openlab\/alembic\\s+${name}\\s+-->`);
 }

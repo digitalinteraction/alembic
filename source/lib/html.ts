@@ -11,20 +11,20 @@ export function getHTMLElement(): typeof HTMLElement {
     class {
       constructor() {
         throw new TypeError(
-          `Cannot instantiate ${this.constructor.name} outside of the DOM`
-        )
+          `Cannot instantiate ${this.constructor.name} outside of the DOM`,
+        );
       }
     }
-  )
+  );
 }
 
 export interface AlembicHTMLElement<
   T extends HTMLElement = HTMLElement,
-  P extends Record<string, unknown> = Record<string, unknown>
+  P extends Record<string, unknown> = Record<string, unknown>,
 > {
   // defineElement(): void
-  getStyles(attrs: P): { id: string; css: string }
-  new (): T
+  getStyles(attrs: P): { id: string; css: string };
+  new (): T;
 }
 
 /**
@@ -38,11 +38,11 @@ export interface AlembicHTMLElement<
   ```
  */
 export function defineCustomElements(
-  map: Map<string, CustomElementConstructor>
+  map: Map<string, CustomElementConstructor>,
 ) {
-  if (!('customElements' in window)) {
-    console.warn('customElements is not supported')
-    return
+  if (!("customElements" in window)) {
+    console.warn("customElements is not supported");
+    return;
   }
-  for (const [name, element] of map) customElements.define(name, element)
+  for (const [name, element] of map) customElements.define(name, element);
 }
