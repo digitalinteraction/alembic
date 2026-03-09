@@ -16,17 +16,17 @@ Significant folders:
 - `examples` — a few well-formed examples of using Alembic
 - `research` — notes on future feature design or refactors
 - `scripts` — scripts to build the library or documentation website
-- `src` — all the source code for the library and documentation website,
+- `source` — all the source code for the library and documentation website,
   top-level files are also entry-points for NPM consumers.
-- `src/_*` — meta directories in Eleventy for building the documentation site
-- `src/@types` — custom TypeScript types
-- `src/assets` — assets to be built in to the library
-- `src/development` — documentation around developing Alembic itself
-- `src/docs` — tools to help creating the documentation website
-- `src/forms` — **forms** module, inspired by [Form Design Patterns](https://formdesignpatterns.com/)
-- `src/install` — documentation about install Alembic in different types of project
-- `src/layouts` — **layouts** module, based on [EveryLayout](https://every-layout.dev/)
-- `src/lib` — **lib** module, common tools for all modules
+- `source/_*` — meta directories in Eleventy for building the documentation site
+- `source/@types` — custom TypeScript types
+- `source/assets` — assets to be built in to the library
+- `source/development` — documentation around developing Alembic itself
+- `source/docs` — tools to help creating the documentation website
+- `source/forms` — **forms** module, inspired by [Form Design Patterns](https://formdesignpatterns.com/)
+- `source/install` — documentation about install Alembic in different types of project
+- `source/layouts` — **layouts** module, based on [EveryLayout](https://every-layout.dev/)
+- `source/lib` — **lib** module, common tools for all modules
 
 Public entry-points:
 

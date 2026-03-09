@@ -5,11 +5,11 @@ import createDebug from "debug";
 const debug = createDebug("alembic:api");
 
 function simplify(file) {
-  return path.relative(path.join(process.cwd(), "src"), file);
+  return path.relative(path.join(process.cwd(), "source"), file);
 }
 
 export default function generate() {
-  const entrypoints = ["src/module.ts", "src/tools.ts"];
+  const entrypoints = ["source/module.ts", "source/tools.ts"];
 
   const project = new Project({
     tsConfigFilePath: "tsconfig.json",
