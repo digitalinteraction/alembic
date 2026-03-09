@@ -125,8 +125,8 @@ ol,
 ul {
   margin-block: 0;
   margin-inline-start: 1em;
-  padding-inline-start: 1em;
   padding: 0;
+  padding-inline-start: 1em;
 }
 a:focus,
 button:focus,
