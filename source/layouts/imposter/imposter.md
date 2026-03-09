@@ -2,6 +2,9 @@
 permalink: false
 tags: imposterLayout
 tile: /assets/tiles/imposter.svg
+eleventyNavigation:
+  key: Imposter
+  parent: Layouts
 ---
 
 **ImposterLayout** positions an element over other elements.

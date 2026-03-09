@@ -2,6 +2,9 @@
 permalink: false
 tags: frameLayout
 tile: /assets/tiles/frame.svg
+eleventyNavigation:
+  key: Frame
+  parent: Layouts
 ---
 
 **FrameLayout** ensures a fixed aspect ratio by cropping around the center of the image.

@@ -118,3 +118,5 @@ export function eleventyAlembic(
     );
   });
 }
+
+export default eleventyAlembic;

@@ -2,6 +2,9 @@
 permalink: false
 tags: gridLayout
 tile: /assets/tiles/grid.svg
+eleventyNavigation:
+  key: Grid
+  parent: Layouts
 ---
 
 **GridLayout** creates a responsive grid of same-sized elements.

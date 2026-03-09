@@ -1,7 +1,7 @@
 <nav class="docsNav">
   <a class="docsNav-brand" href="{{ '/' | url }}">⚗️ Alembic</a>
   <ul role="list">
-    {% for item in nav %}
+    {% for item in collections.all | eleventyNavigation %}
     <li>
       {% set target = item.url | url %}
       <a
@@ -10,7 +10,12 @@
         {{ 'aria-current="page"' if target | isCurrentPage(page.url) }}
       >
         <cluster-layout align="center" justify="space-between">
-          {{ item.name}}
+          <icon-layout>
+            {% if item.data.icon %}
+            <svg><use href="{{ '/assets/icons.svg#' + item.data.icon | url }}"></use></svg>
+            {% endif %}
+            {{ item.title }}
+          </icon-layout>
           <icon-layout>
             <svg><use href="{{ '/assets/icons.svg#right' | url }}"></use></svg>
           </icon-layout>

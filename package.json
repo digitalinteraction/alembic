@@ -27,10 +27,11 @@
     "build": "./scripts/build-library.js && ./scripts/build-docs.sh",
     "start": "NOVA_TASK_NAME=run npm run build",
     "test": "tsx --test **/*.test.*",
-    "format": "prettier -w **/*.{js,ts,css,md,json,yml}"
+    "format": "prettier --write '**/*.{js,ts,json,css,md}'"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.1",
+    "@11ty/eleventy-navigation": "^1.0.5",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
     "@types/node": "^22.19.15",
     "@types/svgo": "^2.6.3",

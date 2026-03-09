@@ -2,6 +2,9 @@
 permalink: false
 tags: reelLayout
 tile: /assets/tiles/reel.svg
+eleventyNavigation:
+  key: Reel
+  parent: Layouts
 ---
 
 **ReelLayout** places elements horizontally and ensures horizontal overflow scrolling happens.

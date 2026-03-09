@@ -1,8 +1,9 @@
 ---
 layout: index.njk
 title: Development
-links:
-  - development
+eleventyNavigation:
+  key: Dev
+  order: 5
 ---
 
-Information about developing on Alembic itself
+Meta information about developing on Alembic itself

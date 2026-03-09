@@ -3,21 +3,21 @@ import {
   getAttributes,
   getHTMLElement,
   trimCss,
-} from '../../lib/lib.js'
+} from "../../lib/lib.js";
 
 const defaultAttributes = {
-  centered: 'h1',
-  space: 'var(--s1)',
-  minHeight: '100vh',
+  centered: "h1",
+  space: "var(--s1)",
+  minHeight: "100vh",
   noPad: false,
-}
+};
 
 export type CoverLayoutAttributes = {
-  centered?: string
-  space?: string
-  minHeight?: string
-  noPad?: boolean
-}
+  centered?: string;
+  space?: string;
+  minHeight?: string;
+  noPad?: boolean;
+};
 
 /**
   CoverLayout covers a block-layout element vertically with a centered principle element
@@ -26,21 +26,21 @@ export type CoverLayoutAttributes = {
  */
 export class CoverLayout extends getHTMLElement() {
   static get observedAttributes() {
-    return ['centered', 'space', 'minHeight', 'noPad']
+    return ["centered", "space", "minHeight", "noPad"];
   }
   static defineElement() {
-    customElements.define('cover-layout', CoverLayout)
+    customElements.define("cover-layout", CoverLayout);
   }
   static getStyles(attrs: CoverLayoutAttributes) {
     const { centered, space, minHeight, noPad } = getAttributes(
       defaultAttributes,
-      attrs
-    )
-    const id = `CoverLayout-${centered}${space}${minHeight}${noPad}`
+      attrs,
+    );
+    const id = `CoverLayout-${centered}${space}${minHeight}${noPad}`;
     const css = trimCss`
       [data-i="${id}"] {
         min-height: ${minHeight};
-        padding: ${!noPad ? space : '0'};
+        padding: ${!noPad ? space : "0"};
       }
       [data-i="${id}"] > * {
         margin-block: ${space};
@@ -54,54 +54,54 @@ export class CoverLayout extends getHTMLElement() {
       [data-i="${id}"] > ${centered} {
         margin-block: auto;
       }
-    `
-    return { id, css }
+    `;
+    return { id, css };
   }
 
   get centered() {
-    return this.getAttribute('centered') ?? defaultAttributes.centered
+    return this.getAttribute("centered") ?? defaultAttributes.centered;
   }
   set centered(value) {
-    this.setAttribute('centered', value)
+    this.setAttribute("centered", value);
   }
 
   get space() {
-    return this.getAttribute('space') ?? defaultAttributes.space
+    return this.getAttribute("space") ?? defaultAttributes.space;
   }
   set space(value) {
-    this.setAttribute('space', value)
+    this.setAttribute("space", value);
   }
 
   get minHeight() {
-    return this.getAttribute('minHeight') ?? defaultAttributes.minHeight
+    return this.getAttribute("minHeight") ?? defaultAttributes.minHeight;
   }
   set minHeight(value) {
-    this.setAttribute('minHeight', value)
+    this.setAttribute("minHeight", value);
   }
 
   get noPad() {
-    return this.hasAttribute('noPad')
+    return this.hasAttribute("noPad");
   }
   set noPad(value) {
-    if (value) this.setAttribute('noPad', '')
-    else this.removeAttribute('noPad')
+    if (value) this.setAttribute("noPad", "");
+    else this.removeAttribute("noPad");
   }
 
   render() {
-    const { centered, space, minHeight, noPad } = this
+    const { centered, space, minHeight, noPad } = this;
     const { id, css } = CoverLayout.getStyles({
       centered,
       space,
       minHeight,
       noPad,
-    })
-    this.dataset.i = id
-    addGlobalStyle(id, css)
+    });
+    this.dataset.i = id;
+    addGlobalStyle(id, css);
   }
   connectedCallback() {
-    this.render()
+    this.render();
   }
   attributeChangedCallback() {
-    this.render()
+    this.render();
   }
 }

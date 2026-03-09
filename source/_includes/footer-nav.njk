@@ -1,16 +1,15 @@
 {% if footerNav %}
 <footer class="docsLayout-footer">
   <reel-layout class="layoutReel">
-    {% for item in footerNav %}
-    {% set page = collections[item.tag][0] %}
-    <a href="#{{ item.id }}" class="layoutReel-item">
+    {% for entry in collections.all | eleventyNavigation(footerNav) %}
+    <a href="#{{ entry.title | lower | slugify }}" class="layoutReel-item">
       <img
         width="96"
         height="96"
-        src="{{ page.data.tile | url }}"
-        alt="{{ item.name }}"
+        src="{{ entry.data.tile | url }}"
+        alt="{{ entry.title }}"
       />
-      <p>{{item.name}}</p>
+      <p>{{ entry.title }}</p>
     </a>
     {% endfor %}
   </reel-layout>

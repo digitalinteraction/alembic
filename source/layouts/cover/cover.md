@@ -2,6 +2,9 @@
 permalink: false
 tags: coverLayout
 tile: /assets/tiles/cover.svg
+eleventyNavigation:
+  key: Cover
+  parent: Layouts
 ---
 
 **CoverLayout** fills a minimum vertical height and centers a principle element vertically.

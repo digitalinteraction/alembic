@@ -2,6 +2,9 @@
 permalink: false
 tags: sidebarLayout
 tile: /assets/tiles/sidebar.svg
+eleventyNavigation:
+  key: Sidebar
+  parent: Layouts
 ---
 
 **SidebarLayout** places two elements side-by-side if space permits it or stacks them on top of each other if not.

@@ -1,9 +1,11 @@
 ---
 layout: markdown.njk
 title: Single Page Applications
-strapline: Link up with SPAs for JavaScript-based apps
-tags:
-  - install
+eleventyNavigation:
+  key: Single Page Applications
+  parent: Install
+  excerpt: Link up with SPAs for JavaScript-based apps
+  order: 3
 ---
 
 {% from 'macros.njk' import apiDoc %}
@@ -19,7 +21,7 @@ Alembic is designed to be compiled up-front to reduce client-side JavaScript but
 
 ---
 
-{% include 'install.njk' %}
+{% include 'install.md' %}
 
 ## Getting started
 
@@ -40,16 +42,16 @@ and link to `everything.css` from your CSS.
 If you want to manually trigger Alembic client-side, import `module.js` like this:
 
 ```js
-import { allCustomElements, defineCustomElements } from '@openlab/alembic'
+import { allCustomElements, defineCustomElements } from "@openlab/alembic";
 
 // Then whenever call this you want to trigger Alembic to run:
-defineCustomElements(allCustomElements)
+defineCustomElements(allCustomElements);
 ```
 
 and then in your CSS file:
 
 ```css
-@import '@openlab/alembic/everything.css';
+@import "@openlab/alembic/everything.css";
 ```
 
 ## Vite + vue
@@ -57,9 +59,9 @@ and then in your CSS file:
 When using Vite, you **also** need to tell it which elements from Alembic are custom elements, so it knows not to process these. Create or update your [Vite config](https://vitejs.dev/config/) to include:
 
 ```js
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { allCustomElements } from '@openlab/alembic'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import { allCustomElements } from "@openlab/alembic";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -72,7 +74,7 @@ export default defineConfig({
       },
     }),
   ],
-})
+});
 ```
 
 > Last tested with `vite@3` and `@vitejs/plugin-vue@3`
@@ -82,13 +84,13 @@ export default defineConfig({
 When using Parcel, do the same initial setup but you'll need `npm:` prefixes in your imports in JavaScript:
 
 ```js
-import 'npm:@openlab/alembic/everything.js'
+import "npm:@openlab/alembic/everything.js";
 ```
 
 and in CSS:
 
 ```css
-@import 'npm:@openlab/alembic/everything.css';
+@import "npm:@openlab/alembic/everything.css";
 ```
 
 <!-- TODO: test with parcel and report versions -->

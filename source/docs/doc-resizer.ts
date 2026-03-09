@@ -1,6 +1,6 @@
-import { trimCss as css } from '../lib/lib.js'
+import { trimCss as css } from "../lib/lib.js";
 
-const defaultAttributes = {}
+const defaultAttributes = {};
 
 export interface DocResizerAttributes {}
 
@@ -35,9 +35,9 @@ const style = css`
       max-width: calc(100% - 1rem - 1rem); /* 100% - gap - handleWidth */
     }
   }
-`
+`;
 
-const template = document.createElement('template')
+const template = document.createElement("template");
 template.innerHTML = `
 <style>${style}</style>
 <div part="content">
@@ -45,49 +45,49 @@ template.innerHTML = `
 </div>
 <div part="handle" title="Drag to resize">
 </div>
-`
+`;
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/setPointerCapture
 
 export class DocResizer extends HTMLElement {
-  #resized = 0
-  #handleElem: HTMLElement
+  #resized = 0;
+  #handleElem: HTMLElement;
 
   static get observedAttributes() {
-    return []
+    return [];
   }
 
   constructor() {
-    super()
+    super();
 
-    this.attachShadow({ mode: 'open' })
-    this.shadowRoot!.appendChild(template.content.cloneNode(true))
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot!.appendChild(template.content.cloneNode(true));
 
-    this.#handleElem = this.shadowRoot!.querySelector("[part='handle']")!
+    this.#handleElem = this.shadowRoot!.querySelector("[part='handle']")!;
 
     this.#handleElem.onpointerdown = (event) => {
-      event.preventDefault()
+      event.preventDefault();
 
-      let current = event.screenX + this.#resized
-      console.debug('onpointermove', current)
+      let current = event.screenX + this.#resized;
+      console.debug("onpointermove", current);
 
       this.#handleElem.onpointermove = (event) => {
-        console.debug('onpointermove')
-        this.#resized = Math.max(0, current - event.screenX)
-        this.style.marginInlineEnd = `${this.#resized}px`
-      }
+        console.debug("onpointermove");
+        this.#resized = Math.max(0, current - event.screenX);
+        this.style.marginInlineEnd = `${this.#resized}px`;
+      };
 
-      this.#handleElem.setPointerCapture(event.pointerId)
-    }
+      this.#handleElem.setPointerCapture(event.pointerId);
+    };
     this.#handleElem.onpointerup = (event) => {
-      this.#handleElem.onpointermove = null
-      this.#handleElem.releasePointerCapture(event.pointerId)
-    }
+      this.#handleElem.onpointermove = null;
+      this.#handleElem.releasePointerCapture(event.pointerId);
+    };
 
     // Reset the control if the window size changed
-    window.addEventListener('resize', () => {
-      if (this.#resized) this.#resized = 0
-      if (this.style.marginInlineEnd) this.style.marginInlineEnd = ''
-    })
+    window.addEventListener("resize", () => {
+      if (this.#resized) this.#resized = 0;
+      if (this.style.marginInlineEnd) this.style.marginInlineEnd = "";
+    });
   }
 }

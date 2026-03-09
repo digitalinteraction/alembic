@@ -3,17 +3,17 @@ import {
   getAttributes,
   getHTMLElement,
   trimCss,
-} from '../../lib/lib.js'
+} from "../../lib/lib.js";
 
 const defaultAttributes = {
-  min: '250px',
-  space: 'var(--s1)',
-}
+  min: "250px",
+  space: "var(--s1)",
+};
 
 export type GridLayoutAttributes = {
-  min?: string
-  space?: string
-}
+  min?: string;
+  space?: string;
+};
 
 /**
   GridLayout creates a responsive grid using CSS Grid.
@@ -21,14 +21,14 @@ export type GridLayoutAttributes = {
  */
 export class GridLayout extends getHTMLElement() {
   static get observedAttributes() {
-    return ['min', 'space']
+    return ["min", "space"];
   }
   static defineElement() {
-    customElements.define('grid-layout', GridLayout)
+    customElements.define("grid-layout", GridLayout);
   }
   static getStyles(attrs: GridLayoutAttributes) {
-    const { min, space } = getAttributes(defaultAttributes, attrs)
-    const id = `GridLayout-${min}${space}`
+    const { min, space } = getAttributes(defaultAttributes, attrs);
+    const id = `GridLayout-${min}${space}`;
     const css = trimCss`
       [data-i="${id}"] {
         grid-gap: ${space};
@@ -39,34 +39,34 @@ export class GridLayout extends getHTMLElement() {
           grid-template-columns: repeat(auto-fill, minmax(min(${min}, 100%), 1fr));
         }
       }
-    `
-    return { id, css }
+    `;
+    return { id, css };
   }
 
   get min() {
-    return this.getAttribute('min') ?? defaultAttributes.min
+    return this.getAttribute("min") ?? defaultAttributes.min;
   }
   set min(value) {
-    this.setAttribute('min', value)
+    this.setAttribute("min", value);
   }
 
   get space() {
-    return this.getAttribute('space') ?? defaultAttributes.space
+    return this.getAttribute("space") ?? defaultAttributes.space;
   }
   set space(value) {
-    this.setAttribute('space', value)
+    this.setAttribute("space", value);
   }
 
   render() {
-    const { min, space } = this
-    const { id, css } = GridLayout.getStyles({ min, space })
-    this.dataset.i = id
-    addGlobalStyle(id, css)
+    const { min, space } = this;
+    const { id, css } = GridLayout.getStyles({ min, space });
+    this.dataset.i = id;
+    addGlobalStyle(id, css);
   }
   connectedCallback() {
-    this.render()
+    this.render();
   }
   attributeChangedCallback() {
-    this.render()
+    this.render();
   }
 }

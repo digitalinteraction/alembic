@@ -8,30 +8,49 @@
     * --border-thin
  */
 
-@import './stack/stack.css';
-@import './box/box.css';
-@import './center/center.css';
-@import './cluster/cluster.css';
-@import './sidebar/sidebar.css';
-@import './switcher/switcher.css';
-@import './cover/cover.css';
-@import './grid/grid.css';
-@import './frame/frame.css';
-@import './reel/reel.css';
-@import './imposter/imposter.css';
-@import './icon/icon.css';
+@import "./stack/stack.css";
+@import "./box/box.css";
+@import "./center/center.css";
+@import "./cluster/cluster.css";
+@import "./sidebar/sidebar.css";
+@import "./switcher/switcher.css";
+@import "./cover/cover.css";
+@import "./grid/grid.css";
+@import "./frame/frame.css";
+@import "./reel/reel.css";
+@import "./imposter/imposter.css";
+@import "./icon/icon.css";
 
 :root {
   --ratio: 1.5;
+  --s0: 1rem;
+
   --s-5: calc(var(--s-4) / var(--ratio));
   --s-4: calc(var(--s-3) / var(--ratio));
   --s-3: calc(var(--s-2) / var(--ratio));
   --s-2: calc(var(--s-1) / var(--ratio));
   --s-1: calc(var(--s0) / var(--ratio));
-  --s0: 1rem;
+
   --s1: calc(var(--s0) * var(--ratio));
   --s2: calc(var(--s1) * var(--ratio));
   --s3: calc(var(--s2) * var(--ratio));
   --s4: calc(var(--s3) * var(--ratio));
   --s5: calc(var(--s4) * var(--ratio));
+}
+
+/* EXPERIMENTAL, could be more or less performant… */
+@supports (--something: calc(pow(2, 2) * 1rem)) {
+  :root {
+    --s-5: calc(pow(var(--ratio), -5) * var(--s0));
+    --s-4: calc(pow(var(--ratio), -4) * var(--s0));
+    --s-3: calc(pow(var(--ratio), -3) * var(--s0));
+    --s-2: calc(pow(var(--ratio), -2) * var(--s0));
+    --s-1: calc(pow(var(--ratio), -1) * var(--s0));
+
+    --s1: calc(pow(var(--ratio), 1) * var(--s0));
+    --s2: calc(pow(var(--ratio), 2) * var(--s0));
+    --s3: calc(pow(var(--ratio), 3) * var(--s0));
+    --s4: calc(pow(var(--ratio), 4) * var(--s0));
+    --s5: calc(pow(var(--ratio), 5) * var(--s0));
+  }
 }

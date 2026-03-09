@@ -1,9 +1,11 @@
 ---
 layout: markdown.njk
 title: Static Site Generators
-strapline: Hook up to SSGs to compile HTML & CSS
-tags:
-  - install
+eleventyNavigation:
+  key: Static Site Generators
+  parent: Install
+  excerpt: Hook up to SSGs to compile HTML & CSS
+  order: 2
 ---
 
 {% from 'macros.njk' import apiDoc %}
@@ -18,21 +20,21 @@ There are specific bits of the library for achieving this and there is also an [
 
 ---
 
-{% include 'install.njk' %}
+{% include 'install.md' %}
 
 ## Eleventy plugin
 
-If you're using [Eleventy 1.x](https://www.11ty.dev/), it's super easy to install!
+If you're using [Eleventy](https://www.11ty.dev/), it's super easy to install!
 
-Insert this into your existing **.eleventy.js**:
+Insert this into your existing **eleventy.config.js**:
 
 ```js
-const { eleventyAlembic } = require('@openlab/alembic/11ty')
+import eleventyAlembic from "@openlab/alembic/11ty.js";
 
-module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(eleventyAlembic)
+export default function (eleventyConfig) {
+  eleventyConfig.addPlugin(eleventyAlembic);
 
-  return // ...
+  // …
 }
 ```
 
@@ -77,7 +79,7 @@ and you use them like this:
 ```js
 eleventyConfig.addPlugin(eleventyAlembic, {
   skipBaseStyles: true,
-})
+});
 ```
 
 ---
@@ -94,7 +96,7 @@ import {
   getStyles,
   getBaseStyles,
   getBaseScripts,
-} from '@openlab/alembic/tools.js'
+} from "@openlab/alembic/tools.js";
 ```
 
 {{ apiDoc(api, 'tools.ts', 'processHtml') }}
@@ -104,3 +106,9 @@ import {
 {{ apiDoc(api, 'tools.ts', 'getBaseStyles') }}
 
 {{ apiDoc(api, 'tools.ts', 'getBaseScripts') }}
+
+{{ apiDoc(api, 'tools.ts', 'getLabcoatStyles') }}
+
+```
+
+```

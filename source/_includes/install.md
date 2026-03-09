@@ -1,7 +1,6 @@
 **Prerequisites**
 
-- Node.js v18+
-- npm v7+
+- Node.js v22+
 
 Then install Alembic with NPM:
 

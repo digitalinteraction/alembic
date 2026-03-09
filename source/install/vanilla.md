@@ -1,9 +1,11 @@
 ---
 layout: html.njk
 title: Vanilla
-strapline: Get started and hack away, good for prototypes and one-offs.
-tags:
-  - install
+eleventyNavigation:
+  key: Vanilla
+  parent: Install
+  excerpt: Get started and hack away, good for prototypes and one-offs.
+  order: 1
 ---
 
 {% include 'quickstart.njk' %}

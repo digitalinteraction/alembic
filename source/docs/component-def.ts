@@ -1,11 +1,11 @@
-import { trimCss } from '../lib/lib.js'
+import { trimCss } from "../lib/lib.js";
 
 // TODO: does noPad do anything?
 // TODO: is the "title" to "label" migration ok?
 
 export interface ComponentDefAttributes {
-  label?: string
-  noPad?: boolean
+  label?: string;
+  noPad?: boolean;
 }
 
 const style = trimCss`
@@ -46,9 +46,9 @@ const style = trimCss`
     max-width: 100%;
     overflow-x: auto;
   }
-`
+`;
 
-const template = document.createElement('template')
+const template = document.createElement("template");
 template.innerHTML = `
 <style>${style}</style>
 <section part="section">
@@ -62,66 +62,66 @@ template.innerHTML = `
     </doc-resizer>
   </div>
 </section>
-`
+`;
 
 export class ComponentDef extends HTMLElement {
   static get observedAttributes() {
-    return ['title', 'no-pad']
+    return ["title", "no-pad"];
   }
 
   get label() {
-    return this.getAttribute('label') ?? ''
+    return this.getAttribute("label") ?? "";
   }
   get noPad() {
-    return this.hasAttribute('no-pad')
+    return this.hasAttribute("no-pad");
   }
   set noPad(value) {
-    if (value) this.setAttribute('no-pad', '')
-    else this.removeAttribute('no-pad')
+    if (value) this.setAttribute("no-pad", "");
+    else this.removeAttribute("no-pad");
   }
 
   constructor() {
-    super()
+    super();
 
-    this.attachShadow({ mode: 'open' })
-    this.shadowRoot!.appendChild(template.content.cloneNode(true))
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot!.appendChild(template.content.cloneNode(true));
 
     const button =
-      this.shadowRoot?.querySelector<HTMLButtonElement>("[part='toggle']")!
-    const slot = this.shadowRoot?.querySelector('slot')!
+      this.shadowRoot?.querySelector<HTMLButtonElement>("[part='toggle']")!;
+    const slot = this.shadowRoot?.querySelector("slot")!;
 
-    const pre = document.createElement('pre')
-    pre.setAttribute('part', 'code')
-    pre.innerText = this.renderCode(this.innerHTML)
+    const pre = document.createElement("pre");
+    pre.setAttribute("part", "code");
+    pre.innerText = this.renderCode(this.innerHTML);
 
-    button.addEventListener('click', () => {
-      const showCode = Boolean(slot.parentElement)
-      const current = showCode ? slot : pre
-      const next = showCode ? pre : slot
-      button.textContent = showCode ? 'hide code' : 'show code'
+    button.addEventListener("click", () => {
+      const showCode = Boolean(slot.parentElement);
+      const current = showCode ? slot : pre;
+      const next = showCode ? pre : slot;
+      button.textContent = showCode ? "hide code" : "show code";
 
-      current.replaceWith(next)
-    })
+      current.replaceWith(next);
+    });
   }
   render() {
-    const titleElem = this.shadowRoot?.querySelector("[part='title']")!
-    titleElem.textContent = this.label
+    const titleElem = this.shadowRoot?.querySelector("[part='title']")!;
+    titleElem.textContent = this.label;
   }
   connectedCallback() {
-    this.render()
+    this.render();
   }
   attributeChangedCallback() {
-    this.render()
+    this.render();
   }
 
   renderCode(html: string) {
-    const indent = /[ \t]+/.exec(html)?.[0]
+    const indent = /[ \t]+/.exec(html)?.[0];
 
     return html
       .split(/\r?\n/)
-      .map((l) => (indent ? l.replace(indent, '') : l))
-      .join('\n')
-      .replace(/\s*data-i=".+"/g, '')
-      .trim()
+      .map((l) => (indent ? l.replace(indent, "") : l))
+      .join("\n")
+      .replace(/\s*data-i=".+"/g, "")
+      .trim();
   }
 }

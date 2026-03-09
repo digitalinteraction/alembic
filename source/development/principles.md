@@ -1,9 +1,10 @@
 ---
 layout: markdown.njk
 title: Principles
-strapline: The guiding principles behind Alembic
-tags:
-  - development
+eleventyNavigation:
+  key: Principles
+  parent: Dev
+  excerpt: The guiding principles behind Alembic
 ---
 
 - **Progressive enhancement** — everyone should get the best experience possible for them.

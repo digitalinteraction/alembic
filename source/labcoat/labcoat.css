@@ -1,10 +1,10 @@
-@import '../everything.css';
+@import "../everything.css";
 
 :root {
   --measure: 40em;
   --fillable: #2252e3;
-  --font-main: 'Inter var', Inter, system-ui, sans-serif;
-  --font-mono: 'SF Mono', ui-monospace, monospace;
+  --font-main: "Inter var", Inter, system-ui, sans-serif;
+  --font-mono: "SF Mono", ui-monospace, monospace;
   --border-thin: var(--s-5);
   --border-thick: var(--s-2);
 
@@ -138,7 +138,7 @@ summary:focus {
   outline-offset: var(--s-3);
 }
 [aria-hidden],
-[aria-hidden='true'] {
+[aria-hidden="true"] {
   display: none !important;
 }
 table:not([class]) {

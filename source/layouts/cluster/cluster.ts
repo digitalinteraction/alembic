@@ -3,19 +3,19 @@ import {
   getAttributes,
   getHTMLElement,
   trimCss,
-} from '../../lib/lib.js'
+} from "../../lib/lib.js";
 
 const defaultAttributes = {
-  justify: 'flex-start',
-  align: 'flex-start',
-  space: 'var(--s1)',
-}
+  justify: "flex-start",
+  align: "flex-start",
+  space: "var(--s1)",
+};
 
 export type ClusterLayoutAttributes = {
-  justify?: string
-  align?: string
-  space?: string
-}
+  justify?: string;
+  align?: string;
+  space?: string;
+};
 
 /**
   ClusterLayout groups items together with control for the margin between them.
@@ -25,53 +25,53 @@ export type ClusterLayoutAttributes = {
  */
 export class ClusterLayout extends getHTMLElement() {
   static get observedAttributes() {
-    return ['justify', 'align', 'space']
+    return ["justify", "align", "space"];
   }
   static defineElement() {
-    customElements.define('cluster-layout', ClusterLayout)
+    customElements.define("cluster-layout", ClusterLayout);
   }
   static getStyles(attrs: ClusterLayoutAttributes) {
-    const { justify, align, space } = getAttributes(defaultAttributes, attrs)
-    const id = `ClusterLayout-${justify}${align}${space}`
+    const { justify, align, space } = getAttributes(defaultAttributes, attrs);
+    const id = `ClusterLayout-${justify}${align}${space}`;
     const css = trimCss`
       [data-i="${id}"] {
         justify-content: ${justify};
         align-items: ${align};
         gap: ${space};
       }
-    `
-    return { id, css }
+    `;
+    return { id, css };
   }
 
   get justify() {
-    return this.getAttribute('justify') ?? defaultAttributes.justify
+    return this.getAttribute("justify") ?? defaultAttributes.justify;
   }
   set justify(value) {
-    this.setAttribute('justify', value)
+    this.setAttribute("justify", value);
   }
   get align() {
-    return this.getAttribute('align') ?? defaultAttributes.align
+    return this.getAttribute("align") ?? defaultAttributes.align;
   }
   set align(value) {
-    this.setAttribute('align', value)
+    this.setAttribute("align", value);
   }
   get space() {
-    return this.getAttribute('space') ?? defaultAttributes.space
+    return this.getAttribute("space") ?? defaultAttributes.space;
   }
   set space(value) {
-    this.setAttribute('space', value)
+    this.setAttribute("space", value);
   }
 
   render() {
-    const { justify, align, space } = this
-    const { id, css } = ClusterLayout.getStyles({ justify, align, space })
-    this.dataset.i = id
-    addGlobalStyle(id, css)
+    const { justify, align, space } = this;
+    const { id, css } = ClusterLayout.getStyles({ justify, align, space });
+    this.dataset.i = id;
+    addGlobalStyle(id, css);
   }
   connectedCallback() {
-    this.render()
+    this.render();
   }
   attributeChangedCallback() {
-    this.render()
+    this.render();
   }
 }

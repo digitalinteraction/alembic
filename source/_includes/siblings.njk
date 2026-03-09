@@ -3,16 +3,16 @@
 
 {% if siblings %}
 <nav class="siblings" aria-labelledby="siblings">
-  <p id="siblings">{{ siblingTitle or 'Pages' }}</p>
+  <p id="siblings">{{ siblings }}</p>
   <ul>
-    {% for target in collections.all | getPages(siblings) %}
+    {% for entry in collections.all | eleventyNavigation(siblings) %}
     <li>
-      {% if target.url | isCurrentPage(page.url) %}
-      <strong>{{ target.data.title }}</strong>
+      {% if entry.url == page.url %}
+      <strong>{{ entry.title }}</strong>
       {% else %}
-      <a href="{{ target.url }}" >
+      <a href="{{ entry.url }}" >
         <icon-layout>
-          {{ target.data.title }}
+          {{ entry.title }}
           {{ icon('right') }}
         </icon-layout>
       </a>

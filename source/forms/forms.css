@@ -46,8 +46,8 @@ fieldset {
   padding: var(--s-3);
   width: 100%;
 }
-.field input[type='radio'],
-.field input[type='checkbox'] {
+.field input[type="radio"],
+.field input[type="checkbox"] {
   width: initial;
 }
 .field textarea {

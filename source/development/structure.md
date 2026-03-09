@@ -1,9 +1,10 @@
 ---
 layout: markdown.njk
-title: Structure
-strapline: How the project is setup and where things go
-tags:
-  - development
+title: Project Structure
+eleventyNavigation:
+  key: Project Structure
+  parent: Dev
+  excerpt: How the project is setup and where things go
 ---
 
 This project is set up with locality in mind, files that are often edited together should be near each other. The code is in the `src/` directory in the repo where it is then split up into the different modules of the library. Those modules correlate closely to the structure of the documentation site. The documentation is in the same directory structure as the code itself.

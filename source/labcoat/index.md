@@ -1,8 +1,9 @@
 ---
 layout: index.njk
 title: Labcoat
-links:
-  - labcoat
+eleventyNavigation:
+  key: Labcoat
+  order: 4
 ---
 
 > UNSTABLE

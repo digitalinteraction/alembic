@@ -2,6 +2,9 @@
 permalink: false
 tags: centerLayout
 tile: /assets/tiles/center.svg
+eleventyNavigation:
+  key: Center
+  parent: Layouts
 ---
 
 **CenterLayout** ensures an element is centered horizontally with a minimum width.

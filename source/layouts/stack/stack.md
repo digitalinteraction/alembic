@@ -2,6 +2,9 @@
 permalink: false
 tags: stackLayout
 tile: /assets/tiles/stack.svg
+eleventyNavigation:
+  key: Stack
+  parent: Layouts
 ---
 
 **StackLayout** places elements vertically and adds empty space between them.

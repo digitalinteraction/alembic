@@ -1,9 +1,10 @@
 ---
 layout: markdown.njk
 title: Style guide
-strapline: Conventions and patterns used for development
-tags:
-  - development
+eleventyNavigation:
+  key: Style guide
+  parent: Dev
+  excerpt: Conventions and patterns used for development
 ---
 
 Alembic is written in TypeScript and CSS, follow [the Structure]({{ '/development/structure/' | url }}) for where to put things.

@@ -1,10 +1,11 @@
 ---
 layout: html.njk
 title: API
-strapline: What to expect from the API
 spacing: var(--s3)
-tags:
-  - development
+eleventyNavigation:
+  key: API
+  parent: Dev
+  excerpt: How to use Alembic programatically
 ---
 
 <style>
@@ -23,7 +24,7 @@ tags:
   
   <h3 id="{{ name | slugify }}"><code>{{ name }}</code></h3>
   
-  {{ item.content | md | safe }}
+  {{ item.content | renderContent("md") | safe }}
   
   {% endif %}
   {% endfor %}

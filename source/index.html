@@ -7,11 +7,9 @@ title: 🏠 Home
 
 <cover-layout minheight="90vh" centered=".homeHero">
   <cluster-layout justify="flex-end">
-    <a href="{{ '/install/' | url }}">Install</a>
-    <a href="{{ '/layouts/' | url }}">Layouts</a>
-    <a href="{{ '/forms/' | url }}">Forms</a>
-    <a href="{{ '/labcoat/' | url }}">Labcoat</a>
-    <a href="{{ site.githubUrl }}">GitHub</a>
+    {% for item in collections.all | eleventyNavigation %}
+    <a href="{{ item.url }}">{{ item.title }}</a>
+    {% endfor %}
   </cluster-layout>
   <div class="homeHero">
     <h1>⚗️ Alembic</h1>
@@ -52,8 +50,8 @@ title: 🏠 Home
       </h2>
       <p> Add alembic to your project, depending on your setup. </p>
       <ul>
-        {% for target in collections.all | getPages(['install']) %}
-        <li>{{ link(target.data.title, target.url) }}</li>
+        {% for entry in collections.all | eleventyNavigation("Install") %}
+        <li>{{ link(entry.title, entry.url) }}</li>
         {% endfor %}
       </ul>
 
@@ -76,15 +74,16 @@ title: 🏠 Home
         data-autoscroll="true"
         style="margin-inline: calc(-1 * var(--s1))"
       >
+        {% set layouts = collections.all | eleventyNavigation("Layouts") %}
         {% for layout in layouts.concat(layouts) %}
-        <span href="#{{ layout.id }}" class="layoutReel-item">
+        <span class="layoutReel-item">
           <img
             width="96"
             height="96"
-            src="{{ collections[layout.tag][0].data.tile | url }}"
-            alt="{{ layout.name }}"
+            src="{{ layout.data.tile | url }}"
+            alt="{{ layout.title }}"
           />
-          <p>{{layout.name}}</p>
+          <p>{{ layout.title }}</p>
         </span>
         {% endfor %}
       </reel-layout>
@@ -112,19 +111,22 @@ title: 🏠 Home
           {{ link('Coffee Club', 'https://things.openlab.dev/27') }}
         </li>
         <li>
-          {{ link('DataDiaries', 'https://datadiaries.uk/') }}
+          {{ link('Open Lab Hub', 'https://hub.openlab.dev/') }}
         </li>
         <li>
-          {{ link('StickerStories', 'https://stickerstori.es/') }}
+          {{ link('Deconf', 'https://deconf.app/') }}
+        </li>
+        <li>
+          {{ link('Data Diaries', 'https://datadiaries.uk/') }}
+        </li>
+        <li>
+          {{ link('Sticker Stories', 'https://stickerstori.es/') }}
         </li>
         <li>
           {{ link('Open Blab', 'https://blab.openlab.dev/') }}
         </li>
         <li>
           {{ link('Tech Tuesdays', 'https://tuesdays.openlab.dev/') }}
-        </li>
-        <li>
-          {{ link('Open Lab Hub', 'https://hub.openlab.dev/') }}
         </li>
       </ul>
     </section>
@@ -135,8 +137,8 @@ title: 🏠 Home
       </h2>
       <p>Information for developing on Alembic itself.</p>
       <ul>
-        {% for target in collections.all | getPages(['development']) %}
-        <li>{{ link(target.data.title, target.url) }}</li>
+        {% for entry in collections.all | eleventyNavigation("Dev") %}
+        <li>{{ link(entry.title, entry.url) }}</li>
         {% endfor %}
       </ul>
     </section>

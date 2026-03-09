@@ -1,5 +1,5 @@
-import { trimCss as css } from '../lib/lib.js'
-import { DetailsUtils } from './details-utils.js'
+import { trimCss as css } from "../lib/lib.js";
+import { DetailsUtils } from "./details-utils.js";
 
 const style = css`
   :host {
@@ -21,9 +21,9 @@ const style = css`
   ::slotted(*:not(:first-child)) {
     margin-block-start: var(--s2);
   }
-`
+`;
 
-const template = document.createElement('template')
+const template = document.createElement("template");
 template.innerHTML = `
 <style>${style}</style>
 <details-utils part="detailUtils">
@@ -32,63 +32,63 @@ template.innerHTML = `
     <slot></slot>
   </details>
 </details-utils>
-`
+`;
 
 const defaultAttributes = {
-  label: '',
-  prefix: '',
-}
+  label: "",
+  prefix: "",
+};
 
 export interface DocSectionAttributes {
-  label?: string
-  prefix?: string
+  label?: string;
+  prefix?: string;
 }
 
 export class DocSection extends HTMLElement {
   get label() {
-    return this.getAttribute('label') ?? defaultAttributes.label
+    return this.getAttribute("label") ?? defaultAttributes.label;
   }
   get prefix() {
-    return this.getAttribute('prefix') ?? defaultAttributes.prefix
+    return this.getAttribute("prefix") ?? defaultAttributes.prefix;
   }
 
   get detailsUtilsElem() {
     return this.shadowRoot!.querySelector(
-      "[part='detailUtils']"
-    ) as DetailsUtils
+      "[part='detailUtils']",
+    ) as DetailsUtils;
   }
   get labelElem() {
-    return this.shadowRoot!.querySelector("[part='label']")!
+    return this.shadowRoot!.querySelector("[part='label']")!;
   }
 
   constructor() {
-    super()
+    super();
 
-    this.classList.add('docSection')
+    this.classList.add("docSection");
 
-    this.attachShadow({ mode: 'open' })
-    this.shadowRoot!.appendChild(template.content.cloneNode(true))
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot!.appendChild(template.content.cloneNode(true));
 
-    this.render()
+    this.render();
   }
   render() {
-    this.labelElem.textContent = this.label
-    this.id = this.getSlug(this.label)
-    this.detailsUtilsElem.persist = this.prefix + this.id
+    this.labelElem.textContent = this.label;
+    this.id = this.getSlug(this.label);
+    this.detailsUtilsElem.persist = this.prefix + this.id;
   }
   connectedCallback() {
-    this.render()
+    this.render();
   }
 
   toggleOpen(force: boolean) {
-    this.detailsUtilsElem.toggleOpen(force)
+    this.detailsUtilsElem.toggleOpen(force);
   }
 
-  getSlug(input = '') {
+  getSlug(input = "") {
     return input
       .toLowerCase()
       .trim()
-      .replace(/[^\w\s]+/g, '')
-      .replace(/[\s-]+/g, '-')
+      .replace(/[^\w\s]+/g, "")
+      .replace(/[\s-]+/g, "-");
   }
 }

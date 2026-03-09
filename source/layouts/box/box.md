@@ -2,6 +2,9 @@
 permalink: false
 tags: boxLayout
 tile: /assets/tiles/box.svg
+eleventyNavigation:
+  key: Box
+  parent: Layouts
 ---
 
 **BoxLayout** is a primitive to show a container of other elements.

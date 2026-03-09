@@ -1,9 +1,10 @@
 ---
 layout: markdown.njk
 title: Reset CSS
-strapline: What the reset does and how to work with it
-tags:
-  - development
+eleventyNavigation:
+  key: Reset CSS
+  parent: Dev
+  excerpt: What the reset does and how to work with it
 ---
 
 The CSS reset normalises some elements and sets up other things for best practice.

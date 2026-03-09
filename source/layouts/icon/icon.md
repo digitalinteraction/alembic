@@ -2,6 +2,9 @@
 permalink: false
 tags: iconLayout
 tile: /assets/tiles/icon.svg
+eleventyNavigation:
+  key: Icon
+  parent: Layouts
 ---
 
 **IconLayout** is for nicely placing icons inline with text.
