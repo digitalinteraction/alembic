@@ -1,9 +1,10 @@
 ---
 layout: index.njk
 title: Labcoat
+emoji: "🥼"
 eleventyNavigation:
   key: Labcoat
-  order: 4
+  order: 5
 ---
 
 > UNSTABLE
