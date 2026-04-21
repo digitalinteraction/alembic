@@ -137,6 +137,9 @@ summary:focus {
   outline: var(--s-3) solid var(--focus);
   outline-offset: var(--s-3);
 }
+form {
+  margin: 0;
+}
 [aria-hidden],
 [aria-hidden="true"] {
   display: none !important;
