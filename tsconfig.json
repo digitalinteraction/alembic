@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "outDir": "dist",
+    "rootDir": "source",
     "target": "ESNext",
     "moduleResolution": "Bundler",
     "module": "Preserve",
+    "types": ["node"],
 
     "sourceMap": true,
     "declaration": true,

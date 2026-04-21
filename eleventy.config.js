@@ -7,6 +7,7 @@ import slugify from "slugify";
 
 import pkg from "./package.json" with { type: "json" };
 import site from "./source/_data/site.json" with { type: "json" };
+import { buildLibrary } from "./scripts/build-library.js";
 
 /** @param {import('@11ty/eleventy/UserConfig').default} eleventyConfig */
 export default function (eleventyConfig) {
@@ -31,9 +32,13 @@ export default function (eleventyConfig) {
     (content) => `<p class="eleventyError">${content}</p>`,
   );
 
+  eleventyConfig.on("eleventy.before", async () => {
+    await buildLibrary({ lint: false });
+  });
+
   // TODO: add watch/rebuild for src in development mode?
-  // eleventyConfig.addWatchTarget('./source/**/*.css')
-  // eleventyConfig.addWatchTarget('./source/**/*.ts')
+  eleventyConfig.addWatchTarget("./source/**/*.css");
+  eleventyConfig.addWatchTarget("./source/**/*.ts");
 }
 
 export const config = {

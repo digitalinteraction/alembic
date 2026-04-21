@@ -1,0 +1,17 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\nnpm ci\nnode scripts\/build-library.js\nnpx eleventy"
+    },
+    "clean" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\nrm -rf dist\nnpm ci"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\nnpx eleventy --serve"
+    }
+  },
+  "buildBeforeRunning" : true
+}
