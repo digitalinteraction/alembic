@@ -24,8 +24,8 @@
     }
   },
   "scripts": {
-    "build": "npx eleventy",
-    "start": "npx eleventy --serve",
+    "build": "node scripts/build-library.js && npx eleventy",
+    "start": "node scripts/build-library.js && npx eleventy --serve",
     "test": "tsx --test **/*.test.*",
     "format": "prettier --write '**/*.{js,ts,json,css,md}'"
   },
